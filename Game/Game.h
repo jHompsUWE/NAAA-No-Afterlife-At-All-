@@ -12,6 +12,9 @@
 #include "Mouse.h"
 #include "Audio.h"
 
+#include "GameManager.h"
+#include "EventManager.h"
+
 using std::list;
 
 // Forward declarations
@@ -112,4 +115,6 @@ private:
 	//See here: https://github.com/Microsoft/DirectXTK/wiki/Creating-and-playing-sounds Using wave banks Section
     std::unique_ptr<DirectX::AudioEngine> m_audioEngine;
     list<Sound*>m_Sounds;
+
+    std::shared_ptr<EventManager> event_manager;
 };

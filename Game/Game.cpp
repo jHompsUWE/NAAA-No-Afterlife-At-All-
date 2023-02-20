@@ -236,6 +236,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
     m_Sounds.push_back(TS);
+
+
+    event_manager = std::make_shared<EventManager>();
+    GameManager::get()->addManager(&*event_manager, ManagerType::EVENT);
 }
 
 // Executes the basic game loop.
@@ -252,6 +256,7 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    GameManager::get()->update();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
@@ -611,5 +616,5 @@ void Game::ReadInput()
     //lock the cursor to the centre of the window
     RECT window;
     GetWindowRect(m_window, &window);
-    SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
+    //SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
 }
