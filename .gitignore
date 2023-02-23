@@ -353,7 +353,7 @@ MigrationBackup/
 #Assets/
 
 #Ignore directXtx
-DirectXTK/Src/Shaders/Compliled/
-DirectXTK/
+DirectXTK/Src/Shaders/Compliled/*
+#DirectXTK/
 
-Assets/
+Assets/*
