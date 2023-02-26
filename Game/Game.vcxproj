@@ -168,7 +168,9 @@
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
     <ClInclude Include="DrawData2D.h" />
+    <ClInclude Include="EconomyManager.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="fileVBGO.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -187,6 +189,7 @@
     <ClInclude Include="ObjectList.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SaveStruct.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Terrain.h" />
@@ -205,7 +208,9 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
+    <ClCompile Include="EconomyManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="fileVBGO.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -224,6 +229,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SaveStruct.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TestSound.cpp" />
