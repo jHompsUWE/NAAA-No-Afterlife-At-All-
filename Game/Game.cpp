@@ -12,6 +12,12 @@
 #include "DrawData.h"
 #include "DrawData2D.h"
 #include "ObjectList.h"
+//#include "GameStateBase"
+#include "GameMenu.h"
+#include "GamePlay.h"
+#include "GameTutorial.h"
+#include "GamePaused.h"
+#include "GameOver.h"
 
 extern void ExitGame() noexcept;
 
@@ -23,8 +29,14 @@ Game::Game() noexcept :
     m_window(nullptr),
     m_outputWidth(800),
     m_outputHeight(600),
-    m_featureLevel(D3D_FEATURE_LEVEL_11_0)
+    m_featureLevel(D3D_FEATURE_LEVEL_11_0),
+    current_state(State::GAME_MENU)
 {
+    game_states.insert(std::make_pair(State::GAME_MENU, std::make_unique<GameMenu>(State::GAME_MENU, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_PLAY, std::make_unique<GameMenu>(State::GAME_PLAY, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_TUTORIAL, std::make_unique<GameMenu>(State::GAME_TUTORIAL, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_PAUSED, std::make_unique<GameMenu>(State::GAME_PAUSED, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_OVER, std::make_unique<GameMenu>(State::GAME_OVER, m_GD, m_DD, m_DD2D)));
 }
 
 // Initialize the Direct3D resources required to run.
@@ -236,6 +248,15 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
     m_Sounds.push_back(TS);
+
+    // GameState
+    for (auto& state : game_states)
+    {
+        if (!state.second->init())
+        { 
+            //return false;
+        }
+    }
 }
 
 // Executes the basic game loop.

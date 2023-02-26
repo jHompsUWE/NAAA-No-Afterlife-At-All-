@@ -49,6 +49,15 @@
     <Filter Include="GameObjects\Sound\Source Files">
       <UniqueIdentifier>{b36885db-921d-4d11-87ed-14c324432822}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameStates">
+      <UniqueIdentifier>{dd3e2a49-c271-4dcf-a45d-74868e1bf492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStates\Header Files">
+      <UniqueIdentifier>{c5faae2c-22e9-4706-8ba4-5a37b8ce0470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStates\Source Files">
+      <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -156,6 +165,24 @@
     <ClInclude Include="GPGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateBase.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePaused.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTutorial.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>GameStates\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -226,6 +253,24 @@
     </ClCompile>
     <ClCompile Include="GPGO.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateBase.cpp">
+      <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePaused.cpp">
+      <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTutorial.cpp">
+      <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>GameStates\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
