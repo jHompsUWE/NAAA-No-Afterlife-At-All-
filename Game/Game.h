@@ -11,6 +11,10 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Audio.h"
+#include <map>
+// Needs to be included here or it doesn't work
+// This is due to deconstructor not existing with a forward declaration
+#include "GameStateBase.h"
 
 using std::list;
 
@@ -24,6 +28,9 @@ class Camera;
 class TPSCamera;
 class Light;
 class Sound;
+
+// GameState forward declarations
+enum class State;
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -112,4 +119,8 @@ private:
 	//See here: https://github.com/Microsoft/DirectXTK/wiki/Creating-and-playing-sounds Using wave banks Section
     std::unique_ptr<DirectX::AudioEngine> m_audioEngine;
     list<Sound*>m_Sounds;
+
+    // GameState machine
+    std::map<State, std::unique_ptr<GameStateBase>> game_states;
+    State current_state;
 };
