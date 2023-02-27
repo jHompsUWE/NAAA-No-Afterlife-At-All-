@@ -12,6 +12,7 @@
 #include "Mouse.h"
 #include "Audio.h"
 #include <map>
+#include "GameStateBase.h"
 
 using std::list;
 
@@ -28,12 +29,6 @@ class Sound;
 
 // GameState forward declarations
 enum class State;
-class GameStateBase;
-class GameMenu;
-class GamePlay;
-class GameTutorial;
-class GamePaused;
-class GameOver;
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.

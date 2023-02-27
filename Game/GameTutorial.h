@@ -4,6 +4,7 @@ class GameTutorial :
     public GameStateBase
 {
 public:
+    GameTutorial(State _state, GameData* _GD, DrawData* _DD, DrawData2D* _DD2D);
     bool init() override;
     void reset() override;
     State update() override;
