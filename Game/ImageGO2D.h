@@ -19,6 +19,7 @@ public:
 	virtual void Draw(DrawData2D* _DD);
 protected:
 
+	Rectangle bounds;
 	ID3D11ShaderResourceView* m_pTextureRV;
 };
 

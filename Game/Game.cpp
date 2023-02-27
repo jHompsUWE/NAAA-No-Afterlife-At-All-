@@ -53,7 +53,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_keyboard = std::make_unique<Keyboard>();
     m_mouse = std::make_unique<Mouse>();
     m_mouse->SetWindow(_window);
-    m_mouse->SetMode(Mouse::MODE_RELATIVE);
+    m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
     ShowCursor(true);
 

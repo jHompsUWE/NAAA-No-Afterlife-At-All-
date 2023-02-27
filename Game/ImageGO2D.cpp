@@ -24,12 +24,15 @@ ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
 
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
+
+
 	if (hr != S_OK)
 	{
 		SetScale(20.0f);
 		m_colour = Colors::HotPink;
 	}
 
+	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 }
 
 ImageGO2D::~ImageGO2D()
@@ -45,18 +48,41 @@ void ImageGO2D::Tick(GameData* _GD)
 {
 	//spins!
 	//m_rotation += _GD->m_dt;
-	//m_pos.x += _GD->m_dt;
 
-	if (_GD->m_GS == GS_PLAY_MAIN_CAM)
+	bounds.x = m_pos.x - (bounds.width / 2);
+	bounds.y = m_pos.y - (bounds.height / 2);
+
+
+	//m_pos.x -= (_GD->m_dt * 5);
+	//std::cout << bounds.x << "\n";
+	// 
+	//std::cout << bounds.width << "," << bounds.height << "\n";
+	// 
+	// 
+	// 
+	// 
+	/*if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 	{
-		if (_GD->m_MS.leftButton == 1)
+		cout << "!\n";
+	}
+	else
+	{
+		std::cout << "\n";
+	}*/
+
+	/*if (_GD->m_MS.leftButton == 3)
+	{*/
+		int mouseX = _GD->m_MS.x;
+		int mouseY = _GD->m_MS.y;
+		Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y}) && _GD->m_MS.leftButton == 1)
 		{
 			//MOUSE CONTROL SCHEME HERE
-			float speed = _GD->m_MS.positionMode;
-			m_pos.x += speed * _GD->m_MS.x;
-			m_pos.y += speed * _GD->m_MS.y;
+			m_pos.x = _GD->m_MS.x;
+			m_pos.y = _GD->m_MS.y;
 		}
-	}
+	//}
 }
 
 
