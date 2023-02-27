@@ -251,7 +251,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
     m_Sounds.push_back(TS);
 
-    // GameState
+    // GameState initialisation
     for (auto& state : game_states)
     {
         if (!state.second->init())
@@ -277,6 +277,25 @@ void Game::Update(DX::StepTimer const& _timer)
 {
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
+
+    // GameState updates
+    // Change state depending on update result
+    State prev_state = current_state;
+    current_state = game_states[current_state]->update();
+
+    if (current_state != prev_state)
+    {
+        if (current_state == State::GAME_EXIT)
+        {
+            // Exit game
+            return;
+        }
+        else
+        {
+            game_states[current_state]->reset();
+        }
+    }
+
 
     //this will update the audio engine but give us chance to do somehting else if that isn't working
     if (!m_audioEngine->Update())
@@ -331,7 +350,7 @@ void Game::Render()
     }
 
     Clear();
-    
+
     //set immediate context of the graphics device
     m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
 
@@ -344,6 +363,8 @@ void Game::Render()
 
     //update the constant buffer for the rendering of VBGOs
     VBGO::UpdateConstantBuffer(m_DD);
+
+    game_states[current_state]->render();
 
     //Draw 3D Game Obejects
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)

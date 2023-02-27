@@ -12,6 +12,8 @@
 #include "Mouse.h"
 #include "Audio.h"
 #include <map>
+// Needs to be included here or it doesn't work
+// This is due to deconstructor not existing with a forward declaration
 #include "GameStateBase.h"
 
 using std::list;
