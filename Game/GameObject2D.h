@@ -25,6 +25,15 @@ public:
 	virtual void Tick(GameData* _GD) = 0;
 	virtual void Draw(DrawData2D* _DD) = 0;
 
+	//getters
+	Vector2		GetPos() { return m_pos; }
+	Vector2		GetScale() { return m_scale; }
+
+	float		GetRotation() { return m_rotation; }
+
+
+
+
 	//setters
 
 	void SetPos(Vector2 _pos) { m_pos = _pos; }

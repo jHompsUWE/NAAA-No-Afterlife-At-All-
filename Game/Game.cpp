@@ -55,7 +55,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_mouse->SetWindow(_window);
     m_mouse->SetMode(Mouse::MODE_RELATIVE);
     //Hide the mouse pointer
-    ShowCursor(false);
+    ShowCursor(true);
 
     //create GameData struct and populate its pointers
     m_GD = new GameData;
@@ -230,11 +230,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
-    loop->SetVolume(0.1f);
+    loop->SetVolume(0.05f);
     loop->Play();
     m_Sounds.push_back(loop);
 
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
+    TS->SetVolume(0.05f);
     m_Sounds.push_back(TS);
 
 

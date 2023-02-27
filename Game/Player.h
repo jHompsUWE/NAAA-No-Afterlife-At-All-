@@ -1,6 +1,7 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 #include "CMOGO.h"
+#include <iostream>
 
 //=================================================================
 //Base Player Class (i.e. a GO the player controls)

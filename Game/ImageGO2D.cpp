@@ -44,7 +44,19 @@ ImageGO2D::~ImageGO2D()
 void ImageGO2D::Tick(GameData* _GD)
 {
 	//spins!
-	m_rotation += _GD->m_dt;
+	//m_rotation += _GD->m_dt;
+	//m_pos.x += _GD->m_dt;
+
+	if (_GD->m_GS == GS_PLAY_MAIN_CAM)
+	{
+		if (_GD->m_MS.leftButton == 1)
+		{
+			//MOUSE CONTROL SCHEME HERE
+			float speed = _GD->m_MS.positionMode;
+			m_pos.x += speed * _GD->m_MS.x;
+			m_pos.y += speed * _GD->m_MS.y;
+		}
+	}
 }
 
 

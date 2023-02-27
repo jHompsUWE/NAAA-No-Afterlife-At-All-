@@ -11,6 +11,8 @@ TextGO2D::TextGO2D(string _text)
 
 void TextGO2D::Tick(GameData* _GD)
 {
+	//_GD->m_GS;
+	//m_rotation += 0.1;
 }
 
 
