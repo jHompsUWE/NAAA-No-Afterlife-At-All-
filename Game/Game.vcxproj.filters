@@ -192,6 +192,9 @@
     <ClInclude Include="EventManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -288,6 +291,9 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
