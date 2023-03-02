@@ -5,7 +5,7 @@
 //An L-System (ish) tree
 //=================================================================
 
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 #include <list>
 #include "Model.h"
 #include <string>

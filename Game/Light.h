@@ -1,6 +1,6 @@
 #ifndef _LIGHT_H_
 #define _LIGHT_H_
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 
 //=================================================================
 //a simple light defined by a colour and and ambient colour and 

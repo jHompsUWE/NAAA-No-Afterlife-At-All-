@@ -1,5 +1,5 @@
 #pragma once
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 #include <GeometricPrimitive.h>
 
 //uses systems described here: https://github.com/microsoft/DirectXTK/wiki/GeometricPrimitive

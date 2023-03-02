@@ -105,7 +105,7 @@
     <ClInclude Include="CMOGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="gameobject.h">
+    <ClInclude Include="gameobject_Depreciated.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TPSCamera.h">
@@ -183,6 +183,12 @@
     <ClInclude Include="GameOver.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObjects\3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>GameObjects\3D\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -200,7 +206,7 @@
     <ClCompile Include="TextGO2D.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gameobject.cpp">
+    <ClCompile Include="gameobject_Depreciated.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="camera.cpp">
@@ -271,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

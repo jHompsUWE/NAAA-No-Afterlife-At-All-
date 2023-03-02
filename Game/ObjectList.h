@@ -4,7 +4,7 @@
 //This is REALLY not the most efficent way of doing this but it sort of works! See my R1SDK.h story for "issues."
 
 //3D Game Objects
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 #include "camera.h"
 #include "TPSCamera.h"
 #include "CMOGO.h"

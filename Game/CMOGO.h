@@ -5,7 +5,7 @@
 //A Class for loading and displaying CMO as GameObjects
 //=================================================================
 
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 #include "Model.h"
 #include <string>
 

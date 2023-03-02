@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="CMOGO.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
     <ClInclude Include="DrawData2D.h" />
@@ -173,7 +174,8 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameMenu.h" />
-    <ClInclude Include="gameobject.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="gameobject_Depreciated.h" />
     <ClInclude Include="GameObject2D.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GamePaused.h" />
@@ -211,7 +213,8 @@
     <ClCompile Include="fileVBGO.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMenu.cpp" />
-    <ClCompile Include="gameobject.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="gameobject_Depreciated.cpp" />
     <ClCompile Include="GameObject2D.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GamePaused.cpp" />

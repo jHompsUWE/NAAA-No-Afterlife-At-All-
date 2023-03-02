@@ -1,6 +1,6 @@
 #ifndef _VB_GO_H_
 #define _VB_GO_H_
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 #include "ConstantBuffer.h"
 
 //=================================================================

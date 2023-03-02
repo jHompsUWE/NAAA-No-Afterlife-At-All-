@@ -1,6 +1,6 @@
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
-#include "gameobject.h"
+#include "gameobject_Depreciated.h"
 
 //=================================================================
 //Base Camera Class
