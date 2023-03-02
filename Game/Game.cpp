@@ -13,6 +13,14 @@
 #include "DrawData2D.h"
 #include "ObjectList.h"
 
+// GameState headers
+#include "GameStateBase.h"
+#include "GameMenu.h"
+#include "GamePlay.h"
+#include "GameTutorial.h"
+#include "GamePaused.h"
+#include "GameOver.h"
+
 extern void ExitGame() noexcept;
 
 using namespace DirectX;
@@ -23,8 +31,14 @@ Game::Game() noexcept :
     m_window(nullptr),
     m_outputWidth(800),
     m_outputHeight(600),
-    m_featureLevel(D3D_FEATURE_LEVEL_11_0)
+    m_featureLevel(D3D_FEATURE_LEVEL_11_0),
+    current_state(State::GAME_MENU)
 {
+    game_states.insert(std::make_pair(State::GAME_MENU, std::make_unique<GameMenu>(State::GAME_MENU, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_PLAY, std::make_unique<GamePlay>(State::GAME_PLAY, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_TUTORIAL, std::make_unique<GameTutorial>(State::GAME_TUTORIAL, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_PAUSED, std::make_unique<GamePaused>(State::GAME_PAUSED, m_GD, m_DD, m_DD2D)));
+    game_states.insert(std::make_pair(State::GAME_OVER, std::make_unique<GameOver>(State::GAME_OVER, m_GD, m_DD, m_DD2D)));
 }
 
 // Initialize the Direct3D resources required to run.
@@ -245,6 +259,15 @@ void Game::Initialize(HWND _window, int _width, int _height)
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(&*file_manager_, ManagerType::FILE);
     file_manager_->awake();
+
+    // GameState initialisation
+    for (auto& state : game_states)
+    {
+        if (!state.second->init())
+        { 
+            //return false;
+        }
+    }
 }
 
 // Executes the basic game loop.
@@ -264,6 +287,25 @@ void Game::Update(DX::StepTimer const& _timer)
     GameManager::get()->update();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
+
+    // GameState updates
+    // Change state depending on update result
+    State prev_state = current_state;
+    current_state = game_states[current_state]->update();
+
+    if (current_state != prev_state)
+    {
+        if (current_state == State::GAME_EXIT)
+        {
+            // Exit game
+            return;
+        }
+        else
+        {
+            game_states[current_state]->reset();
+        }
+    }
+
 
     //this will update the audio engine but give us chance to do somehting else if that isn't working
     if (!m_audioEngine->Update())
@@ -318,7 +360,7 @@ void Game::Render()
     }
 
     Clear();
-    
+
     //set immediate context of the graphics device
     m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
 
@@ -331,6 +373,8 @@ void Game::Render()
 
     //update the constant buffer for the rendering of VBGOs
     VBGO::UpdateConstantBuffer(m_DD);
+
+    game_states[current_state]->render();
 
     //Draw 3D Game Obejects
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
