@@ -210,6 +210,7 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="fileVBGO.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMenu.cpp" />

@@ -58,6 +58,9 @@
     <Filter Include="GameStates\Source Files">
       <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base\Source Files\Components">
+      <UniqueIdentifier>{aff0eb99-a909-411c-8f97-70e8aebe82e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -280,6 +283,9 @@
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>GameObjects\3D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

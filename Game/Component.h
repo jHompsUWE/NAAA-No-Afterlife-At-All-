@@ -3,24 +3,27 @@
 #include <memory>
 #include "SimpleMath.h"
 
+enum ComponentType
+{
+    TRANSFORM = 0
+};
+
 class Component
 {
    void update();
 };
 
-
-struct rotation
+class Transform : public Component
 {
-    float x,y,z;
-};
-
-
-struct Transform : Component {
-    Vector3 position{};
-    Vector3 rotation{};
-    Vector3 scale{};
+public:
+    Transform();
+    DirectX::SimpleMath::Vector3 position{0,0,0};
+    DirectX::SimpleMath::Vector3 rotation{0,0,0};
+    DirectX::SimpleMath::Vector3 scale{1,1,1};
     
-    std::unique_ptr<Transform> parent;
-    std::vector<std::unique_ptr<Transform>> children;
+    void update();
+
+    std::shared_ptr<Transform> parent;
+    std::vector<std::shared_ptr<Component>> children;
 };
 
