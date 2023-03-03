@@ -14,6 +14,7 @@
 #include "ObjectList.h"
 
 // GameState headers
+#include "FBXImporter.h"
 #include "GameStateBase.h"
 #include "GameMenu.h"
 #include "GamePlay.h"
@@ -105,15 +106,26 @@ void Game::Initialize(HWND _window, int _width, int _height)
     float AR = (float)_width / (float)_height;
 
     //example basic 3D stuff
-    Terrain* terrain = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 0.0f, 100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
-    m_GameObjects.push_back(terrain);
+    //Terrain* terrain = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 0.0f, 100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
+    //m_GameObjects.push_back(terrain);
 
+    // Test tile
+    TileGO* tile_go = new TileGO("TileOBJ", m_d3dDevice.Get(), m_fxFactory);
+    tile_go->SetPos(Vector3(100.0f, 20.0f, 100.0f));
+    tile_go->SetScale(20.0f);
+    tile_go->SetRoll(90.0f);
+    m_GameObjects.push_back(tile_go);
+    
     //L-system like tree
     m_GameObjects.push_back(new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory));
 
     //Vertex Buffer Game Objects
-    FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
-    m_GameObjects.push_back(terrainBox);
+   // FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
+    //m_GameObjects.push_back(terrainBox);
+
+    // FileVBGO* TileTest = new FileVBGO("white", m_d3dDevice.Get());
+    // TileTest->SetPos(Vector3(100.0f, 0.0f, 100.0f));
+    // m_GameObjects.push_back(TileTest);
 
     FileVBGO* Box = new FileVBGO("cube", m_d3dDevice.Get());
     m_GameObjects.push_back(Box);
@@ -166,6 +178,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //add Player
     Player* pPlayer = new Player("BirdModelV1", m_d3dDevice.Get(), m_fxFactory);
     m_GameObjects.push_back(pPlayer);
+    
 
     //add a secondary camera
     m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f));
@@ -259,6 +272,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(&*file_manager_, ManagerType::FILE);
     file_manager_->awake();
+
 
     // GameState initialisation
     for (auto& state : game_states)
@@ -380,19 +394,21 @@ void Game::Render()
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
         (*it)->Draw(m_DD);
-    }
+    }   
 
+    
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
     for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
     {
         (*it)->Draw(m_DD2D);
-    }
+    }    
     m_DD2D->m_Sprites->End();
 
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
 
+    
     Present();
 }
 
