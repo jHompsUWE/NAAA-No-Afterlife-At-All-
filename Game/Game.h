@@ -62,6 +62,7 @@ public:
 private:
 
     void Update(DX::StepTimer const& _timer);
+    void lateUpdate(DX::StepTimer const& _timer);
     void Render();
 
     void Clear();

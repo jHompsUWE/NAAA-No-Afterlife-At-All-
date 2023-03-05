@@ -49,6 +49,21 @@
     <Filter Include="GameObjects\Sound\Source Files">
       <UniqueIdentifier>{b36885db-921d-4d11-87ed-14c324432822}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base\Header Files\Events">
+      <UniqueIdentifier>{e7a44a4c-8c15-4313-9b2c-1b065fb92d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\Source Files\Events">
+      <UniqueIdentifier>{b3e855c0-1266-41f5-b9fd-e8cb2422f344}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\Header Files\GameManager">
+      <UniqueIdentifier>{2fd4c1cb-f8fa-41d6-b59d-df7dd935f307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\Source Files\GameManager">
+      <UniqueIdentifier>{5f1f1594-2cde-4faa-b9cc-9c753e1dfb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStates">
+      <UniqueIdentifier>{6ae5a1e4-83c3-4ba1-b01a-7ac75b4b951c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -156,14 +171,29 @@
     <ClInclude Include="GPGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Base\Header Files</Filter>
+    <ClInclude Include="Event.h">
+      <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Base\Header Files</Filter>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>Base\Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTypeEnum.h">
+      <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
-      <Filter>Base\Header Files</Filter>
+      <Filter>Base\Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>Base\Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Base\Header Files\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Base\Header Files\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseEvent.h">
+      <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,14 +266,23 @@
     <ClCompile Include="GPGO.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Base\Source Files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyEvent.cpp">
+      <Filter>Base\Source Files\Events</Filter>
+    </ClCompile>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Base\Source Files</Filter>
+      <Filter>Base\Source Files\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener.cpp">
+      <Filter>Base\Source Files\Events</Filter>
     </ClCompile>
     <ClCompile Include="Manager.cpp">
-      <Filter>Base\Source Files</Filter>
+      <Filter>Base\Source Files\GameManager</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Base\Source Files</Filter>
+    <ClCompile Include="MouseEvent.cpp">
+      <Filter>Base\Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

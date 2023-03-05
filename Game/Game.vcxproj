@@ -165,10 +165,12 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="CMOGO.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
     <ClInclude Include="DrawData2D.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="EventTypeEnum.h" />
     <ClInclude Include="fileVBGO.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -180,10 +182,13 @@
     <ClInclude Include="GPGO.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MarchCubes.h" />
+    <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="ObjectList.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
@@ -213,10 +218,13 @@
     <ClCompile Include="GameObject2D.cpp" />
     <ClCompile Include="GPGO.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
+    <ClCompile Include="KeyEvent.cpp" />
     <ClCompile Include="light.cpp" />
+    <ClCompile Include="Listener.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
+    <ClCompile Include="MouseEvent.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

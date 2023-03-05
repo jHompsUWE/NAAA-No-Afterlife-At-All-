@@ -248,6 +248,7 @@ void Game::Tick()
     m_timer.Tick([&]()
     {
         Update(m_timer);
+        lateUpdate(m_timer);
     });
 
     Render();
@@ -256,7 +257,6 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
-    GameManager::get()->update();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
@@ -293,6 +293,8 @@ void Game::Update(DX::StepTimer const& _timer)
     }
 
     //update all objects
+    GameManager::get()->update();
+
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
         (*it)->Tick(m_GD);
@@ -301,6 +303,11 @@ void Game::Update(DX::StepTimer const& _timer)
     {
         (*it)->Tick(m_GD);
     }
+}
+
+void Game::lateUpdate(DX::StepTimer const& _timer)
+{
+    event_manager->lateUpdate(_timer);
 }
 
 // Draws the scene.
@@ -611,10 +618,12 @@ void Game::ReadInput()
         ExitGame();
     }
 
+    
+
     m_GD->m_MS = m_mouse->GetState();
 
     //lock the cursor to the centre of the window
     RECT window;
     GetWindowRect(m_window, &window);
-    //SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
+    SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
 }

@@ -9,5 +9,3 @@ public:
 	virtual void awake() {};
 	virtual void update() = 0;
 };
-
-
