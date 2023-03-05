@@ -195,6 +195,18 @@
     <ClInclude Include="WorldManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GridData.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileType.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneType.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridLocation.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -294,6 +306,9 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridLocation.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
