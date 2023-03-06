@@ -14,5 +14,5 @@ EventManager::~EventManager()
 
 void EventManager::update()
 {
-	std::cout << "hi";
+	
 }

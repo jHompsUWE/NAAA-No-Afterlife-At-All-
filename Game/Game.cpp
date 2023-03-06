@@ -266,6 +266,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(&*world_manager, ManagerType::WORLD);
+
+    GridLocation temp;
+    world_manager->updateVibes(temp, PlaneType::Heaven);
 }
 
 // Executes the basic game loop.
