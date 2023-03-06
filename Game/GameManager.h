@@ -9,8 +9,8 @@ enum class ManagerType : int
 {
 	INPUT,
 	CAMERA,
-	EVENT
-
+	EVENT,
+	WORLD
 };
 
 class GameManager

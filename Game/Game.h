@@ -18,6 +18,7 @@
 
 #include "GameManager.h"
 #include "EventManager.h"
+#include "WorldManager.h"
 
 using std::list;
 
@@ -128,4 +129,5 @@ private:
     State current_state;
 
     std::shared_ptr<EventManager> event_manager;
+    std::shared_ptr<WorldManager> world_manager;
 };

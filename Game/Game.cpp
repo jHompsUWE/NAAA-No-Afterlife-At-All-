@@ -263,6 +263,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     event_manager = std::make_shared<EventManager>();
     GameManager::get()->addManager(&*event_manager, ManagerType::EVENT);
+
+    world_manager = std::make_shared<WorldManager>();
+    GameManager::get()->addManager(&*world_manager, ManagerType::WORLD);
 }
 
 // Executes the basic game loop.
