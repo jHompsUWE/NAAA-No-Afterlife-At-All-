@@ -21,7 +21,7 @@ enum GPGO_TYPE
 	GPGO_TORUS
 };
 
-class GPGO :    public GameObject
+class GPGO :    public GameObject_dep
 {
 public:
 	GPGO(ID3D11DeviceContext* _pd3dImmediateContext,GPGO_TYPE _type, float* _colour = (float*)&Colors::AntiqueWhite, float* _params = nullptr);

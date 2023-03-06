@@ -15,7 +15,7 @@ using namespace DirectX;
 
 class TreeBit;
 
-class Tree :public GameObject
+class Tree :public GameObject_dep
 {
 	public:
 	Tree(int _levels, int _perlevel, float _scale, Vector3 _shift, float _lean, string _bitFileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF);

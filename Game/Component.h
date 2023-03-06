@@ -5,7 +5,8 @@
 
 enum ComponentType
 {
-    TRANSFORM = 0
+    TRANSFORM = 0,
+    GRIDLOCATION = 1
 };
 
 class Component
@@ -26,4 +27,6 @@ public:
     std::shared_ptr<Transform> parent;
     std::vector<std::shared_ptr<Component>> children;
 };
+
+
 

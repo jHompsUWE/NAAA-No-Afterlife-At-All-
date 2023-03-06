@@ -14,7 +14,7 @@ using namespace DirectX;
 
 struct GameData;
 
-class CMOGO : public GameObject
+class CMOGO : public GameObject_dep
 {
 public:
 	CMOGO(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF);

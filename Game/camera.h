@@ -8,7 +8,7 @@
 
 struct GameData;
 
-class Camera : public GameObject
+class Camera : public GameObject_dep
 {
 public:
 	Camera(float _fieldOfView, float _aspectRatio, float _nearPlaneDistance, float _farPlaneDistance, Vector3 _up = Vector3::Up, Vector3 _target = Vector3::Zero);

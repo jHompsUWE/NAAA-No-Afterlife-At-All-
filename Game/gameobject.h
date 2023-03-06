@@ -26,8 +26,7 @@ public:
     virtual void lateUpdate     (GameData* _GD); // anything that needs update to finish
 
     virtual void render         (DrawData* _DD); // render call
-
-protected:
+    
 
     std::array<std::shared_ptr<Component>,5> m_components; // components attached list;
 

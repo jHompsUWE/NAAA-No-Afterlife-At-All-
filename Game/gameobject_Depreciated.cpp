@@ -2,7 +2,7 @@
 #include "gameobject_Depreciated.h"
 #include "GameData.h"
 
-GameObject::GameObject()
+GameObject_dep::GameObject_dep()
 {
 	//set the Gameobject to the origin with no rotation and unit scaling 
 	m_pos = Vector3::Zero;
@@ -15,12 +15,12 @@ GameObject::GameObject()
 	m_fudge = Matrix::Identity;
 }
 
-GameObject::~GameObject()
+GameObject_dep::~GameObject_dep()
 {
 
 }
 
-void GameObject::Tick(GameData* _GD)
+void GameObject_dep::Tick(GameData* _GD)
 {
 	if (m_physicsOn)
 	{
@@ -31,7 +31,7 @@ void GameObject::Tick(GameData* _GD)
 		m_pos = newPos;
 	}
 
-	//build up the world matrix depending on the new position of the GameObject
+	//build up the world matrix depending on the new position of the GameObject_dep
 	//the assumption is that this class will be inherited by the class that ACTUALLY changes this
 	Matrix  scaleMat = Matrix::CreateScale(m_scale);
 	m_rotMat = Matrix::CreateFromYawPitchRoll(m_yaw, m_pitch, m_roll); //possible not the best way of doing this!

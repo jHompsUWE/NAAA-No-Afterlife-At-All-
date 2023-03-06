@@ -74,7 +74,7 @@ VBGO::~VBGO()
 
 void VBGO::Tick(GameData* _GD)
 {
-	GameObject::Tick(_GD);
+	GameObject_dep::Tick(_GD);
 }
 
 void VBGO::Draw(DrawData* _DD)

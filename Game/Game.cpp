@@ -21,6 +21,9 @@
 #include "GamePaused.h"
 #include "GameOver.h"
 
+#include "gameobject.h"
+
+
 extern void ExitGame() noexcept;
 
 using namespace DirectX;
@@ -301,6 +304,17 @@ void Game::Update(DX::StepTimer const& _timer)
         }
     }
 
+    // test area
+
+    GameObject obj(Vector3{1,0,1});
+    Transform* transf = reinterpret_cast<Transform*>(obj.m_components[TRANSFORM].get());
+    std::cout << "\n" << transf->position.x << transf->position.y << transf->position.z << "\n";
+    transf->position.y += 1;
+    
+
+
+
+
 
     //this will update the audio engine but give us chance to do somehting else if that isn't working
     if (!m_audioEngine->Update())
@@ -335,7 +349,7 @@ void Game::Update(DX::StepTimer const& _timer)
     }
 
     //update all objects
-    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
+    for (list<GameObject_dep*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
         (*it)->Tick(m_GD);
     }
@@ -372,7 +386,7 @@ void Game::Render()
     game_states[current_state]->render();
 
     //Draw 3D Game Obejects
-    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
+    for (list<GameObject_dep*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
         (*it)->Draw(m_DD);
     }

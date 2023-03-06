@@ -10,7 +10,7 @@
 
 struct DrawData;
 
-class Light : public GameObject
+class Light : public GameObject_dep
 {
 public:
 	Light(Vector3 _pos, Color _colour, Color _ambientColour);

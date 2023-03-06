@@ -59,7 +59,7 @@ CMOGO::~CMOGO()
 
 void CMOGO::Tick(GameData* _GD)
 {
-	GameObject::Tick(_GD);
+	GameObject_dep::Tick(_GD);
 }
 
 void CMOGO::Draw(DrawData* _DD)

@@ -94,7 +94,7 @@ GPGO::GPGO(ID3D11DeviceContext* _pd3dImmediateContext, GPGO_TYPE _type, float* _
 
 void GPGO::Tick(GameData* _GD)
 {
-	GameObject::Tick(_GD);
+	GameObject_dep::Tick(_GD);
 }
 
 void GPGO::Draw(DrawData* _DD)

@@ -9,7 +9,7 @@
 //this is only used if the version for this object is not set to nullptr
 //=================================================================
 
-class VBGO :public GameObject
+class VBGO :public GameObject_dep
 {
 public:
 	VBGO();
@@ -27,7 +27,7 @@ public:
 
 protected:
 
-	//Direct X information for the model for this GameObject
+	//Direct X information for the model for this GameObject_dep
 	ID3D11Buffer* m_VertexBuffer;
 	ID3D11Buffer* m_IndexBuffer;
 	DXGI_FORMAT m_IndexFormat = DXGI_FORMAT_R16_UINT;

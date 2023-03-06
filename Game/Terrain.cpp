@@ -9,7 +9,7 @@ Terrain::Terrain(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _E
 	m_yaw = _yaw;
 	m_scale = _scale;
 
-	GameObject::Tick(nullptr); //update my world_transform
+	GameObject_dep::Tick(nullptr); //update my world_transform
 }
 
 Terrain::~Terrain()

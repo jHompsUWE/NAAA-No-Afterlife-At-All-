@@ -16,11 +16,11 @@ struct ID3D11DeviceContext;
 struct GameData;
 struct DrawData;
 
-class GameObject
+class GameObject_dep
 {
 public:
-	GameObject();
-	virtual ~GameObject();
+	GameObject_dep();
+	virtual ~GameObject_dep();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData* _DD) = 0;

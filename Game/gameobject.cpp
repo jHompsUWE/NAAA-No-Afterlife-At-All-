@@ -31,3 +31,19 @@ GameObject::GameObject(std::shared_ptr<Transform> parent, Vector3 offset)
 	transform->parent = parent;
 	transform->parent->children.emplace_back(m_components[TRANSFORM].get());
 }
+
+void GameObject::fixedUpdate(GameData* _GD)
+{
+}
+
+void GameObject::update(GameData* _GD)
+{
+}
+
+void GameObject::lateUpdate(GameData* _GD)
+{
+}
+
+void GameObject::render(DrawData* _DD)
+{
+}
