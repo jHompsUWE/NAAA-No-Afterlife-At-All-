@@ -58,6 +58,15 @@
     <Filter Include="GameStates\Source Files">
       <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SoulManager">
+      <UniqueIdentifier>{ed8d48e3-3a1d-4174-a601-c8db3dee30c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SoulManager\Header Files">
+      <UniqueIdentifier>{91362530-50e3-46b1-98ae-a0ae7eb98b8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SoulManager\Source Files">
+      <UniqueIdentifier>{de1104bd-7da2-48aa-8b9b-1d910f3876bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -183,6 +192,9 @@
     <ClInclude Include="GameOver.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SoulManager.h">
+      <Filter>SoulManager\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -271,6 +283,9 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>GameStates\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoulManager.cpp">
+      <Filter>SoulManager\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
