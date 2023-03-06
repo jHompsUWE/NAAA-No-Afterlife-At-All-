@@ -27,6 +27,7 @@
 #include "GameObject2D.h"
 #include "ImageGO2D.h"
 #include "TextGO2D.h"
+#include "Button.h"
 
 //Sounds
 #include "TestSound.h"

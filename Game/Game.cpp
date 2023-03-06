@@ -228,6 +228,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     text->SetColour(Color((float*)&Colors::Yellow));
     m_GameObjects2D.push_back(text);
 
+    Button* button = new Button("bug_test", m_d3dDevice.Get(), logo);
+    button->SetPos(400.0f * Vector2::One);
+    m_GameObjects2D.push_back(button);
+
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
     loop->SetVolume(0.05f);
@@ -257,6 +261,9 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    auto mouse = m_mouse->GetState();
+    m_GD->m_mouseButtons.Update(mouse);
+
     GameManager::get()->update();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
@@ -384,6 +391,7 @@ void Game::Present()
 // Message handlers
 void Game::OnActivated()
 {
+    m_GD->m_mouseButtons.Reset();
     // TODO: Game is becoming active window.
 }
 
@@ -400,6 +408,7 @@ void Game::OnSuspending()
 void Game::OnResuming()
 {
     m_timer.ResetElapsedTime();
+    m_GD->m_mouseButtons.Reset();
 
     // TODO: Game is being power-resumed (or returning from minimize).
 }

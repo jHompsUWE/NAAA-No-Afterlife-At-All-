@@ -1,6 +1,6 @@
-#ifndef _IMAGE_GO_2D_H_
-#define _IMAGE_GO_2D_H_
+#pragma once
 #include "GameObject2D.h"
+#include "ImageGO2D.h"
 
 //=================================================================
 //A Game Object 2D for displaying images
@@ -9,20 +9,19 @@
 // in a similar fashion as getting the models
 //=================================================================
 
-class ImageGO2D :public GameObject2D
+class Button :public GameObject2D
 {
 public:
-	ImageGO2D(string _fileName, ID3D11Device* _GD);
-	virtual ~ImageGO2D();
+	Button(string _fileName, ID3D11Device* _GD, ImageGO2D* parent);
+	virtual ~Button();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
 
-	bool renderable = true;
 protected:
-
 	Rectangle bounds;
+
+	ImageGO2D* parentWindow;
+
 	ID3D11ShaderResourceView* m_pTextureRV;
 };
-
-#endif
