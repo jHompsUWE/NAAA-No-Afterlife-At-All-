@@ -323,5 +323,8 @@
     <ClCompile Include="GridLocation.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SoulManager.cpp">
+      <Filter>SoulManager\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

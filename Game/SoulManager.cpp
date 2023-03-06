@@ -9,3 +9,11 @@ void SoulManager::AddSoul(int x, int y,int plane)
 	};
 	m_Earth_Souls.emplace_back(new Soul);
 }
+
+void SoulManager::update()
+{
+}
+
+void SoulManager::awake()
+{
+}
