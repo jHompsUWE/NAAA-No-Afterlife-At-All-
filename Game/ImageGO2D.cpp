@@ -5,7 +5,7 @@
 #include "GameData.h"
 #include "helper.h"
 #include <iostream>
-#inclde "Mouse.h"
+#include "Mouse.h"
 
 ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
 {
@@ -47,43 +47,34 @@ ImageGO2D::~ImageGO2D()
 
 void ImageGO2D::Tick(GameData* _GD)
 {
-	//spins!
-	//m_rotation += _GD->m_dt;
-
 	bounds.x = m_pos.x - (bounds.width / 2);
 	bounds.y = m_pos.y - (bounds.height / 2);
 
 
-	//m_pos.x -= (_GD->m_dt * 5);
-	//std::cout << bounds.x << "\n";
-	// 
-	//std::cout << bounds.width << "," << bounds.height << "\n";
-	// 
-	// 
-	// 
-	// 
-	/*if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
+
+	int mouseX = _GD->m_MS.x;
+	int mouseY = _GD->m_MS.y;
+	Vector2 mousepos{ (float)mouseX,(float)mouseY };
+		
+	if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 	{
-		cout << "!\n";
+		differenceX = m_pos.x - _GD->m_MS.x;
+		differenceY = m_pos.y - _GD->m_MS.y;
+
+		dragged = true;
 	}
-	else
+
+	if (dragged == true && _GD->m_MS.leftButton == 1)
 	{
-		std::cout << "\n";
-	}*/
+		
+		m_pos.x = _GD->m_MS.x + differenceX;
+		m_pos.y = _GD->m_MS.y + differenceY;
+	}
 
-	/*if (_GD->m_MS.leftButton == 3)
-	{*/
-		int mouseX = _GD->m_MS.x;
-		int mouseY = _GD->m_MS.y;
-		Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y}) && _GD->m_MS.leftButton == 1)
-		{
-			//MOUSE CONTROL SCHEME HERE
-			m_pos.x = _GD->m_MS.x;
-			m_pos.y = _GD->m_MS.y;
-		}
-	//}
+	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+	{
+		dragged = false;
+	}
 }
 
 

@@ -7,7 +7,7 @@
 #include "Mouse.h"
 #include <iostream>
 
-Button::Button(string _fileName, ID3D11Device* _GD, ImageGO2D* parent) :m_pTextureRV(nullptr)
+Button::Button(string _fileName, ID3D11Device* _GD, ImageGO2D* parent, ImageGO2D* toggle) :m_pTextureRV(nullptr)
 {
 	string fullfilename = "../Assets/" + _fileName + ".dds";
 	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
@@ -36,6 +36,7 @@ Button::Button(string _fileName, ID3D11Device* _GD, ImageGO2D* parent) :m_pTextu
 
 
 	parentWindow = parent;
+	toggleWindow = toggle;
 }
 
 Button::~Button()
@@ -61,8 +62,7 @@ void Button::Tick(GameData* _GD)
 	{
 		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 		{
-			std::cout << "Clck";
-			parentWindow->renderable = !parentWindow->renderable;
+			toggleWindow->renderable = !toggleWindow->renderable;
 		}
 		
 	}
@@ -72,14 +72,6 @@ void Button::Tick(GameData* _GD)
 		m_pos.x = parentWindow->GetPos().x;
 		m_pos.y = parentWindow->GetPos().y + 30;
 	}
-
-	//if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_MS.leftButton == 1)
-	//{
-	//	std::cout << "Pushed";
-	//	////MOUSE CONTROL SCHEME HERE
-	//	//m_pos.x = _GD->m_MS.x;
-	//	//m_pos.y = _GD->m_MS.y;
-	//}
 }
 
 

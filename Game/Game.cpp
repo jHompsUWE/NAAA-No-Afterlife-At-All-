@@ -228,7 +228,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     text->SetColour(Color((float*)&Colors::Yellow));
     m_GameObjects2D.push_back(text);
 
-    Button* button = new Button("bug_test", m_d3dDevice.Get(), logo);
+    Button* button = new Button("bug_test", m_d3dDevice.Get(), logo, bug_test);
     button->SetPos(400.0f * Vector2::One);
     m_GameObjects2D.push_back(button);
 
