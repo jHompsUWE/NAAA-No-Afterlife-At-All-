@@ -1,37 +1,43 @@
 #include "pch.h"
 #include "EventManager.h"
 
-void EventManager::addListener(Listener& _listener)
+void EventManager::addListener(Listener* _listener)
 {
 	listeners.push_back(_listener);
 }
 
-void EventManager::removeListener(Listener& _listener)
+void EventManager::removeListener(Listener* _listener)
 {
-	std::shared_ptr<KeyPressedEvent> key_event = std::shared_ptr<KeyPressedEvent>();
-	triggerEvent(key_event);
+	listeners.erase(std::remove(listeners.begin(), listeners.end(), _listener), listeners.end());
 }
 
 void EventManager::triggerEvent(std::shared_ptr<Event> _event)
 {
-	events.emplace(_event);
+	events.emplace_back(_event);
 }
 
 void EventManager::lateUpdate(DX::StepTimer const& _timer)
 {
-	dispatchEvents();
+	dispatchEvents(_timer);
 }
 
-void EventManager::dispatchEvents()
+void EventManager::dispatchEvents(DX::StepTimer const& _timer)
 {
-
-	for (int i = events.size(); i > 0; --i)
+	for (int i = events.size()-1; i >= 0; i--)
 	{
-		for (auto listener : listeners)
+		auto& event = events[i];
+
+		if (event->delay > 0)
 		{
-			listener.OnEvent(&*events.front());
+			event->delay -= _timer.GetElapsedSeconds();
+			continue;
 		}
 
-		events.pop();
+		for (auto listener : listeners)
+		{
+			listener->onEvent(*event);
+		}
+		
+		events.erase(std::remove(events.begin(), events.end(), event), events.end());
 	}
 }
