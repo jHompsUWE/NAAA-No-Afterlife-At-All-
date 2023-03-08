@@ -239,7 +239,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
 
     event_manager = std::make_shared<EventManager>();
-    GameManager::get()->addManager(&*event_manager, ManagerType::EVENT);
+    GameManager::get()->addManager(event_manager, ManagerType::EVENT);
 }
 
 // Executes the basic game loop.
@@ -293,7 +293,7 @@ void Game::Update(DX::StepTimer const& _timer)
     }
 
     //update all objects
-    GameManager::get()->update();
+    GameManager::get()->update(_timer);
 
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
@@ -307,7 +307,7 @@ void Game::Update(DX::StepTimer const& _timer)
 
 void Game::lateUpdate(DX::StepTimer const& _timer)
 {
-    event_manager->lateUpdate(_timer);
+    GameManager::get()->lateUpdate(_timer);
 }
 
 // Draws the scene.
@@ -618,7 +618,14 @@ void Game::ReadInput()
         ExitGame();
     }
 
-    
+    if (m_GD->m_KBS.Space)
+    {
+        Event event{};
+        event.type = EventType::KeyReleased;
+        event.payload.key_event.str = (char*)"helo";
+
+        event_manager->triggerEvent(std::make_shared<Event>(event));
+    }
 
     m_GD->m_MS = m_mouse->GetState();
 

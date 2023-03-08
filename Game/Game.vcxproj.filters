@@ -174,12 +174,6 @@
     <ClInclude Include="Event.h">
       <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="KeyEvent.h">
-      <Filter>Base\Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="EventTypeEnum.h">
-      <Filter>Base\Header Files\Events</Filter>
-    </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
@@ -191,9 +185,6 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Base\Header Files\GameManager</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseEvent.h">
-      <Filter>Base\Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,20 +260,8 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Base\Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="KeyEvent.cpp">
-      <Filter>Base\Source Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Base\Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Listener.cpp">
-      <Filter>Base\Source Files\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Base\Source Files\GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseEvent.cpp">
-      <Filter>Base\Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
