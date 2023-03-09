@@ -362,5 +362,14 @@
     <ClCompile Include="TileGO.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Building.cpp">
+      <Filter>Buildings\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridLocation.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

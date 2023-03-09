@@ -8,30 +8,33 @@ WorldManager::WorldManager()
 	m_grid_x = 10;
 	m_grid_y = 10;
 
-	m_world[PlaneType::Earth].reserve(m_grid_x * m_grid_y);
-	m_world[PlaneType::Heaven].reserve(m_grid_x * m_grid_y);
-	m_world[PlaneType::Hell].reserve(m_grid_x * m_grid_y);
-	/*
-	range_map.emplace(0, Vector2::Zero);
-	range_map.emplace(1, new std::vector<Vector2>{ { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } });
-	range_map.emplace(2, new std::vector<Vector2>{ {2, 0}, {-2, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} });
-	range_map.emplace(3, new std::vector<Vector2>{ 
-		{3, 0}, {0, -3}, {-3, 0}, {0, 3},
-		{1, 2}, {2, 1}, {1, -2}, {2, -1},
-		{-1, 2}, {-2, 1}, {-1, -2}, {-2, -1} 
-		});
-	range_map.emplace(4, new std::vector<Vector2>{
-		{4, 0}, {0, -4}, {-4, 0}, {0, 4},
-		{-3, 1}, {-2, 2}, {-1, 3},
-		{3, 1}, {2, 2}, {1, 3},
-		{-3, -1}, {-2, -2}, {-1, -3},
-		{3, -1}, {2, -2}, {1, -3}
-		});*/
+	int total_size = m_grid_x * m_grid_y;
+	m_world[PlaneType::Earth].reserve(total_size);
+	m_world[PlaneType::Heaven].reserve(total_size);
+	m_world[PlaneType::Hell].reserve(total_size);
 }
 
 WorldManager::~WorldManager()
 {
 
+}
+
+void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11Device1> _device, DirectX::IEffectFactory* _fxFactory)
+{
+	for (auto& plane : m_world)
+	{
+		for (int i = 0; i < m_grid_y; i++)
+		{
+			for (int j = 0; j < m_grid_x; j++)
+			{
+				Vector2 pos = { float(j), float(i) };
+				plane.second.push_back(std::make_unique<GridLocation>(_device, _fxFactory, pos));
+				std::cout << "Created location " << j << " " << i << std::endl;
+			}
+		}
+
+		std::cout << "Plane" << std::endl;
+	}
 }
 
 void WorldManager::setConnected(GridLocation& _grid_location, PlaneType _plane)
@@ -58,7 +61,7 @@ void WorldManager::setConnected(GridLocation& _grid_location, PlaneType _plane)
 
 		if (!withinRange(current)) continue;
 
-		m_world[_plane][getIndex(current)].getGridData().m_connected = true;
+		m_world[_plane][getIndex(current)]->getGridData().m_connected = true;
 	}
 }
 
@@ -117,6 +120,22 @@ void WorldManager::update()
 
 }
 
+void WorldManager::render(DrawData* _DD)
+{
+	for (auto& plane : m_world)
+	{
+		for (auto& tile : plane.second)
+		{
+			tile->getTile().Draw(_DD);
+		}
+	}
+}
+
+std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& WorldManager::getWorld()
+{
+	return m_world;
+}
+
 void WorldManager::calculateEfficiency(GridLocation& _grid_location, PlaneType _plane)
 {
 	int distance = 0;
@@ -160,9 +179,9 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 
 		int index = getIndex(new_pos);
 
-		if (m_world[plane][index].getGridData().m_tile_type == TileType::Zone)
+		if (m_world[plane][index]->getGridData().m_tile_type == TileType::Zone)
 		{
-			if (m_world[plane][index].getGridData().m_zone_type != _grid_location.getGridData().m_zone_type)
+			if (m_world[plane][index]->getGridData().m_zone_type != _grid_location.getGridData().m_zone_type)
 			{
 				adjacency += 3;
 			}
@@ -201,9 +220,9 @@ int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 		int index = getIndex(new_pos);
 
 		// If they're the same zone type then less efficient
-		if (m_world[plane][index].getGridData().m_tile_type == TileType::Zone)
+		if (m_world[plane][index]->getGridData().m_tile_type == TileType::Zone)
 		{
-			if (m_world[plane][index].getGridData().m_zone_type == _grid_location.getGridData().m_zone_type)
+			if (m_world[plane][index]->getGridData().m_zone_type == _grid_location.getGridData().m_zone_type)
 			{
 				adjacency += 3;
 

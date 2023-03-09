@@ -16,7 +16,7 @@ void FileManager::awake()
 
 void FileManager::update()
 {
-    std::cout << test_val << std::endl;
+   // std::cout << test_val << std::endl;
 }
 
 void FileManager::save()
