@@ -4,11 +4,16 @@
 #include <d3d11_1.h>
 #include <SimpleMath.h>
 #include "Manager.h"
+#include "ImageGO2D.h"
+#include "ZoneType.h"
 
 
 struct Soul
 {
-
+	bool reincarnate;
+	string life;
+	Vector2 position;
+	ZoneType zonetype;
 };
 
 class SoulManager : public Manager
@@ -22,20 +27,20 @@ class SoulManager : public Manager
 	
 	std::vector <std::shared_ptr<Soul>> m_Earth_Souls;
 
-
-
 public:
 	
 	void AddSoul(DirectX::SimpleMath::Vector2 location,int plane);			// add a soul at this location
-	void Wander();						// run the soul road movement
-	void ZoneCheck();					//check if zone is attached
-	int TotalSoulsAmmount(int plane);	//get souls per plane
-	int TotalSoulsAmmount();			//get souls total overall
+	void Wander();															// run the soul road movement
+	void ZoneCheck();														//check if zone is attached
+	int TotalSoulsAmmount(int plane);										//get souls per plane
+	int TotalSoulsAmmount();												//get souls total overall
 
 
-										// Inherited via Manager
+																			// Inherited via Manager
 	virtual void update() override;
+	
 	virtual void awake() override;
+	
 };
 
 
