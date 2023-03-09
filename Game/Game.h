@@ -16,6 +16,9 @@
 // This is due to deconstructor not existing with a forward declaration
 #include "GameStateBase.h"
 
+#include "GameManager.h"
+#include "EventManager.h"
+
 using std::list;
 
 // Forward declarations
@@ -66,6 +69,7 @@ public:
 private:
 
     void Update(DX::StepTimer const& _timer);
+    void lateUpdate(DX::StepTimer const& _timer);
     void Render();
 
     void Clear();
@@ -123,4 +127,6 @@ private:
     // GameState machine
     std::map<State, std::unique_ptr<GameStateBase>> game_states;
     State current_state;
+
+    std::shared_ptr<EventManager> event_manager;
 };

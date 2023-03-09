@@ -259,6 +259,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
             //return false;
         }
     }
+
+
+    event_manager = std::make_shared<EventManager>();
+    GameManager::get()->addManager(event_manager, ManagerType::EVENT);
 }
 
 // Executes the basic game loop.
@@ -267,6 +271,7 @@ void Game::Tick()
     m_timer.Tick([&]()
     {
         Update(m_timer);
+        lateUpdate(m_timer);
     });
 
     Render();
@@ -330,6 +335,8 @@ void Game::Update(DX::StepTimer const& _timer)
     }
 
     //update all objects
+    GameManager::get()->update(_timer);
+
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
     {
         (*it)->Tick(m_GD);
@@ -338,6 +345,11 @@ void Game::Update(DX::StepTimer const& _timer)
     {
         (*it)->Tick(m_GD);
     }
+}
+
+void Game::lateUpdate(DX::StepTimer const& _timer)
+{
+    GameManager::get()->lateUpdate(_timer);
 }
 
 // Draws the scene.
@@ -648,6 +660,15 @@ void Game::ReadInput()
     if (m_GD->m_KBS.Escape)
     {
         ExitGame();
+    }
+
+    if (m_GD->m_KBS.Space)
+    {
+        Event event{};
+        event.type = EventType::KeyReleased;
+        event.payload.key_event.str = (char*)"helo";
+
+        event_manager->triggerEvent(std::make_shared<Event>(event));
     }
 
     m_GD->m_MS = m_mouse->GetState();

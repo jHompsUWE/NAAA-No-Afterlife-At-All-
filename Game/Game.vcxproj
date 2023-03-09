@@ -136,6 +136,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -165,14 +166,17 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="CMOGO.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
     <ClInclude Include="DrawData2D.h" />
+    <ClInclude Include="EventManager.h" />
     <ClInclude Include="fileVBGO.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameMenu.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="gameobject.h" />
     <ClInclude Include="GameObject2D.h" />
     <ClInclude Include="GameOver.h" />
@@ -185,7 +189,9 @@
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="MarchCubes.h" />
     <ClInclude Include="ObjectList.h" />
     <ClInclude Include="pch.h" />
@@ -208,9 +214,11 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="fileVBGO.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="gameobject.cpp" />
     <ClCompile Include="GameObject2D.cpp" />
     <ClCompile Include="GameOver.cpp" />
