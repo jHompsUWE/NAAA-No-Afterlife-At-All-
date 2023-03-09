@@ -21,6 +21,7 @@
 #include "GameTutorial.h"
 #include "GamePaused.h"
 #include "GameOver.h"
+#include "helper.h"
 
 extern void ExitGame() noexcept;
 
@@ -273,6 +274,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(&*file_manager_, ManagerType::FILE);
     file_manager_->awake();
 
+    FileVBGO* mug = new FileVBGO("mug_text", m_d3dDevice.Get());
+    m_GameObjects.push_back(mug);
+    mug->SetPos(Vector3(100.0f, 30.0f, 100.0f));
 
     // GameState initialisation
     for (auto& state : game_states)

@@ -134,4 +134,5 @@ private:
     std::shared_ptr<EconomyManager> economy_manager_;
     std::shared_ptr<FileManager> file_manager_;
 
+    TestObject* test_object_ = nullptr;
 };
