@@ -18,6 +18,8 @@
 
 #include "GameManager.h"
 #include "EventManager.h"
+#include "FileManager.h"
+#include "EconomyManager.h"
 
 using std::list;
 
@@ -129,4 +131,6 @@ private:
     State current_state;
 
     std::shared_ptr<EventManager> event_manager;
+    std::shared_ptr<EconomyManager> economy_manager_;
+    std::shared_ptr<FileManager> file_manager_;
 };
