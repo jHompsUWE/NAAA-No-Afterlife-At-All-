@@ -168,7 +168,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(pPlayer);
 
     //add a secondary camera
-    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f));
+    //Vector3 camera_offset = Vector3(-10.0f, (sqrt(3) / 3) * (6 * sqrt(2)), -10.0f);
+    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, -1.0f, 10000.0f, terrainBox, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f), camera_offset);
     m_GameObjects.push_back(m_TPScam);
 
     //test all GPGOs
