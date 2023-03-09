@@ -18,6 +18,9 @@
 
 #include "GameManager.h"
 #include "EventManager.h"
+#include "FileManager.h"
+#include "EconomyManager.h"
+#include "TileGO.h"
 #include "WorldManager.h"
 
 using std::list;
@@ -127,6 +130,11 @@ private:
     // GameState machine
     std::map<State, std::unique_ptr<GameStateBase>> game_states;
     State current_state;
+
+    std::shared_ptr<EventManager> event_manager;
+    std::shared_ptr<EconomyManager> economy_manager_;
+    std::shared_ptr<FileManager> file_manager_;
+
 
     std::shared_ptr<EventManager> event_manager;
     std::shared_ptr<WorldManager> world_manager;

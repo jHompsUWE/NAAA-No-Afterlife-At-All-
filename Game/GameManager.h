@@ -10,7 +10,8 @@ enum class ManagerType : int
 	INPUT,
 	CAMERA,
 	EVENT,
-	WORLD
+	FILE,
+	ECONOMY,
 };
 
 class GameManager
