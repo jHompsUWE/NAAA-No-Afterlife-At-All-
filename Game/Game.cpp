@@ -111,10 +111,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //m_GameObjects.push_back(terrain);
 
     // Test tile
-    TileGO* tile_go = new TileGO("TileOBJ", m_d3dDevice.Get(), m_fxFactory);
-    tile_go->SetPos(Vector3(100.0f, 20.0f, 100.0f));
-    tile_go->SetScale(20.0f);
-    tile_go->SetRoll(90.0f);
+    TileGO* tile_go = new TileGO("TileOBJ2", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 20.0f, 100.0f), 0,0, 0);;
     m_GameObjects.push_back(tile_go);
     
     //L-system like tree
