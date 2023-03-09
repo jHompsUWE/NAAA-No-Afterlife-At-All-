@@ -23,11 +23,6 @@ protected:
 
 	Rectangle bounds;
 	ID3D11ShaderResourceView* m_pTextureRV;
-
-	bool dragged = false;
-
-	float differenceX = 0.0f;
-	float differenceY = 0.0f;
 };
 
 #endif

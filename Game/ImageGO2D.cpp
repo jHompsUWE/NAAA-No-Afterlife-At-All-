@@ -47,34 +47,7 @@ ImageGO2D::~ImageGO2D()
 
 void ImageGO2D::Tick(GameData* _GD)
 {
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
-
-
-
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-		
-	if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-	{
-		differenceX = m_pos.x - _GD->m_MS.x;
-		differenceY = m_pos.y - _GD->m_MS.y;
-
-		dragged = true;
-	}
-
-	if (dragged == true && _GD->m_MS.leftButton == 1)
-	{
-		
-		m_pos.x = _GD->m_MS.x + differenceX;
-		m_pos.y = _GD->m_MS.y + differenceY;
-	}
-
-	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
-	{
-		dragged = false;
-	}
+	
 }
 
 

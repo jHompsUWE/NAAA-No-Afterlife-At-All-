@@ -28,6 +28,8 @@
 #include "ImageGO2D.h"
 #include "TextGO2D.h"
 #include "Button.h"
+#include "Window.h"
+#include "UIRemote.h"
 
 //Sounds
 #include "TestSound.h"

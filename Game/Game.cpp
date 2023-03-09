@@ -216,21 +216,28 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_light = m_light;
 
     //example basic 2D stuff
-    ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
+    Window* logo = new Window("logo_small", m_d3dDevice.Get());
     logo->SetPos(200.0f * Vector2::One);
     m_GameObjects2D.push_back(logo);
-    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
+    /*Window* bug_test = new Window("bug_test", m_d3dDevice.Get());
     bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);
+    m_GameObjects2D.push_back(bug_test);*/
 
     TextGO2D* text = new TextGO2D("Test Text");
     text->SetPos(Vector2(100, 10));
     text->SetColour(Color((float*)&Colors::Yellow));
     m_GameObjects2D.push_back(text);
 
-    Button* button = new Button("bug_test", m_d3dDevice.Get(), logo, bug_test);
+    /*Button* button = new Button("bug_test", m_d3dDevice.Get(), logo, bug_test);
     button->SetPos(400.0f * Vector2::One);
-    m_GameObjects2D.push_back(button);
+    m_GameObjects2D.push_back(button);*/
+
+    UIRemote* remote = new UIRemote("bug_test", m_d3dDevice.Get(), logo);
+    remote->SetPos(400.0f * Vector2::One);
+    remote->SetButtonPos();
+    m_GameObjects2D.push_back(remote);
+
+
 
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
