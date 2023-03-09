@@ -14,9 +14,9 @@ void FileManager::awake()
     Manager::awake();
 }
 
-void FileManager::update()
+void FileManager::update(DX::StepTimer const& _timer)
 {
-    std::cout << test_val << std::endl;
+    //std::cout << test_val << std::endl;
 }
 
 void FileManager::save()

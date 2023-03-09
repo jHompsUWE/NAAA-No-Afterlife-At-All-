@@ -263,12 +263,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     event_manager = std::make_shared<EventManager>();
     GameManager::get()->addManager(event_manager, ManagerType::EVENT);
-    GameManager::get()->addManager(&*event_manager, ManagerType::EVENT);
+    GameManager::get()->awake();
+
     economy_manager_ = std::make_shared<EconomyManager>();
-    GameManager::get()->addManager(&*economy_manager_, ManagerType::ECONOMY);
+    GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
-    GameManager::get()->addManager(&*file_manager_, ManagerType::FILE);
-    file_manager_->awake();
+    GameManager::get()->addManager(file_manager_, ManagerType::FILE);
+    GameManager::get()->awake();
 }
 
 // Executes the basic game loop.
@@ -668,6 +669,7 @@ void Game::ReadInput()
         ExitGame();
     }
 
+    // Below keybinds are temporary.
     if (m_GD->m_KBS.Space)
     {
         Event event{};
@@ -676,7 +678,7 @@ void Game::ReadInput()
 
         event_manager->triggerEvent(std::make_shared<Event>(event));
     }
-
+    
     if (m_GD->m_KBS.L)
     {
         file_manager_->save();
@@ -685,6 +687,7 @@ void Game::ReadInput()
     {
         file_manager_->load();
     }
+    
     
     m_GD->m_MS = m_mouse->GetState();
 

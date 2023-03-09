@@ -130,6 +130,7 @@ private:
     std::map<State, std::unique_ptr<GameStateBase>> game_states;
     State current_state;
 
+    // Managers
     std::shared_ptr<EventManager> event_manager;
     std::shared_ptr<EconomyManager> economy_manager_;
     std::shared_ptr<FileManager> file_manager_;

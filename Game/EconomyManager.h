@@ -4,7 +4,7 @@
 class EconomyManager : public Manager
 {
 public:
-    void update() override;
+    void update(DX::StepTimer const& _timer) override;
 
     ////////////////////////////////////////////////////////////
     /// \brief Calculates the amount of gold each soul gives to the player.

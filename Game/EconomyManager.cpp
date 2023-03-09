@@ -2,7 +2,7 @@
 #include "EconomyManager.h"
 #include <ostream>
 
-void EconomyManager::update()
+void EconomyManager::update(DX::StepTimer const& _timer)
 {
 }
 

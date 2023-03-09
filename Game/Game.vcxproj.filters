@@ -58,20 +58,44 @@
     <Filter Include="GameStates\Source Files">
       <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Base\Header Files\Events">
-      <UniqueIdentifier>{e7a44a4c-8c15-4313-9b2c-1b065fb92d57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base\Source Files\Events">
-      <UniqueIdentifier>{b3e855c0-1266-41f5-b9fd-e8cb2422f344}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base\Header Files\GameManager">
-      <UniqueIdentifier>{2fd4c1cb-f8fa-41d6-b59d-df7dd935f307}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base\Source Files\GameManager">
-      <UniqueIdentifier>{5f1f1594-2cde-4faa-b9cc-9c753e1dfb78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameStates">
       <UniqueIdentifier>{6ae5a1e4-83c3-4ba1-b01a-7ac75b4b951c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{5ce7c6b0-616b-4d2f-836b-0366f0b6a706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{d5220476-d093-4c81-9ae6-a66c764c8b82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EconomyManager">
+      <UniqueIdentifier>{86d414d7-93b2-499d-91c8-c8a9179712f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileManager">
+      <UniqueIdentifier>{cebd3b34-245b-4192-9d3f-8879ca14bd3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileManager\Header Files">
+      <UniqueIdentifier>{6aa6f75b-2f14-4a56-a975-b9afb08a9389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileManager\Source Files">
+      <UniqueIdentifier>{31944aea-21d6-4777-a87c-495f002237f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EconomyManager\Soruce Files">
+      <UniqueIdentifier>{f56cafbc-810e-44b6-9a18-802713fcab68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EconomyManager\Header Files">
+      <UniqueIdentifier>{d165de84-d96b-461d-9796-542b759d645f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Header Files">
+      <UniqueIdentifier>{18151ebb-3f7d-4fc1-a586-01ad99937d3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Source Files">
+      <UniqueIdentifier>{de895f44-e34d-455a-95c2-88e0f0cb3db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager\Header Files">
+      <UniqueIdentifier>{9b3d00a7-907f-4b66-a0a5-5effb63008a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager\Source Files">
+      <UniqueIdentifier>{97deae6e-3232-4063-a209-c6dc4c7d544c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -198,20 +222,29 @@
     <ClInclude Include="GameOver.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SaveStruct.h">
+      <Filter>FileManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>FileManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EconomyManager.h">
+      <Filter>EconomyManager\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Event.h">
-      <Filter>Base\Header Files\Events</Filter>
+      <Filter>EventManager\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
-      <Filter>Base\Header Files\Events</Filter>
+      <Filter>EventManager\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listener.h">
-      <Filter>Base\Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Base\Header Files\GameManager</Filter>
+      <Filter>EventManager\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
-      <Filter>Base\Header Files\GameManager</Filter>
+      <Filter>GameManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>GameManager\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -302,11 +335,17 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>GameStates\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>FileManager\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EconomyManager.cpp">
+      <Filter>EconomyManager\Soruce Files</Filter>
+    </ClCompile>
     <ClCompile Include="EventManager.cpp">
-      <Filter>Base\Source Files\Events</Filter>
+      <Filter>EventManager\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
-      <Filter>Base\Source Files\GameManager</Filter>
+      <Filter>GameManager\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
