@@ -31,8 +31,6 @@ private:
     int getIndex(Vector2 position);
     bool withinRange(Vector2 position);
 
-    
-
     int m_num_of_planes;
 
     int m_grid_x;

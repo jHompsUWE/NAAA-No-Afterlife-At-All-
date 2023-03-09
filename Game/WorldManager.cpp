@@ -66,7 +66,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 {
 	// THIS WORKS FOR 1x1 BUILDINGS
 
-	int radius = 32;
+	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
 	int vibe = _grid_location.getGridData().m_stored_building->getBuildingData().m_vibe;
@@ -82,119 +82,34 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 	int pos_radius_y = m_grid_y - start_pos.y;
 
 	int min_x = start_pos.x;
-	if (min_x > radius)
-	{
-		min_x = radius;
-	}
+	if (min_x > radius) { min_x = radius; }
 
 	int max_x = start_pos.x + radius;
-	if (max_x > m_grid_x)
-	{
-		max_x = m_grid_x - start_pos.x;
-	}
+	if (max_x > m_grid_x) { max_x = m_grid_x - start_pos.x; }
 
 	int min_y = start_pos.y;
+	if (min_y > radius) { min_y = radius; }
 
+	int max_y = start_pos.y + radius;
+	if (max_y > m_grid_y) { max_y = m_grid_y - start_pos.y; }
 
-	for (int i = -radius; i <= radius; i++)
+	for (int i = -min_y; i <= max_y; i++)
 	{
 		for (int j = -min_x; j <= max_x; j++)
 		{
 			if (abs(i) + abs(j) <= radius)
 			{
+				// This is within the radius of the object so update vibe
 				pos = { start_pos.x + j, start_pos.y + i };
-				std::cout << pos.x << " " << pos.y <<  "\n";
+				std::cout << pos.x << " " << pos.y << std::endl;
+				//m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
 			}
 			else
 			{
-				//std::cout << "false: " << " " << i << " " << j << "         " << abs(i) + abs(j) << std::endl;
+				// If it isn't then do nothing
 			}
 		}
 	}
-
-	/*
-	for (int i = -radius; i <= radius; i++)
-	{
-		if (i < 0)
-		{
-			for (int j = i; j <= i + radius; j++)
-			{
-				pos = { start_pos.x + j, start_pos.y + i };
-				std::cout << pos.x << " " << pos.y << "\n";
-				
-			}
-			std::cout << i << " I less than 0\n";
-		}
-		else if (i > 0)
-		{
-			for (int j = i - radius; j <= i; j++)
-			{
-				pos = { start_pos.x + j, start_pos.y + i };
-				std::cout << pos.x << " " << pos.y << "\n";
-				
-			}
-			std::cout << i << " I more than 0\n";
-		}
-		else
-		{
-			for (int j = -radius; j <= radius; j++)
-			{
-				pos = { start_pos.x + j, start_pos.y + i };
-				std::cout << pos.x << " " << pos.y << "\n";
-				
-			}
-			std::cout << i << " I is 0\n";
-		}
-
-		
-	}*/
-
-	/*switch (radius)
-	{
-	case 1:
-		range =
-		{
-			{1, 0}, {-1, 0}, {0, 1}, {0, -1}, Vector2::Zero // Up, Down, Left, Right, self
-		};
-		break;
-	case 2:
-		range =
-		{
-			{1, 0}, {2, 0}, {-1, 0}, {-2, 0}, // Left, Right
-			{0, 1}, {0, 2}, {0, -1}, {0, -2}, // Up, Down
-			{1, 1}, {1, -1}, {-1, 1}, {-1, -1}, Vector2::Zero // Corners, self
-		};
-		break;
-	case 3:
-		range =
-		{
-			{1, 0}, {2, 0}, {3, 0}, // right
-			{0, -1}, {0, -2}, {0, -3}, // back
-			{-1, 0}, {-2, 0}, {-3, 0}, // left
-			{0, 1}, {0, 2}, {0, 3}, // front
-			{1, 1}, {1, 2}, {2, 1}, // top right
-			{1, -1}, {1, -2}, {2, -1}, // bottom right
-			{-1, 1}, {-1, 2}, {-2, 1}, // top left
-			{-1, -1}, {-1, -2}, {-2, -1}, // bottom left
-			Vector2::Zero // self
-		};
-		break;
-	default:
-		range =
-		{
-			Vector2::Zero // self
-		};
-		break;
-	}
-
-	for (Vector2 tile : range)
-	{
-		Vector2 pos = { start_pos.x + tile.x, start_pos.y + tile.y };
-
-		if (!withinRange(pos)) continue;
-
-		m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
-	}*/
 }
 
 void WorldManager::update()

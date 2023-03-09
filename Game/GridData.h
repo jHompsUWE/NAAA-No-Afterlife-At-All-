@@ -29,11 +29,11 @@ struct GridData
 
 	TileType m_tile_type = TileType::None;
 	ZoneType m_zone_type = ZoneType::None;
-	Vector2 m_position = Vector2::Zero;
+	Vector2 m_position = {4, 4};
 
 	bool m_connected = false;
 	PlaneType m_plane = PlaneType::None;
 	int m_vibe = 0;
 
-	int m_efficiency;
+	int m_efficiency = 0;
 };
