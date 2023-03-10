@@ -58,13 +58,13 @@
     <Filter Include="GameStates\Source Files">
       <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Buildings">
+    <Filter Include="Base\Buildings">
       <UniqueIdentifier>{3cec474a-6a16-44dc-bece-f34be0d103c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Buildings\Header Files">
+    <Filter Include="Base\Buildings\Header Files">
       <UniqueIdentifier>{82ead919-56ee-414d-9e98-e2f592aa2aca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Buildings\Source Files">
+    <Filter Include="Base\Buildings\Source Files">
       <UniqueIdentifier>{09cf01bc-1335-425c-9abd-c407b99e6165}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -244,13 +244,19 @@
       <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Building.h">
-      <Filter>Buildings\Header Files</Filter>
+      <Filter>Base\Buildings\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BuildingData.h">
-      <Filter>Buildings\Header Files</Filter>
+      <Filter>Base\Buildings\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BuildingSpecies.h">
-      <Filter>Buildings\Header Files</Filter>
+      <Filter>Base\Buildings\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -326,9 +332,6 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
@@ -356,14 +359,11 @@
     <ClCompile Include="FileManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SaveStruct.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TileGO.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Building.cpp">
-      <Filter>Buildings\Source Files</Filter>
+      <Filter>Base\Buildings\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GridLocation.cpp">
       <Filter>Base\Source Files</Filter>

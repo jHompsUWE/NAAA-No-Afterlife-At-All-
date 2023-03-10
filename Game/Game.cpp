@@ -172,11 +172,11 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
 
     event_manager = std::make_shared<EventManager>();
-    GameManager::get()->addManager(&*event_manager, ManagerType::EVENT);
+    GameManager::get()->addManager(event_manager, ManagerType::EVENT);
     economy_manager_ = std::make_shared<EconomyManager>();
-    GameManager::get()->addManager(&*economy_manager_, ManagerType::ECONOMY);
+    GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
-    GameManager::get()->addManager(&*file_manager_, ManagerType::FILE);
+    GameManager::get()->addManager(file_manager_, ManagerType::FILE);
     file_manager_->awake();
 
     /*FileVBGO* mug = new FileVBGO("mug_text", m_d3dDevice.Get());
@@ -193,7 +193,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     }
 
     world_manager = std::make_shared<WorldManager>();
-    GameManager::get()->addManager(&*world_manager, ManagerType::WORLD);
+    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
 
     world_manager->init(m_d3dDevice, m_fxFactory);
 
