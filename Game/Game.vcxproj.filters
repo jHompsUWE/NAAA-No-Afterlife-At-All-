@@ -58,44 +58,14 @@
     <Filter Include="GameStates\Source Files">
       <UniqueIdentifier>{0d2386b1-9884-465c-931a-2546d543a501}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameStates">
-      <UniqueIdentifier>{6ae5a1e4-83c3-4ba1-b01a-7ac75b4b951c}</UniqueIdentifier>
+    <Filter Include="Buildings">
+      <UniqueIdentifier>{3cec474a-6a16-44dc-bece-f34be0d103c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EventManager">
-      <UniqueIdentifier>{5ce7c6b0-616b-4d2f-836b-0366f0b6a706}</UniqueIdentifier>
+    <Filter Include="Buildings\Header Files">
+      <UniqueIdentifier>{82ead919-56ee-414d-9e98-e2f592aa2aca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameManager">
-      <UniqueIdentifier>{d5220476-d093-4c81-9ae6-a66c764c8b82}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EconomyManager">
-      <UniqueIdentifier>{86d414d7-93b2-499d-91c8-c8a9179712f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileManager">
-      <UniqueIdentifier>{cebd3b34-245b-4192-9d3f-8879ca14bd3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileManager\Header Files">
-      <UniqueIdentifier>{6aa6f75b-2f14-4a56-a975-b9afb08a9389}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileManager\Source Files">
-      <UniqueIdentifier>{31944aea-21d6-4777-a87c-495f002237f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EconomyManager\Soruce Files">
-      <UniqueIdentifier>{f56cafbc-810e-44b6-9a18-802713fcab68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EconomyManager\Header Files">
-      <UniqueIdentifier>{d165de84-d96b-461d-9796-542b759d645f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameManager\Header Files">
-      <UniqueIdentifier>{18151ebb-3f7d-4fc1-a586-01ad99937d3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameManager\Source Files">
-      <UniqueIdentifier>{de895f44-e34d-455a-95c2-88e0f0cb3db6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventManager\Header Files">
-      <UniqueIdentifier>{9b3d00a7-907f-4b66-a0a5-5effb63008a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventManager\Source Files">
-      <UniqueIdentifier>{97deae6e-3232-4063-a209-c6dc4c7d544c}</UniqueIdentifier>
+    <Filter Include="Buildings\Source Files">
+      <UniqueIdentifier>{09cf01bc-1335-425c-9abd-c407b99e6165}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +174,15 @@
     <ClInclude Include="GPGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="GameStateBase.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
@@ -222,29 +201,56 @@
     <ClInclude Include="GameOver.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SaveStruct.h">
-      <Filter>FileManager\Header Files</Filter>
+    <ClInclude Include="EconomyManager.h">
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileManager.h">
-      <Filter>FileManager\Header Files</Filter>
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EconomyManager.h">
-      <Filter>EconomyManager\Header Files</Filter>
+    <ClInclude Include="SaveStruct.h">
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>EventManager\Header Files</Filter>
+    <ClInclude Include="TileGO.h">
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>EventManager\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listener.h">
-      <Filter>EventManager\Header Files</Filter>
+    <ClInclude Include="FBXImporter.h">
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
-      <Filter>GameManager\Header Files</Filter>
+      <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Manager.h">
-      <Filter>GameManager\Header Files</Filter>
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridData.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileType.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneType.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GridLocation.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneType.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Building.h">
+      <Filter>Buildings\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingData.h">
+      <Filter>Buildings\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingSpecies.h">
+      <Filter>Buildings\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +323,15 @@
     <ClCompile Include="GPGO.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="GameStateBase.cpp">
       <Filter>GameStates\Source Files</Filter>
     </ClCompile>
@@ -335,17 +350,26 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>GameStates\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>FileManager\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EconomyManager.cpp">
-      <Filter>EconomyManager\Soruce Files</Filter>
+      <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>EventManager\Source Files</Filter>
+    <ClCompile Include="FileManager.cpp">
+      <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>GameManager\Source Files</Filter>
+    <ClCompile Include="SaveStruct.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TileGO.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Building.cpp">
+      <Filter>Buildings\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridLocation.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
+      <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

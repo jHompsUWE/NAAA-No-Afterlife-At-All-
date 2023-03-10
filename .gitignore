@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 
 #Ignore all built assets from Dr Scarle's little pipeline
-Assets/
+#Assets/
