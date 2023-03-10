@@ -19,7 +19,7 @@ protected:
 	Vector3	m_dpos; //I'll lurk this far behind and away from it
 
 	const Vector3 up = Vector3::UnitY;
-	Vector3 camera_target = Vector3::Zero;
+	Vector3 camera_target;
 	Vector3 offset;
 };
 

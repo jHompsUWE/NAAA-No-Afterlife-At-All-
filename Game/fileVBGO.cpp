@@ -37,7 +37,7 @@ FileVBGO::FileVBGO(string _fileName, ID3D11Device* _GD)
 
 		//load texture 
 		HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);	
-		assert(hr == S_OK);
+	assert(hr == S_OK);
 	}
 	else
 	{

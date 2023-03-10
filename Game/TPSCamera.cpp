@@ -8,7 +8,7 @@ TPSCamera::TPSCamera(float _fieldOfView, float _aspectRatio, float _nearPlaneDis
 	//m_targetObject = _target;
 	m_dpos = _dpos;
 	offset = _offset;
-	m_pos = Vector3::Zero;
+	m_pos = _target;
 }
 
 TPSCamera::~TPSCamera()
@@ -24,7 +24,7 @@ void TPSCamera::Tick(GameData* _GD)
 	m_pos = m_target + offset;
 
 	// Calculate the orthographic projection matrix
-	float viewWidth = 400.0f; // replace with the desired width of the view
+	float viewWidth = 1000.0f; // replace with the desired width of the view
 	float viewHeight = viewWidth / m_aspectRatio;
 	m_fieldOfView = m_farPlaneDistance - m_nearPlaneDistance;
 
