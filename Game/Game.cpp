@@ -116,7 +116,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(terrainBox);
 
     FileVBGO* Box = new FileVBGO("cube", m_d3dDevice.Get());
-    m_GameObjects.push_back(Box);
+    //m_GameObjects.push_back(Box);
     Box->SetPos(Vector3(0.0f, 0.0f, -100.0f));
     Box->SetPitch(XM_PIDIV4);
     Box->SetScale(20.0f);
@@ -125,7 +125,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     cube->init(11, m_d3dDevice.Get());
     cube->SetPos(Vector3(100.0f, 0.0f, 0.0f));
     cube->SetScale(4.0f);
-    m_GameObjects.push_back(cube);
+    //m_GameObjects.push_back(cube);
 
     VBSpike* spikes = new VBSpike();
     spikes->init(11, m_d3dDevice.Get());
@@ -156,7 +156,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     VBMC->SetPos(Vector3(100, 0, -100));
     VBMC->SetPitch(-XM_PIDIV2);
     VBMC->SetScale(Vector3(3, 3, 1.5));
-    m_GameObjects.push_back(VBMC);
+    //m_GameObjects.push_back(VBMC);
 
     //create a base camera
     m_cam = new Camera(0.25f * XM_PI, AR, 1.0f, 10000.0f, Vector3::UnitY, Vector3::Zero);
@@ -169,7 +169,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //add a secondary camera
     //Vector3 camera_offset = Vector3(-10.0f, (sqrt(3) / 3) * (6 * sqrt(2)), -10.0f);
-    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, -1.0f, 10000.0f, terrainBox, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f), camera_offset);
+
+
+    
+    m_TPScam = new TPSCamera(5.25f * XM_PI, AR, -1000.0f, 10000.0f, Vector3::Zero, Vector3::UnitY, Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, tan(30.0f * XM_PI / 180.0f) * sqrt(200.0f),10.0f));
     m_GameObjects.push_back(m_TPScam);
 
     //test all GPGOs
