@@ -40,6 +40,7 @@ public:
 	void SetPos(float x, float y) { m_pos.x = x, m_pos.y = y; }
 	void SetRot(float _rot) { m_rotation = _rot; }
 	void SetColour(Color _colour) { m_colour = _colour; }
+	void SetColour(XMVECTORF32 _colour) { m_colour = _colour; }
 	void SetScale(Vector2 _scale) { m_scale = _scale; }
 	void SetScale(float _scale) { m_scale = _scale * Vector2::One; }
 	void SetOrigin(Vector2 _origin) { m_origin = _origin; }

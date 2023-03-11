@@ -7,14 +7,37 @@
 #include "Mouse.h"
 #include <iostream>
 
-Button::Button(string _fileName, ID3D11Device* _GD, GameObject2D* parent, Window* toggle) :m_pTextureRV(nullptr)
+Button::Button(ID3D11Device* _GD, GameObject2D* _parent, Window* _toggle) :m_pTextureRV(nullptr)
 {
-	string fullfilename = "../Assets/" + _fileName + ".dds";
-	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
-	if (hr != S_OK)
-	{
-		CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
-	}
+	
+	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+	
+
+	//this nasty thing is required to find out the size of this image!
+	ID3D11Resource* pResource;
+	D3D11_TEXTURE2D_DESC Desc;
+	m_pTextureRV->GetResource(&pResource);
+	((ID3D11Texture2D*)pResource)->GetDesc(&Desc);
+
+	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
+
+	
+	
+	SetScale(6.f);
+	m_colour = Colors::Lavender;
+	
+
+	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
+
+	parentWindow = _parent;
+	toggleWindow = _toggle;
+}
+
+Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
+{
+
+	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+
 
 	//this nasty thing is required to find out the size of this image!
 	ID3D11Resource* pResource;
@@ -25,17 +48,14 @@ Button::Button(string _fileName, ID3D11Device* _GD, GameObject2D* parent, Window
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
 
-	if (hr != S_OK)
-	{
-		SetScale(6.f);
-		m_colour = Colors::Lavender;
-	}
+
+	SetScale(6.f);
+	m_colour = Colors::Lavender;
+
 
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 
-
-	parentWindow = parent;
-	toggleWindow = toggle;
+	parentWindow = _parent;
 }
 
 Button::~Button()
@@ -57,6 +77,11 @@ void Button::SetBounds()
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 }
 
+void Button::SetName(string _name)
+{
+	buttonName = _name;
+}
+
 void Button::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -71,15 +96,13 @@ void Button::Tick(GameData* _GD)
 	{
 		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 		{
-			toggleWindow->renderable = !toggleWindow->renderable;
-		}
-		
-	}
+			if (toggleWindow != nullptr)
+			{
+				toggleWindow->renderable = !toggleWindow->renderable;
+			}
 
-	if (_GD->m_MS.leftButton == 1)
-	{
-		//m_pos.x = parentWindow->GetPos().x;
-		//m_pos.y = parentWindow->GetPos().y + 30;
+			pressed = true;
+		}
 	}
 }
 

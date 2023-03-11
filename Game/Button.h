@@ -11,16 +11,21 @@
 class Button :public GameObject2D
 {
 public:
-	Button(string _fileName, ID3D11Device* _GD, GameObject2D* parent, Window* toggle);
+	Button(ID3D11Device* _GD, GameObject2D* _parent, Window* _toggle);
+	Button(ID3D11Device* _GD, GameObject2D* _parent);
 	virtual ~Button();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
 
 	void SetBounds();
+	void SetName(string _name);
 
 	float differenceX;
 	float differenceY;
+	
+	string buttonName = "Button";
+	bool pressed = false;
 
 protected:
 	Rectangle bounds;

@@ -232,8 +232,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     button->SetPos(400.0f * Vector2::One);
     m_GameObjects2D.push_back(button);*/
 
-    UIRemote* remote = new UIRemote("bug_test", m_d3dDevice.Get(), logo);
-    remote->SetPos(400.0f * Vector2::One);
+    UIRemote* remote = new UIRemote(m_d3dDevice.Get(), logo);
+    remote->SetPos(100,230);
     remote->SetButtonPos();
     m_GameObjects2D.push_back(remote);
 
