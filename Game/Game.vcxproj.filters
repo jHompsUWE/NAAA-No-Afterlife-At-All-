@@ -264,9 +264,6 @@
     <ClInclude Include="SoulManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIRemote.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
@@ -281,6 +278,9 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIRemote.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -395,9 +395,6 @@
     <ClCompile Include="SoulManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UIRemote.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
@@ -406,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRemote.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
