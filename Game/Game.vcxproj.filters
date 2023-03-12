@@ -96,9 +96,6 @@
     <ClInclude Include="GameState.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DrawData2D.h">
-      <Filter>GameObjects\2D</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject2D.h">
       <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
@@ -271,10 +268,13 @@
       <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawData2D.h">
       <Filter>GameObjects\2D</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>GameObjects\2D</Filter>
+      <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Base\Header Files</Filter>
@@ -399,10 +399,10 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>GameObjects\2D</Filter>
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>GameObjects\2D</Filter>
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Input\Source Files</Filter>

@@ -9,10 +9,14 @@ class UIRemote :public GameObject2D
 {
 public:
 
-	UIRemote(ID3D11Device* _GD, Window* toggle);
+	UIRemote(ID3D11Device* _GD);
 	virtual ~UIRemote();
 
-	void SetButtonPos();
+	void SetButtonBounds();
+
+	void InitButtonNames();
+
+	void SetButtonToggle(int i, Window* toggle);
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
