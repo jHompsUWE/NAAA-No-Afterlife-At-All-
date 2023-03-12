@@ -153,27 +153,53 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_light = m_light;
 
     //example basic 2D stuff
-    Window* logo = new Window("logo_small", m_d3dDevice.Get());
-    logo->SetPos(200.0f * Vector2::One);
-    m_GameObjects2D.push_back(logo);
-    /*Window* bug_test = new Window("bug_test", m_d3dDevice.Get());
-    bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);*/
+    Window* Planetview = new Window("bug_test", m_d3dDevice.Get(), "Planetview", false, Colors::LightSkyBlue);
+    Planetview->SetPos(300, 100);
+    m_GameObjects2D.push_back(Planetview);
+    Planetview->SetTextPos();
 
-    TextGO2D* text = new TextGO2D("Test Text");
-    text->SetPos(Vector2(100, 10));
-    text->SetColour(Color((float*)&Colors::Yellow));
-    m_GameObjects2D.push_back(text);
+    Window* Graphview = new Window("bug_test", m_d3dDevice.Get(), "Graphview", false, Colors::LightBlue);
+    Graphview->SetPos(600, 100);
+    m_GameObjects2D.push_back(Graphview);
+    Graphview->SetTextPos();
 
-    /*Button* button = new Button("bug_test", m_d3dDevice.Get(), logo, bug_test);
-    button->SetPos(400.0f * Vector2::One);
-    m_GameObjects2D.push_back(button);*/
+    Window* Soulview = new Window("bug_test", m_d3dDevice.Get(), "Soulview", false, Colors::LightGreen);
+    Soulview->SetPos(300, 200);
+    m_GameObjects2D.push_back(Soulview);
+    Soulview->SetTextPos();
 
-    UIRemote* remote = new UIRemote(m_d3dDevice.Get(), logo);
+    Window* MacroManager = new Window("bug_test", m_d3dDevice.Get(), "Macro\nManager", false, Colors::LightYellow);
+    MacroManager->SetPos(600, 200);
+    m_GameObjects2D.push_back(MacroManager);
+    MacroManager->SetTextPos();
+
+    Window* Mapview = new Window("bug_test", m_d3dDevice.Get(), "Mapview", false, Colors::LightPink);
+    Mapview->SetPos(300, 300);
+    m_GameObjects2D.push_back(Mapview);
+    Mapview->SetTextPos();
+
+    Window* Advisors = new Window("bug_test", m_d3dDevice.Get(), "Advisors", false, Colors::LightSalmon);
+    Advisors->SetPos(600, 300);
+    m_GameObjects2D.push_back(Advisors);
+    Advisors->SetTextPos();
+
+    Window* MicroView = new Window("bug_test", m_d3dDevice.Get(), "MicroView", false, Colors::LightCoral);
+    MicroView->SetPos(300, 400);
+    m_GameObjects2D.push_back(MicroView);
+    MicroView->SetTextPos();
+
+    UIRemote* remote = new UIRemote(m_d3dDevice.Get());
     remote->SetPos(100,230);
     remote->SetButtonBounds();
     m_GameObjects2D.push_back(remote);
 
+    remote->SetButtonToggle(26, Planetview);
+    remote->SetButtonToggle(27, Graphview);
+    remote->SetButtonToggle(28, Soulview);
+    remote->SetButtonToggle(29, MacroManager);
+    remote->SetButtonToggle(30, Mapview);
+    remote->SetButtonToggle(31, Advisors);
+    remote->SetButtonToggle(32, MicroView);
 
 
     //Test Sounds

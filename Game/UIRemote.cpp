@@ -6,8 +6,9 @@
 #include "helper.h"
 #include <iostream>
 #include "Mouse.h"
+#include "SoulManager.h"
 
-UIRemote::UIRemote(ID3D11Device* _GD, Window* toggle) :m_pTextureRV(nullptr)
+UIRemote::UIRemote(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 {
 	
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
@@ -78,23 +79,23 @@ UIRemote::UIRemote(ID3D11Device* _GD, Window* toggle) :m_pTextureRV(nullptr)
 	buttons[25]->SetBounds();
 
 	// Toggle planet view button
-	buttons[26] = new Button{_GD, this, toggle };
+	buttons[26] = new Button{_GD, this};
 	buttons[26]->SetPos(17, 5.6 * yDistancing + yOffset);
 
 	// View toggle buttons
 	for (int x = 0; x < 4; x++)
 	{
-		buttons[x + 27] = new Button{_GD, this, toggle };
+		buttons[x + 27] = new Button{_GD, this};
 		buttons[x + 27]->SetPos(x * 28, 7.2 * yDistancing + yOffset);
 	}
 
 	// Helpers and Microview buttons
-	buttons[31] = new Button{_GD, this, toggle };
+	buttons[31] = new Button{_GD, this};
 	buttons[31]->SetScale(Vector2(18,12));
 	buttons[31]->SetPos(17, 8.6 * yDistancing + yOffset);
 	buttons[31]->SetBounds();
 
-	buttons[32] = new Button{_GD, this, toggle };
+	buttons[32] = new Button{_GD, this};
 	buttons[32]->SetScale(Vector2(12, 12));
 	buttons[32]->SetPos(79, 8.6 * yDistancing + yOffset);
 	buttons[32]->SetBounds();
@@ -207,7 +208,11 @@ void UIRemote::InitButtonNames()
 	buttons[31]->SetName("Advisors");
 	buttons[32]->SetName("Microview");
 
-
+	// Flatten views
+	buttons[33]->SetName("Flatten Hell");
+	buttons[34]->SetName("Flatten Heaven");
+	buttons[35]->SetName("Flatten Karma");
+	buttons[36]->SetName("Flatten Grid");
 }
 
 void UIRemote::SetButtonBounds()
@@ -233,6 +238,11 @@ void UIRemote::SetButtonBounds()
 	}
 }
 
+void UIRemote::SetButtonToggle(int i, Window* toggle)
+{
+	buttons[i]->SetToggle(toggle);
+}
+
 void UIRemote::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -253,7 +263,6 @@ void UIRemote::Tick(GameData* _GD)
 
 	if (dragged == true && _GD->m_MS.leftButton == 1)
 	{
-
 		m_pos.x = _GD->m_MS.x + differenceX;
 		m_pos.y = _GD->m_MS.y + differenceY;
 
