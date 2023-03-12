@@ -258,6 +258,9 @@
     <ClInclude Include="Listener.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SoulManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -369,6 +372,9 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoulManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
