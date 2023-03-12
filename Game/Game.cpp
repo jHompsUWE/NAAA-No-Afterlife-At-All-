@@ -160,7 +160,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
 
+    world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
 
    // world[PlaneType::Earth][10]->getTile().SetColour(Color(1, 1, 1));
 }

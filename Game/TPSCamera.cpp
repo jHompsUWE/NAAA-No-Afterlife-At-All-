@@ -23,8 +23,8 @@ void TPSCamera::Tick(GameData* _GD)
 	float viewWidth = 1000.0f; // replace with the desired width of the view
 	float viewHeight = viewWidth / m_aspectRatio;
 	m_pos = camera_target + offset;
-	m_projMat = XMMatrixOrthographicLH(viewHeight * cameraZoom, viewWidth * cameraZoom, m_nearPlaneDistance * cameraZoom, m_farPlaneDistance * cameraZoom);
-	m_viewMat = XMMatrixLookAtLH(m_pos, camera_target, up);
+	m_projMat = XMMatrixOrthographicRH(viewHeight * cameraZoom, viewWidth * cameraZoom, m_nearPlaneDistance * cameraZoom, m_farPlaneDistance * cameraZoom);
+	m_viewMat = XMMatrixLookAtRH(m_pos, camera_target, up);
 
 	GameObject::Tick(_GD);
 }

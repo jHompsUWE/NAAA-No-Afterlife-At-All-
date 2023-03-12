@@ -17,6 +17,8 @@ public:
 	GridData& getGridData();
 	GPGO& getTile();
 
+	void update();
+
 private:
 	GridData m_grid_data;
 

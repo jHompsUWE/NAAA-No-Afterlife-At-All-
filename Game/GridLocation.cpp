@@ -36,3 +36,8 @@ GPGO& GridLocation::getTile()
 {
     return *m_tile;
 }
+
+void GridLocation::update()
+{
+    //if (m_grid_data.m_efficiency > )
+}

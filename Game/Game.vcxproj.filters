@@ -243,9 +243,6 @@
     <ClInclude Include="PlaneType.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Building.h">
-      <Filter>Base\Buildings\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BuildingData.h">
       <Filter>Base\Buildings\Header Files</Filter>
     </ClInclude>
@@ -364,9 +361,6 @@
     </ClCompile>
     <ClCompile Include="TileGO.cpp">
       <Filter>Base\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Building.cpp">
-      <Filter>Base\Buildings\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GridLocation.cpp">
       <Filter>Base\Source Files</Filter>

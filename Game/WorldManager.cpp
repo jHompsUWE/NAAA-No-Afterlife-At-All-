@@ -73,7 +73,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
-	int vibe = _grid_location.getGridData().m_stored_building->getBuildingData().m_vibe;
+	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
 
 	Vector2 start_pos = _grid_location.getGridData().m_position;
 
@@ -131,7 +131,7 @@ void WorldManager::render(DrawData* _DD)
 			for (auto& tile : plane.second)
 			{
 				tile->getTile().Draw(_DD);
-				tile->getGridData().m_stored_building->Draw(_DD);
+				tile->getGridData().draw(_DD);
 			}
 		}
 	}
