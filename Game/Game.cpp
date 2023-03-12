@@ -138,14 +138,18 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects.push_back(pPlayer);
     
     //add a secondary camera
-    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f));
+    //Vector3 camera_offset = Vector3(-10.0f, (sqrt(3) / 3) * (6 * sqrt(2)), -10.0f);
+
+
+    
+    m_TPScam = new TPSCamera(5.25f * XM_PI, AR, -1000.0f, 10000.0f, Vector3(50.0f, 0.0f, 50.0f), Vector3::UnitY, Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, tan(30.0f * XM_PI / 180.0f) * sqrt(200.0f),10.0f));
     m_GameObjects.push_back(m_TPScam);
 
     //create DrawData struct and populate its pointers
     m_DD = new DrawData;
     m_DD->m_pd3dImmediateContext = nullptr;
     m_DD->m_states = m_states;
-    m_DD->m_cam = m_cam;
+    m_DD->m_cam = m_TPScam;
     m_DD->m_light = m_light;
 
     //example basic 2D stuff
@@ -308,10 +312,10 @@ void Game::Render()
     m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
 
     //set which camera to be used
-    m_DD->m_cam = m_cam;
+    m_DD->m_cam = m_TPScam;
     if (m_GD->m_GS == GS_PLAY_TPS_CAM)
     {
-        m_DD->m_cam = m_TPScam;
+        m_DD->m_cam = m_cam;
     }
 
     //update the constant buffer for the rendering of VBGOs
