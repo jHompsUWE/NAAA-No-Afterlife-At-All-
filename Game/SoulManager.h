@@ -6,11 +6,14 @@
 #include "Manager.h"
 #include "ImageGO2D.h"
 #include "ZoneType.h"
+#include "PlaneType.h"
 
 
 struct Soul
 {
-	bool reincarnate;
+	int m_currentcycle;
+	int cycles = 10;
+	bool reincarnate = true;
 	string life;
 	Vector2 position;
 	ZoneType zonetype;
@@ -29,18 +32,16 @@ class SoulManager : public Manager
 
 public:
 	
-	void AddSoul(DirectX::SimpleMath::Vector2 location,int plane);			// add a soul at this location
-	void Wander();															// run the soul road movement
-	void ZoneCheck();														//check if zone is attached
-	int TotalSoulsAmmount(int plane);										//get souls per plane
-	int TotalSoulsAmmount();												//get souls total overall
+	void AddSoul(DirectX::SimpleMath::Vector2 location,PlaneType plane = PlaneType::Earth);			// add a soul at this location
+	void Wander();																					// run the soul road movement
+	void ZoneCheck();																				//check if zone is attached
+	int TotalSoulsAmmount(PlaneType plane) const;													//get souls per plane NONE : get souls total overall
 
-
-																			// Inherited via Manager
-	virtual void update() override;
+																									// Inherited via Manager
 	
 	virtual void awake() override;
-	
+	virtual void update(DX::StepTimer const& _timer) override;
+	virtual void lateUpdate(DX::StepTimer const& _timer) override;
 };
 
 
