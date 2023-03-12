@@ -68,6 +68,11 @@ void AnimatedImageGO2D::PlayAnimation()
 		return;
 	}
 
+	if (!is_animation_playing)
+	{
+		return;
+	}
+
 	if (animation_list.empty())
 	{
 		return;
@@ -87,6 +92,16 @@ void AnimatedImageGO2D::PlayAnimation()
 	timer = animation_list[0].speed;
 	CheckFinished();
 
+}
+
+void AnimatedImageGO2D::StopAnimation()
+{
+	is_animation_playing = false;
+}
+
+void AnimatedImageGO2D::StartAnimation()
+{
+	is_animation_playing = true;
 }
 
 void AnimatedImageGO2D::SetSpeed(float new_speed)

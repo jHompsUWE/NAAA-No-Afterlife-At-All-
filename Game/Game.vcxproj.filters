@@ -258,6 +258,12 @@
     <ClInclude Include="Listener.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedImageGO2D.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -369,6 +375,12 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WorldManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedImageGO2D.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

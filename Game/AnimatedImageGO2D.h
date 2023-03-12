@@ -17,6 +17,8 @@ public:
 	void NewAnimation(string animation_name, int frame_count, float speed, Vector2 starting_pos, bool loop);
 	void ChangeAnimation(string animation_name);
 	void PlayAnimation();
+	void StopAnimation();
+	void StartAnimation();
 	void SetSpeed(float new_speed);
 	void SetFrame(int frame);
 	void FocusUV();
@@ -43,6 +45,8 @@ private:
 	Vector2 image_size;
 	int cell_size;
 	int current_frame = 0;
+
+	bool is_animation_playing = true;
 
 	std::vector<Animation> animation_list;
 

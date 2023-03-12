@@ -242,6 +242,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedImageGO2D.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
@@ -304,6 +306,8 @@
     <ClInclude Include="ZoneType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedImageGO2D.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
