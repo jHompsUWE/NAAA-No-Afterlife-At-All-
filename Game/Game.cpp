@@ -237,8 +237,8 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
-    m_GD->m_mouseButtons.Update(mouse);
     auto mouse = m_mouse->GetState();
+    m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
@@ -649,7 +649,7 @@ void Game::ReadInput()
     m_GD->m_MS = m_mouse->GetState();
 
     //lock the cursor to the centre of the window
-    RECT window;
-    GetWindowRect(m_window, &window);
-    SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
+    //RECT window;
+    //GetWindowRect(m_window, &window);
+    //SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
 }

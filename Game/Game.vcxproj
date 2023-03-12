@@ -245,6 +245,7 @@
     <ClInclude Include="Building.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="CMOGO.h" />
     <ClInclude Include="Event.h" />
@@ -302,11 +303,13 @@
     <ClInclude Include="VBSnail.h" />
     <ClInclude Include="VBspiral.h" />
     <ClInclude Include="vertex.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="WorldManager.h" />
     <ClInclude Include="ZoneType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Building.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
@@ -351,6 +354,7 @@
     <ClCompile Include="VBCube.cpp" />
     <ClCompile Include="VBGO.cpp" />
     <ClCompile Include="VBSnail.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
