@@ -6,6 +6,7 @@
 //=================================================================
 
 #include "GameState.h"
+#include "GameStateBase.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 
@@ -15,10 +16,12 @@ struct GameData
 {
 	float m_dt;  //time step since last frame
 	GameState m_GS; //global GameState
+	State current_state;
 
 	//player input
 	Keyboard::State m_KBS;
 	Mouse::State m_MS;
 	Keyboard::KeyboardStateTracker m_KBS_tracker;
+	Mouse::ButtonStateTracker m_mouseButtons;
 };
 #endif

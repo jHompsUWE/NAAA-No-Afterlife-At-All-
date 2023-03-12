@@ -9,14 +9,23 @@
 class TPSCamera : public Camera
 {
 public:
-	TPSCamera(float _fieldOfView, float _aspectRatio, float _nearPlaneDistance, float _farPlaneDistance, GameObject* _target, Vector3 _up, Vector3 _dpos);
+	TPSCamera(float _fieldOfView, float _aspectRatio, float _nearPlaneDistance, float _farPlaneDistance, Vector3 _target, Vector3 _up, Vector3 _dpos, Vector3 _offset);
 	virtual ~TPSCamera();
 
 	virtual void Tick(GameData* _GD) override;
 
 protected:
+	
+	void CameraMovement(GameData* _GD);	
+
+	
 	GameObject*	m_targetObject; //I'm following this object
 	Vector3	m_dpos; //I'll lurk this far behind and away from it
+
+	const Vector3 up = Vector3::UnitY;
+	Vector3 camera_target{};
+	Vector3 offset {10.0f, 10.0f, 0.0f};
+	float cameraZoom  = 1.0f;
 };
 
 #endif

@@ -244,9 +244,9 @@
   <ItemGroup>
     <ClInclude Include="AnimatedImageGO2D.h" />
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="Building.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="CMOGO.h" />
     <ClInclude Include="Event.h" />
@@ -276,6 +276,7 @@
     <ClInclude Include="GridLocation.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -285,7 +286,9 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlaneType.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SaveStruct.h" />
+    <ClInclude Include="SoulManager.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StepTimer.h" />
     <ClInclude Include="Terrain.h" />
@@ -296,19 +299,21 @@
     <ClInclude Include="TPSCamera.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="TreeBit.h" />
+    <ClInclude Include="UIRemote.h" />
     <ClInclude Include="VBCube.h" />
     <ClInclude Include="VBGO.h" />
     <ClInclude Include="VBPillow.h" />
     <ClInclude Include="VBSnail.h" />
     <ClInclude Include="VBspiral.h" />
     <ClInclude Include="vertex.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="WorldManager.h" />
     <ClInclude Include="ZoneType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimatedImageGO2D.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="Building.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
@@ -328,6 +333,7 @@
     <ClCompile Include="GPGO.cpp" />
     <ClCompile Include="GridLocation.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
@@ -340,6 +346,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SoulManager.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TestSound.cpp" />
@@ -348,10 +355,15 @@
     <ClCompile Include="TPSCamera.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="treebit.cpp" />
+    <ClCompile Include="UIRemote.cpp" />
     <ClCompile Include="VBCube.cpp" />
     <ClCompile Include="VBGO.cpp" />
     <ClCompile Include="VBSnail.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

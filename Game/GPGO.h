@@ -24,7 +24,7 @@ enum GPGO_TYPE
 class GPGO :    public GameObject
 {
 public:
-	GPGO(ID3D11DeviceContext* _pd3dImmediateContext,GPGO_TYPE _type, float* _colour = (float*)&Colors::AntiqueWhite, float* _params = nullptr);
+	GPGO(ID3D11DeviceContext* _pd3dImmediateContext,GPGO_TYPE _type, float* _colour = (float*)&Colors::AntiqueWhite, float* _params = nullptr, Vector3 _pos = Vector3(0.0f, 0.0f, 0.0f));
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData* _DD);
 
@@ -32,6 +32,7 @@ public:
 
 	Color GetColour() { return m_colour; }
 	void SetColour(Color _colour) { m_colour = _colour; }
+	//void SetColour(float* _colour) { m_colour = _colour; }
 
 protected:
 	std::unique_ptr<GeometricPrimitive> shape;

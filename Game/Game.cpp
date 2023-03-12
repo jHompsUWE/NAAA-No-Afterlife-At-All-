@@ -33,14 +33,15 @@ Game::Game() noexcept :
     m_window(nullptr),
     m_outputWidth(800),
     m_outputHeight(600),
-    m_featureLevel(D3D_FEATURE_LEVEL_11_0),
-    current_state(State::GAME_MENU)
+    m_featureLevel(D3D_FEATURE_LEVEL_11_0)
 {
-    game_states.insert(std::make_pair(State::GAME_MENU, std::make_unique<GameMenu>(State::GAME_MENU, m_GD, m_DD, m_DD2D)));
-    game_states.insert(std::make_pair(State::GAME_PLAY, std::make_unique<GamePlay>(State::GAME_PLAY, m_GD, m_DD, m_DD2D)));
-    game_states.insert(std::make_pair(State::GAME_TUTORIAL, std::make_unique<GameTutorial>(State::GAME_TUTORIAL, m_GD, m_DD, m_DD2D)));
-    game_states.insert(std::make_pair(State::GAME_PAUSED, std::make_unique<GamePaused>(State::GAME_PAUSED, m_GD, m_DD, m_DD2D)));
-    game_states.insert(std::make_pair(State::GAME_OVER, std::make_unique<GameOver>(State::GAME_OVER, m_GD, m_DD, m_DD2D)));
+    
+  
+    
+    
+    
+    
+    
 }
 
 // Initialize the Direct3D resources required to run.
@@ -60,7 +61,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
-
+    
     //seed the random number generator
     srand((UINT)time(NULL));
 
@@ -69,13 +70,14 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_keyboard = std::make_unique<Keyboard>();
     m_mouse = std::make_unique<Mouse>();
     m_mouse->SetWindow(_window);
-    m_mouse->SetMode(Mouse::MODE_RELATIVE);
+    m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
-    ShowCursor(false);
+    ShowCursor(true);
 
     //create GameData struct and populate its pointers
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
+    m_GD->current_state = State::GAME_MENU;
 
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
@@ -97,56 +99,19 @@ void Game::Initialize(HWND _window, int _width, int _height)
 #endif
     m_audioEngine = std::make_unique<AudioEngine>(eflags);
 
-    //create a set of dummy things to show off the engine
-
-    //create a base light
-    m_light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
-    m_GameObjects.push_back(m_light);
-
-    //find how big my window is to correctly calculate my aspect ratio
-    float AR = (float)_width / (float)_height;
-
-    //example basic 3D stuff
-    //Terrain* terrain = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 0.0f, 100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
-    //m_GameObjects.push_back(terrain);
-
-    // Test tile
-    TileGO* tile_go = new TileGO("TileOBJ2", m_d3dDevice.Get(), m_fxFactory, Vector3(600.0f, 20.0f, 350.0f), 0,0, 0);;
-    m_GameObjects.push_back(tile_go);
-    
-    //L-system like tree
-    m_GameObjects.push_back(new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory));
-
-    //Vertex Buffer Game Objects
-   // FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
-    //m_GameObjects.push_back(terrainBox);
-
-    // FileVBGO* TileTest = new FileVBGO("white", m_d3dDevice.Get());
-    // TileTest->SetPos(Vector3(100.0f, 0.0f, 100.0f));
-    // m_GameObjects.push_back(TileTest);
-
-   
-
-
-    //create a base camera
-    m_cam = new Camera(0.25f * XM_PI, AR, 1.0f, 10000.0f, Vector3::UnitY, Vector3::Zero);
-    m_cam->SetPos(Vector3(0.0f, 200.0f, 200.0f));
-    m_GameObjects.push_back(m_cam);
-
-    //add Player
-    Player* pPlayer = new Player("BirdModelV1", m_d3dDevice.Get(), m_fxFactory);
-    m_GameObjects.push_back(pPlayer);
-    
-    //add a secondary camera
-    m_TPScam = new TPSCamera(0.25f * XM_PI, AR, 1.0f, 10000.0f, pPlayer, Vector3::UnitY, Vector3(0.0f, 10.0f, 50.0f));
-    m_GameObjects.push_back(m_TPScam);
-
-    //create DrawData struct and populate its pointers
     m_DD = new DrawData;
     m_DD->m_pd3dImmediateContext = nullptr;
     m_DD->m_states = m_states;
-    m_DD->m_cam = m_cam;
+    m_DD->m_cam = m_TPScam;
     m_DD->m_light = m_light;
+    
+    game_states.insert(std::make_pair(State::GAME_MENU,     std::make_unique<GameMenu>      (State::GAME_MENU,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
+    game_states.insert(std::make_pair(State::GAME_PLAY,     std::make_unique<GamePlay>      (State::GAME_PLAY,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
+    game_states.insert(std::make_pair(State::GAME_TUTORIAL, std::make_unique<GameTutorial>  (State::GAME_TUTORIAL, m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
+    game_states.insert(std::make_pair(State::GAME_PAUSED,   std::make_unique<GamePaused>    (State::GAME_PAUSED,   m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
+    game_states.insert(std::make_pair(State::GAME_OVER,     std::make_unique<GameOver>      (State::GAME_OVER,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
+    
+    
 
     //example basic 2D stuff
     ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
@@ -167,47 +132,40 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
-    loop->SetVolume(0.1f);
+    loop->SetVolume(0.05f);
     loop->Play();
     m_Sounds.push_back(loop);
 
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
+    TS->SetVolume(0.05f);
+    
     m_Sounds.push_back(TS);
-
-
+    
     event_manager = std::make_shared<EventManager>();
     GameManager::get()->addManager(event_manager, ManagerType::EVENT);
     economy_manager_ = std::make_shared<EconomyManager>();
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
-    file_manager_->awake();
 
-    /*FileVBGO* mug = new FileVBGO("mug_text", m_d3dDevice.Get());
-    m_GameObjects.push_back(mug);
-    mug->SetPos(Vector3(100.0f, 30.0f, 100.0f));*/
-
+    world_manager = std::make_shared<WorldManager>();
+    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
+    world_manager->init(m_d3dContext, m_fxFactory);
+    
     // GameState initialisation
     for (auto& state : game_states)
     {
-        if (!state.second->init())
+        if (!state.second->init(_window, _width, _height))
         { 
             //return false;
         }
     }
-
-    world_manager = std::make_shared<WorldManager>();
-    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-
-    world_manager->init(m_d3dDevice, m_fxFactory);
-
-    /*for (auto& plane : world_manager->getWorld())
-    {
-        for (auto& tile : plane.second)
-        {
-            m_GameObjects.push_back(&tile->getTile());
-        }
-    }*/
+    auto& world = world_manager->getWorld();
+    world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
+    world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
+    
 }
 
 // Executes the basic game loop.
@@ -218,31 +176,38 @@ void Game::Tick()
         Update(m_timer);
         lateUpdate(m_timer);
     });
-
+    
     Render();
 }
 
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    auto mouse = m_mouse->GetState();
+    m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
     // GameState updates
     // Change state depending on update result
-    State prev_state = current_state;
-    current_state = game_states[current_state]->update();
-
-    if (current_state != prev_state)
+    State prev_state = m_GD->current_state;
+    m_GD->current_state = game_states[m_GD->current_state]->update(_timer);
+    if (m_GD->current_state != prev_state)
     {
-        if (current_state == State::GAME_EXIT)
+        if (m_GD->current_state == State::GAME_EXIT)
         {
             // Exit game
             return;
         }
         else
         {
-            game_states[current_state]->reset();
+            Event event{};
+            event.type = EventType::STATE_TRANSITION;
+            event.payload.state_transition.current = m_GD->current_state;
+            event.payload.state_transition.previous = prev_state;
+            event_manager->triggerEvent(std::make_shared<Event>(event));
+
+            game_states[m_GD->current_state]->reset();
         }
     }
 
@@ -278,18 +243,6 @@ void Game::Update(DX::StepTimer const& _timer)
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
     }
-
-    //update all objects
-    GameManager::get()->update(_timer);
-
-    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-    {
-        (*it)->Tick(m_GD);
-    }
-    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
-    {
-        (*it)->Tick(m_GD);
-    }
 }
 
 void Game::lateUpdate(DX::StepTimer const& _timer)
@@ -311,34 +264,19 @@ void Game::Render()
     //set immediate context of the graphics device
     m_DD->m_pd3dImmediateContext = m_d3dContext.Get();
 
-    //set which camera to be used
-    m_DD->m_cam = m_cam;
-    if (m_GD->m_GS == GS_PLAY_TPS_CAM)
-    {
-        m_DD->m_cam = m_TPScam;
-    }
-
     //update the constant buffer for the rendering of VBGOs
-    VBGO::UpdateConstantBuffer(m_DD);
-
-    game_states[current_state]->render();
-
+    
+    
+    game_states[m_GD->current_state]->render3D();
     //Draw 3D Game Obejects
-    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
-    {
-        (*it)->Draw(m_DD);
-    }  
+    
 
-    world_manager->render(m_DD);
+    
     
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    for (list<GameObject2D*>::iterator it = m_GameObjects2D.begin(); it != m_GameObjects2D.end(); it++)
-    {
-        (*it)->Draw(m_DD2D);
-    }    
+    game_states[m_GD->current_state]->render2D();
     m_DD2D->m_Sprites->End();
-
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
 
@@ -382,6 +320,7 @@ void Game::Present()
 // Message handlers
 void Game::OnActivated()
 {
+    m_GD->m_mouseButtons.Reset();
     // TODO: Game is becoming active window.
 }
 
@@ -398,6 +337,7 @@ void Game::OnSuspending()
 void Game::OnResuming()
 {
     m_timer.ResetElapsedTime();
+    m_GD->m_mouseButtons.Reset();
 
     // TODO: Game is being power-resumed (or returning from minimize).
 }
@@ -610,30 +550,10 @@ void Game::ReadInput()
         ExitGame();
     }
 
-    // Below keybinds are temporary.
-    if (m_GD->m_KBS.Space)
+    if (m_GD->m_KBS.N)
     {
-        Event event{};
-        event.type = EventType::KeyReleased;
-        event.payload.key_event.str = (char*)"helo";
+        m_GD->current_state = State::GAME_PLAY;
+    }
 
-        event_manager->triggerEvent(std::make_shared<Event>(event));
-    }
-    
-    if (m_GD->m_KBS.L)
-    {
-        file_manager_->save();
-    }
-    if (m_GD->m_KBS.K)
-    {
-        file_manager_->load();
-    }
-    
-    
     m_GD->m_MS = m_mouse->GetState();
-
-    //lock the cursor to the centre of the window
-    RECT window;
-    GetWindowRect(m_window, &window);
-    SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
 }

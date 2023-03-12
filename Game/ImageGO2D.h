@@ -24,11 +24,14 @@ public:
 	D3D11_TEXTURE2D_DESC Desc;
 
 
+
+	bool renderable = true;
 protected:
 
 	RECT uv;
 	RECT* uv_ref = &uv;
 
+	Rectangle bounds;
 	ID3D11ShaderResourceView* m_pTextureRV;
 };
 
