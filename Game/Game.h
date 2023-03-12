@@ -20,6 +20,7 @@
 #include "EventManager.h"
 #include "FileManager.h"
 #include "EconomyManager.h"
+#include "InputListenerTest.h"
 
 using std::list;
 
@@ -128,10 +129,11 @@ private:
 
     // GameState machine
     std::map<State, std::unique_ptr<GameStateBase>> game_states;
-    State current_state;
 
     // Managers
     std::shared_ptr<EventManager> event_manager;
     std::shared_ptr<EconomyManager> economy_manager_;
     std::shared_ptr<FileManager> file_manager_;
+    std::shared_ptr<InputManager> input_manager;
+    std::shared_ptr<InputListenerTest> test;
 };

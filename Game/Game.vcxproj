@@ -190,6 +190,8 @@
     <ClInclude Include="GPGO.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="InputListenerTest.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -198,6 +200,7 @@
     <ClInclude Include="ObjectList.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SaveStruct.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StepTimer.h" />
@@ -233,6 +236,8 @@
     <ClCompile Include="GameTutorial.cpp" />
     <ClCompile Include="GPGO.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
+    <ClCompile Include="InputListenerTest.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
@@ -253,6 +258,9 @@
     <ClCompile Include="VBCube.cpp" />
     <ClCompile Include="VBGO.cpp" />
     <ClCompile Include="VBSnail.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

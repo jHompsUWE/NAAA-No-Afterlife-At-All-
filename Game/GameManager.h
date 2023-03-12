@@ -5,6 +5,7 @@
 
 #include "Manager.h"
 #include "EventManager.h"
+#include "InputManager.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.
@@ -60,7 +61,7 @@ public:
 	/// \param _manager The manager to add to the manager vector.
 	///	\param _type Type is used to identify what kind of Manager _manager is so that it can be stored within the correct variable.
 	////////////////////////////////////////////////////////////
-	bool addManager(std::shared_ptr<Manager>, ManagerType _type);
+	bool addManager(std::shared_ptr<Manager> _manager, ManagerType _type);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Attempts to remove a manager from the vector of managers to be updated each tick.
@@ -68,6 +69,22 @@ public:
 	///	\param _type Type is used to identify what kind of Manager _manager is so that it can be removed from the correct variable. 
 	////////////////////////////////////////////////////////////
 	bool removeManager(std::shared_ptr<Manager> _manager, ManagerType _type);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Returns a const ref to game_data.
+	////////////////////////////////////////////////////////////
+	const GameData& getGameData() const { return *game_data; };
+
+	////////////////////////////////////////////////////////////
+	/// \brief Sets game_data pointer to an instance of GameData
+	/// \param _game_data The the instance to point to.
+	////////////////////////////////////////////////////////////
+	void setGameData(GameData* _game_data) { game_data = _game_data; };
+
+	////////////////////////////////////////////////////////////
+	/// \brief Returns pointer to event manager, use this for triggering events. 
+	////////////////////////////////////////////////////////////
+	EventManager* getEventManager() { return event_manager; };
 
 private:
 	GameManager() {};
@@ -81,6 +98,11 @@ private:
 	/// \brief Pointer to EventManager for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	EventManager* event_manager;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to GameData blackboard.
+	////////////////////////////////////////////////////////////
+	GameData* game_data;
 };
 
 
