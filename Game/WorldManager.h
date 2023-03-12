@@ -16,7 +16,7 @@ public:
     WorldManager();
     ~WorldManager();
 
-    void init(Microsoft::WRL::ComPtr<ID3D11Device1> _device, DirectX::IEffectFactory* _fxFactory);
+    void init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory);
 
     void setConnected(GridLocation& _grid_location, PlaneType _plane);
 

@@ -142,6 +142,11 @@ void Game::Initialize(HWND _window, int _width, int _height)
             //return false;
         }
     }
+    world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
+    world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
+    auto& world = world_manager->getWorld();
 }
 
 // Executes the basic game loop.

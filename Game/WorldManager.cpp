@@ -3,14 +3,15 @@
 
 WorldManager::WorldManager()
 {
-	m_num_of_planes = 3;
+	m_num_of_planes = 2;
 
 	m_grid_x = 10;
 	m_grid_y = 10;
 
 	int total_size = m_grid_x * m_grid_y;
-	m_world[PlaneType::Earth].reserve(total_size);
+	
 	m_world[PlaneType::Heaven].reserve(total_size);
+	m_world[PlaneType::Earth].reserve(total_size);
 	m_world[PlaneType::Hell].reserve(total_size);
 }
 
@@ -19,16 +20,16 @@ WorldManager::~WorldManager()
 
 }
 
-void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11Device1> _device, DirectX::IEffectFactory* _fxFactory)
+void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory)
 {
 	for (auto& plane : m_world)
 	{
 		for (int i = 0; i < m_grid_y; i++)
 		{
 			for (int j = 0; j < m_grid_x; j++)
-			{
+			{ 
 				Vector2 pos = { float(j), float(i) };
-				plane.second.push_back(std::make_unique<GridLocation>(_device, _fxFactory, pos));
+				plane.second.push_back(std::make_unique<GridLocation>(_device, pos, int(plane.first)));
 				std::cout << "Created location " << j << " " << i << std::endl;
 			}
 		}
@@ -72,7 +73,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
-	int vibe = _grid_location.getGridData().m_stored_building->getBuildingData().m_vibe;
+	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
 
 	Vector2 start_pos = _grid_location.getGridData().m_position;
 
@@ -106,6 +107,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 				pos = { start_pos.x + j, start_pos.y + i };
 				std::cout << pos.x << " " << pos.y << std::endl;
 				//m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
+				m_world[_plane][getIndex(pos)]->getTile().SetColour(Color(0, 1, 0));
 			}
 			else
 			{
@@ -124,9 +126,13 @@ void WorldManager::render(DrawData* _DD)
 {
 	for (auto& plane : m_world)
 	{
-		for (auto& tile : plane.second)
+		if (plane.first != PlaneType::Earth)
 		{
-			tile->getTile().Draw(_DD);
+			for (auto& tile : plane.second)
+			{
+				tile->getTile().Draw(_DD);
+				tile->getGridData().draw(_DD);
+			}
 		}
 	}
 }
