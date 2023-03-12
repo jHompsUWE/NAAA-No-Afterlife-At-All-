@@ -12,7 +12,7 @@ void FileManager::awake()
     Manager::awake();
 }
 
-void FileManager::update(DX::StepTimer const& _timer)
+void FileManager::update(GameData& _game_data)
 {
     //std::cout << test_val << std::endl;
 }

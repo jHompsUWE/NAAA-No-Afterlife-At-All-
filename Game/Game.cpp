@@ -173,7 +173,7 @@ void Game::Update(DX::StepTimer const& _timer)
     // GameState updates
     // Change state depending on update result
     State prev_state = m_GD->current_state;
-    m_GD->current_state = game_states[m_GD->current_state]->update(_timer);
+    m_GD->current_state = game_states[m_GD->current_state]->update(*m_GD);
     if (m_GD->current_state != prev_state)
     {
         if (m_GD->current_state == State::GAME_EXIT)
@@ -229,7 +229,7 @@ void Game::Update(DX::StepTimer const& _timer)
 
 void Game::lateUpdate(DX::StepTimer const& _timer)
 {
-    GameManager::get()->lateUpdate(_timer);
+    GameManager::get()->lateUpdate(*m_GD);
 }
 
 // Draws the scene.

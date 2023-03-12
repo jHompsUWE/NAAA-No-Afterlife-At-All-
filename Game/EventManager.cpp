@@ -16,12 +16,12 @@ void EventManager::triggerEvent(std::shared_ptr<Event> _event)
 	events.emplace_back(_event);
 }
 
-void EventManager::lateUpdate(DX::StepTimer const& _timer)
+void EventManager::lateUpdate(GameData& _game_data)
 {
-	dispatchEvents(_timer);
+	dispatchEvents(_game_data);
 }
 
-void EventManager::dispatchEvents(DX::StepTimer const& _timer)
+void EventManager::dispatchEvents(GameData& _game_data)
 {
 	for (int i = events.size()-1; i >= 0; i--)
 	{
@@ -29,7 +29,7 @@ void EventManager::dispatchEvents(DX::StepTimer const& _timer)
 
 		if (event->delay > 0)
 		{
-			event->delay -= _timer.GetElapsedSeconds();
+			event->delay -= _game_data.m_dt;
 			continue;
 		}
 

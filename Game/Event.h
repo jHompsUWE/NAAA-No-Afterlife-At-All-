@@ -1,7 +1,5 @@
 #pragma once
 
-#include "GameStateBase.h"
-
 enum class EventType
 {
     // InputEvents

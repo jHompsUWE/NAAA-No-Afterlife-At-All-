@@ -8,7 +8,7 @@ void InputManager::awake()
 	current_action_map = &game_action_map; // in future, will rely on the finite state machine to determine current action map.
 }
 
-void InputManager::update(DX::StepTimer const& _timer)
+void InputManager::update(GameData& _game_data)
 {
 	for (auto const action : *current_action_map)
 	{
@@ -16,7 +16,7 @@ void InputManager::update(DX::StepTimer const& _timer)
 		{
 			case InputType::key_pressed: 
 			{
-				if (GameManager::get()->getGameData().m_KBS_tracker.IsKeyPressed(action.key_button))
+				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button))
 				{
 					Event event{};
 					event.type = action.command;
@@ -27,7 +27,7 @@ void InputManager::update(DX::StepTimer const& _timer)
 
 			case InputType::key_released: 
 			{
-				if (GameManager::get()->getGameData().m_KBS_tracker.IsKeyReleased(action.key_button))
+				if (_game_data.m_KBS_tracker.IsKeyReleased(action.key_button))
 				{
 					Event event{};
 					event.type = action.command;
@@ -38,8 +38,8 @@ void InputManager::update(DX::StepTimer const& _timer)
 
 			case InputType::key_pressed_with_mod: 
 			{
-				if (GameManager::get()->getGameData().m_KBS_tracker.IsKeyPressed(action.key_button) &&
-					GameManager::get()->getGameData().m_KBS_tracker.IsKeyPressed(action.modifier))
+				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button) &&
+					_game_data.m_KBS_tracker.IsKeyPressed(action.modifier))
 				{
 					Event event{};
 					event.type = action.command;

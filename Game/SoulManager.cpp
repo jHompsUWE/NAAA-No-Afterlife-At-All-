@@ -47,11 +47,11 @@ void SoulManager::awake()
 
 }
 
-void SoulManager::update(DX::StepTimer const& _timer)
+void SoulManager::update(GameData& _game_data)
 {
 	
 }
 
-void SoulManager::lateUpdate(DX::StepTimer const& _timer)
+void SoulManager::lateUpdate(GameData& _game_data)
 {
 }

@@ -12,8 +12,8 @@ public:
 	};
 	bool init(HWND _window, int _width, int _height) override;
 	void reset() override;
-	State update(DX::StepTimer const& _timer) override;
-	State lateUpdate(DX::StepTimer const& _timer) override;
+	State update(GameData& _game_data) override;
+	State lateUpdate(GameData& _game_data) override;
 	void render3D() override;
 	void render2D() override;
 

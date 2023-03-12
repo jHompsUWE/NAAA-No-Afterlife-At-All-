@@ -82,17 +82,17 @@ void GamePlay::reset()
 
 }
 
-State GamePlay::update(DX::StepTimer const& _timer)
+State GamePlay::update(GameData& _game_data)
 {
-	GameManager::get()->update(_timer);
+	GameManager::get()->update(_game_data);
 	
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GamePlay::lateUpdate(DX::StepTimer const& _timer)
+State GamePlay::lateUpdate(GameData& _game_data)
 {
-	GameManager::get()->lateUpdate(_timer);
-	return GameStateBase::lateUpdate(_timer);
+	GameManager::get()->lateUpdate(_game_data);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GamePlay::render3D()

@@ -37,8 +37,8 @@ public:
 
 	virtual bool init(HWND _window, int _width, int _height);
 	virtual void reset();
-	virtual State update(DX::StepTimer const& _timer);
-	virtual State lateUpdate(DX::StepTimer const& _timer);
+	virtual State update(GameData& _game_data);
+	virtual State lateUpdate(GameData& _game_data);
 	virtual void render3D();
 	virtual void render2D();
 	

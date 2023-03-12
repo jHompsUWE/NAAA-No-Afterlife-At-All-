@@ -13,14 +13,14 @@ void GameMenu::reset()
 
 }
 
-State GameMenu::update(DX::StepTimer const& _timer)
+State GameMenu::update(GameData& _game_data)
 {
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GameMenu::lateUpdate(DX::StepTimer const& _timer)
+State GameMenu::lateUpdate(GameData& _game_data)
 {
-	return GameStateBase::lateUpdate(_timer);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GameMenu::render3D()

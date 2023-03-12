@@ -9,19 +9,19 @@ void GameManager::awake()
 	}
 }
 
-void GameManager::update(DX::StepTimer const& _timer)
+void GameManager::update(GameData& _game_data)
 {
 	for (auto manager : managers)
 	{
-		manager->update(_timer);
+		manager->update(_game_data);
 	}
 }
 
-void GameManager::lateUpdate(DX::StepTimer const& _timer)
+void GameManager::lateUpdate(GameData& _game_data)
 {
 	for (auto manager : managers)
 	{
-		manager->lateUpdate(_timer);
+		manager->lateUpdate(_game_data);
 	}
 }
 

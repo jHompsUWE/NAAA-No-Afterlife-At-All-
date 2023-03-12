@@ -16,7 +16,7 @@ public:
 	////////////////////////////////////////////////////////////
 	/// \brief Needs to override to avoid being an abstract class or could not inherit from manager. \n Does nothing for EventManager.
 	////////////////////////////////////////////////////////////
-	void update(DX::StepTimer const& _timer) override {};
+	void update(GameData& _game_data) override {};
 
 	////////////////////////////////////////////////////////////
 	/// \brief Call to add a listener to the active listener vector.
@@ -40,7 +40,7 @@ public:
 	/// \brief Called every cycle of the game loop, but after update.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-	void lateUpdate(DX::StepTimer const& _timer) override;
+	void lateUpdate(GameData& _game_data) override;
 
 private:
 	////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ private:
 	/// A future development would be to filter events to only send to listeners that need them.
 	/// \param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-	void dispatchEvents(DX::StepTimer const& _timer);
+	void dispatchEvents(GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Vector of events to be distributed to listeners.

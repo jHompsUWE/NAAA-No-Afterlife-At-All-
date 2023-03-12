@@ -46,7 +46,7 @@ void GameStateBase::reset()
 
 }
 
-State GameStateBase::update(DX::StepTimer const& _timer)
+State GameStateBase::update(GameData& _game_data)
 {
 	for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); it++)
 	{
@@ -59,7 +59,7 @@ State GameStateBase::update(DX::StepTimer const& _timer)
 	return m_state;
 }
 
-State GameStateBase::lateUpdate(DX::StepTimer const& _timer)
+State GameStateBase::lateUpdate(GameData& _game_data)
 {
 	return m_state;
 }

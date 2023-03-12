@@ -15,7 +15,7 @@ class FileManager : public Manager
 {
 public:
     void awake() override;
-    void update(DX::StepTimer const& _timer) override;
+    void update(GameData& _game_data) override;
 
     ////////////////////////////////////////////////////////////
     /// \brief Save the game.

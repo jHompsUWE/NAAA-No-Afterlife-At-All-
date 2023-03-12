@@ -2,7 +2,7 @@
 #include "EconomyManager.h"
 #include <ostream>
 
-void EconomyManager::update(DX::StepTimer const& _timer)
+void EconomyManager::update(GameData& _game_data)
 {
 }
 
