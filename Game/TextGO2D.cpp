@@ -8,9 +8,20 @@ TextGO2D::TextGO2D(string _text)
 	m_text = _text;
 }
 
+void TextGO2D::SetString(string _text)
+{
+	m_text = _text;
+}
+
+string TextGO2D::GetString()
+{
+	return m_text;
+}
 
 void TextGO2D::Tick(GameData* _GD)
 {
+	//_GD->m_GS;
+	//m_rotation += 0.1;
 }
 
 

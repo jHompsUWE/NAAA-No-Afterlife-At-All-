@@ -25,11 +25,22 @@ public:
 	virtual void Tick(GameData* _GD) = 0;
 	virtual void Draw(DrawData2D* _DD) = 0;
 
+	//getters
+	Vector2		GetPos() { return m_pos; }
+	Vector2		GetScale() { return m_scale; }
+
+	float		GetRotation() { return m_rotation; }
+
+
+
+
 	//setters
 
 	void SetPos(Vector2 _pos) { m_pos = _pos; }
+	void SetPos(float x, float y) { m_pos.x = x, m_pos.y = y; }
 	void SetRot(float _rot) { m_rotation = _rot; }
 	void SetColour(Color _colour) { m_colour = _colour; }
+	void SetColour(XMVECTORF32 _colour) { m_colour = _colour; }
 	void SetScale(Vector2 _scale) { m_scale = _scale; }
 	void SetScale(float _scale) { m_scale = _scale * Vector2::One; }
 	void SetOrigin(Vector2 _origin) { m_origin = _origin; }

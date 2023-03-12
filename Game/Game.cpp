@@ -69,9 +69,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_keyboard = std::make_unique<Keyboard>();
     m_mouse = std::make_unique<Mouse>();
     m_mouse->SetWindow(_window);
-    m_mouse->SetMode(Mouse::MODE_RELATIVE);
+    m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
-    ShowCursor(false);
+    ShowCursor(true);
 
     //create GameData struct and populate its pointers
     m_GD = new GameData;
@@ -153,25 +153,37 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_light = m_light;
 
     //example basic 2D stuff
-    ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
+    Window* logo = new Window("logo_small", m_d3dDevice.Get());
     logo->SetPos(200.0f * Vector2::One);
     m_GameObjects2D.push_back(logo);
-    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
+    /*Window* bug_test = new Window("bug_test", m_d3dDevice.Get());
     bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);
+    m_GameObjects2D.push_back(bug_test);*/
 
     TextGO2D* text = new TextGO2D("Test Text");
     text->SetPos(Vector2(100, 10));
     text->SetColour(Color((float*)&Colors::Yellow));
     m_GameObjects2D.push_back(text);
 
+    /*Button* button = new Button("bug_test", m_d3dDevice.Get(), logo, bug_test);
+    button->SetPos(400.0f * Vector2::One);
+    m_GameObjects2D.push_back(button);*/
+
+    UIRemote* remote = new UIRemote(m_d3dDevice.Get(), logo);
+    remote->SetPos(100,230);
+    remote->SetButtonPos();
+    m_GameObjects2D.push_back(remote);
+
+
+
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
-    loop->SetVolume(0.1f);
+    loop->SetVolume(0.05f);
     loop->Play();
     m_Sounds.push_back(loop);
 
     TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
+    TS->SetVolume(0.05f);
     m_Sounds.push_back(TS);
 
 
@@ -225,6 +237,8 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    m_GD->m_mouseButtons.Update(mouse);
+    auto mouse = m_mouse->GetState();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
@@ -382,6 +396,7 @@ void Game::Present()
 // Message handlers
 void Game::OnActivated()
 {
+    m_GD->m_mouseButtons.Reset();
     // TODO: Game is becoming active window.
 }
 
@@ -398,6 +413,7 @@ void Game::OnSuspending()
 void Game::OnResuming()
 {
     m_timer.ResetElapsedTime();
+    m_GD->m_mouseButtons.Reset();
 
     // TODO: Game is being power-resumed (or returning from minimize).
 }

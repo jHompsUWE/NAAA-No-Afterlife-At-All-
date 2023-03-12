@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ImageGO2D.h"
+#include "Window.h"
 #include "DDSTextureLoader.h"
 #include "DrawData2D.h"
 #include "GameData.h"
@@ -7,7 +7,7 @@
 #include <iostream>
 #include "Mouse.h"
 
-ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
+Window::Window(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
 {
 	string fullfilename = "../Assets/" + _fileName + ".dds";
 	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
@@ -36,7 +36,7 @@ ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 }
 
-ImageGO2D::~ImageGO2D()
+Window::~Window()
 {
 	if (m_pTextureRV)
 	{
@@ -45,14 +45,41 @@ ImageGO2D::~ImageGO2D()
 	}
 }
 
-void ImageGO2D::Tick(GameData* _GD)
+void Window::Tick(GameData* _GD)
 {
-	
+	bounds.x = m_pos.x - (bounds.width / 2);
+	bounds.y = m_pos.y - (bounds.height / 2);
+
+
+
+	int mouseX = _GD->m_MS.x;
+	int mouseY = _GD->m_MS.y;
+	Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+	if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	{
+		differenceX = m_pos.x - _GD->m_MS.x;
+		differenceY = m_pos.y - _GD->m_MS.y;
+
+		dragged = true;
+	}
+
+	if (dragged == true && _GD->m_MS.leftButton == 1)
+	{
+
+		m_pos.x = _GD->m_MS.x + differenceX;
+		m_pos.y = _GD->m_MS.y + differenceY;
+	}
+
+	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+	{
+		dragged = false;
+	}
 }
 
 
 
-void ImageGO2D::Draw(DrawData2D* _DD)
+void Window::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab
 	//you can also add an extra value at the end to define layer depth
@@ -62,5 +89,5 @@ void ImageGO2D::Draw(DrawData2D* _DD)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
 	}
-	
+
 }
