@@ -136,5 +136,4 @@ private:
     std::shared_ptr<FileManager> file_manager_;
     std::shared_ptr<InputManager> input_manager;
     std::shared_ptr<WorldManager> world_manager;
-    std::shared_ptr<InputManager> input_manager;
 };

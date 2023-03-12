@@ -125,8 +125,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     // TileTest->SetPos(Vector3(100.0f, 0.0f, 100.0f));
     // m_GameObjects.push_back(TileTest);
 
-   
-
 
     //create a base camera
     m_cam = new Camera(0.25f * XM_PI, AR, 1.0f, 10000.0f, Vector3::UnitY, Vector3::Zero);
@@ -175,7 +173,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GameObjects2D.push_back(remote);
 
 
-
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
     loop->SetVolume(0.05f);
@@ -208,20 +205,19 @@ void Game::Initialize(HWND _window, int _width, int _height)
         }
     }
 
-    GameManager::get()->setGameData(m_GD);
-    
-    world_manager = std::make_shared<WorldManager>();
-    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-
-    world_manager->init(m_d3dDevice, m_fxFactory);
-
-    /*for (auto& plane : world_manager->getWorld())
+	/*for (auto& plane : world_manager->getWorld())
     {
         for (auto& tile : plane.second)
         {
             m_GameObjects.push_back(&tile->getTile());
         }
     }*/
+
+    GameManager::get()->setGameData(m_GD);
+    
+    world_manager = std::make_shared<WorldManager>();
+    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
+    world_manager->init(m_d3dDevice, m_fxFactory);
     
     economy_manager_ = std::make_shared<EconomyManager>();
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
