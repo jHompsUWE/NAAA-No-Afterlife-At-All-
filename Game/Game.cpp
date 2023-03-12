@@ -132,7 +132,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-    world_manager->init(m_d3dDevice, m_fxFactory);
+    world_manager->init(m_d3dContext, m_fxFactory);
     
     // GameState initialisation
     for (auto& state : game_states)
@@ -142,11 +142,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
             //return false;
         }
     }
+    auto& world = world_manager->getWorld();
     world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
-    auto& world = world_manager->getWorld();
+    
 }
 
 // Executes the basic game loop.
