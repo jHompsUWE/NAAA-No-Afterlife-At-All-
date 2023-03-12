@@ -155,9 +155,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
     bug_test->SetPos(300.0f * Vector2::One);
     m_GameObjects2D.push_back(bug_test);
-    //AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("bug_test", 1, m_d3dDevice.Get());
-    //animated_sprite_test->SetPos(500.0f * Vector2::One);
-    //m_GameObjects2D.push_back(animated_sprite_test);
+    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
+    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
+    animated_sprite_test->SetPos(1.0f * Vector2::One);
+    m_GameObjects2D.push_back(animated_sprite_test);
 
     TextGO2D* text = new TextGO2D("Test Text");
     text->SetPos(Vector2(100, 10));
