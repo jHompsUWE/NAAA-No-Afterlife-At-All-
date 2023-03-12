@@ -39,14 +39,14 @@ void TPSCamera::CameraMovement(GameData* _GD)
 	{
 		if (cameraZoom <= 1.2f)
 		{
-			cameraZoom += 0.2f * _GD->m_dt;
+			cameraZoom += .9f * _GD->m_dt;
 		}		
 	}
 	if (_GD->m_KBS.E)
 	{
-		if (cameraZoom >= 0.6f)
+		if (cameraZoom >= 0.09f)
 		{
-			cameraZoom -= 0.2f * _GD->m_dt;
+			cameraZoom -= 0.9f * _GD->m_dt;
 		}		
 	}
 	
@@ -61,12 +61,12 @@ void TPSCamera::CameraMovement(GameData* _GD)
 	}
 	if (_GD->m_KBS.A)
 	{
-		camera_target -= movementZAxis;
+		camera_target += movementZAxis;
 	}
 
 	if (_GD->m_KBS.D)
 	{
-		camera_target += movementZAxis;
+		camera_target -= movementZAxis;
 	}
 }
 
