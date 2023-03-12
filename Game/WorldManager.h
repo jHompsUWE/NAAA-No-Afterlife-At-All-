@@ -42,7 +42,7 @@ private:
 
     int m_grid_x;
     int m_grid_y;
-
+    
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>> m_world;
 
     std::map<int, std::vector<Vector2>> range_map;
