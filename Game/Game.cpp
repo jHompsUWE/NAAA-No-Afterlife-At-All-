@@ -99,34 +99,11 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //create a set of dummy things to show off the engine
 
-    //create a base light
-    m_light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
-    m_GameObjects.push_back(m_light);
-
     //find how big my window is to correctly calculate my aspect ratio
     float AR = (float)_width / (float)_height;
-
-    //example basic 3D stuff
-    //Terrain* terrain = new Terrain("table", m_d3dDevice.Get(), m_fxFactory, Vector3(100.0f, 0.0f, 100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
-    //m_GameObjects.push_back(terrain);
-
-    // Test tile
-    TileGO* tile_go = new TileGO("TileOBJ2", m_d3dDevice.Get(), m_fxFactory, Vector3(600.0f, 20.0f, 350.0f), 0,0, 0);;
-    m_GameObjects.push_back(tile_go);
     
     //L-system like tree
     m_GameObjects.push_back(new Tree(4, 4, .6f, 10.0f * Vector3::Up, XM_PI / 6.0f, "JEMINA vase -up", m_d3dDevice.Get(), m_fxFactory));
-
-    //Vertex Buffer Game Objects
-   // FileVBGO* terrainBox = new FileVBGO("terrainTex", m_d3dDevice.Get());
-    //m_GameObjects.push_back(terrainBox);
-
-    // FileVBGO* TileTest = new FileVBGO("white", m_d3dDevice.Get());
-    // TileTest->SetPos(Vector3(100.0f, 0.0f, 100.0f));
-    // m_GameObjects.push_back(TileTest);
-
-   
-
 
     //create a base camera
     m_cam = new Camera(0.25f * XM_PI, AR, 1.0f, 10000.0f, Vector3::UnitY, Vector3::Zero);
@@ -136,11 +113,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //add Player
     Player* pPlayer = new Player("BirdModelV1", m_d3dDevice.Get(), m_fxFactory);
     m_GameObjects.push_back(pPlayer);
-    
-    //add a secondary camera
-    //Vector3 camera_offset = Vector3(-10.0f, (sqrt(3) / 3) * (6 * sqrt(2)), -10.0f);
 
-
+    float* params = new float[3];
+    params[0] = 10.f;  params[1] = 20.0f; params[2] = 30.f;
+    GPGO* pGPGO = new GPGO(m_d3dContext.Get(), GPGO_BOX, (float*)&Colors::Azure, params);
+    pGPGO->SetPos(Vector3(-50.0f, 10.0f, -100.f));
+    m_GameObjects.push_back(pGPGO);
     
     m_TPScam = new TPSCamera(5.25f * XM_PI, AR, -1000.0f, 10000.0f, Vector3(50.0f, 0.0f, 50.0f), Vector3::UnitY, Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, tan(30.0f * XM_PI / 180.0f) * sqrt(200.0f),10.0f));
     m_GameObjects.push_back(m_TPScam);
@@ -150,29 +128,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_DD->m_pd3dImmediateContext = nullptr;
     m_DD->m_states = m_states;
     m_DD->m_cam = m_TPScam;
-    m_DD->m_light = m_light;
+    m_DD->m_light = nullptr;
 
-    //example basic 2D stuff
-    ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
-    logo->SetPos(200.0f * Vector2::One);
-    m_GameObjects2D.push_back(logo);
-    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
-    bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);
-
-    TextGO2D* text = new TextGO2D("Test Text");
-    text->SetPos(Vector2(100, 10));
-    text->SetColour(Color((float*)&Colors::Yellow));
-    m_GameObjects2D.push_back(text);
-
-    //Test Sounds
-    Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
-    loop->SetVolume(0.1f);
-    loop->Play();
-    m_Sounds.push_back(loop);
-
-    TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
-    m_Sounds.push_back(TS);
+    //TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
+    //m_Sounds.push_back(TS);
 
 
     event_manager = std::make_shared<EventManager>();
@@ -182,10 +141,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
     file_manager_->awake();
-
-    /*FileVBGO* mug = new FileVBGO("mug_text", m_d3dDevice.Get());
-    m_GameObjects.push_back(mug);
-    mug->SetPos(Vector3(100.0f, 30.0f, 100.0f));*/
 
     // GameState initialisation
     for (auto& state : game_states)
@@ -199,15 +154,15 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
 
-    world_manager->init(m_d3dDevice, m_fxFactory);
+    world_manager->init(m_d3dContext, m_fxFactory);
 
-    /*for (auto& plane : world_manager->getWorld())
-    {
-        for (auto& tile : plane.second)
-        {
-            m_GameObjects.push_back(&tile->getTile());
-        }
-    }*/
+    auto& world = world_manager->getWorld();
+
+    world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
+
+    world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
+
+   // world[PlaneType::Earth][10]->getTile().SetColour(Color(1, 1, 1));
 }
 
 // Executes the basic game loop.

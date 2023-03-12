@@ -24,6 +24,11 @@ struct GridData
 		m_stored_building = nullptr;
 	}
 
+	void createBuilding(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector3 _pos)
+	{
+		m_stored_building = new Building(_device, _pos);
+	}
+
 	// Placeholder for now until actual class is sorted
 	Building* m_stored_building = nullptr;
 

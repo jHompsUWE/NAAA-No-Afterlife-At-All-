@@ -6,9 +6,12 @@ GridLocation::GridLocation()
 
 }
 
-GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11Device1> _device, DirectX::IEffectFactory* _fxFactory, Vector2 _pos)
+GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _pos, int plane)
 {
-    m_tile = new TileGO("TileOBJ2", _device.Get(), _fxFactory, Vector3(_pos.x * 40.0f, 0.0f, _pos.y * 40.0f), 0, 0, 0);
+    float* params = new float[3];
+    params[0] = 25.0f; params[1] = 5.0f; params[2] = 25.0f;
+    m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::Red, params, 
+        Vector3(_pos.x * 25.0f + plane * 130.0f, 0.0f, _pos.y * 25.0f + plane * 130.0f));
 
     m_grid_data.m_position = _pos;
 }
@@ -19,12 +22,17 @@ GridLocation::~GridLocation()
     m_tile = nullptr;
 }
 
+void GridLocation::createBuilding(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
+{
+    m_grid_data.createBuilding(_device, m_tile->GetPos());
+}
+
 GridData& GridLocation::getGridData()
 {
     return m_grid_data;
 }
 
-TileGO& GridLocation::getTile()
+GPGO& GridLocation::getTile()
 {
     return *m_tile;
 }
