@@ -190,7 +190,6 @@
     <ClInclude Include="GPGO.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
-    <ClInclude Include="InputListenerTest.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
@@ -236,7 +235,6 @@
     <ClCompile Include="GameTutorial.cpp" />
     <ClCompile Include="GPGO.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
-    <ClCompile Include="InputListenerTest.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />

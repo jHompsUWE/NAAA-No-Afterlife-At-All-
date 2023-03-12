@@ -20,7 +20,6 @@ void InputManager::update(DX::StepTimer const& _timer)
 				{
 					Event event{};
 					event.type = action.command;
-					std::cout << "created event" << std::endl;
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;

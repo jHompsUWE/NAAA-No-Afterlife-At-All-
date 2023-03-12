@@ -275,10 +275,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    test = std::make_shared<InputListenerTest>();
-    GameManager::get()->addManager(test, ManagerType::ECONOMY);
-    GameManager::get()->getEventManager()->addListener(&*test);
-
     GameManager::get()->awake();
 }
 

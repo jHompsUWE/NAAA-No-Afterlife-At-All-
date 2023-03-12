@@ -14,7 +14,6 @@ void EventManager::removeListener(Listener* _listener)
 void EventManager::triggerEvent(std::shared_ptr<Event> _event)
 {
 	events.emplace_back(_event);
-	std::cout << "received event" << std::endl;
 }
 
 void EventManager::lateUpdate(DX::StepTimer const& _timer)
@@ -37,7 +36,6 @@ void EventManager::dispatchEvents(DX::StepTimer const& _timer)
 		for (auto listener : listeners)
 		{
 			listener->onEvent(*event);
-			std::cout << "event dispatched" << std::endl;
 		}
 		
 		events.erase(std::remove(events.begin(), events.end(), event), events.end());

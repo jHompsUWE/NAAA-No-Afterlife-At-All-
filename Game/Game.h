@@ -20,7 +20,6 @@
 #include "EventManager.h"
 #include "FileManager.h"
 #include "EconomyManager.h"
-#include "InputListenerTest.h"
 
 using std::list;
 
@@ -135,5 +134,4 @@ private:
     std::shared_ptr<EconomyManager> economy_manager_;
     std::shared_ptr<FileManager> file_manager_;
     std::shared_ptr<InputManager> input_manager;
-    std::shared_ptr<InputListenerTest> test;
 };

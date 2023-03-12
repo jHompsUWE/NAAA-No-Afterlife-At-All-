@@ -261,9 +261,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Input\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputListenerTest.h">
-      <Filter>Input</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -367,9 +364,6 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Input\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputListenerTest.cpp">
-      <Filter>Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
