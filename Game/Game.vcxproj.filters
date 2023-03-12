@@ -288,6 +288,9 @@
     <ClInclude Include="Animation.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionHandler.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -417,6 +420,9 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionHandler.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

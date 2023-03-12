@@ -41,7 +41,7 @@ public:
 	virtual State lateUpdate(DX::StepTimer const& _timer);
 	virtual void render3D();
 	virtual void render2D();
-	
+	TPSCamera& getCamera() { return *m_TPScam; }
 protected:
 	State m_state;
 	GameData* m_GD;

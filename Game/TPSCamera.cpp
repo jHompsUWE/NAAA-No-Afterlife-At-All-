@@ -33,7 +33,7 @@ void TPSCamera::CameraMovement(GameData* _GD)
 {
 	constexpr float cameraSpeed = 1.2f;
 	const Vector3 movementYAxis = cameraSpeed * Vector3::UnitY;
-	const Vector3 movementZAxis = cameraSpeed * Vector3::UnitZ;
+	const Vector3 movementZAxis = cameraSpeed * Vector3(-1.f, 0.0f, 1.0f);
 
 	if (_GD->m_KBS.Q)
 	{

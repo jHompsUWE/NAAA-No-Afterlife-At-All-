@@ -120,17 +120,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //text->SetPos(Vector2(100, 10));
     //text->SetColour(Color((float*)&Colors::Yellow));
    // m_GameObjects2D.push_back(text);
-
-    //Test Sounds
-    Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
-    loop->SetVolume(0.05f);
-    loop->Play();
-    m_Sounds.push_back(loop);
-
-    TestSound* TS = new TestSound(m_audioEngine.get(), "Explo1");
-    TS->SetVolume(0.05f);
-    
-    m_Sounds.push_back(TS);
     
     event_manager = std::make_shared<EventManager>();
     GameManager::get()->addManager(event_manager, ManagerType::EVENT);
@@ -157,6 +146,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
     
+    m_selection_handler = std::make_unique<SelectionHandler>(world_manager->getWorld(), m_GD);
+
 }
 
 // Executes the basic game loop.
@@ -178,6 +169,8 @@ void Game::Update(DX::StepTimer const& _timer)
     m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
+
+    m_selection_handler->update(game_states[State::GAME_PLAY]->getCamera());
 
     // GameState updates
     // Change state depending on update result

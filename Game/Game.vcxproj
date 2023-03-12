@@ -288,6 +288,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SaveStruct.h" />
+    <ClInclude Include="SelectionHandler.h" />
     <ClInclude Include="SoulManager.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StepTimer.h" />
@@ -346,6 +347,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SelectionHandler.cpp" />
     <ClCompile Include="SoulManager.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Terrain.cpp" />
