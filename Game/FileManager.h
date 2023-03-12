@@ -5,7 +5,6 @@
 #include "Manager.h"
 #include "SaveStruct.h"
 #include "json.hpp"
-#include <any>
 
 #define GET_VARIABLE_NAME(Variable) (#Variable)
 
