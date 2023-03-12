@@ -172,9 +172,9 @@ void Game::Update(DX::StepTimer const& _timer)
 
     // GameState updates
     // Change state depending on update result
-    State prev_state = current_state;
-    current_state = game_states[current_state]->update(_timer);
-    if (current_state != prev_state)
+    State prev_state = m_GD->current_state;
+    m_GD->current_state = game_states[m_GD->current_state]->update(_timer);
+    if (m_GD->current_state != prev_state)
     {
         if (m_GD->current_state == State::GAME_EXIT)
         {
@@ -249,7 +249,7 @@ void Game::Render()
     //update the constant buffer for the rendering of VBGOs
     
     
-    game_states[current_state]->render3D();
+    game_states[m_GD->current_state]->render3D();
     //Draw 3D Game Obejects
     
 
@@ -257,7 +257,7 @@ void Game::Render()
     
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
-    game_states[current_state]->render2D();
+    game_states[m_GD->current_state]->render2D();
     m_DD2D->m_Sprites->End();
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
@@ -534,36 +534,8 @@ void Game::ReadInput()
 
     if (m_GD->m_KBS.N)
     {
-        current_state = State::GAME_PLAY;
+        m_GD->current_state = State::GAME_PLAY;
     }
 
-
-    
-    
-    // Below keybinds are temporary.
-    if (m_GD->m_KBS.Space)
-    {
-        Event event{};
-        event.type = EventType::KeyReleased;
-        event.payload.key_event.str = (char*)"helo";
-
-        event_manager->triggerEvent(std::make_shared<Event>(event));
-    }
-    
-    if (m_GD->m_KBS.L)
-    {
-        file_manager_->save();
-    }
-    if (m_GD->m_KBS.K)
-    {
-        file_manager_->load();
-    }
-    
-    
     m_GD->m_MS = m_mouse->GetState();
-
-    //lock the cursor to the centre of the window
-    //RECT window;
-    //GetWindowRect(m_window, &window);
-    //SetCursorPos((window.left + window.right) >> 1, (window.bottom + window.top) >> 1);
 }
