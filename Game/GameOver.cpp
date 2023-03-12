@@ -1,12 +1,8 @@
 #include "pch.h"
 #include "GameOver.h"
 
-GameOver::GameOver(State _state, GameData* _GD, DrawData* _DD, DrawData2D* _DD2D) : GameStateBase(_state, _GD, _DD, _DD2D)
-{
 
-}
-
-bool GameOver::init()
+bool GameOver::init(HWND _window, int _width, int _height)
 {
 	return true;
 }
@@ -16,13 +12,23 @@ void GameOver::reset()
 
 }
 
-State GameOver::update()
+State GameOver::update(DX::StepTimer const& _timer)
 {
-	return m_state;
+	return GameStateBase::update(_timer);
 }
 
-void GameOver::render()
+State GameOver::lateUpdate(DX::StepTimer const& _timer)
 {
+	return GameStateBase::lateUpdate(_timer);
+}
 
+void GameOver::render3D()
+{
+	GameStateBase::render3D();
+}
+
+void GameOver::render2D()
+{
+	GameStateBase::render2D();
 }
 

@@ -15,9 +15,24 @@ public:
 	ImageGO2D(string _fileName, ID3D11Device* _GD);
 	virtual ~ImageGO2D();
 
+	void SetUV(RECT* animated_uv);
+
+
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
+
+	D3D11_TEXTURE2D_DESC Desc;
+
+
+
+	bool renderable = true;
 protected:
+
+	RECT uv;
+	RECT* uv_ref = &uv;
+
+
+	Rectangle bounds;
 
 	ID3D11ShaderResourceView* m_pTextureRV;
 };

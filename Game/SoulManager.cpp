@@ -35,7 +35,6 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	case PlaneType::None:
 		return 
 			m_Heven_wanderingSouls.size() + m_Heven_ZonedSouls.size() +
-				m_Earth_Souls.size() +
 					m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size()
 		;
 	}

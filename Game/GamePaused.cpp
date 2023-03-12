@@ -1,12 +1,9 @@
 #include "pch.h"
 #include "GamePaused.h"
 
-GamePaused::GamePaused(State _state, GameData* _GD, DrawData* _DD, DrawData2D* _DD2D) : GameStateBase(_state, _GD, _DD, _DD2D)
-{
 
-}
 
-bool GamePaused::init()
+bool GamePaused::init(HWND _window, int _width, int _height)
 {
 	return true;
 }
@@ -16,12 +13,22 @@ void GamePaused::reset()
 
 }
 
-State GamePaused::update()
+State GamePaused::update(DX::StepTimer const& _timer)
 {
-	return m_state;
+	return GameStateBase::update(_timer);
 }
 
-void GamePaused::render()
+State GamePaused::lateUpdate(DX::StepTimer const& _timer)
 {
+	return GameStateBase::lateUpdate(_timer);
+}
 
+void GamePaused::render3D()
+{
+	GameStateBase::render3D();
+}
+
+void GamePaused::render2D()
+{
+	GameStateBase::render2D();
 }

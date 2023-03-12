@@ -25,6 +25,14 @@ void GameManager::lateUpdate(DX::StepTimer const& _timer)
 	}
 }
 
+void GameManager::render(DrawData* m_DD)
+{
+	for (auto manager : managers)
+	{
+		manager->render(m_DD);
+	}
+}
+
 bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _type)
 {
 	managers.emplace_back(_manager);

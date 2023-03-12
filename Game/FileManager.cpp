@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "FileManager.h"
 
-
-
 void FileManager::awake()
 {
     save_struct = std::make_unique<SaveStruct>();
