@@ -20,6 +20,7 @@ public:
 
 	void SetBounds();
 	void SetName(string _name);
+	void SetToggle(Window* toggle);
 
 	float differenceX;
 	float differenceY;

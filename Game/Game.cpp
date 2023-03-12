@@ -171,7 +171,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     UIRemote* remote = new UIRemote(m_d3dDevice.Get(), logo);
     remote->SetPos(100,230);
-    remote->SetButtonPos();
+    remote->SetButtonBounds();
     m_GameObjects2D.push_back(remote);
 
 

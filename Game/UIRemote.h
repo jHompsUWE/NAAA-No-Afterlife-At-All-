@@ -12,7 +12,9 @@ public:
 	UIRemote(ID3D11Device* _GD, Window* toggle);
 	virtual ~UIRemote();
 
-	void SetButtonPos();
+	void SetButtonBounds();
+
+	void InitButtonNames();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);

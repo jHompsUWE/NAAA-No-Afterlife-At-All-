@@ -106,14 +106,11 @@ UIRemote::UIRemote(ID3D11Device* _GD, Window* toggle) :m_pTextureRV(nullptr)
 		buttons[x + 33]->SetPos(x * 28, 10 * yDistancing + yOffset);
 	}
 
-	// Setting the colour of buttons
+
+	// Setting buttons names and colours
 	// Zone buttons
 	buttons[0]->SetColour(Colors::Green);
-	buttons[0]->SetName("Envy/Content");
-
 	buttons[1]->SetColour(Colors::Yellow);
-	buttons[1]->SetName("Avarice/Charity");
-
 	buttons[2]->SetColour(Colors::Orange);
 	buttons[3]->SetColour(Colors::SaddleBrown);
 	buttons[4]->SetColour(Colors::Magenta);
@@ -127,7 +124,7 @@ UIRemote::UIRemote(ID3D11Device* _GD, Window* toggle) :m_pTextureRV(nullptr)
 	buttons[23]->SetColour(Colors::DarkRed);
 	buttons[26]->SetColour(Colors::Purple);
 
-
+	InitButtonNames();
 
 	////////////
 	// INIT TEXT
@@ -167,7 +164,53 @@ UIRemote::~UIRemote()
 	}
 }
 
-void UIRemote::SetButtonPos()
+void UIRemote::InitButtonNames()
+{
+	// Zones
+	buttons[0]->SetName("Envy/Content");
+	buttons[1]->SetName("Avarice/Charity");
+	buttons[2]->SetName("Glut/Tempered");
+	buttons[3]->SetName("Sloth/Diligence");
+	buttons[4]->SetName("Lust/Chastity");
+	buttons[5]->SetName("Wrath/Peace");
+	buttons[6]->SetName("Pride/Humility");
+	buttons[7]->SetName("Generic Zone");
+
+	// Buildings and roads
+	buttons[8]->SetName("Gates");
+	buttons[9]->SetName("Roads");
+	buttons[10]->SetName("Karma Stations");
+	buttons[11]->SetName("Karma Track");
+	buttons[12]->SetName("Topias");
+	buttons[13]->SetName("Training Centre");
+	buttons[14]->SetName("Ports");
+	buttons[15]->SetName("Siphons/Banks");
+	buttons[16]->SetName("Special");
+	buttons[17]->SetName("Omnibolges");
+	buttons[18]->SetName("Limbo Buildings");
+	buttons[19]->SetName("Zap");
+
+	// Camera view
+	buttons[20]->SetName("View Up");
+	buttons[21]->SetName("View Left");
+	buttons[22]->SetName("View Down");
+	buttons[23]->SetName("View Right");
+	buttons[24]->SetName("Zoom In");
+	buttons[25]->SetName("Zoom Out");
+
+	// Window toggles
+	buttons[26]->SetName("Planet View");
+	buttons[27]->SetName("Graphview");
+	buttons[28]->SetName("Soulview");
+	buttons[29]->SetName("Macro Manager");
+	buttons[30]->SetName("Mapview");
+	buttons[31]->SetName("Advisors");
+	buttons[32]->SetName("Microview");
+
+
+}
+
+void UIRemote::SetButtonBounds()
 {
 	for (int i = 0; i < 37; i++)
 	{

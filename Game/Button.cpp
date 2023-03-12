@@ -82,6 +82,11 @@ void Button::SetName(string _name)
 	buttonName = _name;
 }
 
+void Button::SetToggle(Window* toggle)
+{
+	toggleWindow = toggle;
+}
+
 void Button::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
