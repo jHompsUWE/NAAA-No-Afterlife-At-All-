@@ -1,14 +1,11 @@
 #include "pch.h"
 #include "GameMenu.h"
 
-GameMenu::GameMenu(State _state, GameData* _GD, DrawData* _DD, DrawData2D* _DD2D) : GameStateBase(_state, _GD, _DD, _DD2D)
-{
 
-}
 
-bool GameMenu::init()
+bool GameMenu::init(HWND _window, int _width, int _height)
 {
-	return true;
+	return GameStateBase::init(_window, _width, _height);
 }
 
 void GameMenu::reset()
@@ -16,12 +13,23 @@ void GameMenu::reset()
 
 }
 
-State GameMenu::update()
+State GameMenu::update(DX::StepTimer const& _timer)
 {
-	return m_state;
+	return GameStateBase::update(_timer);
 }
 
-void GameMenu::render()
+State GameMenu::lateUpdate(DX::StepTimer const& _timer)
 {
+	return GameStateBase::lateUpdate(_timer);
+}
 
+void GameMenu::render3D()
+{
+	
+	GameStateBase::render3D();
+}
+
+void GameMenu::render2D()
+{
+	GameStateBase::render2D();
 }

@@ -1,7 +1,9 @@
 #pragma once
 
+#include "DrawData.h"
 #include "StepTimer.h"
 #include "GameData.h"
+
 
 class Manager
 {
@@ -25,4 +27,6 @@ public:
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
 	virtual void lateUpdate(DX::StepTimer const& _timer) {};
+
+	virtual void render(DrawData* m_DD) {};
 };

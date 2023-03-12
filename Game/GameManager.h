@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 
+#include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
 #include "InputManager.h"
@@ -56,7 +57,12 @@ public:
 	////////////////////////////////////////////////////////////
 	void lateUpdate(DX::StepTimer const& _timer);
 
-
+	////////////////////////////////////////////////////////////
+	/// \brief Called every cycle of the game loop, but after update.
+	///	\param _timer DeltaTime.
+	////////////////////////////////////////////////////////////
+	void render(DrawData* m_DD);
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Attempts to add a manager to the vector of managers to updated each tick.
 	/// \param _manager The manager to add to the manager vector.
