@@ -31,7 +31,9 @@ protected:
 	RECT uv;
 	RECT* uv_ref = &uv;
 
+
 	Rectangle bounds;
+
 	ID3D11ShaderResourceView* m_pTextureRV;
 };
 

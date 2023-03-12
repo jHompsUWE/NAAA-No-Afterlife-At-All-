@@ -35,13 +35,7 @@ Game::Game() noexcept :
     m_outputHeight(600),
     m_featureLevel(D3D_FEATURE_LEVEL_11_0)
 {
-    
-  
-    
-    
-    
-    
-    
+
 }
 
 // Initialize the Direct3D resources required to run.
@@ -114,21 +108,18 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
 
     //example basic 2D stuff
-    ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
-    logo->SetPos(200.0f * Vector2::One);
-    m_GameObjects2D.push_back(logo);
-    ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
-    bug_test->SetPos(300.0f * Vector2::One);
-    m_GameObjects2D.push_back(bug_test);
-    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
-    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
-    animated_sprite_test->SetPos(1.0f * Vector2::One);
-    m_GameObjects2D.push_back(animated_sprite_test);
+    //ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
+   // logo->SetPos(200.0f * Vector2::One);
+    //m_GameObjects2D.push_back(logo);
+    //ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
+    //bug_test->SetPos(300.0f * Vector2::One);
+    //m_GameObjects2D.push_back(bug_test);
+    
 
-    TextGO2D* text = new TextGO2D("Test Text");
-    text->SetPos(Vector2(100, 10));
-    text->SetColour(Color((float*)&Colors::Yellow));
-    m_GameObjects2D.push_back(text);
+    //TextGO2D* text = new TextGO2D("Test Text");
+    //text->SetPos(Vector2(100, 10));
+    //text->SetColour(Color((float*)&Colors::Yellow));
+   // m_GameObjects2D.push_back(text);
 
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
