@@ -1,6 +1,7 @@
 #pragma once
 
 #include "StepTimer.h"
+#include "GameData.h"
 
 class Manager
 {

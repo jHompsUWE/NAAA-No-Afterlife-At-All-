@@ -275,6 +275,7 @@
     <ClInclude Include="GridLocation.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -284,6 +285,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlaneType.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SaveStruct.h" />
     <ClInclude Include="SoulManager.h" />
     <ClInclude Include="Sound.h" />
@@ -329,6 +331,7 @@
     <ClCompile Include="GPGO.cpp" />
     <ClCompile Include="GridLocation.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
@@ -356,6 +359,9 @@
     <ClCompile Include="VBSnail.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <iostream>
 
 #include "Manager.h"
 #include "Event.h"

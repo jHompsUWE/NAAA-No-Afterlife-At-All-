@@ -67,6 +67,15 @@
     <Filter Include="Base\Buildings\Source Files">
       <UniqueIdentifier>{09cf01bc-1335-425c-9abd-c407b99e6165}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{9ff3e690-c996-402f-863d-7e0a0360b07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\Header Files">
+      <UniqueIdentifier>{50741107-5905-488a-9552-e9a4eb104e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\Source Files">
+      <UniqueIdentifier>{8c84af62-e95d-4cca-adae-38380c19f59a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -270,6 +279,12 @@
     <ClInclude Include="Window.h">
       <Filter>GameObjects\2D</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -395,5 +410,13 @@
     <ClCompile Include="Window.cpp">
       <Filter>GameObjects\2D</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Input\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
