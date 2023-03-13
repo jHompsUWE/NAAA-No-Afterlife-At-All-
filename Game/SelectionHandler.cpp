@@ -72,14 +72,12 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::ORANGE_ZONING:
 		{
-			std::cout << "orange" << std::endl;
 			m_zone_type = ZoneType::Orange;
 			m_tile_type = TileType::Zone;
 			break;
 		}
 		case EventType::BROWN_ZONING:
 		{
-			std::cout << "brown" << std::endl;
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			break;
@@ -110,7 +108,6 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::ROADS:
 		{
-			std::cout << "road" << std::endl;
 			m_zone_type = ZoneType::None;
 			m_tile_type = TileType::Road;
 			break;
