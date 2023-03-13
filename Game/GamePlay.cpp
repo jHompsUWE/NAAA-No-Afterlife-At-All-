@@ -79,6 +79,8 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     animated_sprite_test->SetPos(1.0f * Vector2::One);
     m_GameObjects2D.push_back(animated_sprite_test);
 
+    GameManager::get()->getEventManager()->addListener(remote);
+
 	GameManager::get()->awake();
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }

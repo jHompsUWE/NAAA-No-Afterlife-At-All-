@@ -66,6 +66,13 @@ void SoulManager::update(GameData& _game_data)
 			m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
 			m_Earth_Souls.pop_back();
 		}
+
+		Event event{};
+		event.type = EventType::SOUL_UPDATE;
+		event.payload.soul_update.count = m_Heven_wanderingSouls.size() + m_Heven_ZonedSouls.size() +
+			m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size();
+
+		GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 	}
 }
 
