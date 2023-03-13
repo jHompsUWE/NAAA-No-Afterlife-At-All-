@@ -2,9 +2,10 @@
 #include "GameMenu.h"
 #include "GameData.h"
 #include "GameObject2D.h";
+#include "Button.h"
 #include <iostream>
 
-bool GameMenu::init(HWND _window, int _width, int _height)
+bool GameMenu::init(HWND _window, int _width, int _height,GameData* gamedata)
 {
 	newGame = new Button(m_d3dDevice.Get(), nullptr);
 	newGame->SetScale(Vector2(40, 15));
@@ -52,7 +53,7 @@ bool GameMenu::init(HWND _window, int _width, int _height)
 	ButtonsText[3]->SetPos(320, 510);
 
 
-	return GameStateBase::init(_window, _width, _height);
+	return GameStateBase::init(_window, _width, _height,gamedata);
 }
 
 void GameMenu::reset()
@@ -76,7 +77,7 @@ State GameMenu::update(GameData& _game_data)
 		}
 	}
 
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
 State GameMenu::lateUpdate(GameData& _game_data)
