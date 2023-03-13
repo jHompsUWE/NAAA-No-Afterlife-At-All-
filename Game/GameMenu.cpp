@@ -3,9 +3,9 @@
 
 
 
-bool GameMenu::init(HWND _window, int _width, int _height)
+bool GameMenu::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
-	return GameStateBase::init(_window, _width, _height);
+	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 
 void GameMenu::reset()

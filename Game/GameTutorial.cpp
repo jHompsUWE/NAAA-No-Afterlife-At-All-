@@ -3,7 +3,7 @@
 
 
 
-bool GameTutorial::init(HWND _window, int _width, int _height)
+bool GameTutorial::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	return true;
 }

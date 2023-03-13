@@ -2,7 +2,7 @@
 #include "GameOver.h"
 
 
-bool GameOver::init(HWND _window, int _width, int _height)
+bool GameOver::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	return true;
 }

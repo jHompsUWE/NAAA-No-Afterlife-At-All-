@@ -35,13 +35,7 @@ Game::Game() noexcept :
     m_outputHeight(600),
     m_featureLevel(D3D_FEATURE_LEVEL_11_0)
 {
-    
-  
-    
-    
-    
-    
-    
+
 }
 
 // Initialize the Direct3D resources required to run.
@@ -79,6 +73,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
     m_GD->current_state = State::GAME_MENU;
 
+
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
     m_DD2D->m_Sprites.reset(new SpriteBatch(m_d3dContext.Get()));
@@ -111,7 +106,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     game_states.insert(std::make_pair(State::GAME_PAUSED,   std::make_unique<GamePaused>    (State::GAME_PAUSED,   m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     game_states.insert(std::make_pair(State::GAME_OVER,     std::make_unique<GameOver>      (State::GAME_OVER,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     
-    
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
     loop->SetVolume(0.05f);
@@ -129,25 +123,29 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
+    input_manager = std::make_shared<InputManager>();
+    GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
     world_manager->init(m_d3dContext, m_fxFactory);
+
+    
     
     // GameState initialisation
     for (auto& state : game_states)
     {
-        if (!state.second->init(_window, _width, _height))
+        if (!state.second->init(_window, _width, _height, m_GD))
         { 
             //return false;
         }
     }
-    auto& world = world_manager->getWorld();
+
+	auto& world = world_manager->getWorld();
     world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
-    
 }
 
 // Executes the basic game loop.
@@ -183,10 +181,19 @@ void Game::Update(DX::StepTimer const& _timer)
         }
         else
         {
+            if (m_GD->current_state == State::GAME_PLAY)
+            {
+                GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
+            }
+            else if (prev_state == State::GAME_PLAY)
+            {
+                GameManager::get()->getEventManager()->removeListener(&game_states[prev_state]->getCam());
+            }
+
             Event event{};
             event.type = EventType::STATE_TRANSITION;
-            event.payload.state_transition.current = m_GD->current_state;
-            event.payload.state_transition.previous = prev_state;
+            event.payload.state_transition.current = (int)m_GD->current_state;
+            event.payload.state_transition.previous = (int)prev_state;
             event_manager->triggerEvent(std::make_shared<Event>(event));
 
             game_states[m_GD->current_state]->reset();
@@ -532,9 +539,11 @@ void Game::ReadInput()
         ExitGame();
     }
 
+    // temp - kill later. 
     if (m_GD->m_KBS.N)
     {
         m_GD->current_state = State::GAME_PLAY;
+        GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
     }
 
     m_GD->m_MS = m_mouse->GetState();

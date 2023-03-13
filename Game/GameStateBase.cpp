@@ -33,10 +33,10 @@ GameStateBase::~GameStateBase()
 	//m_DD2D = nullptr;
 }
 
-bool GameStateBase::init(HWND _window, int _width, int _height)
+bool GameStateBase::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	float AR = (float)_width / (float)_height;
-	m_TPScam = new TPSCamera(5.25f * XM_PI, AR, -10000.0f, 10000.0f, Vector3(50.0f, 0.0f, 50.0f), Vector3::UnitY, Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, tan(30.0f * XM_PI / 180.0f) * sqrt(200.0f),10.0f));
+	m_TPScam = new TPSCamera(5.25f * XM_PI, AR, -10000.0f, 10000.0f, Vector3(50.0f, 0.0f, 50.0f), Vector3::UnitY, Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, tan(30.0f * XM_PI / 180.0f) * sqrt(200.0f),10.0f), _game_data);
 	m_GameObjects.push_back(m_TPScam);
 	return true;
 }

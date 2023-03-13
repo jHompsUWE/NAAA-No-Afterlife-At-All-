@@ -35,12 +35,14 @@ public:
 	GameStateBase(State _state, GameData* _GD, DrawData* _DD, DrawData2D* _DD2D ,DirectX::IEffectFactory* _fxFactory , Microsoft::WRL::ComPtr<ID3D11Device1> m_d3dDevice);
 	~GameStateBase();
 
-	virtual bool init(HWND _window, int _width, int _height);
+	virtual bool init(HWND _window, int _width, int _height, GameData* _game_data);
 	virtual void reset();
 	virtual State update(GameData& _game_data);
 	virtual State lateUpdate(GameData& _game_data);
 	virtual void render3D();
 	virtual void render2D();
+
+	TPSCamera& getCam() { return  *m_TPScam; };
 	
 protected:
 	State m_state;

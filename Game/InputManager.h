@@ -19,6 +19,7 @@ enum class InputType
 {
 	key_pressed,
     key_released,
+    key_held,
     key_pressed_with_mod,
     mouse_clicked,
     mouse_released,
@@ -89,6 +90,7 @@ static const std::unordered_map<std::string, InputType> string_to_input_type =
 {
 	{"key_pressed", InputType::key_pressed},
 	{"key_released", InputType::key_released},
+    {"key_held", InputType::key_held},
 	{"mouse_button_pressed", InputType::mouse_clicked},
 	{"mouse_button_released", InputType::mouse_released},
 	{"mouse_moved", InputType::mouse_moved}

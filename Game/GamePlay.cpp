@@ -9,7 +9,7 @@
 #include "Window.h"
 
 
-bool GamePlay::init(HWND _window, int _width, int _height)
+bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	m_light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
 	m_GameObjects.push_back(m_light);
@@ -74,7 +74,7 @@ bool GamePlay::init(HWND _window, int _width, int _height)
     remote->SetButtonToggle(32, MicroView);
 
 	GameManager::get()->awake();
-	return GameStateBase::init(_window, _width, _height);
+	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 
 void GamePlay::reset()

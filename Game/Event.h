@@ -60,8 +60,8 @@ class Event
 public:
     struct StateTransition
     {
-        State previous;
-        State current;
+        int previous;
+        int current;
     };
 
 	union EventPayload
