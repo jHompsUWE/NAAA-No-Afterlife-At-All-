@@ -289,6 +289,11 @@ void UIRemote::onEvent(const Event& event)
 			text[4]->SetString("SOULs: " + std::to_string(event.payload.soul_update.count));
 			break;
 		}
+		case EventType::TOGGLE_REMOTE_CONTROL:
+		{
+			renderable = !renderable;
+			break;
+		}
 	}
 }
 
@@ -337,32 +342,33 @@ void UIRemote::Tick(GameData* _GD)
 		dragged = false;
 	}
 
-	for (int i = 0; i < 37; i++)
+	if (renderable)
 	{
-		if (buttons[i] != nullptr)
+		for (int i = 0; i < 37; i++)
 		{
-			buttons[i]->Tick(_GD);
-			
-			if (buttons[i]->pressed)
+			if (buttons[i] != nullptr)
 			{
-				text[2]->SetString(buttons[i]->buttonName);
+				buttons[i]->Tick(_GD);
 
-				Event event{};
-				event.type = buttons[i]->event_type;
+				if (buttons[i]->pressed)
+				{
+					text[2]->SetString(buttons[i]->buttonName);
 
-				GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				buttons[i]->pressed = false;
+					Event event{};
+					event.type = buttons[i]->event_type;
+
+					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+					buttons[i]->pressed = false;
+				}
 			}
 		}
-	}
 
-	
-
-	for (int i = 0; i < 8; i++)
-	{
-		if (text[i] != nullptr)
+		for (int i = 0; i < 8; i++)
 		{
-			text[i]->Tick(_GD);
+			if (text[i] != nullptr)
+			{
+				text[i]->Tick(_GD);
+			}
 		}
 	}
 
@@ -381,21 +387,22 @@ void UIRemote::Draw(DrawData2D* _DD)
 	if (renderable)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
-	}
 
-	for (int i = 0; i < 37; i++)
-	{
-		if (buttons[i] != nullptr)
+
+		for (int i = 0; i < 37; i++)
 		{
-			buttons[i]->Draw(_DD);
+			if (buttons[i] != nullptr)
+			{
+				buttons[i]->Draw(_DD);
+			}
 		}
-	}
 
-	for (int i = 0; i < 8; i++)
-	{
-		if (text[i] != nullptr)
+		for (int i = 0; i < 8; i++)
 		{
-			text[i]->Draw(_DD);
+			if (text[i] != nullptr)
+			{
+				text[i]->Draw(_DD);
+			}
 		}
 	}
 }
