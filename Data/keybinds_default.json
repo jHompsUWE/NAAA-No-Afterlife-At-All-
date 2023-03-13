@@ -211,16 +211,16 @@
 
       {
         "Action": "ZOOM_IN",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
         "Key": "0xbb"
       },
 
       {
         "Action": "ZOOM_OUT",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
-        "Key": "0xbc"
+        "Key": "0xbd"
       },
 
       {
@@ -239,28 +239,28 @@
 
       {
         "Action": "SCROLL_UP",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
         "Key": "0x26"
       },
 
       {
         "Action": "SCROLL_RIGHT",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
         "Key": "0x27"
       },
 
       {
         "Action": "SCROLL_LEFT",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
         "Key": "0x25"
       },
 
       {
         "Action": "SCROLL_DOWN",
-        "Type": "key_pressed",
+        "Type": "key_held",
         "Modifier": "",
         "Key": "0x28"
       },

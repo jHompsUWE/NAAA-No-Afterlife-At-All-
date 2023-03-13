@@ -1,7 +1,5 @@
 #pragma once
 
-#include "GameStateBase.h"
-
 enum class EventType
 {
     // InputEvents
@@ -62,8 +60,8 @@ class Event
 public:
     struct StateTransition
     {
-        State previous;
-        State current;
+        int previous;
+        int current;
     };
 
 	union EventPayload

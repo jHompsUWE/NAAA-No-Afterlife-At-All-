@@ -23,7 +23,7 @@ public:
     // 1x1 update
     void updateVibes(GridLocation& _grid_location, PlaneType _plane);
 
-    void update(DX::StepTimer const& _timer) override;
+    void update(GameData& _game_data) override;
 
     void render(DrawData* _DD);
 

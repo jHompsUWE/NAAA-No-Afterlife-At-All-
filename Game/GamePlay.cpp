@@ -10,7 +10,7 @@
 #include "AnimatedImageGO2D.h"
 
 
-bool GamePlay::init(HWND _window, int _width, int _height)
+bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	m_light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
 	m_GameObjects.push_back(m_light);
@@ -80,7 +80,7 @@ bool GamePlay::init(HWND _window, int _width, int _height)
     m_GameObjects2D.push_back(animated_sprite_test);
 
 	GameManager::get()->awake();
-	return GameStateBase::init(_window, _width, _height);
+	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 
 void GamePlay::reset()
@@ -88,17 +88,17 @@ void GamePlay::reset()
 
 }
 
-State GamePlay::update(DX::StepTimer const& _timer)
+State GamePlay::update(GameData& _game_data)
 {
-	GameManager::get()->update(_timer);
+	GameManager::get()->update(_game_data);
 	
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GamePlay::lateUpdate(DX::StepTimer const& _timer)
+State GamePlay::lateUpdate(GameData& _game_data)
 {
-	GameManager::get()->lateUpdate(_timer);
-	return GameStateBase::lateUpdate(_timer);
+	GameManager::get()->lateUpdate(_game_data);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GamePlay::render3D()
