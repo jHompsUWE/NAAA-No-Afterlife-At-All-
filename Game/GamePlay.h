@@ -45,6 +45,3 @@ private:
     std::shared_ptr<FileManager> file_manager_;
     std::shared_ptr<WorldManager> world_manager;
 };
-
-
-

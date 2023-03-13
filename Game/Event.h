@@ -51,6 +51,15 @@ enum class EventType
     BLUE_ZONING,
     GENERIC_ZONING,
 
+    // UI Remote specific events
+    SIPHONS_BANKS,
+    ROTATE_REALMS_UP,
+    ROTATE_REALMS_DOWN,
+    FLATTEN_HELL,
+    FLATTEN_HEAVEN,
+    FLATTEN_KARMA,
+    FLATTEN_GRID,
+
     // GameEvents
     STATE_TRANSITION,
     SOUL_UPDATE

@@ -82,6 +82,11 @@ void Button::SetName(string _name)
 	buttonName = _name;
 }
 
+void Button::SetType(EventType _event_type)
+{
+	event_type = _event_type;
+}
+
 void Button::SetToggle(GameObject2D* toggle)
 {
 	toggleWindow = toggle;
