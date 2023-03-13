@@ -49,7 +49,7 @@ protected:
 	GameData* m_GD;
 	DrawData* m_DD;
 	DrawData2D* m_DD2D;
-
+	
 	TPSCamera* m_TPScam = NULL;//TPS cam
 	
 	DirectX::CommonStates* m_states = NULL;
