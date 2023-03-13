@@ -6,7 +6,6 @@
 #include "TileGO.h"
 #include "WorldManager.h"
 
-
 class GameObject;
 class GameObject2D;
 class Camera;

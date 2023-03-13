@@ -107,7 +107,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 				pos = { start_pos.x + j, start_pos.y + i };
 				std::cout << pos.x << " " << pos.y << std::endl;
 				//m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
-				m_world[_plane][getIndex(pos)]->getTile().SetColour(Color(0, 1, 0));
+				//m_world[_plane][getIndex(pos)]->getTile().SetColour(Color(0, 1, 0));
 			}
 			else
 			{
