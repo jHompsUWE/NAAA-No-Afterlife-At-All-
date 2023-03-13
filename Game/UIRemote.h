@@ -26,7 +26,7 @@ public:
 	std::array<Button*, 37> buttons;
 	std::array<TextGO2D*, 8> text;
 	int money = 999999999;
-	int year = 0;
+	//int year = 0;
 
 protected:
 

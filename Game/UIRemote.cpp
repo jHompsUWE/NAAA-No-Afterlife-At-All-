@@ -312,8 +312,9 @@ void UIRemote::Tick(GameData* _GD)
 		}
 	}
 
-	text[0]->SetString("Year: " + to_string(year += 1));
+	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
 	text[1]->SetString(to_string(money -= 1) + "$");
+	
 }
 
 

@@ -18,7 +18,8 @@ enum class ManagerType : int
 	EVENT,
 	FILE,
 	ECONOMY,
-	WORLD
+	WORLD,
+	SOUL
 };
 
 class GameManager

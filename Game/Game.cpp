@@ -22,6 +22,7 @@
 #include "GamePaused.h"
 #include "GameOver.h"
 #include "helper.h"
+#include "SoulManager.h"
 
 extern void ExitGame() noexcept;
 
@@ -146,6 +147,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
     world_manager->init(m_d3dContext, m_fxFactory);
 
+    soul_manager = std::make_shared<SoulManager>();
+    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+    
     
     
     // GameState initialisation
