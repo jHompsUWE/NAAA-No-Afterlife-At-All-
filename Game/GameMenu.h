@@ -1,5 +1,9 @@
 #pragma once
 #include "GameStateBase.h"
+#include "Button.h"
+#include "TextGO2D.h"
+#include <array>
+
 class GameMenu :
     public GameStateBase
 {
@@ -11,14 +15,18 @@ public:
         
     }
 
-    bool init(HWND _window, int _width, int _height) override;
+    bool init(HWND _window, int _width, int _height, GameData* _game_data) override;
     void reset() override;
-    State update(DX::StepTimer const& _timer) override;
-    State lateUpdate(DX::StepTimer const& _timer) override;
+    State update(GameData& _game_data) override;
+    State lateUpdate(GameData& _game_data) override;
     void render3D() override;
     void render2D() override;
 
 private:
+    Button* newGame;
     
+    //Non functional buttons
+    std::array<Button*, 3> NFButtons;
+    std::array<TextGO2D*, 4>ButtonsText;
 };
 

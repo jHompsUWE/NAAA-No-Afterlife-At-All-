@@ -26,10 +26,10 @@ public:
     }
 
 
-    bool init(HWND _window, int _width, int _height) override;
+    bool init(HWND _window, int _width, int _height, GameData* _game_data) override;
     void reset() override;
-    State update(DX::StepTimer const& _timer) override;
-    State lateUpdate(DX::StepTimer const& _timer) override;
+    State update(GameData& _game_data) override;
+    State lateUpdate(GameData& _game_data) override;
     void render3D() override;
     void render2D() override;
 
@@ -44,6 +44,3 @@ private:
     std::shared_ptr<FileManager> file_manager_;
     std::shared_ptr<WorldManager> world_manager;
 };
-
-
-

@@ -18,7 +18,8 @@ enum class ManagerType : int
 	EVENT,
 	FILE,
 	ECONOMY,
-	WORLD
+	WORLD,
+	SOUL
 };
 
 class GameManager
@@ -49,13 +50,13 @@ public:
 	/// \brief Called every cycle of the game loop.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-	void update(DX::StepTimer const& _timer);
+	void update(GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Called every cycle of the game loop, but after update.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-	void lateUpdate(DX::StepTimer const& _timer);
+	void lateUpdate(GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Called every cycle of the game loop, but after update.
@@ -78,17 +79,6 @@ public:
 	bool removeManager(std::shared_ptr<Manager> _manager, ManagerType _type);
 
 	////////////////////////////////////////////////////////////
-	/// \brief Returns a const ref to game_data.
-	////////////////////////////////////////////////////////////
-	const GameData& getGameData() const { return *game_data; };
-
-	////////////////////////////////////////////////////////////
-	/// \brief Sets game_data pointer to an instance of GameData
-	/// \param _game_data The the instance to point to.
-	////////////////////////////////////////////////////////////
-	void setGameData(GameData* _game_data) { game_data = _game_data; };
-
-	////////////////////////////////////////////////////////////
 	/// \brief Returns pointer to event manager, use this for triggering events. 
 	////////////////////////////////////////////////////////////
 	EventManager* getEventManager() { return event_manager; };
@@ -105,11 +95,6 @@ private:
 	/// \brief Pointer to EventManager for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	EventManager* event_manager;
-
-	////////////////////////////////////////////////////////////
-	/// \brief Pointer to GameData blackboard.
-	////////////////////////////////////////////////////////////
-	GameData* game_data;
 };
 
 

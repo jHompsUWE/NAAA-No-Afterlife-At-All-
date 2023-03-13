@@ -33,6 +33,26 @@ struct GridData
 		std::cout << "Created building" << std::endl;
 	}
 
+	void Tick(GameData* _GD)
+	{
+		switch (m_zone_type)
+		{
+		case ZoneType::None:	m_building->SetColour	(Colors::White.v)		;	break;
+		case ZoneType::Generic:	m_building->SetColour	(Colors::Ivory.v)	;	break;
+		case ZoneType::Green:	m_building->SetColour	(Colors::Green.v)		;	break;
+		case ZoneType::Yellow:	m_building->SetColour	(Colors::Yellow.v)	;	break;
+		case ZoneType::Orange:	m_building->SetColour	(Colors::Orange.v)	;	break;
+		case ZoneType::Brown:	m_building->SetColour	(Colors::SaddleBrown.v)		;	break;
+		case ZoneType::Purple:	m_building->SetColour	(Colors::Magenta.v)	;	break;
+		case ZoneType::Red:		m_building->SetColour	(Colors::Red.v)		;	break;
+		case ZoneType::Blue:	m_building->SetColour	(Colors::MediumPurple.v)		;	break;
+		default: ;
+		}
+		
+		// connected
+	}
+
+
 	void draw(DrawData* _DD)
 	{
 		if (m_building)

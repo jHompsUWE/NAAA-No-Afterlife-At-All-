@@ -3,7 +3,7 @@
 
 
 
-bool GamePaused::init(HWND _window, int _width, int _height)
+bool GamePaused::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	return true;
 }
@@ -13,14 +13,14 @@ void GamePaused::reset()
 
 }
 
-State GamePaused::update(DX::StepTimer const& _timer)
+State GamePaused::update(GameData& _game_data)
 {
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GamePaused::lateUpdate(DX::StepTimer const& _timer)
+State GamePaused::lateUpdate(GameData& _game_data)
 {
-	return GameStateBase::lateUpdate(_timer);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GamePaused::render3D()

@@ -158,7 +158,10 @@ void AnimatedImageGO2D::Tick(GameData* _GD)
 
 void AnimatedImageGO2D::Draw(DrawData2D* _DD)
 {
-	sprite->Draw(_DD);
+	if (renderable)
+	{
+		sprite->Draw(_DD);
+	}
 }
 
 void AnimatedImageGO2D::UpdateProperties()

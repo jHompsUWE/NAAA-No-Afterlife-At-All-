@@ -4,8 +4,9 @@
 #include <array>
 #include "Window.h"
 #include "TextGO2D.h"
+#include "Listener.h"
 
-class UIRemote :public GameObject2D
+class UIRemote :public GameObject2D, public Listener
 {
 public:
 
@@ -16,7 +17,9 @@ public:
 
 	void InitButtonNames();
 
-	void SetButtonToggle(int i, Window* toggle);
+	void SetButtonToggle(int i, GameObject2D* toggle);
+
+	void onEvent(const Event& event) override;
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
@@ -26,7 +29,7 @@ public:
 	std::array<Button*, 37> buttons;
 	std::array<TextGO2D*, 8> text;
 	int money = 999999999;
-	int year = 0;
+	//int year = 0;
 
 protected:
 
@@ -40,4 +43,3 @@ protected:
 
 	float renderOrder;
 };
-

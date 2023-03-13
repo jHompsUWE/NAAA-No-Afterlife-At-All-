@@ -10,7 +10,7 @@
 #include "AnimatedImageGO2D.h"
 
 
-bool GamePlay::init(HWND _window, int _width, int _height)
+bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	m_light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
 	m_GameObjects.push_back(m_light);
@@ -51,10 +51,10 @@ bool GamePlay::init(HWND _window, int _width, int _height)
     m_GameObjects2D.push_back(Mapview);
     Mapview->SetTextPos();
 
-    Window* Advisors = new Window("bug_test", m_d3dDevice.Get(), "Advisors", false, Colors::LightSalmon);
+    /*Window* Advisors = new Window("bug_test", m_d3dDevice.Get(), "Advisors", false, Colors::LightSalmon);
     Advisors->SetPos(600, 300);
     m_GameObjects2D.push_back(Advisors);
-    Advisors->SetTextPos();
+    Advisors->SetTextPos();*/
 
     Window* MicroView = new Window("bug_test", m_d3dDevice.Get(), "MicroView", false, Colors::LightCoral);
     MicroView->SetPos(300, 400);
@@ -66,21 +66,25 @@ bool GamePlay::init(HWND _window, int _width, int _height)
     remote->SetButtonBounds();
     m_GameObjects2D.push_back(remote);
 
+    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
+    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
+    animated_sprite_test->SetPos(400,300);
+    m_GameObjects2D.push_back(animated_sprite_test);
+
     remote->SetButtonToggle(26, Planetview);
     remote->SetButtonToggle(27, Graphview);
     remote->SetButtonToggle(28, Soulview);
     remote->SetButtonToggle(29, MacroManager);
     remote->SetButtonToggle(30, Mapview);
-    remote->SetButtonToggle(31, Advisors);
+    remote->SetButtonToggle(31, animated_sprite_test);
     remote->SetButtonToggle(32, MicroView);
 
-    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
-    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
-    animated_sprite_test->SetPos(1.0f * Vector2::One);
-    m_GameObjects2D.push_back(animated_sprite_test);
+    
+
+    GameManager::get()->getEventManager()->addListener(remote);
 
 	GameManager::get()->awake();
-	return GameStateBase::init(_window, _width, _height);
+	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 
 void GamePlay::reset()
@@ -88,17 +92,17 @@ void GamePlay::reset()
 
 }
 
-State GamePlay::update(DX::StepTimer const& _timer)
+State GamePlay::update(GameData& _game_data)
 {
-	GameManager::get()->update(_timer);
+	GameManager::get()->update(_game_data);
 	
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GamePlay::lateUpdate(DX::StepTimer const& _timer)
+State GamePlay::lateUpdate(GameData& _game_data)
 {
-	GameManager::get()->lateUpdate(_timer);
-	return GameStateBase::lateUpdate(_timer);
+	GameManager::get()->lateUpdate(_game_data);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GamePlay::render3D()

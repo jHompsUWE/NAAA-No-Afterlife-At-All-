@@ -8,6 +8,8 @@
 #include "ZoneType.h"
 #include "PlaneType.h"
 
+#include "GameManager.h"
+
 
 struct Soul
 {
@@ -40,8 +42,11 @@ public:
 																									// Inherited via Manager
 	
 	virtual void awake() override;
-	virtual void update(DX::StepTimer const& _timer) override;
-	virtual void lateUpdate(DX::StepTimer const& _timer) override;
+	virtual void update(GameData& _game_data) override;
+	virtual void lateUpdate(GameData& _game_data) override;
+
+private:
+	float m_time;
 };
 
 

@@ -23,7 +23,7 @@ public:
     // 1x1 update
     void updateVibes(GridLocation& _grid_location, PlaneType _plane);
 
-    void update(DX::StepTimer const& _timer) override;
+    void update(GameData& _game_data) override;
 
     void render(DrawData* _DD);
 
@@ -42,7 +42,7 @@ private:
 
     int m_grid_x;
     int m_grid_y;
-
+    
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>> m_world;
 
     std::map<int, std::vector<Vector2>> range_map;

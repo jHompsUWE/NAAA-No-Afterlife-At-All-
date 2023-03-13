@@ -248,6 +248,7 @@
     <ClInclude Include="BuildingSpecies.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />

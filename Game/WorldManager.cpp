@@ -117,7 +117,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 	}
 }
 
-void WorldManager::update(DX::StepTimer const& _timer)
+void WorldManager::update(GameData& _game_data)
 {
 
 }

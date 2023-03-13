@@ -22,6 +22,7 @@
 #include "GamePaused.h"
 #include "GameOver.h"
 #include "helper.h"
+#include "SoulManager.h"
 
 extern void ExitGame() noexcept;
 
@@ -72,6 +73,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
     m_GD->current_state = State::GAME_MENU;
+
 
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
@@ -127,26 +129,36 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
+    input_manager = std::make_shared<InputManager>();
+    GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
     world_manager->init(m_d3dContext, m_fxFactory);
+
+    soul_manager = std::make_shared<SoulManager>();
+    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+    
+    
     
     // GameState initialisation
     for (auto& state : game_states)
     {
-        if (!state.second->init(_window, _width, _height))
+        if (!state.second->init(_window, _width, _height, m_GD))
         { 
             //return false;
         }
     }
-    auto& world = world_manager->getWorld();
+
+	auto& world = world_manager->getWorld();
     world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
     
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager->getWorld(), m_GD);
+
+    GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
 }
 
@@ -170,12 +182,12 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
-    m_selection_handler->update(game_states[State::GAME_PLAY]->getCamera());
+    m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
 
     // GameState updates
     // Change state depending on update result
     State prev_state = m_GD->current_state;
-    m_GD->current_state = game_states[m_GD->current_state]->update(_timer);
+    m_GD->current_state = game_states[m_GD->current_state]->update(*m_GD);
     if (m_GD->current_state != prev_state)
     {
         if (m_GD->current_state == State::GAME_EXIT)
@@ -185,10 +197,19 @@ void Game::Update(DX::StepTimer const& _timer)
         }
         else
         {
+            if (m_GD->current_state == State::GAME_PLAY)
+            {
+                GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
+            }
+            else if (prev_state == State::GAME_PLAY)
+            {
+                GameManager::get()->getEventManager()->removeListener(&game_states[prev_state]->getCam());
+            }
+
             Event event{};
             event.type = EventType::STATE_TRANSITION;
-            event.payload.state_transition.current = m_GD->current_state;
-            event.payload.state_transition.previous = prev_state;
+            event.payload.state_transition.current = (int)m_GD->current_state;
+            event.payload.state_transition.previous = (int)prev_state;
             event_manager->triggerEvent(std::make_shared<Event>(event));
 
             game_states[m_GD->current_state]->reset();
@@ -231,7 +252,7 @@ void Game::Update(DX::StepTimer const& _timer)
 
 void Game::lateUpdate(DX::StepTimer const& _timer)
 {
-    GameManager::get()->lateUpdate(_timer);
+    GameManager::get()->lateUpdate(*m_GD);
 }
 
 // Draws the scene.
@@ -537,9 +558,11 @@ void Game::ReadInput()
         ExitGame();
     }
 
+    // temp - kill later. 
     if (m_GD->m_KBS.N)
     {
         m_GD->current_state = State::GAME_PLAY;
+        GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
     }
 
     if (m_GD->m_mouseButtons.leftButton)

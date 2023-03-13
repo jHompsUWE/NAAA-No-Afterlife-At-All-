@@ -1,7 +1,5 @@
 #pragma once
 
-#include "GameStateBase.h"
-
 enum class EventType
 {
     // InputEvents
@@ -53,8 +51,18 @@ enum class EventType
     BLUE_ZONING,
     GENERIC_ZONING,
 
+    // UI Remote specific events
+    SIPHONS_BANKS,
+    ROTATE_REALMS_UP,
+    ROTATE_REALMS_DOWN,
+    FLATTEN_HELL,
+    FLATTEN_HEAVEN,
+    FLATTEN_KARMA,
+    FLATTEN_GRID,
+
     // GameEvents
-    STATE_TRANSITION
+    STATE_TRANSITION,
+    SOUL_UPDATE
 };
 
 class Event
@@ -62,13 +70,19 @@ class Event
 public:
     struct StateTransition
     {
-        State previous;
-        State current;
+        int previous;
+        int current;
+    };
+
+    struct SoulUpdate
+    {
+        int count;
     };
 
 	union EventPayload
 	{
         StateTransition state_transition;
+        SoulUpdate soul_update;
 	};
 
 	////////////////////////////////////////////////////////////

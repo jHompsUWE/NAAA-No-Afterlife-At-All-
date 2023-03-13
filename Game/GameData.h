@@ -23,5 +23,6 @@ struct GameData
 	Mouse::State m_MS;
 	Keyboard::KeyboardStateTracker m_KBS_tracker;
 	Mouse::ButtonStateTracker m_mouseButtons;
+	int Year = 0;
 };
 #endif

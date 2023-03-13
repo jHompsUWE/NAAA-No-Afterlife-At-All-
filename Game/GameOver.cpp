@@ -2,7 +2,7 @@
 #include "GameOver.h"
 
 
-bool GameOver::init(HWND _window, int _width, int _height)
+bool GameOver::init(HWND _window, int _width, int _height, GameData* _game_data)
 {
 	return true;
 }
@@ -12,14 +12,14 @@ void GameOver::reset()
 
 }
 
-State GameOver::update(DX::StepTimer const& _timer)
+State GameOver::update(GameData& _game_data)
 {
-	return GameStateBase::update(_timer);
+	return GameStateBase::update(_game_data);
 }
 
-State GameOver::lateUpdate(DX::StepTimer const& _timer)
+State GameOver::lateUpdate(GameData& _game_data)
 {
-	return GameStateBase::lateUpdate(_timer);
+	return GameStateBase::lateUpdate(_game_data);
 }
 
 void GameOver::render3D()
@@ -31,4 +31,3 @@ void GameOver::render2D()
 {
 	GameStateBase::render2D();
 }
-
