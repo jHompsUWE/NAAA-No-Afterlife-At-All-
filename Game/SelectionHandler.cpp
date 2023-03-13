@@ -53,3 +53,68 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		std::cout << x_pos << " " << y_pos << std::endl;
 	}
 }
+
+void SelectionHandler::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+		case EventType::GREEN_ZONING:
+		{
+			m_zone_type = ZoneType::Green;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::YELLOW_ZONING:
+		{
+			m_zone_type = ZoneType::Yellow;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::ORANGE_ZONING:
+		{
+			std::cout << "orange" << std::endl;
+			m_zone_type = ZoneType::Orange;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::BROWN_ZONING:
+		{
+			std::cout << "brown" << std::endl;
+			m_zone_type = ZoneType::Brown;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::PURPLE_ZONING:
+		{
+			m_zone_type = ZoneType::Purple;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::RED_ZONING:
+		{
+			m_zone_type = ZoneType::Red;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::BLUE_ZONING:
+		{
+			m_zone_type = ZoneType::Blue;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::GENERIC_ZONING:
+		{
+			m_zone_type = ZoneType::Generic;
+			m_tile_type = TileType::Zone;
+			break;
+		}
+		case EventType::ROADS:
+		{
+			std::cout << "road" << std::endl;
+			m_zone_type = ZoneType::None;
+			m_tile_type = TileType::Road;
+			break;
+		}
+		default:;
+	}
+}

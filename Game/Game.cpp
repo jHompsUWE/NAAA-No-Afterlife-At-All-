@@ -158,6 +158,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager->getWorld(), m_GD);
 
+    GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
+
 }
 
 // Executes the basic game loop.
@@ -180,7 +182,7 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
-    m_selection_handler->update(game_states[State::GAME_PLAY]->getCamera());
+    m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
 
     // GameState updates
     // Change state depending on update result
