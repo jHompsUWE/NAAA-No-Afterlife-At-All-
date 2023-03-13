@@ -4,8 +4,9 @@
 #include <array>
 #include "Window.h"
 #include "TextGO2D.h"
+#include "Listener.h"
 
-class UIRemote :public GameObject2D
+class UIRemote :public GameObject2D, public Listener
 {
 public:
 
@@ -17,6 +18,8 @@ public:
 	void InitButtonNames();
 
 	void SetButtonToggle(int i, Window* toggle);
+
+	void onEvent(const Event& event) override;
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
@@ -40,4 +43,3 @@ protected:
 
 	float renderOrder;
 };
-

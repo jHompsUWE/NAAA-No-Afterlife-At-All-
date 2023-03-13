@@ -8,6 +8,8 @@
 #include "ZoneType.h"
 #include "PlaneType.h"
 
+#include "GameManager.h"
+
 
 struct Soul
 {

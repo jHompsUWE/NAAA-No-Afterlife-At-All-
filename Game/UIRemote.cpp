@@ -243,6 +243,18 @@ void UIRemote::SetButtonToggle(int i, Window* toggle)
 	buttons[i]->SetToggle(toggle);
 }
 
+void UIRemote::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+		case EventType::SOUL_UPDATE:
+		{
+			text[4]->SetString("SOULs: " + std::to_string(event.payload.soul_update.count));
+			break;
+		}
+	}
+}
+
 void UIRemote::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -314,7 +326,6 @@ void UIRemote::Tick(GameData* _GD)
 
 	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
 	text[1]->SetString(to_string(money -= 1) + "$");
-	
 }
 
 
