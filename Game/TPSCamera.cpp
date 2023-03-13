@@ -44,7 +44,6 @@ void TPSCamera::onEvent(const Event& event)
 		}
 		case EventType::ZOOM_OUT:
 		{
-			std::cout << "zoom in";
 			if (cameraZoom <= 1.2f)
 			{
 				cameraZoom += 0.9f * game_data->m_dt;
