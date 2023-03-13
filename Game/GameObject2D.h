@@ -45,6 +45,9 @@ public:
 	void SetScale(float _scale) { m_scale = _scale * Vector2::One; }
 	void SetOrigin(Vector2 _origin) { m_origin = _origin; }
 
+
+	bool renderable;
+
 protected:
 	Vector2 m_pos;
 	float m_rotation;

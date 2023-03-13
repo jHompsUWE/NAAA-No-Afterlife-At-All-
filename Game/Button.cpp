@@ -7,7 +7,7 @@
 #include "Mouse.h"
 #include <iostream>
 
-Button::Button(ID3D11Device* _GD, GameObject2D* _parent, Window* _toggle) :m_pTextureRV(nullptr)
+Button::Button(ID3D11Device* _GD, GameObject2D* _parent, GameObject2D* _toggle) :m_pTextureRV(nullptr)
 {
 	
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
@@ -87,7 +87,7 @@ void Button::SetType(EventType _event_type)
 	event_type = _event_type;
 }
 
-void Button::SetToggle(Window* toggle)
+void Button::SetToggle(GameObject2D* toggle)
 {
 	toggleWindow = toggle;
 }

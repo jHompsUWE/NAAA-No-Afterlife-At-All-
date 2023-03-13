@@ -39,5 +39,5 @@ GPGO& GridLocation::getTile()
 
 void GridLocation::update()
 {
-    //if (m_grid_data.m_efficiency > )
+    
 }

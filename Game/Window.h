@@ -14,8 +14,6 @@ public:
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
 
-	bool renderable = true;
-
 protected:
 
 	ID3D11ShaderResourceView* m_pTextureRV;
