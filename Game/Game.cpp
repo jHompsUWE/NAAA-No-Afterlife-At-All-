@@ -569,7 +569,7 @@ void Game::ReadInput()
     {
         if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
         {
-            Vector3 v = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCamera().GetProj(), game_states[State::GAME_PLAY]->getCamera().GetView(), XMMatrixIdentity());
+            Vector3 v = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCam().GetProj(), game_states[State::GAME_PLAY]->getCam().GetView(), XMMatrixIdentity());
             
             startPos = CorrectPos(v);
         
@@ -580,11 +580,11 @@ void Game::ReadInput()
         }
         if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
         {            
-            Vector3 endVec = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCamera().GetProj(), game_states[State::GAME_PLAY]->getCamera().GetView(), XMMatrixIdentity());
+            Vector3 endVec = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCam().GetProj(), game_states[State::GAME_PLAY]->getCam().GetView(), XMMatrixIdentity());
             endPos = CorrectPos(endVec);
             cout << "start: " << startPos.x << " , " << startPos. y << " , " << startPos.z << " End: " << endPos.x << " , " << endPos.y << " , " << endPos.z << endl;
 
-            for (auto& tile : world_manager->getWorld()[PlaneType::Heaven])
+            for (auto& tile : world_manager->getWorld()[m_selection_handler->m_plane])
             {
                 bool in_X = false;
                 bool in_Z = false;
@@ -598,8 +598,8 @@ void Game::ReadInput()
                 }
                 if (in_X && in_Z)
                 {
-                    tile->getGridData().m_zone_type = ZoneType::Blue;
-                    tile->getTile().SetColour(Colors::Blue.v);
+                    tile->getGridData().m_zone_type = m_selection_handler->m_zone_type;
+                    //tile->getTile().SetColour(Colors::Blue.v);
                 }                
             }
         }
@@ -610,7 +610,7 @@ void Game::ReadInput()
 Vector3 Game::CorrectPos(Vector3 _inVector)
 {
     Vector3 _outVector;
-    Vector3 cameraDirection = game_states[State::GAME_PLAY]->getCamera().GetDirection();
+    Vector3 cameraDirection = game_states[State::GAME_PLAY]->getCam().GetDirection();
     float distance = -_inVector.y / cameraDirection.y;
     _outVector.x = _inVector.x + distance * cameraDirection.x;
     _outVector.y = 0;

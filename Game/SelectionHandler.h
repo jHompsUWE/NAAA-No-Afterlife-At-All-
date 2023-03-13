@@ -18,6 +18,9 @@ public:
 
 	void onEvent(const Event& event) override;
 
+	PlaneType m_plane;
+	TileType m_tile_type;
+	ZoneType m_zone_type;
 private:
 	std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& m_world;
 
@@ -26,8 +29,7 @@ private:
 
 	GameData* m_GD;
 
-	PlaneType m_plane;
-	TileType m_tile_type;
-	ZoneType m_zone_type;
+	
+
 };
 
