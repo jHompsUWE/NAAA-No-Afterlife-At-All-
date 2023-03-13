@@ -30,6 +30,7 @@
 #include "Button.h"
 #include "Window.h"
 #include "UIRemote.h"
+#include "AnimatedImageGO2D.h"
 
 //Sounds
 #include "TestSound.h"

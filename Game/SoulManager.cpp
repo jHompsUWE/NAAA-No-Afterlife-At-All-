@@ -20,6 +20,7 @@ void SoulManager::AddSoul(DirectX::SimpleMath::Vector2 location, PlaneType plane
 	default:
 		std::cout << "[Soulmanager.cpp][21] [warn] Plane not picked/None: " << int(plane) << ", " << location.x << " , " << location.y;
 	};
+	std::cout << "soul made";
 }
 
 int SoulManager::TotalSoulsAmmount(PlaneType plane) const
@@ -49,7 +50,23 @@ void SoulManager::awake()
 
 void SoulManager::update(GameData& _game_data)
 {
-	
+	if (_game_data.Year%5 == 0)
+	{
+		int length = 10;
+		for (size_t i = 0; i < length; i++)
+		{
+			AddSoul(DirectX::SimpleMath::Vector2{ 1,1 });
+		}
+	}
+	if (_game_data.Year%10 == 0)
+	{
+		int length = 10;
+		for (size_t i = 0; i < length; i++)
+		{
+			m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
+			m_Earth_Souls.pop_back();
+		}
+	}
 }
 
 void SoulManager::lateUpdate(GameData& _game_data)

@@ -22,6 +22,7 @@
 #include "GamePaused.h"
 #include "GameOver.h"
 #include "helper.h"
+#include "SoulManager.h"
 
 extern void ExitGame() noexcept;
 
@@ -106,6 +107,22 @@ void Game::Initialize(HWND _window, int _width, int _height)
     game_states.insert(std::make_pair(State::GAME_PAUSED,   std::make_unique<GamePaused>    (State::GAME_PAUSED,   m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     game_states.insert(std::make_pair(State::GAME_OVER,     std::make_unique<GameOver>      (State::GAME_OVER,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     
+    
+
+    //example basic 2D stuff
+    //ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
+   // logo->SetPos(200.0f * Vector2::One);
+    //m_GameObjects2D.push_back(logo);
+    //ImageGO2D* bug_test = new ImageGO2D("bug_test", m_d3dDevice.Get());
+    //bug_test->SetPos(300.0f * Vector2::One);
+    //m_GameObjects2D.push_back(bug_test);
+    
+
+    //TextGO2D* text = new TextGO2D("Test Text");
+    //text->SetPos(Vector2(100, 10));
+    //text->SetColour(Color((float*)&Colors::Yellow));
+   // m_GameObjects2D.push_back(text);
+
     //Test Sounds
     Loop* loop = new Loop(m_audioEngine.get(), "NightAmbienceSimple_02");
     loop->SetVolume(0.05f);
@@ -130,6 +147,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
     world_manager->init(m_d3dContext, m_fxFactory);
 
+    soul_manager = std::make_shared<SoulManager>();
+    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+    
     
     
     // GameState initialisation

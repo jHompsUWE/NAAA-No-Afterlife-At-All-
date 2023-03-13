@@ -7,6 +7,7 @@
 #include "TextGO2D.h"
 #include "UIRemote.h"
 #include "Window.h"
+#include "AnimatedImageGO2D.h"
 
 
 bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
@@ -72,6 +73,11 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     remote->SetButtonToggle(30, Mapview);
     remote->SetButtonToggle(31, Advisors);
     remote->SetButtonToggle(32, MicroView);
+
+    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
+    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
+    animated_sprite_test->SetPos(1.0f * Vector2::One);
+    m_GameObjects2D.push_back(animated_sprite_test);
 
 	GameManager::get()->awake();
 	return GameStateBase::init(_window, _width, _height, _game_data);
