@@ -52,7 +52,8 @@ enum class EventType
     GENERIC_ZONING,
 
     // GameEvents
-    STATE_TRANSITION
+    STATE_TRANSITION,
+    SOUL_UPDATE
 };
 
 class Event
@@ -64,9 +65,15 @@ public:
         int current;
     };
 
+    struct SoulUpdate
+    {
+        int count;
+    };
+
 	union EventPayload
 	{
         StateTransition state_transition;
+        SoulUpdate soul_update;
 	};
 
 	////////////////////////////////////////////////////////////
