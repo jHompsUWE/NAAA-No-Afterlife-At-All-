@@ -242,6 +242,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdvisorWindow.h" />
     <ClInclude Include="AnimatedImageGO2D.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Building.h" />
@@ -276,6 +277,7 @@
     <ClInclude Include="GridLocation.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -306,6 +308,7 @@
     <ClInclude Include="ZoneType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdvisorWindow.cpp" />
     <ClCompile Include="AnimatedImageGO2D.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Building.cpp" />

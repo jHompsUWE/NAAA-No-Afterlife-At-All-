@@ -16,6 +16,9 @@ public:
 	virtual ~ImageGO2D();
 
 	void SetUV(RECT* animated_uv);
+	Rectangle& GetBoundsReference();
+
+	Rectangle GetCurrentBounds(Vector2 position, bool is_sprite);
 
 
 	virtual void Tick(GameData* _GD);
@@ -23,11 +26,15 @@ public:
 
 	D3D11_TEXTURE2D_DESC Desc;
 
+	Rectangle bounds;
 
+
+	bool renderable = true;
 protected:
 
-	RECT uv;
-	RECT* uv_ref = &uv;
+
+
+	Rectangle bounds;
 
 	ID3D11ShaderResourceView* m_pTextureRV;
 };

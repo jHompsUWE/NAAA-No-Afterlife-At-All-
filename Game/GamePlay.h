@@ -1,5 +1,20 @@
 #pragma once
 #include "GameStateBase.h"
+#include "EventManager.h"
+#include "FileManager.h"
+#include "EconomyManager.h"
+#include "TileGO.h"
+#include "WorldManager.h"
+
+
+class GameObject;
+class GameObject2D;
+class Camera;
+class TPSCamera;
+class Light;
+class Sound;
+
+
 class GamePlay :
     public GameStateBase
 {

@@ -264,6 +264,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdvisorWindow.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -381,6 +387,9 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdvisorWindow.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

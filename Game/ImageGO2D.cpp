@@ -25,7 +25,7 @@ ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) : m_pTextureRV(nullptr
 
 	if (hr != S_OK)
 	{
-		SetScale(20.0f);
+		SetScale(1.0f);
 		m_colour = Colors::HotPink;
 	}
 
@@ -51,6 +51,28 @@ void ImageGO2D::SetUV(RECT* animated_uv)
 {
 	uv_ref = animated_uv;
 }
+
+Rectangle& ImageGO2D::GetBoundsReference()
+{
+	return bounds;
+}
+
+Rectangle ImageGO2D::GetCurrentBounds(Vector2 position, bool is_sprite)
+{
+	if (!is_sprite)
+	{
+		return Rectangle((long)m_origin.x + position.x, (long)m_origin.y + position.y, (long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y));
+	}
+	else
+	{
+		return Rectangle(position.x, position.y, (long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y));
+	}
+}
+
+
+
+
+
 
 
 
