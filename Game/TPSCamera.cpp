@@ -52,22 +52,22 @@ void TPSCamera::onEvent(const Event& event)
 		}
 		case EventType::SCROLL_UP:
 		{
-			camera_target += movementYAxis * game_data->m_dt;
+			camera_target += movementYAxis *  (10 + cameraZoom) * game_data->m_dt;
 			break;
 		}
 		case EventType::SCROLL_DOWN:
 		{
-			camera_target -= movementYAxis * game_data->m_dt;
+			camera_target -= movementYAxis * (10 + cameraZoom) * game_data->m_dt;
 			break;
 		}
 		case EventType::SCROLL_LEFT:
 		{
-			camera_target += movementZAxis * game_data->m_dt;
+			camera_target += movementZAxis * (10 + cameraZoom) * game_data->m_dt;
 			break;
 		}
 		case EventType::SCROLL_RIGHT:
 		{
-			camera_target -= movementZAxis * game_data->m_dt;
+			camera_target -= movementZAxis * (10 + cameraZoom) * game_data->m_dt;
 			break;
 		}
 		default:;
