@@ -19,7 +19,7 @@ void SelectionHandler::setEndPos(Vector3 _end_pos)
 
 void SelectionHandler::update(TPSCamera& tps_cam)
 {
-	if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	/*if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 	{
 		float mouse_x = m_GD->m_MS.x;
 		float mouse_y = m_GD->m_MS.y;
@@ -51,7 +51,7 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		float zoom = tps_cam.getZoom();
 
 		std::cout << x_pos << " " << y_pos << std::endl;
-	}
+	}*/
 }
 
 void SelectionHandler::onEvent(const Event& event)
@@ -78,6 +78,7 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::BROWN_ZONING:
 		{
+			std::cout << "brown\n";
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			break;

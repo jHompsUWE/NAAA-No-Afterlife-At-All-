@@ -276,7 +276,10 @@ void Game::Render()
     //Draw 3D Game Obejects
     
 
-    
+    for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it)
+    {
+        (*it)->Draw(m_DD);
+    }
     
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
@@ -562,5 +565,57 @@ void Game::ReadInput()
         GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
     }
 
+    if (m_GD->m_mouseButtons.leftButton)
+    {
+        if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+        {
+            Vector3 v = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCam().GetProj(), game_states[State::GAME_PLAY]->getCam().GetView(), XMMatrixIdentity());
+            
+            startPos = CorrectPos(v);
+        
+            float* params = new float[3];
+            params[0] = 25.0f; params[1] = 5.0f; params[2] = 25.0f;
+            GPGO *gpgo = new GPGO(m_d3dContext.Get(), GPGO_BOX, (float*)&Colors::Green, params, CorrectPos(v));
+            m_GameObjects.push_back(gpgo);
+        }
+        if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+        {            
+            Vector3 endVec = XMVector3Unproject(XMVectorSet(m_mouse->GetState().x, m_mouse->GetState().y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000.0f, game_states[State::GAME_PLAY]->getCam().GetProj(), game_states[State::GAME_PLAY]->getCam().GetView(), XMMatrixIdentity());
+            endPos = CorrectPos(endVec);
+            cout << "start: " << startPos.x << " , " << startPos. y << " , " << startPos.z << " End: " << endPos.x << " , " << endPos.y << " , " << endPos.z << endl;
+
+            for (auto& tile : world_manager->getWorld()[m_selection_handler->m_plane])
+            {
+                bool in_X = false;
+                bool in_Z = false;
+                if (startPos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < endPos.x)
+                {
+                    in_X = true;
+                }
+                if (startPos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < endPos.z)
+                {
+                    in_Z = true;
+                }
+                if (in_X && in_Z)
+                {
+                    tile->getGridData().m_zone_type = m_selection_handler->m_zone_type;
+                    //tile->getTile().SetColour(Colors::Blue.v);
+                }                
+            }
+        }
+    }
     m_GD->m_MS = m_mouse->GetState();
 }
+
+Vector3 Game::CorrectPos(Vector3 _inVector)
+{
+    Vector3 _outVector;
+    Vector3 cameraDirection = game_states[State::GAME_PLAY]->getCam().GetDirection();
+    float distance = -_inVector.y / cameraDirection.y;
+    _outVector.x = _inVector.x + distance * cameraDirection.x;
+    _outVector.y = 0;
+    _outVector.z = _inVector.z + distance * cameraDirection.z;
+    return _outVector;
+}
+
+

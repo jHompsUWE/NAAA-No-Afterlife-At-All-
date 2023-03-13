@@ -142,4 +142,11 @@ private:
     std::shared_ptr<SoulManager> soul_manager;
 
     std::shared_ptr<SelectionHandler> m_selection_handler;
+
+    // Mouse to world
+    Vector3 CorrectPos(Vector3 _inVector);
+    
+    Vector3 startPos;
+    Vector3 endPos;
+    
 };

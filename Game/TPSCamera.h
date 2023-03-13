@@ -16,11 +16,13 @@ public:
 
 	virtual void Tick(GameData* _GD) override;
 	float getZoom() { return cameraZoom; }
+	Vector3 GetDirection();
 protected:
 	
 	//void CameraMovement(GameData* _GD);
 	void onEvent(const Event& event) override;
 
+	
 	
 	GameObject*	m_targetObject; //I'm following this object
 	Vector3	m_dpos; //I'll lurk this far behind and away from it

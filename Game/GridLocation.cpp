@@ -39,5 +39,17 @@ GPGO& GridLocation::getTile()
 
 void GridLocation::update()
 {
-    
+	switch (m_grid_data.m_zone_type)
+	{
+	case ZoneType::None:	m_tile->SetColour(Colors::White.v);	break;
+	case ZoneType::Generic:	m_tile->SetColour(Colors::Ivory.v);	break;
+	case ZoneType::Green:	m_tile->SetColour(Colors::Green.v);	break;
+	case ZoneType::Yellow:	m_tile->SetColour(Colors::Yellow.v);	break;
+	case ZoneType::Orange:	m_tile->SetColour(Colors::Orange.v);	break;
+	case ZoneType::Brown:	m_tile->SetColour(Colors::SaddleBrown.v);	break;
+	case ZoneType::Purple:	m_tile->SetColour(Colors::Magenta.v);	break;
+	case ZoneType::Red:		m_tile->SetColour(Colors::Red.v);	break;
+	case ZoneType::Blue:	m_tile->SetColour(Colors::MediumPurple.v);	break;
+	default:;
+	}
 }

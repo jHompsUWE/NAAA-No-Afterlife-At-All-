@@ -8,6 +8,7 @@ TPSCamera::TPSCamera(float _fieldOfView, float _aspectRatio, float _nearPlaneDis
 	m_dpos = _dpos;
 	offset = _offset;
 	m_pos = _target;
+	m_viewMat = XMMatrixLookAtRH(m_pos, camera_target, up);
 	game_data = _game_data;
 }
 
@@ -28,6 +29,15 @@ void TPSCamera::Tick(GameData* _GD)
 	m_viewMat = XMMatrixLookAtRH(m_pos, camera_target, up);
 
 	GameObject::Tick(_GD);
+}
+
+
+// Elvin helped with this to fix projection from mouse to correct world space
+Vector3 TPSCamera::GetDirection()
+{
+	Vector3 cameraToTarget = camera_target - m_pos;
+	float magnitude = sqrt(pow(cameraToTarget.x, 2) + pow(cameraToTarget.y, 2) + pow(cameraToTarget.z, 2));
+	return Vector3{cameraToTarget.x / magnitude, cameraToTarget.y / magnitude, cameraToTarget.z / magnitude};
 }
 
 void TPSCamera::onEvent(const Event& event)

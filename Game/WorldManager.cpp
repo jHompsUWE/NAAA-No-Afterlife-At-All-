@@ -119,7 +119,17 @@ void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
 
 void WorldManager::update(GameData& _game_data)
 {
-
+	
+	for (auto& plane : m_world)
+	{
+		if (plane.first != PlaneType::Earth)
+		{
+			for (auto& tile : plane.second)
+			{
+				tile->update();
+			}
+		}
+	}
 }
 
 void WorldManager::render(DrawData* _DD)
@@ -130,6 +140,7 @@ void WorldManager::render(DrawData* _DD)
 		{
 			for (auto& tile : plane.second)
 			{
+				
 				tile->getTile().Draw(_DD);
 				tile->getGridData().draw(_DD);
 			}
