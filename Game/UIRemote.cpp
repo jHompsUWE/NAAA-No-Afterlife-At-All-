@@ -238,7 +238,7 @@ void UIRemote::SetButtonBounds()
 	}
 }
 
-void UIRemote::SetButtonToggle(int i, Window* toggle)
+void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
 {
 	buttons[i]->SetToggle(toggle);
 }

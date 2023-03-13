@@ -20,7 +20,7 @@ void SoulManager::AddSoul(DirectX::SimpleMath::Vector2 location, PlaneType plane
 	default:
 		std::cout << "[Soulmanager.cpp][21] [warn] Plane not picked/None: " << int(plane) << ", " << location.x << " , " << location.y;
 	};
-	std::cout << "soul made";
+	//std::cout << "soul made";
 }
 
 int SoulManager::TotalSoulsAmmount(PlaneType plane) const

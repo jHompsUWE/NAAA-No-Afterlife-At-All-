@@ -31,8 +31,6 @@ public:
 	bool on_finish = false;
 	bool is_finished = false;
 
-
-
 	//Objects
 	ImageGO2D* sprite;
 	RECT* uv;
