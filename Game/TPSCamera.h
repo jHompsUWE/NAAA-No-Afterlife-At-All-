@@ -15,7 +15,7 @@ public:
 	virtual ~TPSCamera();
 
 	virtual void Tick(GameData* _GD) override;
-
+	float getZoom() { return cameraZoom; }
 protected:
 	
 	//void CameraMovement(GameData* _GD);

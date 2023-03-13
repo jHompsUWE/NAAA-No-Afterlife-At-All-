@@ -24,6 +24,8 @@
 #include "TileGO.h"
 #include "WorldManager.h"
 
+#include "SelectionHandler.h"
+
 using std::list;
 
 // Forward declarations
@@ -138,4 +140,6 @@ private:
     std::shared_ptr<InputManager> input_manager;
     std::shared_ptr<WorldManager> world_manager;
     std::shared_ptr<SoulManager> soul_manager;
+
+    std::shared_ptr<SelectionHandler> m_selection_handler;
 };
