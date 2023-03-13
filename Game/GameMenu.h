@@ -1,5 +1,9 @@
 #pragma once
 #include "GameStateBase.h"
+#include "Button.h"
+#include "TextGO2D.h"
+#include <array>
+
 class GameMenu :
     public GameStateBase
 {
@@ -19,6 +23,10 @@ public:
     void render2D() override;
 
 private:
+    Button* newGame;
     
+    //Non functional buttons
+    std::array<Button*, 3> NFButtons;
+    std::array<TextGO2D*, 4>ButtonsText;
 };
 
