@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject2D.h"
 #include "Window.h"
+#include "Event.h"
 
 //=================================================================
 //Button class based off ImageGO2D class
@@ -20,12 +21,14 @@ public:
 
 	void SetBounds();
 	void SetName(string _name);
+	void SetType(EventType _event_type);
 	void SetToggle(Window* toggle);
 
 	float differenceX;
 	float differenceY;
 	
 	string buttonName = "Button";
+	EventType event_type;
 	bool pressed = false;
 
 protected:
