@@ -96,7 +96,7 @@ public:
 	EventType type;
 
 	////////////////////////////////////////////////////////////
-	/// \brief The time between tick in which the event is trigger and its execution in seconds, defaulted to 0 for an immediate event. 
+	/// \brief The time between the update cycle in which the event is trigger and the update cycle in which it is executed in seconds, defaulted to 0 for an immediate event. 
 	////////////////////////////////////////////////////////////
 	float delay = 0;
 };

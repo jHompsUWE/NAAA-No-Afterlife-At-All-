@@ -5,7 +5,6 @@
 #include "Manager.h"
 #include "Event.h"
 #include "Listener.h"
-#include "StepTimer.h"
 
 class EventManager : public Manager
 {

@@ -23,6 +23,7 @@
 #include "SoulManager.h"
 #include "TileGO.h"
 #include "WorldManager.h"
+#include "InputManager.h"
 
 #include "SelectionHandler.h"
 

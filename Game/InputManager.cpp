@@ -5,12 +5,12 @@ void InputManager::awake()
 {
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
-	current_action_map = &game_action_map; // in future, will rely on the finite state machine to determine current action map.
+	current_key_action_map = &game_key_action_map; // in future, will rely on the finite state machine to determine current action map.
 }
 
 void InputManager::update(GameData& _game_data)
 {
-	for (auto const action : *current_action_map)
+	for (auto const action : *current_key_action_map)
 	{
 		switch (action.type)
 		{
@@ -96,13 +96,13 @@ void InputManager::onEvent(const Event& event)
 		{
 		case State::GAME_MENU:
 		{
-			current_action_map = &menu_action_map;
+			current_key_action_map = &menu_key_action_map;
 			break;
 		}
 
 		case State::GAME_PLAY:
 		{
-			current_action_map = &game_action_map;
+			current_key_action_map = &game_key_action_map;
 			break;
 		}
 
@@ -156,7 +156,7 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 				modifier = static_cast<unsigned char>(std::stoi(std::string(json_action["Modifier"]), nullptr, 16));
 			}
 
-			game_action_map.emplace_back(KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
+			game_key_action_map.emplace_back(KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
 		}
 	}
 	else
@@ -167,10 +167,10 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)
 {
-
+	// TODO: Functionality for changing keybinds.
 }
 
 void InputManager::resetInputActionMaps()
 {
-
+	// TODO: Functionality for resetting keybinds to default.
 }

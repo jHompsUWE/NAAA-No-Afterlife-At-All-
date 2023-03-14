@@ -1,7 +1,6 @@
 #pragma once
 
 #include "DrawData.h"
-#include "StepTimer.h"
 #include "GameData.h"
 
 

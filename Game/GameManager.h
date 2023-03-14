@@ -6,7 +6,6 @@
 #include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
-#include "InputManager.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.

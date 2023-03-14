@@ -8,13 +8,6 @@
 #include "json.hpp"
 #include "GameManager.h"
 
-//can swap out for Paul's FSM enu.
-enum class InputActionMap
-{
-    menu_state,
-    game_state,
-};
-
 enum class InputType
 {
 	key_pressed,
@@ -105,21 +98,64 @@ public:
     InputManager() = default;
     ~InputManager() = default;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Is called when the program initializes.
+	////////////////////////////////////////////////////////////
     void awake() override;
-    void update(GameData& _game_data) override;
-    void onEvent(const Event& event) override;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Called every cycle of the game loop.
+	///	\param _timer DeltaTime.
+	////////////////////////////////////////////////////////////
+    void update(GameData& _game_data) override;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
+	///	\param event The event to be acted upon.
+	////////////////////////////////////////////////////////////
+    void onEvent(const Event& event) override;
 
 private:
     void loadInInputActionsMaps(std::string _filepath);
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Incomplete - but will save any changes to the action map. 
+	////////////////////////////////////////////////////////////
     void saveInputActionMapChanges(std::string _filepath);
+
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Incomplete - but will reset the action map back to default. 
+	////////////////////////////////////////////////////////////
     void resetInputActionMaps();
 
-    std::vector<KeyboardAction> game_action_map;
-    std::vector<KeyboardAction> menu_action_map;
-    std::vector<KeyboardAction>* current_action_map;
+    ////////////////////////////////////////////////////////////
+	/// \brief Key action map for the game state. 
+	////////////////////////////////////////////////////////////
+    std::vector<KeyboardAction> game_key_action_map;
 
+    ////////////////////////////////////////////////////////////
+	/// \brief Key action map for the menu state. 
+	////////////////////////////////////////////////////////////
+    std::vector<KeyboardAction> menu_key_action_map;
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Pointer to the current keyboard action map. 
+	////////////////////////////////////////////////////////////
+    std::vector<KeyboardAction>* current_key_action_map;
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
+	////////////////////////////////////////////////////////////
     std::string action_maps_filepath = "../Data/";
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Default keybinds filename - Only use this one for resetting custom to default.
+	////////////////////////////////////////////////////////////
     std::string default_bindings_file_name = "keybinds_default.json";
+
+    ////////////////////////////////////////////////////////////
+	/// \brief Custom keybinds filename - Load in and use this one.
+	////////////////////////////////////////////////////////////
     std::string custom_bindings_file_name = "keybinds_custom.json";
 };
