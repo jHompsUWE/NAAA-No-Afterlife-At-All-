@@ -19,39 +19,51 @@ void SelectionHandler::setEndPos(Vector3 _end_pos)
 
 void SelectionHandler::update(TPSCamera& tps_cam)
 {
-	/*if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	if (m_GD->m_mouseButtons.leftButton)
 	{
-		float mouse_x = m_GD->m_MS.x;
-		float mouse_y = m_GD->m_MS.y;
+		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+		{
+			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 
-		// Window is 800 x 600
-		float window_x = 800;
-		float window_y = 600;
+			m_start_pos = convertPosition(v, tps_cam);	
+		}
+		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+		{
+			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 
-		float x_pos = mouse_x - window_x / 2;
-		float y_pos = mouse_y - window_y / 2;
+			m_end_pos = convertPosition(v, tps_cam);
 
-		float zoom = tps_cam.getZoom();
+			float x_diff = m_end_pos.x - m_start_pos.x;
+			float z_diff = m_end_pos.z - m_start_pos.z;
 
-		std::cout << x_pos << " " << y_pos << std::endl;
+			cout << "start: " << m_start_pos.x << " , " << m_start_pos.y << " , " << m_start_pos.z << " End: " << m_end_pos.x << " , " << m_end_pos.y << " , " << m_end_pos.z << endl;
+
+			for (auto& tile : m_world[m_plane])
+			{
+				bool in_x = false;
+				bool in_z = false;
+
+				if ((m_start_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_end_pos.x)
+					|| (m_end_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_start_pos.x))
+				{
+					in_x = true;
+				}
+				if ((m_start_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_end_pos.z)
+					|| (m_end_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_start_pos.z))
+				{
+					in_z = true;
+				}
+
+				if (in_x && in_z)
+				{
+					tile->getGridData().m_zone_type = m_zone_type;
+					tile->getGridData().m_tile_type = m_tile_type;
+				}
+			}
+		}
 	}
-	
-	if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
-	{
-		float mouse_x = m_GD->m_MS.x;
-		float mouse_y = m_GD->m_MS.y;
 
-		// Window is 800 x 600
-		float window_x = 800;
-		float window_y = 600;
 
-		float x_pos = mouse_x - window_x / 2;
-		float y_pos = mouse_y - window_y / 2;
-
-		float zoom = tps_cam.getZoom();
-
-		std::cout << x_pos << " " << y_pos << std::endl;
-	}*/
 }
 
 void SelectionHandler::onEvent(const Event& event)
@@ -115,4 +127,16 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		default:;
 	}
+}
+
+Vector3 SelectionHandler::convertPosition(Vector3 _pos_to_convert, TPSCamera& tps_cam)
+{
+	Vector3 _out_vector;
+	Vector3 camera_direction = tps_cam.GetDirection();
+	float distance = -_pos_to_convert.y / camera_direction.y;
+	_out_vector.x = _pos_to_convert.x + distance * camera_direction.x;
+	_out_vector.y = 0;
+	_out_vector.z = _pos_to_convert.z + distance * camera_direction.z;
+
+	return _out_vector;
 }

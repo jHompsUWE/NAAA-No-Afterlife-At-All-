@@ -29,7 +29,7 @@ private:
 
 	GameData* m_GD;
 
-	
+	Vector3 convertPosition(Vector3 _pos_to_convert, TPSCamera& tps_cam);
 
 };
 

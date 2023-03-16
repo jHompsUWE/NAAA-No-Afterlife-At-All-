@@ -234,6 +234,8 @@ void Game::Update(DX::StepTimer const& _timer)
         }
     }
 
+    m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
+
     ReadInput();
     //upon space bar switch camera state
     //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
@@ -565,6 +567,7 @@ void Game::ReadInput()
         GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
     }
 
+    /*
     if (m_GD->m_mouseButtons.leftButton)
     {
         if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
@@ -603,7 +606,8 @@ void Game::ReadInput()
                 }                
             }
         }
-    }
+        
+    }*/
     m_GD->m_MS = m_mouse->GetState();
 }
 
