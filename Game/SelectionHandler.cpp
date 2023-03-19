@@ -2,7 +2,8 @@
 #include "SelectionHandler.h"
 #include "Mouse.h"
 
-SelectionHandler::SelectionHandler(std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& _world, GameData* _GD) : m_world(_world), m_GD(_GD)
+SelectionHandler::SelectionHandler(WorldManager& _world_manager, GameData* _GD) : 
+	m_world_manager(_world_manager), m_GD(_GD)
 {
 
 }
@@ -23,45 +24,23 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 	{
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 		{
+			// When left button is pressed, convert the mouse position into a world position. This signifies the start of the selected zone
 			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 
 			m_start_pos = convertPosition(v, tps_cam);	
 		}
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
 		{
+			// When left button is released, convert mouse pos to world pos again. Used as the end point
 			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 
 			m_end_pos = convertPosition(v, tps_cam);
 
-			float x_diff = m_end_pos.x - m_start_pos.x;
-			float z_diff = m_end_pos.z - m_start_pos.z;
-
-			cout << "start: " << m_start_pos.x << " , " << m_start_pos.y << " , " << m_start_pos.z << " End: " << m_end_pos.x << " , " << m_end_pos.y << " , " << m_end_pos.z << endl;
-
-			for (auto& tile : m_world[m_plane])
-			{
-				bool in_x = false;
-				bool in_z = false;
-
-				if ((m_start_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_end_pos.x)
-					|| (m_end_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_start_pos.x))
-				{
-					in_x = true;
-				}
-				if ((m_start_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_end_pos.z)
-					|| (m_end_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_start_pos.z))
-				{
-					in_z = true;
-				}
-
-				if (in_x && in_z)
-				{
-					tile->getGridData().m_zone_type = m_zone_type;
-					tile->getGridData().m_tile_type = m_tile_type;
-				}
-			}
+			updateTiles();
 		}
 	}
+
+
 
 
 }
@@ -129,6 +108,13 @@ void SelectionHandler::onEvent(const Event& event)
 	}
 }
 
+
+/// <summary>
+/// Function to convert mouse positions into world positions
+/// </summary>
+/// <param name="_pos_to_convert">The vector3 position to convert</param>
+/// <param name="tps_cam">The camera currently being used so the convertion is accurate</param>
+/// <returns>The converted position that will now be in world space</returns>
 Vector3 SelectionHandler::convertPosition(Vector3 _pos_to_convert, TPSCamera& tps_cam)
 {
 	Vector3 _out_vector;
@@ -139,4 +125,43 @@ Vector3 SelectionHandler::convertPosition(Vector3 _pos_to_convert, TPSCamera& tp
 	_out_vector.z = _pos_to_convert.z + distance * camera_direction.z;
 
 	return _out_vector;
+}
+
+/// <summary>
+/// Update the tiles with in selection. Setting their zones.
+/// </summary>
+void SelectionHandler::updateTiles()
+{
+	cout << "start: " << m_start_pos.x << " , " << m_start_pos.y << " , " << m_start_pos.z << " End: " << m_end_pos.x << " , " << m_end_pos.y << " , " << m_end_pos.z << endl;
+
+	for (auto& tile : m_world_manager.getWorld()[m_plane])
+	{
+		bool in_x = false;
+		bool in_z = false;
+
+		if ((m_start_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_end_pos.x)
+			|| (m_end_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_start_pos.x))
+		{
+			in_x = true;
+		}
+		if ((m_start_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_end_pos.z)
+			|| (m_end_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_start_pos.z))
+		{
+			in_z = true;
+		}
+
+		if (in_x && in_z)
+		{
+			tile->getGridData().m_zone_type = m_zone_type;
+			tile->getGridData().m_tile_type = m_tile_type;
+		}
+	}
+}
+
+/// <summary>
+/// Pathfinding algorithm for placing roads
+/// </summary>
+void pathfindRoads()
+{
+	
 }

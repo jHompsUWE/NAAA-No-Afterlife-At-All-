@@ -1,19 +1,27 @@
 #include "pch.h"
 #include "GridLocation.h"
 
-GridLocation::GridLocation()
+GridLocation::GridLocation() : m_tile(nullptr)
 {
 
 }
 
-GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _pos, int plane)
+/// <summary>
+/// Constructor allowing for the creation of a grid location.
+/// </summary>
+/// <param name="_device">Takes the DirectX3D11 device context.</param>
+/// <param name="_pos">Grid coordinate for world positioning.</param>
+/// <param name="plane">The world plane used for positioning during world creation.</param>
+GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _pos, PlaneType plane)
 {
     float* params = new float[3];
     params[0] = 25.0f; params[1] = 5.0f; params[2] = 25.0f;
-    m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::Red, params, 
-        Vector3(_pos.x * 25.0f + plane * 130.0f, 0.0f, _pos.y * 25.0f + plane * 130.0f));
+    m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::White, params, 
+        Vector3(_pos.x * 25.0f, 0.0f, _pos.y * 25.0f));
 
     m_grid_data.m_position = _pos;
+
+	m_grid_data.m_plane = plane;
 }
 
 GridLocation::~GridLocation()

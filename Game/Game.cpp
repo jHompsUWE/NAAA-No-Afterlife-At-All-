@@ -154,9 +154,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
-    world_manager->updateVibes(*world[PlaneType::Heaven][25], PlaneType::Heaven);
+    world_manager->updateVibes(*world[PlaneType::Heaven][25]);
     
-    m_selection_handler = std::make_unique<SelectionHandler>(world_manager->getWorld(), m_GD);
+    m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 

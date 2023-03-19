@@ -13,11 +13,7 @@ class GridLocation
 {
 public:
 	GridLocation();
-	/// \brief Constructor allowing for the creation of the location
-	/// \param _device Takes the DirectX3D11 device context
-	/// \param pos Grid coordinate for world positioning
-	/// \param plane The world plane used for positioning during world creation
-	GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 pos, int plane);
+	GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 pos, PlaneType plane);
 	~GridLocation();
 
 	void createBuilding(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device);
