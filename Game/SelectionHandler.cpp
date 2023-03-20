@@ -22,6 +22,7 @@ void SelectionHandler::setEndPos(Vector3 _end_pos)
 
 void SelectionHandler::update(TPSCamera& tps_cam)
 {
+	update_tile = false;
 	// Convert mouse pos to world pos every update
 	Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 	Vector3 m_pos = convertPosition(v, tps_cam);
@@ -30,6 +31,8 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 
 	current_nearest = findNearestTile(m_pos);
 
+	m_end_tile = current_nearest;
+
 	if (m_GD->m_mouseButtons.leftButton)
 	{
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
@@ -37,16 +40,19 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 			m_start_pos = m_pos;
 
 			m_start_tile = current_nearest;
+
+			currently_selecting = true;
 		}
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
 		{
 			m_end_pos = m_pos;
 
-			m_end_tile = current_nearest;
-
-			updateTiles();
+			currently_selecting = false;
+			update_tile = true;
 		}
 	}
+
+	updateTiles();
 
 }
 
@@ -114,7 +120,6 @@ void SelectionHandler::onEvent(const Event& event)
 	}
 }
 
-
 /// <summary>
 /// Function to convert mouse positions into world positions
 /// </summary>
@@ -138,10 +143,14 @@ Vector3 SelectionHandler::convertPosition(Vector3 _pos_to_convert, TPSCamera& tp
 /// </summary>
 void SelectionHandler::updateTiles()
 {
-	cout << "start: " << m_start_pos.x << " , " << m_start_pos.y << " , " << m_start_pos.z << " End: " << m_end_pos.x << " , " << m_end_pos.y << " , " << m_end_pos.z << endl;
+	std::tuple<int, int> start_grid;
 
-	Vector2 start_grid = m_start_tile->getGridData().m_position;
-	Vector2 end_grid = m_end_tile->getGridData().m_position;
+	if (m_start_tile)
+	{
+		start_grid = m_start_tile->getGridData().m_position;
+	}
+	
+	std::tuple<int, int> end_grid = m_end_tile->getGridData().m_position;
 
 	bool x_increase = false;
 	bool y_increase = false;
@@ -149,26 +158,26 @@ void SelectionHandler::updateTiles()
 	Vector2 low_grid;
 	Vector2 high_grid;
 
-	if (start_grid.x < end_grid.x)
+	if (std::get<0>(start_grid) < std::get<0>(end_grid))
 	{
-		low_grid.x = start_grid.x;
-		high_grid.x = end_grid.x;
+		low_grid.x = std::get<0>(start_grid);
+		high_grid.x = std::get<0>(end_grid);
 	}
 	else
 	{
-		low_grid.x = end_grid.x;
-		high_grid.x = start_grid.x;
+		low_grid.x = std::get<0>(end_grid);
+		high_grid.x = std::get<0>(start_grid);
 	}
 	
-	if (start_grid.y < end_grid.y)
+	if (std::get<1>(start_grid) < std::get<1>(end_grid))
 	{
-		low_grid.y = start_grid.y;
-		high_grid.y = end_grid.y;
+		low_grid.y = std::get<1>(start_grid);
+		high_grid.y = std::get<1>(end_grid);
 	}
 	else
 	{
-		low_grid.y = end_grid.y;
-		high_grid.y = start_grid.y;
+		low_grid.y = std::get<1>(end_grid);
+		high_grid.y = std::get<1>(start_grid);
 	}
 
 	for (int i = low_grid.x; i <= high_grid.x; i++)
@@ -177,8 +186,15 @@ void SelectionHandler::updateTiles()
 		{
 			int index = m_world_manager->getIndex(Vector2(i, j));
 
-			m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
-			m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+			if (currently_selecting)
+			{
+				m_world_manager->getWorld()[m_plane][index]->setSelected(true);
+			}
+			else if (update_tile)
+			{
+				m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
+				m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+			}
 		}
 	}
 }
@@ -217,7 +233,8 @@ GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
 			if (length < shortest_distance)
 			{
 				shortest_distance = length;
-				pos = tile->getGridData().m_position;
+				pos.x = std::get<0>(tile->getGridData().m_position);
+				pos.y = std::get<1>(tile->getGridData().m_position);
 			}
 		}
 		

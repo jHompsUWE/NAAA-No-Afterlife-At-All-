@@ -8,37 +8,7 @@
 #include <tuple>
 #include <queue>
 #include <unordered_map>
-
-using Location = Vector2;
-
-namespace std
-{
-	template<> struct hash<Location>
-	{
-		std::size_t operator()(const Location& id) const noexcept
-		{
-			return int(id.x) ^ int(id.y);
-		}
-	};
-}
-/*
-using PQElement = std::pair<int, Location>;
-
-struct PriorityQueue
-{
-	std::priority_queue<PQElement, std::vector<PQElement>, std::greater<PQElement>> elements;
-
-	inline bool empty() const { return elements.empty(); }
-
-	inline void put(Location item, int priority) { elements.emplace(priority, item); }
-
-	Location get()
-	{
-		Location best_item = elements.top().second;
-		elements.pop();
-		return best_item;
-	}
-};*/
+#include <utility>
 
 class SelectionHandler: public Listener
 {
@@ -68,6 +38,9 @@ private:
 	GridLocation* m_end_tile;
 
 	static const int radius = 500;
+
+	bool currently_selecting;
+	bool update_tile;
 
 	Vector3 convertPosition(Vector3 _pos_to_convert, TPSCamera& tps_cam);
 

@@ -19,7 +19,7 @@ GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device,
     m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::White, params, 
         Vector3(_pos.x * 25.0f, 0.0f, _pos.y * 25.0f));
 
-    m_grid_data.m_position = _pos;
+    m_grid_data.m_position = std::make_tuple<int, int>(int(_pos.x), int(_pos.y));
 
 	m_grid_data.m_plane = plane;
 }
@@ -46,7 +46,7 @@ GPGO& GridLocation::getTile()
 }
 
 bool GridLocation::getSelected() { return m_selected; }
-void GridLocation::setSelected(bool _selected) { m_selected = _selected;  }
+void GridLocation::setSelected(bool _selected) { m_selected = _selected; }
 
 void GridLocation::update()
 {
@@ -66,6 +66,6 @@ void GridLocation::update()
 
 	if (m_selected)
 	{
-		m_tile->SetColour(Colors::LightGray.v);
+		m_tile->SetColour(Color(m_tile->GetColour().x * 0.75f, m_tile->GetColour().y * 0.75f, m_tile->GetColour().z * 0.75f));
 	}
 }

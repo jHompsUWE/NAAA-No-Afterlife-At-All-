@@ -46,7 +46,7 @@ void WorldManager::setConnected(GridLocation& _grid_location)
 
 	PlaneType _plane = _grid_location.getGridData().m_plane;
 
-	Vector2 start = _grid_location.getGridData().m_position;
+	Vector2 start = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
 	Vector2 directions[24] =
 	{
@@ -81,7 +81,7 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 	
 	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
 
-	Vector2 start_pos = _grid_location.getGridData().m_position;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
 	std::vector<Vector2> range;
 	range.reserve(25);
@@ -194,7 +194,7 @@ void WorldManager::calculateEfficiency(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 {
-	Vector2 start_pos = _grid_location.getGridData().m_position;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
 	int adjacency = 0;
@@ -243,7 +243,7 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 {
-	Vector2 start_pos = _grid_location.getGridData().m_position;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
 	int adjacency = 0;
