@@ -258,6 +258,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FBXImporter.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="FileManagerV2.h" />
     <ClInclude Include="fileVBGO.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
@@ -321,6 +322,7 @@
     <ClCompile Include="EconomyManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="FileManagerV2.cpp" />
     <ClCompile Include="fileVBGO.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMenu.cpp" />

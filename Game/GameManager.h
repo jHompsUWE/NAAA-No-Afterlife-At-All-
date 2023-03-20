@@ -6,6 +6,7 @@
 #include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
+#include "FileManagerV2.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.
@@ -82,6 +83,11 @@ public:
 	////////////////////////////////////////////////////////////
 	EventManager* getEventManager() { return event_manager; };
 
+	////////////////////////////////////////////////////////////
+	/// \brief Returns pointer to File Manager Event, use this for triggering events. 
+	////////////////////////////////////////////////////////////
+	FileManagerV2* getFileManagerV2() { return file_manager; };
+
 private:
 	GameManager() {};
 
@@ -94,6 +100,12 @@ private:
 	/// \brief Pointer to EventManager for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	EventManager* event_manager;
+
+
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to File Manager Event for accessing derived class members.
+	////////////////////////////////////////////////////////////
+	FileManagerV2* file_manager;
 };
 
 

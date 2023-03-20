@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "GameManager.h"
 
+#include "FileManagerV2.h"
+
 void GameManager::awake()
 {
 	for (auto manager : managers)
@@ -44,6 +46,11 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			event_manager = reinterpret_cast<EventManager*>(&*_manager);
 			return true;
 		}
+	case ManagerType::FILE:
+		{
+			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }
@@ -57,6 +64,11 @@ bool GameManager::removeManager(std::shared_ptr<Manager> _manager, ManagerType _
 	case ManagerType::EVENT:
 		{
 			event_manager = nullptr;
+			return true;
+		}
+	case ManagerType::FILE:
+		{
+			file_manager = nullptr;
 			return true;
 		}
 	}

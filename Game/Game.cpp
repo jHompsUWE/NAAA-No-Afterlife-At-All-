@@ -127,8 +127,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(event_manager, ManagerType::EVENT);
     economy_manager_ = std::make_shared<EconomyManager>();
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
-    file_manager_ = std::make_shared<FileManager>();
-    GameManager::get()->addManager(file_manager_, ManagerType::FILE);
+    //file_manager_ = std::make_shared<FileManager>();
+    //GameManager::get()->addManager(file_manager_, ManagerType::FILE);
+    file_managerV2_ = std::make_shared<FileManagerV2>();
+    GameManager::get()->addManager(file_managerV2_, ManagerType::FILE);
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 

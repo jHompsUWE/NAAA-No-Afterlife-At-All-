@@ -20,6 +20,7 @@
 #include "EventManager.h"
 #include "FileManager.h"
 #include "EconomyManager.h"
+#include "FileManagerV2.h"
 #include "SoulManager.h"
 #include "TileGO.h"
 #include "WorldManager.h"
@@ -137,7 +138,8 @@ private:
 
     std::shared_ptr<EventManager> event_manager;
     std::shared_ptr<EconomyManager> economy_manager_;
-    std::shared_ptr<FileManager> file_manager_;
+    //std::shared_ptr<FileManager> file_manager_;
+    std::shared_ptr<FileManagerV2> file_managerV2_;
     std::shared_ptr<InputManager> input_manager;
     std::shared_ptr<WorldManager> world_manager;
     std::shared_ptr<SoulManager> soul_manager;
