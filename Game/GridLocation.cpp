@@ -64,6 +64,11 @@ void GridLocation::update()
 	default:;
 	}
 
+	if (m_grid_data.m_tile_type == TileType::Road)
+	{
+		m_tile->SetColour(Colors::LightCoral.v);
+	}
+
 	if (m_selected)
 	{
 		m_tile->SetColour(Color(m_tile->GetColour().x * 0.75f, m_tile->GetColour().y * 0.75f, m_tile->GetColour().z * 0.75f));

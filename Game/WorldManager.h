@@ -30,6 +30,7 @@ public:
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& getWorld();
 
     int getIndex(Vector2 position);
+    bool withinRange(Vector2 position);
 
 private:
     void calculateEfficiency(GridLocation& _grid_location);
@@ -38,7 +39,7 @@ private:
     int adjacencyScoreHell(GridLocation& _grid_location);
 
     
-    bool withinRange(Vector2 position);
+    
 
     int m_grid_x;
     int m_grid_y;

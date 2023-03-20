@@ -3,6 +3,8 @@
 #include "Mouse.h"
 #include <math.h>
 
+#include "Pathfinding.h"
+
 SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD) :
 	m_world_manager(_world_manager), m_GD(_GD)
 {
@@ -179,6 +181,26 @@ void SelectionHandler::updateTiles()
 		low_grid.y = std::get<1>(end_grid);
 		high_grid.y = std::get<1>(start_grid);
 	}
+
+	if (m_start_tile)
+	{
+		if (update_tile)
+		{
+			if (m_tile_type == TileType::Road)
+			{
+				for (auto tile : pathfinding(*m_start_tile, *m_end_tile, *m_world_manager))
+				{
+					int index = m_world_manager->getIndex(tile);
+
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+				}
+				return;
+			}
+		}
+		
+	}
+	
+
 
 	for (int i = low_grid.x; i <= high_grid.x; i++)
 	{
