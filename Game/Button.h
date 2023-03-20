@@ -24,6 +24,8 @@ public:
 	void SetType(EventType _event_type);
 	void SetToggle(GameObject2D* toggle);
 
+	void toggle();
+
 	float differenceX;
 	float differenceY;
 	

@@ -291,6 +291,12 @@
     <ClInclude Include="SelectionHandler.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIRemote.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -420,6 +426,12 @@
       <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SelectionHandler.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRemote.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

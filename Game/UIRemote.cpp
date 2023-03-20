@@ -282,6 +282,16 @@ void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
 
 void UIRemote::onEvent(const Event& event)
 {
+	for (int i = 0; i < 37; i++)
+	{
+		if (buttons[i]->event_type == event.type)
+		{
+			text[2]->SetString(buttons[i]->buttonName);
+			buttons[i]->toggle();
+			break;
+		}
+	}
+
 	switch (event.type)
 	{
 		case EventType::SOUL_UPDATE:
@@ -356,6 +366,8 @@ void UIRemote::Tick(GameData* _GD)
 
 					Event event{};
 					event.type = buttons[i]->event_type;
+
+					buttons[i]->toggle();
 
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 					buttons[i]->pressed = false;

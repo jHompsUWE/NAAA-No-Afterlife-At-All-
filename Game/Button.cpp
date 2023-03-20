@@ -106,13 +106,18 @@ void Button::Tick(GameData* _GD)
 	{
 		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 		{
-			if (toggleWindow != nullptr)
-			{
-				toggleWindow->renderable = !toggleWindow->renderable;
-			}
+			toggle();
 
 			pressed = true;
 		}
+	}
+}
+
+void Button::toggle()
+{
+	if (toggleWindow != nullptr)
+	{
+		toggleWindow->renderable = !toggleWindow->renderable;
 	}
 }
 
