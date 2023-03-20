@@ -25,9 +25,11 @@ public:
 
     void update(GameData& _game_data) override;
 
-    void render(DrawData* _DD);
+    void render(DrawData* _DD) override;
 
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& getWorld();
+
+    int getIndex(Vector2 position);
 
 private:
     void calculateEfficiency(GridLocation& _grid_location);
@@ -35,7 +37,7 @@ private:
     int adjacencyScoreHeaven(GridLocation& _grid_location);
     int adjacencyScoreHell(GridLocation& _grid_location);
 
-    int getIndex(Vector2 position);
+    
     bool withinRange(Vector2 position);
 
     int m_grid_x;

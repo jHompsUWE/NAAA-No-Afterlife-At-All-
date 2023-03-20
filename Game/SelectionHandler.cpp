@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "SelectionHandler.h"
 #include "Mouse.h"
+#include <math.h>
 
-SelectionHandler::SelectionHandler(WorldManager& _world_manager, GameData* _GD) : 
+SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD) :
 	m_world_manager(_world_manager), m_GD(_GD)
 {
 
@@ -18,32 +19,37 @@ void SelectionHandler::setEndPos(Vector3 _end_pos)
 	m_end_pos = _end_pos;
 }
 
+
 void SelectionHandler::update(TPSCamera& tps_cam)
 {
+	// Convert mouse pos to world pos every update
+	Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
+	Vector3 m_pos = convertPosition(v, tps_cam);
+
+	GridLocation* current_nearest;
+
+	current_nearest = findNearestTile(m_pos);
+
 	if (m_GD->m_mouseButtons.leftButton)
 	{
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 		{
-			// When left button is pressed, convert the mouse position into a world position. This signifies the start of the selected zone
-			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
+			m_start_pos = m_pos;
 
-			m_start_pos = convertPosition(v, tps_cam);	
+			m_start_tile = current_nearest;
 		}
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
 		{
-			// When left button is released, convert mouse pos to world pos again. Used as the end point
-			Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
+			m_end_pos = m_pos;
 
-			m_end_pos = convertPosition(v, tps_cam);
+			m_end_tile = current_nearest;
 
 			updateTiles();
 		}
 	}
 
-
-
-
 }
+
 
 void SelectionHandler::onEvent(const Event& event)
 {
@@ -134,26 +140,45 @@ void SelectionHandler::updateTiles()
 {
 	cout << "start: " << m_start_pos.x << " , " << m_start_pos.y << " , " << m_start_pos.z << " End: " << m_end_pos.x << " , " << m_end_pos.y << " , " << m_end_pos.z << endl;
 
-	for (auto& tile : m_world_manager.getWorld()[m_plane])
+	Vector2 start_grid = m_start_tile->getGridData().m_position;
+	Vector2 end_grid = m_end_tile->getGridData().m_position;
+
+	bool x_increase = false;
+	bool y_increase = false;
+
+	Vector2 low_grid;
+	Vector2 high_grid;
+
+	if (start_grid.x < end_grid.x)
 	{
-		bool in_x = false;
-		bool in_z = false;
+		low_grid.x = start_grid.x;
+		high_grid.x = end_grid.x;
+	}
+	else
+	{
+		low_grid.x = end_grid.x;
+		high_grid.x = start_grid.x;
+	}
+	
+	if (start_grid.y < end_grid.y)
+	{
+		low_grid.y = start_grid.y;
+		high_grid.y = end_grid.y;
+	}
+	else
+	{
+		low_grid.y = end_grid.y;
+		high_grid.y = start_grid.y;
+	}
 
-		if ((m_start_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_end_pos.x)
-			|| (m_end_pos.x < tile->getTile().GetPos().x && tile->getTile().GetPos().x < m_start_pos.x))
+	for (int i = low_grid.x; i <= high_grid.x; i++)
+	{
+		for (int j = low_grid.y; j <= high_grid.y; j++)
 		{
-			in_x = true;
-		}
-		if ((m_start_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_end_pos.z)
-			|| (m_end_pos.z < tile->getTile().GetPos().z && tile->getTile().GetPos().z < m_start_pos.z))
-		{
-			in_z = true;
-		}
+			int index = m_world_manager->getIndex(Vector2(i, j));
 
-		if (in_x && in_z)
-		{
-			tile->getGridData().m_zone_type = m_zone_type;
-			tile->getGridData().m_tile_type = m_tile_type;
+			m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
+			m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
 		}
 	}
 }
@@ -161,7 +186,45 @@ void SelectionHandler::updateTiles()
 /// <summary>
 /// Pathfinding algorithm for placing roads
 /// </summary>
-void pathfindRoads()
+void SelectionHandler::pathfindRoads()
 {
-	
+	std::cout << "TODO\n";
+}
+
+/// <summary>
+/// Find the nearest tile in relation to the converted mouse position
+/// </summary>
+/// <param name="mouse_pos">The mouse position in world space</param>
+/// <returns>The nearest tile</returns>
+GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
+{
+	float shortest_distance = 100000;
+	Vector2 pos;
+
+	for (auto& tile : m_world_manager->getWorld()[m_plane])
+	{
+		Vector3 world_pos = tile->getTile().GetPos();
+		Vector2 radius_pos(world_pos.x, world_pos.z);
+
+		float x_dis = (radius_pos.x - mouse_pos.x);
+		float y_dis = (radius_pos.y - mouse_pos.z);
+
+		float length = std::pow(x_dis, 2) + std::pow(y_dis, 2);
+		float rad = std::pow(radius, 2);
+
+		if (length < rad)
+		{
+			if (length < shortest_distance)
+			{
+				shortest_distance = length;
+				pos = tile->getGridData().m_position;
+			}
+		}
+		
+		tile->setSelected(false);
+	}
+
+	m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)]->setSelected(true);
+
+	return &*m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)];
 }

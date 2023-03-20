@@ -21,11 +21,16 @@ public:
 	GridData& getGridData();
 	GPGO& getTile();
 
+	bool getSelected();
+	void setSelected(bool _selected);
+
 	void update();
 
 private:
 	GridData m_grid_data;
 
 	GPGO* m_tile;
+
+	bool m_selected;
 };
 

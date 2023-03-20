@@ -21,7 +21,7 @@ namespace std
 		}
 	};
 }
-
+/*
 using PQElement = std::pair<int, Location>;
 
 struct PriorityQueue
@@ -38,12 +38,12 @@ struct PriorityQueue
 		elements.pop();
 		return best_item;
 	}
-};
+};*/
 
 class SelectionHandler: public Listener
 {
 public:
-	SelectionHandler(WorldManager& _world_manager, GameData* _GD);
+	SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD);
 	
 	void setStartPos(Vector3 _start_pos);
 
@@ -57,12 +57,17 @@ public:
 	TileType m_tile_type;
 	ZoneType m_zone_type;
 private:
-	WorldManager& m_world_manager;
+	std::shared_ptr<WorldManager> m_world_manager;
 
 	Vector3 m_start_pos;
 	Vector3 m_end_pos;
 
 	GameData* m_GD;
+
+	GridLocation* m_start_tile;
+	GridLocation* m_end_tile;
+
+	static const int radius = 500;
 
 	Vector3 convertPosition(Vector3 _pos_to_convert, TPSCamera& tps_cam);
 
@@ -70,5 +75,6 @@ private:
 
 	void pathfindRoads();
 
+	GridLocation* findNearestTile(Vector3 mouse_pos);
 };
 

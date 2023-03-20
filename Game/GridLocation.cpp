@@ -45,6 +45,9 @@ GPGO& GridLocation::getTile()
     return *m_tile;
 }
 
+bool GridLocation::getSelected() { return m_selected; }
+void GridLocation::setSelected(bool _selected) { m_selected = _selected;  }
+
 void GridLocation::update()
 {
 	switch (m_grid_data.m_zone_type)
@@ -59,5 +62,10 @@ void GridLocation::update()
 	case ZoneType::Red:		m_tile->SetColour(Colors::Red.v);	break;
 	case ZoneType::Blue:	m_tile->SetColour(Colors::MediumPurple.v);	break;
 	default:;
+	}
+
+	if (m_selected)
+	{
+		m_tile->SetColour(Colors::LightGray.v);
 	}
 }
