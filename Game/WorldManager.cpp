@@ -27,7 +27,7 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 			for (int j = 0; j < m_grid_x; j++)
 			{ 
 				Vector2 pos = { float(j) + float(plane.first) * (m_grid_x * 0.75f), float(i) + float(plane.first) * (m_grid_y * 0.75f) };
-				plane.second.push_back(std::make_unique<GridLocation>(_device, pos, plane.first));
+				plane.second.push_back(std::make_unique<GridLocation>(_device, pos, plane.first, Vector2(j, i)));
 			}
 		}
 

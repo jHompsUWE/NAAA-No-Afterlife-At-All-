@@ -13,7 +13,8 @@ class GridLocation
 {
 public:
 	GridLocation();
-	GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 pos, PlaneType plane);
+	GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _world_pos, PlaneType plane, 
+		Vector2 grid_pos);
 	~GridLocation();
 
 	void createBuilding(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device);

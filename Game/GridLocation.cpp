@@ -12,14 +12,15 @@ GridLocation::GridLocation() : m_tile(nullptr)
 /// <param name="_device">Takes the DirectX3D11 device context.</param>
 /// <param name="_pos">Grid coordinate for world positioning.</param>
 /// <param name="plane">The world plane used for positioning during world creation.</param>
-GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _pos, PlaneType plane)
+GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Vector2 _world_pos, PlaneType plane,
+	Vector2 grid_pos)
 {
     float* params = new float[3];
     params[0] = 25.0f; params[1] = 5.0f; params[2] = 25.0f;
     m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::White, params, 
-        Vector3(_pos.x * 25.0f, 0.0f, _pos.y * 25.0f));
+        Vector3(_world_pos.x * 25.0f, 0.0f, _world_pos.y * 25.0f));
 
-    m_grid_data.m_position = std::make_tuple<int, int>(int(_pos.x), int(_pos.y));
+    m_grid_data.m_position = std::make_tuple<int, int>(int(grid_pos.x), int(grid_pos.y));
 
 	m_grid_data.m_plane = plane;
 }

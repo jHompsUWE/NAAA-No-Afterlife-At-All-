@@ -94,6 +94,7 @@ int heuristic(Location& a, Location& b)
 		abs(std::get<1>(a) - abs(std::get<1>(b))));
 }
 
+
 std::vector<Location> reconstruct_path(
 	Location start, Location end,
 	std::unordered_map<Location, Location>& came_from)

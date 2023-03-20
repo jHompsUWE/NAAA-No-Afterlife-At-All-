@@ -8,7 +8,7 @@
 SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD) :
 	m_world_manager(_world_manager), m_GD(_GD)
 {
-
+	m_plane = PlaneType::Hell;
 }
 
 void SelectionHandler::setStartPos(Vector3 _start_pos)
@@ -29,9 +29,7 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 	Vector3 v = XMVector3Unproject(XMVectorSet(m_GD->m_MS.x, m_GD->m_MS.y, 0.0f, 0.0f), 0, 0, 800, 600, -10000, 10000, tps_cam.GetProj(), tps_cam.GetView(), XMMatrixIdentity());
 	Vector3 m_pos = convertPosition(v, tps_cam);
 
-	GridLocation* current_nearest;
-
-	current_nearest = findNearestTile(m_pos);
+	GridLocation* current_nearest = findNearestTile(m_pos);
 
 	m_end_tile = current_nearest;
 
@@ -197,10 +195,7 @@ void SelectionHandler::updateTiles()
 				return;
 			}
 		}
-		
 	}
-	
-
 
 	for (int i = low_grid.x; i <= high_grid.x; i++)
 	{
@@ -239,30 +234,38 @@ GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
 	float shortest_distance = 100000;
 	Vector2 pos;
 
-	for (auto& tile : m_world_manager->getWorld()[m_plane])
+	for (auto& plane : m_world_manager->getWorld())
 	{
-		Vector3 world_pos = tile->getTile().GetPos();
-		Vector2 radius_pos(world_pos.x, world_pos.z);
+		if (plane.first == PlaneType::Earth) continue;
 
-		float x_dis = (radius_pos.x - mouse_pos.x);
-		float y_dis = (radius_pos.y - mouse_pos.z);
-
-		float length = std::pow(x_dis, 2) + std::pow(y_dis, 2);
-		float rad = std::pow(radius, 2);
-
-		if (length < rad)
+		for (auto& tile : plane.second)
 		{
-			if (length < shortest_distance)
+			Vector3 world_pos = tile->getTile().GetPos();
+			Vector2 radius_pos(world_pos.x, world_pos.z);
+
+			float x_dis = (radius_pos.x - mouse_pos.x);
+			float y_dis = (radius_pos.y - mouse_pos.z);
+
+			float length = std::pow(x_dis, 2) + std::pow(y_dis, 2);
+			float rad = std::pow(radius, 2);
+
+			if (length < rad)
 			{
-				shortest_distance = length;
-				pos.x = std::get<0>(tile->getGridData().m_position);
-				pos.y = std::get<1>(tile->getGridData().m_position);
+				if (length < shortest_distance)
+				{
+					shortest_distance = length;
+					pos.x = std::get<0>(tile->getGridData().m_position);
+					pos.y = std::get<1>(tile->getGridData().m_position);
+					m_plane = plane.first;
+				}
 			}
+
+			tile->setSelected(false);
 		}
-		
-		tile->setSelected(false);
 	}
 
+	std::cout << pos.x << " " << pos.y << " " << int(m_plane) << "\n";
+	
 	m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)]->setSelected(true);
 
 	return &*m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)];
