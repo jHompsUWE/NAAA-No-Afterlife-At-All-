@@ -16,9 +16,6 @@ AnimatedImageGO2D::AnimatedImageGO2D(string _filename, int acell_size, ID3D11Dev
 	image_size = Vector2(sprite->Desc.Width, sprite->Desc.Height);
 
 	sprite->SetUV(uv);
-
-
-	
 }
 
 AnimatedImageGO2D::~AnimatedImageGO2D()

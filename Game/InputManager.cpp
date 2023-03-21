@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "InputManager.h"
+#include "json.hpp"
 
 void InputManager::awake()
 {
@@ -62,6 +63,11 @@ void InputManager::update(GameData& _game_data)
 
 			case InputType::mouse_clicked: 
 			{
+				//switch (action.key_button) 
+				{
+					//case 
+				}
+
 				break;
 			}
 
@@ -143,26 +149,50 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 	if (!input_json.empty())
 	{
-		for (auto json_action : input_json["game_state"]["keyboard_inputs"])
+		for (json_element json_action : input_json["game_state"]["keyboard_inputs"])
 		{
-			EventType command = string_to_input_action.at(std::string(json_action["Action"]));
-			InputType type = string_to_input_type.at(std::string(json_action["Type"]));
-
-			unsigned char key = static_cast<unsigned char>(std::stoi(std::string(json_action["Key"]), nullptr, 16));
-			unsigned char modifier = NULL;
-
-			if (!std::string(json_action["Modifier"]).empty())
-			{
-				modifier = static_cast<unsigned char>(std::stoi(std::string(json_action["Modifier"]), nullptr, 16));
-			}
-
-			game_key_action_map.emplace_back(KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
+			game_key_action_map.emplace_back(loadKeyboardAction(json_action));
+		}
+		for (auto json_action : input_json["game_state"]["mouse_inputs"])
+		{
+			game_mouse_action_map.emplace_back(loadMouseAction(json_action));
 		}
 	}
 	else
 	{
 		std::cout << "file is empty";
 	}
+}
+
+KeyboardAction InputManager::loadKeyboardAction(json_element& element)
+{
+	EventType command = string_to_input_action.at(std::string(element["Action"]));
+	InputType type = string_to_input_type.at(std::string(element["Type"]));
+
+	unsigned char key = static_cast<unsigned char>(std::stoi(std::string(element["Key"]), nullptr, 16));
+	unsigned char modifier = NULL;
+
+	if (!std::string(element["Modifier"]).empty())
+	{
+		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+	}
+
+	return KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key };
+}
+
+MouseAction InputManager::loadMouseAction(json_element& element)
+{
+	EventType command = string_to_input_action.at(std::string(element["Action"]));
+	InputType type = string_to_input_type.at(std::string(element["Type"]));
+
+	MouseButton key = string_to_mouse_button.at(std::string(element["Key"]));
+	unsigned char modifier = NULL;
+
+	if (!std::string(element["Modifier"]).empty())
+	{
+		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+	}
+	return MouseAction{ command, type, (Keyboard::Keys)modifier, key};
 }
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)

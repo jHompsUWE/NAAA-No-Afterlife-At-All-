@@ -1,7 +1,7 @@
 {
   "menu_state": {
-    "keyboard_inputs": [""],
-    "mouse_inputs": [""]
+    "keyboard_inputs": [ "" ],
+    "mouse_inputs": [ "" ]
   },
 
   "game_state": {
@@ -341,14 +341,28 @@
         "Action": "CENTER_AND_ZOOM_IN",
         "Type": "mouse_clicked_with_mod",
         "Modifier": "0xa0",
-        "Button": "left"
+        "Key": "left"
       },
 
       {
         "Action": "CENTER_AND_ZOOM_OUT",
         "Type": "mouse_clicked_with_mod",
         "Modifier": "0xa0",
-        "Button": "right"
+        "Key": "right"
+      },
+
+      {
+        "Action": "CENTER_VIEW",
+        "Type": "mouse_clicked",
+        "Modifier": "",
+        "Key": "right"
+      },
+
+      {
+        "Action": "SELECT",
+        "Type": "mouse_clicked_released",
+        "Modifier": "",
+        "Key": "left"
       }
     ]
   }

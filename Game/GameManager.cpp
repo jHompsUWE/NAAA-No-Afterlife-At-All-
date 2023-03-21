@@ -9,6 +9,14 @@ void GameManager::awake()
 	}
 }
 
+void GameManager::earlyUpdate(GameData& _game_data)
+{
+	for (auto manager : managers)
+	{
+		manager->earlyUpdate(_game_data);
+	}
+}
+
 void GameManager::update(GameData& _game_data)
 {
 	for (auto manager : managers)

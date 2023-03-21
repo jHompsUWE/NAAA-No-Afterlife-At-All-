@@ -167,6 +167,7 @@ void Game::Tick()
 {
     m_timer.Tick([&]()
     {
+        earlyUpdate(m_timer);
         Update(m_timer);
         lateUpdate(m_timer);
     });
@@ -253,6 +254,11 @@ void Game::Update(DX::StepTimer const& _timer)
 void Game::lateUpdate(DX::StepTimer const& _timer)
 {
     GameManager::get()->lateUpdate(*m_GD);
+}
+
+void Game::earlyUpdate(DX::StepTimer const& _timer)
+{
+    GameManager::get()->earlyUpdate(*m_GD);
 }
 
 // Draws the scene.

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <memory>
 #include <fstream>
 #include <iostream>
 
@@ -16,9 +17,18 @@ enum class InputType
     key_pressed_with_mod,
     mouse_clicked,
     mouse_released,
+	mouse_clicked_released,
     mouse_clicked_with_mod,
     mouse_moved
 };
+
+enum class MouseButton
+{
+	left,
+	middle,
+	right
+};
+
 
 struct KeyboardAction
 {
@@ -26,6 +36,14 @@ struct KeyboardAction
     InputType type;
     Keyboard::Keys modifier;
     Keyboard::Keys key_button;
+};
+
+struct MouseAction
+{
+	EventType command;
+	InputType type;
+	Keyboard::Keys modifier;
+	MouseButton button;
 };
 
 static const std::unordered_map<std::string, EventType> string_to_input_action =
@@ -76,7 +94,11 @@ static const std::unordered_map<std::string, EventType> string_to_input_action =
     {"PURPLE_ZONING", EventType::PURPLE_ZONING},
     {"RED_ZONING", EventType::RED_ZONING},
     {"BLUE_ZONING", EventType::BLUE_ZONING},
-    {"GENERIC_ZONING", EventType::GENERIC_ZONING}
+    {"GENERIC_ZONING", EventType::GENERIC_ZONING},
+	{"CENTER_AND_ZOOM_IN", EventType::CENTER_AND_ZOOM_IN},
+	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
+	{"CENTER_VIEW", EventType::CENTER_VIEW},
+	{"SELECT", EventType::SELECT}
 };
 
 static const std::unordered_map<std::string, InputType> string_to_input_type =
@@ -84,20 +106,31 @@ static const std::unordered_map<std::string, InputType> string_to_input_type =
 	{"key_pressed", InputType::key_pressed},
 	{"key_released", InputType::key_released},
     {"key_held", InputType::key_held},
-	{"mouse_button_pressed", InputType::mouse_clicked},
-	{"mouse_button_released", InputType::mouse_released},
+	{"mouse_clicked", InputType::mouse_clicked},
+	{"mouse_released", InputType::mouse_released},
+	{"mouse_clicked_released", InputType::mouse_clicked_released},
+	{"mouse_clicked_with_mod", InputType::mouse_clicked_with_mod},
 	{"mouse_moved", InputType::mouse_moved}
 };
 
+static const std::unordered_map<std::string, MouseButton> string_to_mouse_button =
+{
+	{"right", MouseButton::right},
+	{"left", MouseButton::left},
+	{"middle", MouseButton::middle}
+};
 
 using json = nlohmann::json;
+using json_element = nlohmann::json_abi_v3_11_2::basic_json<std::map, std::vector, std::basic_string<char,
+std::char_traits<char>, std::allocator<char> >,bool,__int64,unsigned __int64,double, std::allocator,
+nlohmann::json_abi_v3_11_2::adl_serializer, std::vector<unsigned char, std::allocator<unsigned char>>>;
 
 class InputManager : public Manager, public Listener
 {
 public:
     InputManager() = default;
     ~InputManager() = default;
-
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Is called when the program initializes.
 	////////////////////////////////////////////////////////////
@@ -123,6 +156,15 @@ private:
 	////////////////////////////////////////////////////////////
     void saveInputActionMapChanges(std::string _filepath);
 
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a KeyboardAction.
+	////////////////////////////////////////////////////////////
+	KeyboardAction loadKeyboardAction(json_element& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a MouseAction.
+	////////////////////////////////////////////////////////////
+	MouseAction loadMouseAction(json_element& element);
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will reset the action map back to default. 
@@ -134,6 +176,11 @@ private:
 	////////////////////////////////////////////////////////////
     std::vector<KeyboardAction> game_key_action_map;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Mouse action map for the game state. 
+	////////////////////////////////////////////////////////////
+	std::vector<MouseAction> game_mouse_action_map;
+	
     ////////////////////////////////////////////////////////////
 	/// \brief Key action map for the menu state. 
 	////////////////////////////////////////////////////////////

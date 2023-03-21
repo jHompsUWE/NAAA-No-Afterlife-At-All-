@@ -50,6 +50,10 @@ enum class EventType
     RED_ZONING,
     BLUE_ZONING,
     GENERIC_ZONING,
+	CENTER_AND_ZOOM_IN,
+	CENTER_AND_ZOOM_OUT,
+	CENTER_VIEW,
+	SELECT,
 
     // UI Remote specific events
     SIPHONS_BANKS,
