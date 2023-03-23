@@ -297,6 +297,12 @@
     <ClInclude Include="UIManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BuildingButton.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingWindow.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -433,6 +439,12 @@
     </ClCompile>
     <ClCompile Include="UIManager.cpp">
       <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingButton.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingWindow.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

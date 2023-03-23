@@ -1,13 +1,12 @@
 #include "pch.h"
 #include "GamePlay.h"
-
-
 #include "GameManager.h"
 #include "light.h"
 #include "TextGO2D.h"
 #include "UIRemote.h"
 #include "Window.h"
 #include "AnimatedImageGO2D.h"
+#include "BuildingWindow.h"
 
 
 bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
@@ -61,10 +60,26 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     m_GameObjects2D.push_back(MicroView);
     MicroView->SetTextPos();
 
+    BuildingWindow* threeWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 3);
+    threeWide->SetPos(300, 400);
+    threeWide->SetTextPos();
+
+    BuildingWindow* fourWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 4);
+    fourWide->SetPos(300, 400);
+    fourWide->SetTextPos();
+
+    BuildingWindow* fiveWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 5);
+    fiveWide->SetPos(300, 400);
+    fiveWide->SetTextPos();
+
     UIRemote* remote = new UIRemote(m_d3dDevice.Get());
     remote->SetPos(100, 230);
     remote->SetButtonBounds();
     m_GameObjects2D.push_back(remote);
+
+    m_GameObjects2D.push_back(threeWide);
+    m_GameObjects2D.push_back(fourWide);
+    m_GameObjects2D.push_back(fiveWide);
 
     AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
     animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
@@ -79,6 +94,18 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     remote->SetButtonToggle(31, animated_sprite_test);
     remote->SetButtonToggle(32, MicroView);
 
+
+    remote->SetButtonToggle(8, fourWide);
+    remote->SetButtonToggle(10, threeWide);
+    remote->SetButtonToggle(12, fourWide);
+
+    remote->SetButtonToggle(13,threeWide);
+    remote->SetButtonToggle(14, threeWide);
+    remote->SetButtonToggle(15, threeWide);
+
+    remote->SetButtonToggle(16, fiveWide);
+    remote->SetButtonToggle(17, threeWide);
+    remote->SetButtonToggle(18, threeWide);
     
 
     GameManager::get()->getEventManager()->addListener(remote);

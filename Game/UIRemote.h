@@ -18,6 +18,7 @@ public:
 	void InitButtonNames();
 
 	void SetButtonToggle(int i, GameObject2D* toggle);
+	void SetButtonToggle(int i, BuildingWindow* toggle);
 
 	void onEvent(const Event& event) override;
 

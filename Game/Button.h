@@ -2,6 +2,7 @@
 #include "GameObject2D.h"
 #include "Window.h"
 #include "Event.h"
+#include "BuildingWindow.h"
 
 //=================================================================
 //Button class based off ImageGO2D class
@@ -23,6 +24,8 @@ public:
 	void SetName(string _name);
 	void SetType(EventType _event_type);
 	void SetToggle(GameObject2D* toggle);
+	void SetToggle(BuildingWindow* toggle);
+	void SetOpenBuildWindow(bool openBuild);
 
 	void toggle();
 
@@ -31,13 +34,19 @@ public:
 	
 	string buttonName = "Button";
 	EventType event_type;
+	
 	bool pressed = false;
+	bool openBuildingWindow = false;
+	
+	BuildingWindow* toggleBuildWindow;
 
 protected:
 	Rectangle bounds;
 
 	GameObject2D* parentWindow;
+
 	GameObject2D* toggleWindow;
+	
 
 	ID3D11ShaderResourceView* m_pTextureRV;
 };
