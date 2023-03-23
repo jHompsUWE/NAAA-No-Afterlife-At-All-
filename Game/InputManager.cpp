@@ -18,14 +18,14 @@ void InputManager::update(GameData& _game_data)
 {
 	for (auto const action : *current_key_action_map)
 	{
-		switch (action.type)
+		switch (action.second.type)
 		{
 			case InputType::key_pressed: 
 			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button))
+				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button))
 				{
 					Event event{};
-					event.type = action.command;
+					event.type = action.first;
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;
@@ -33,10 +33,10 @@ void InputManager::update(GameData& _game_data)
 
 			case InputType::key_released: 
 			{
-				if (_game_data.m_KBS_tracker.IsKeyReleased(action.key_button))
+				if (_game_data.m_KBS_tracker.IsKeyReleased(action.second.key_button))
 				{
 					Event event{};
-					event.type = action.command;
+					event.type = action.first;
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;
@@ -44,10 +44,10 @@ void InputManager::update(GameData& _game_data)
 
 			case InputType::key_held:
 			{
-				if (_game_data.m_KBS.IsKeyDown(action.key_button))
+				if (_game_data.m_KBS.IsKeyDown(action.second.key_button))
 				{
 					Event event{};
-					event.type = action.command;
+					event.type = action.first;
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;
@@ -55,11 +55,11 @@ void InputManager::update(GameData& _game_data)
 
 			case InputType::key_pressed_with_mod: 
 			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button) &&
-					_game_data.m_KBS.IsKeyDown(action.modifier))
+				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button) &&
+					_game_data.m_KBS.IsKeyDown(action.second.modifier))
 				{
 					Event event{};
-					event.type = action.command;
+					event.type = action.first;
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;
@@ -73,18 +73,18 @@ void InputManager::update(GameData& _game_data)
 
 	for (auto action : *current_mouse_action_map)
 	{
-		switch (action.type)
+		switch (action.second.type)
 		{
 		case InputType::mouse_clicked: 
 			{
-				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED)
+				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
 				{
 					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
 				}					
 			}
 			case InputType::mouse_released:
 			{
-					if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::RELEASED)
+					if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::RELEASED)
 					{
 						triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
 					}	
@@ -92,12 +92,12 @@ void InputManager::update(GameData& _game_data)
 			}
 			case InputType::mouse_clicked_released:
 			{
-				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED)
+				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
 				{
 					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
 				}
 				
-				else if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::RELEASED)
+				else if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::RELEASED)
 				{
 					triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
 				}	
@@ -105,8 +105,8 @@ void InputManager::update(GameData& _game_data)
 			}
 			case InputType::mouse_clicked_with_mod:
 			{
-				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED
-					&& _game_data.m_KBS.IsKeyDown(action.modifier))
+				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED
+					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
 				{
 					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, false);
 				}
@@ -123,7 +123,7 @@ void InputManager::update(GameData& _game_data)
 			case InputType::mouse_scrolled_with_mod: 
 			{
 				if (_game_data.m_MS.scrollWheelValue != 0
-					&& _game_data.m_KBS.IsKeyDown(action.modifier))
+					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
 				{
 					Mouse::Get().ResetScrollWheelValue();
 				}
@@ -151,12 +151,12 @@ void InputManager::update(GameData& _game_data)
 	}
 }
 
-void InputManager::triggerMouseButtonEvent(MouseAction& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const
+void InputManager::triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const
 {
 	Event event{};
     	
-	event.type = !_game_data.mouse_over_UI ? event.type = _action.command : event.type = _default_mouse_event;
-	event.payload.mouse_button_event.button = _action.button;
+	event.type = !_game_data.mouse_over_UI ? event.type = _action.first : event.type = _default_mouse_event;
+	event.payload.mouse_button_event.button = _action.second.button;
 	event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
 	event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
 	event.payload.mouse_button_event.pressed = _pressed;
@@ -222,11 +222,11 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 	{
 		for (JsonElement json_action : input_json["game_state"]["keyboard_inputs"])
 		{
-			game_key_action_map.emplace_back(loadKeyboardAction(json_action));
+			game_key_action_map.emplace(loadKeyboardAction(json_action));
 		}
 		for (auto json_action : input_json["game_state"]["mouse_inputs"])
 		{
-			game_mouse_action_map.emplace_back(loadMouseAction(json_action));
+			game_mouse_action_map.emplace(loadMouseAction(json_action));
 		}
 	}
 	else
@@ -235,7 +235,7 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 	}
 }
 
-KeyboardAction InputManager::loadKeyboardAction(JsonElement& element)
+std::pair<EventType, KeyboardAction> InputManager::loadKeyboardAction(JsonElement& element)
 {
 	EventType command = string_to_input_action.at(std::string(element["Action"]));
 	InputType type = string_to_input_type.at(std::string(element["Type"]));
@@ -248,10 +248,10 @@ KeyboardAction InputManager::loadKeyboardAction(JsonElement& element)
 		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
 	}
 
-	return KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key };
+	return std::pair<EventType, KeyboardAction> ( command, KeyboardAction{type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
 }
 
-MouseAction InputManager::loadMouseAction(JsonElement& element)
+std::pair<EventType, MouseAction> InputManager::loadMouseAction(JsonElement& element)
 {
 	EventType command = string_to_input_action.at(std::string(element["Action"]));
 	InputType type = string_to_input_type.at(std::string(element["Type"]));
@@ -263,7 +263,7 @@ MouseAction InputManager::loadMouseAction(JsonElement& element)
 	{
 		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
 	}
-	return MouseAction{ command, type, (Keyboard::Keys)modifier, key};
+	return std::pair<EventType, MouseAction>( command, MouseAction{type, (Keyboard::Keys)modifier, key});
 }
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)

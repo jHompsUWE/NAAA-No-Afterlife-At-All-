@@ -26,7 +26,6 @@ enum class InputType
 
 struct KeyboardAction
 {
-    EventType command;
     InputType type;
     Keyboard::Keys modifier;
     Keyboard::Keys key_button;
@@ -34,7 +33,6 @@ struct KeyboardAction
 
 struct MouseAction
 {
-	EventType command;
 	InputType type;
 	Keyboard::Keys modifier;
 	MouseButton button;
@@ -157,12 +155,12 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a KeyboardAction.
 	////////////////////////////////////////////////////////////
-	KeyboardAction loadKeyboardAction(JsonElement& element);
+	std::pair<EventType, KeyboardAction> loadKeyboardAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a MouseAction.
 	////////////////////////////////////////////////////////////
-	MouseAction loadMouseAction(JsonElement& element);
+	std::pair<EventType, MouseAction> loadMouseAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.
@@ -171,7 +169,7 @@ private:
 	/// \param _default_mouse_event The event triggered if the mouse is over UI.
 	/// \param _pressed Whether the button has been pressed or released.
 	////////////////////////////////////////////////////////////
-	void triggerMouseButtonEvent(MouseAction& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
+	void triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will reset the action map back to default. 
@@ -181,27 +179,27 @@ private:
     ////////////////////////////////////////////////////////////
 	/// \brief Key action map for the game state. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction> game_key_action_map;
+    std::unordered_map<EventType, KeyboardAction> game_key_action_map;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Mouse action map for the game state. 
 	////////////////////////////////////////////////////////////
-	std::vector<MouseAction> game_mouse_action_map;
+	std::unordered_map<EventType, MouseAction> game_mouse_action_map;
 	
     ////////////////////////////////////////////////////////////
 	/// \brief Key action map for the menu state. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction> menu_key_action_map;
+    std::unordered_map<EventType, KeyboardAction> menu_key_action_map;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Pointer to the current keyboard action map. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction>* current_key_action_map;
+    std::unordered_map<EventType, KeyboardAction>* current_key_action_map;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Pointer to the current mouse action map. 
 	////////////////////////////////////////////////////////////
-	std::vector<MouseAction>* current_mouse_action_map;
+	std::unordered_map<EventType, MouseAction>* current_mouse_action_map;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
