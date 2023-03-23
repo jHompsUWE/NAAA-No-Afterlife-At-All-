@@ -131,19 +131,12 @@ void InputManager::onEvent(const Event& event)
 
 void InputManager::loadInInputActionsMaps(std::string _filepath)
 {
-	// Should utilize FileManager to pull in the .json, so this is temp. 
-	std::ifstream file(_filepath);
-	json input_json;
 
-	if (file.good())
-	{
-		input_json = json::parse(file);
-	}
-	file.close();
+	auto keyboard_inputs = GameManager::get()->getFileManagerV2()->GetJson("keybinds_default");
 
-	if (!input_json.empty())
+	if (!keyboard_inputs->empty())
 	{
-		for (auto json_action : input_json["game_state"]["keyboard_inputs"])
+		for (auto json_action : (*keyboard_inputs)["game_state"]["keyboard_inputs"])
 		{
 			EventType command = string_to_input_action.at(std::string(json_action["Action"]));
 			InputType type = string_to_input_type.at(std::string(json_action["Type"]));

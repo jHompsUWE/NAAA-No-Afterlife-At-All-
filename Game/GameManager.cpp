@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "GameManager.h"
 
+#include "FileManagerV2.h"
+
 void GameManager::awake()
 {
 	for (auto manager : managers)
@@ -44,6 +46,11 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			event_manager = reinterpret_cast<EventManager*>(&*_manager);
 			return true;
 		}
+	case ManagerType::FILE:
+		{
+			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }
@@ -59,6 +66,36 @@ bool GameManager::removeManager(std::shared_ptr<Manager> _manager, ManagerType _
 			event_manager = nullptr;
 			return true;
 		}
+	case ManagerType::FILE:
+		{
+			file_manager = nullptr;
+			return true;
+		}
 	}
 	return false;
+}
+
+void GameManager::SaveGame()
+{
+	auto saveFile = file_manager->GetJson("SaveFile");
+	if (!saveFile->empty())
+	{
+		ofstream output("../Data/SaveFile.json");
+		cout << file_manager->GetFile("SaveFile") << endl;
+		// Stuff that needs to be saved
+		(*saveFile)["economy_manager"]["money"] = 120;
+		output << *saveFile;
+		output.close();
+		cout << "File saved" << endl;
+	}
+}
+
+void GameManager::LoadGame()
+{
+	auto saveFile = file_manager->GetJson("SaveFile");
+	if (!saveFile->empty())
+	{
+		auto money = (*saveFile)["economy_manager"]["money"];
+		cout << money << endl;
+	}
 }
