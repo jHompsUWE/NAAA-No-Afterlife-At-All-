@@ -1,0 +1,2399 @@
+﻿[
+    {
+        "TYPE": "BANKS",
+        "Zone": "Heaven",
+        "Name": "The Flying Piggy Bank",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "BANKS",
+        "Zone": "Hell",
+        "Name": "The First Warthog Banks of Hell",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "BANKS",
+        "Zone": "Heaven",
+        "Name": "Eternal Trust Savings and Loan",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 2,
+        "radi": 0
+    },
+    {
+        "TYPE": "BANKS",
+        "Zone": "Hell",
+        "Name": "Brimstone, Hellfire & Damnation Savings and Loan",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 2,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Zoned for Contentment",
+        "Vibe": 0,
+        "Desc": "Someday, this little slice of Heaven will grow up to be a full-fledged Contentment Reward. ",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Deus Ex Diner",
+        "Vibe": -5,
+        "Desc": "Unlike most slide shows, the Vacation Slides of the Gods just get more and more interesting with each ethereal “ka-click” of the projector button. And since it’s Heaven, none of the slides are upside-down or out of focus.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "The Good Neighbor",
+        "Vibe": -4,
+        "Desc": "In Heaven, the grass is always greener on your side of the fence, and even though your neighbor is happy, you don’t envy him.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Coffee Shops of the Word ",
+        "Vibe": -3,
+        "Desc": "These crowded little bistros offer Contented SOULs the chance to express their long-buried poetic natures to an always-appreciative audience of Angels. When the cherubs snap their fingers, you can almost touch infinity, man.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Karaoke Korners",
+        "Vibe": -2,
+        "Desc": "Some SOULs don’t want to sing in a choir, but want their voices to be heard nonetheless. Here in these quiet little watering holes of Heaven, the Contented Blessed can sing their little hearts out, secure in the knowledge that, for four or five minutes at a time, theirs will be the most beautiful voice in the world.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Newbody Knows",
+        "Vibe": -1,
+        "Desc": "In these gold-trimmed complexes, the SOULs of the Contented are allowed to choose and discard their bodies like they were clothing. Typically, most SOULS will settle for an idealized version of their mortal self, but a few SOULs will use the opportunity to explore the infinite complexity of the humanoid form.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Seventh Heaven Stretch",
+        "Vibe": 0,
+        "Desc": "In Heaven, no one is picked last, and everyone eventually gets a gamewinning hit, touchdown, basket, goal, or strike.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "The Choir Invincible",
+        "Vibe": 1,
+        "Desc": "In these massive choirs, even the most off-key and timid of SOULs will eventually sing like, well, an angel. And everyone, and I mean everyone, gets to sing a solo every now and then.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Hoofer’s Heavens",
+        "Vibe": 2,
+        "Desc": "Every SOUL in the Hoofer’s Heaven has been given the gift of dance. Not just the usual varieties of dancing, like ballet, tap, and so forth, but dancing as communication. The SOULs have such fine control over their bodies that they no longer speak, except through dance.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Final Curtain Theatres",
+        "Vibe": 3,
+        "Desc": "Every night, without fail, the Final Curtain Theatres put on another brillant production of some completely new show. And every night, another Blessed SOUL becomes a star.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Envy Aid",
+        "Vibe": 4,
+        "Desc": "The Envy Aid concerts have been bouncing around Heaven, in one form or another, since sentients began rhythmically banging sticks together and calling it “music.” These never-ending shows feature the most musically gifted SOULs ever to pluck, strum, blow, beat, or shake an instrument, which alone would be enough to make them pretty darn cool. But since this is Heaven, the Contented Blessed are encouraged to join the performers onstage, where they quickly discover that they're just as talented as their musical idols. Jammin!",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "A Musement Park",
+        "Vibe": 5,
+        "Desc": "Muses are fairly difficult to come by in the waking world, and even harder to capture. In Heaven, though, muses hang out in Musement Parks, inspiring Contented SOULS to artistic heights undreamt of by mortal minds.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Contentment",
+        "Name": "Brahmatic Bovine Bliss Ranch ",
+        "Vibe": 6,
+        "Desc": "Anyone who’s ever looked deeply into the eyes of a cow knows the truth; cows are the single most blissed-out creatures in all of creation. On the B.B.B. Ranches, this characteristic is taken to its logical endpoint, as Contented SOULs are allowed to live out their afterlives as happy, cud-chewing cows. Mooo0000000.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Zoned for Charity",
+        "Vibe": 0,
+        "Desc": "With luck, this bit of real estate will soon evolve into an out-and-out Charity Reward.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "You Are Already A Winner ",
+        "Vibe": 2,
+        "Desc": "The most insignificant of Rewards for Charitable SOULs turns them into instant winners of fabulous prizes, which are spread out over an infinite-year period. Best of all, the prizes aren’t presented by some cheesy second-banana entertainer.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Lost and Found ",
+        "Vibe": 4,
+        "Desc": "One of the curses of mortality is that we are forever losing things. Money, marbles, sanity, innocence — it all seems to get misplaced over the years. In Heaven, Charitable SOULs can find everything they’ve ever lost just by looking for it — under a seat cushion, behind a desk, or buried out in the backyard. It’s all there, waiting to be found.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "The Good Space",
+        "Vibe": 6,
+        "Desc": "In Heaven, just like on television, you can always find a good parking space with plenty of time left on the meter.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "The Incredibly Lost Episodes",
+        "Vibe": 4,
+        "Desc": "In Heaven, there are all-new episodes of all your favorite television shows, forever. No one’s quite sure how this got to be a reward for Charitable SOULs, but who can second-guess The Powers That Be?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Spinner of Incredibly Good Fortune",
+        "Vibe": 2,
+        "Desc": "The Spinner of Incredibly Good Fortune is Heaven’s game show, where Charitable SOULs try to win spectacular, non-sucky prizes for their favorite charities. Thanks to the wonder of HeavenTech, everyone goes home a winner, and no one is stuck with the crappy home version of the game.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Flea Market",
+        "Vibe": 0,
+        "Desc": "Every day, the Charitable Blessed can find surprisingly useful and inexpensive knickknacks and curios at these sprawling flea markets. Rumor has it that tattered copies of the Secret of Life have been found amongst the millions of card tables, boxes, and pickup trucks lining the aisles of these complexes.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Land of the Lost Toys",
+        "Vibe": -2,
+        "Desc": "Every beloved toy you've ever lost can be found here — along with every toy you ever wanted, but couldn’t have. You’d be surprised how long a SOUL can play with toys without getting bored.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "The Bazaar",
+        "Vibe": -4,
+        "Desc": "The Bazaars of Heaven are a shopper’s paradise. Under the jillions of open-air tents, the Blessed can find everything from sun-dried manna to blind Angels who'll tell them one of the many secrets of the Universe.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Happy Birthday!",
+        "Vibe": -6,
+        "Desc": "It’s a sad fact of life that most of us don’t receive our fair allotment of five-star, over-the-top, utterly decadent birthday parties. In Heaven, this inequity is rectified in the Happy Birthday! zones, where (as you've probably guessed) it’s always someone’s birthday and everyone’s invited.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "The Final Piece Convention",
+        "Vibe": -4,
+        "Desc": "Most collector’s conventions have the same old stuff for the same high prices that you've seen a hundred times before. At the Final Piece Conventions (which are held in sumptuous, economically-priced hotels) though, a Charitable SOUL can always find that last card, comic, doll, or trinket that will make his collection complete; and he’ll always be able to get it for a reasonable price.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Casino Royale",
+        "Vibe": -2,
+        "Desc": "‘The Afterlife Gaming Commission has certified that the Casino Royale has the loosest slots in the known universe, but that’s not the only reason that Charitable SOULs think so highly of these upscale hotels. There’s also a scrumptious breakfast buffet and a never-ending floor show that has to be seen to be believed.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Charity",
+        "Name": "Ascetic Mountains",
+        "Vibe": 0,
+        "Desc": "‘The ultimate Rewards for Charitable SOULs are the Ascetic Mountains. Here, unburdened by the weight of worldly possessions, a SOUL can blissfully spend eternity contemplating the mysteries of the universe.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Zoned for Temperance",
+        "Vibe": 0,
+        "Desc": "If this hasn’t turned into a Temperance Reward within a few years, then you may be doing something wrong,",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "The Perfect Party",
+        "Vibe": -4,
+        "Desc": "Imagine going to a house where everyone knows your name and is glad to see you. Imagine a bowl of dip that’s never empty. Imagine a table brimming with eternally-interesting chit-chat. Imagine the best party you've ever gone to, then multiply it by infinity. Welcome to Heaven.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Lands of Milk and Honey",
+        "Vibe": -2,
+        "Desc": "For some reason, SOULs that have led temperate lives tend to seek out Afterlife rewards that mix nutrition with indulgence. These simple groves, filled with dairy farms and beehives, seem to keep them happy.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Deus Ex Diner",
+        "Vibe": 0,
+        "Desc": "All of Heaven’s restaurants are gastronomically spectacular, but few manage to capture the simple charm of the Deus Ex Diner chain. In these humble-looking eateries (which can hold thousands of patrons but never appear crowded), ‘Temperate SOULs can order any dish they want, socialize with old friends, make goofy noises with the straws, and generally “hang out” for all eternity.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Hog Heaven",
+        "Vibe": 2,
+        "Desc": "Temperate SOULs who end up in a Hog Heaven can spend eternity living high off the hog — literally! Meat of all sorts (cows, pigs, chickens, swordfish, etc.) grows from trees in these fleshy orchards, allowing life-long vegetarians to finally experience the rapture of a carnivorous lifestyle without the shame of killing innocent lil’ animals.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Food Court of the Gods",
+        "Vibe": 4,
+        "Desc": "Every good restaurant you've ever been to is crammed into this fourdimensional food court, along with thousands of others you didn’t know you wanted to visit.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Happy Harvest Farms",
+        "Vibe": 6,
+        "Desc": "Food rarely tastes as good as when you've grown it yourself, The Temperate Blessed take advantage of this factoid every day at the Happy Harvest Farms, where pesticides are never used nor needed.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Picnicville",
+        "Vibe": 4,
+        "Desc": "\"Only Heaven could bring you the picnic that never ends, thanks to a revolutionary (and frankly impossible) bottomless picnic basket, which is constantly dispensing surprising and wonderful picnic fare. Eat too much? No worry, work it off"
+    },
+    {
+        "TYPE": "with a leisurely game of frisbee. \"",
+        "Zone": 1,
+        "Name": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Beach Trip",
+        "Vibe": 2,
+        "Desc": "It’s a scientific fact that food prepared and eaten on a beautiful beach tastes better than food just about anywhere else. In the Afterlife, this principle is carried out to the nth degree in the form of a never-ending beach trip. Hang Infinity, dude!",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Sickeningly Sweet Sugar Savannas",
+        "Vibe": 0,
+        "Desc": "The Sickeningly Sweet Sugar Savannas are something of a “classic” attraction in Heaven. Frankly, the Temperate Blessed seem to easily tire of these “cities made out of candy,” but everyone expects them to be here, so what can you do?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Eternafest",
+        "Vibe": -2,
+        "Desc": "It’s like Oktoberfest, but it goes on forever, hence the name “Eternafest.” Oh, and there’s none of that silly Bavarian music, either.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Bacchanalia",
+        "Vibe": -4,
+        "Desc": "Forget “Animal House”; Heaven knows how to throw a REAL Toga Party, and it doesn’t take place in a decrepit old frat house, dig?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Temperance",
+        "Name": "Party Town",
+        "Vibe": -6,
+        "Desc": "Party Towns are like Mardi Gras, New Year’s Eve, the Fourth of July, and Carnival all rolled into one. Every noon there’s a parade, every evening there’s fireworks, and every night there’s dancing in the streets. And since it’s Heaven, no one wakes up the next day feeling like Hell.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Zoned for Diligence",
+        "Vibe": 0,
+        "Desc": "If you’ve done everything right, a host of Angels will soon construct a Diligence Reward on this site.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Your Home Is Your Castle",
+        "Vibe": 5,
+        "Desc": "In some parts of Heaven, Diligent SOULs are given the weekend off — forever. During these eternal downtimes, SOULs can finally finish all that work they wanted to put into their houses: the new coats of paint, the additions to the garden, the basement rumpus room — now they finally have all the time they need to turn their house into a home.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "The Eternal Afternoon",
+        "Vibe": 4,
+        "Desc": "Kids are forever being described as “lazy,” just because they don’t want to take out the garbage. But have you ever taken a good look at how kids spend their summer afternoons? They build treehouses. They bake mudpies. They concoct elaborate schemes to turn their scooters into flying machines. Clearly, kids aren’t lazy; they just don’t have the same set of priorities as adults. In Heaven, Diligent SOULs get the chance to finally finish all those magical, complicated projects they dreamt up during those fleeting summer childhood afternoons; they're only called home for dinner once the forts are built, the pies are baked, and the scooter is soaring over the valley.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "It's a Cat's Life",
+        "Vibe": 3,
+        "Desc": "Cats choose. Unlike their doggie brethren, who can be programmed like robots, cats make up their own minds whether to chase a ball, purr, or scratch your sofa. A cat’s life is an ideal reward for a lifetime of Diligence. SOULs can choose whether to be pampered, milk-fed kitties who live high off the hog, or to run away, living the tough-as-nails Afterlife of a stray. All in all, though, it’s cool to be a cat.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Mom and Pop Shops",
+        "Vibe": 2,
+        "Desc": "Many of the Diligent Blessed are given their own little shops to do with as they see fit. Some choose to open nasal acupuncture centers. Others build shops that exclusively sell action figures. Still others have turned their shops into thriving “ferreton-a-stick” franchises. In any case, the entrepreneurial spirit of these SOULs has made the Mom & Pop Shops a favorite stopping point for souvenir-seeking Angels from other Afterlifes.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Library of the Infinite",
+        "Vibe": 1,
+        "Desc": "‘These libraries look pretty small on the outside, but on the inside they contain every book, film, and recording ever created — and several billion that were NEVER created.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "PanCon",
+        "Vibe": 0,
+        "Desc": "‘These heavenly hotels have been perpetually convening these “Diligence Conventions” for as long as anyone can remember. Inside, the Diligent Blessed can attend any number of seminars on an infinite variety of interesting topics, nosh at the hotel’s mile-long salad bar, or simply relax by the pool. It’s a permanent, stress-free, corporate boondoggle, and you’re invited!",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Paradise University",
+        "Vibe": -1,
+        "Desc": "The many campuses of good ol’ PU. are where Diligent SOULs can go to learn (in excruciating detail) the “Big Truths” of the Universe. And they’ve got a competitive football program, too.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Celestech",
+        "Vibe": -2,
+        "Desc": "Gelestech is known as “The Friendliest Corporation in Creation.” The Diligent SOULs who end up working at one of their corporate campuses will receive the following benefits: day care, extended maternity and paternity leave, free corporate housing with puppies, spacious offices with windows that can be opened to let in the heady breezes of Heaven, extensive prophet-sharing, and Friday afternoon barbecue parties. Truly, there is no company this nice in the mortal world.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Cloud Nine Labs",
+        "Vibe": -3,
+        "Desc": "‘The Diligent SOULs of Cloud Nine Labs are always coming up with something to make the Afterlife even better than it already is. Last year they stunned the scientific community with the introduction of the Non-Slip Halo, the NonAbrasive Wing Loofah, and the Computerized SOUL Locator. Who knows what they'll come up with next?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Towers-A-Go-Go",
+        "Vibe": -4,
+        "Desc": "When it comes to rewarding Diligent SOULs, the most important thing for an Angel to remember is “keep ‘em busy, stupid!” The Towers-A-Go-Go make an Angel’s job easier than giving candy to a baby. What they are, basically, are towers that get built upward toward Infinity — and beyond. Some SOULs work on the blueprints, while some weld the beams into place. Others concern themselves with the interior design, while still others handle the daycare duties. There’s a job for everyone who wants one in these straining-to-be-infinite structures, which is just how the Diligent SOUL like it.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "Divine Engines",
+        "Vibe": -5,
+        "Desc": "These mammoth machines, which are in a constant state of construction and refinement by Heaven’s most Diligent SOULs, are at once both breathtaking and impossible. Built out of whatever celestial debris happens to be lying around, these devices have, over the millennia, served as coffee makers, mousetraps, biorhythm readers, screen savers, and garage door openers. Of course, these Goldbergian contraptions violate all the laws of physics, but it’s Heaven, so they work just fine.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Diligence",
+        "Name": "The Final Frontier",
+        "Vibe": -6,
+        "Desc": "‘The ultimate Reward for Diligent, adventurous SOULS is a one-way ticket into the Great Unknown. It’s a dicey existence, trying to make an Afterlife for one’s self in the vast, unexplored territories beyond Heaven and Hell, but who better to tame the wilderness than the hearty, workaholic SOULs of Heaven?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Zoned for Chastity",
+        "Vibe": 0,
+        "Desc": "Coming soon: a brand new Chastity Reward!",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Valentine Town",
+        "Vibe": -2,
+        "Desc": "Okay, so maybe an entire town where everyone is continuously celebrating Valentine’s Day may sound too cutesy for words, but in Heaven it’s a concept that works, really! ‘Trust me on this...",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "The Only Non-Sleazy Singles Bar in Creation",
+        "Vibe": -4,
+        "Desc": "Frankly, I can’t imagine what a non-sleazy singles bar would be like, but I gotta figure that they’ve got it figured out in Heaven.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "The Perfect Spot Cosmic Backrub",
+        "Vibe": -6,
+        "Desc": "For a long time, folks have suspected that everyone has a “perfect spot” somewhere on their bodies. According to this theory, if you find that “perfect spot,” and apply the right kind of pressure to it, your mind will leap out of your body, and you'll briefly become one with the Multiverse. All of this is true. Unfortunately, the “perfect spot” is a moving target, dependent on your mood, the alignment of the stars, what you had for breakfast, and a host of other trivial factors. With so many variables in play, it’s almost impossible for mortals to give a backrub that pushes the dial past “relaxing,” or “gratifying.” Of course, in Heaven, things are a little different. The Angels who man (and woman) the Perfect Spot Cosmic Backrub Tables are equipped with magical goggles that allow them to read the chakras of Chaste SOUL like an open children’s book. With this knowledge, they can easily find a SOUL’s “perfect spot,” and send their minds blissfully hurtling into the cosmos. Then they can do it again. And again. And again. Sometimes, if a SOUL asks nicely, the Angels will let the SOUL wear the gogeles for a while.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Palaces of True Love",
+        "Vibe": -4,
+        "Desc": "Within the many hallways and secret passages of the Palaces of True Love, a Chaste SOUL can find its one true SOULmate. What happens after that is really none of our business, is it?",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Blueberry Hills",
+        "Vibe": -2,
+        "Desc": "We're not quite sure what this is, but thousands of Chaste SOULs have reported “finding their thrill” on these quiet little hills.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Wedding Day Redux",
+        "Vibe": 0,
+        "Desc": "Weddings are generally a lot of fun to attend, and a real pain in the neck to put together. In Heaven, Chaste SOULs have the chance to both attend and participate in as many weddings (and honeymoons) as they want, without having to go through all the trouble of planning, rehearsing, and traveling to them. ‘That's what Angels are for, after all.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Castaways",
+        "Vibe": 2,
+        "Desc": "The Chaste Blessed are coupled off by matchmaking Angels and shipwrecked on deserted islands, where they live in bliss amongst the palm trees and coconuts. Should the SOULs get bored, they’re “rescued” by a passing boat, paired off again, and re-shipwrecked.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Tunnels of Love",
+        "Vibe": 4,
+        "Desc": "They're dark, romantic, a little spooky, and last a loooooong time.",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Bahbbi-Zho's Drive-Ins",
+        "Vibe": 6,
+        "Desc": "Unlike most drive-in movie theatres, the Bahbbi-Zho’s Drive-Ins only show good movies. Real good movies. How good? They're so good that the Chaste SOULs in the cars will often stop fogging the windows for up to 15 minutes at a time!",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "The Perfect Evening",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "The Divine Romantic Comedy",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Chastity",
+        "Name": "Cherubopolis",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Zoned for Peacefulness",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Perfect Playgrounds",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Fishing Holes",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Heaven's Complaint Department",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "U.S.O.A., Local #777 ",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Happy Hunting Grounds",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Peaceful Warrior Pagodas",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Heaven's Embassy",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Splerf Wars",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Board Games",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Fight the Power!",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "Swords Into Plowshares",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Peacefulness",
+        "Name": "The 19th Tee Links",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Zoned for Humility",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Humble Pie",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Press Conference",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "You Oughta Be In Pictures",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Humble-mentary",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "The Red Carpet Treatment",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Roasts",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Monuments to Humility",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "DNA Park",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Keys to the City",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "KHVN",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Night of a Jillion Awards",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Humility",
+        "Name": "Look to the Stars",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Zoned for Generic Virtues ",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Happily Ever After",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Gardens of Mortal Delight",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Newsstands of Eternal Wonder",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Time Heals All Wounds",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "\"\"\"Angel-For-A-Day\"\" Workshops\"",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Personal Freedom Parks",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Animal Magnetism",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Dreamadise",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Fiction Pulp",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Lucky Town",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Heavenly Hindsight Habitat",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Camp Contentment",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "The Happy Carnival",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "The Incomparable Band",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Radical Malls",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Delight Parades",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Hope Springs Eternal Spas",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "SimSimSimSimSim",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "The Game of Afterlife",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "CLOUDS",
+        "Zone": "Generic",
+        "Name": "Good Heavens Theme Parks",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Heaven",
+        "Name": "Heaven's Gate, Dante Class",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 2
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Hell",
+        "Name": "Hell's Gate, Milton Class",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 2
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Heaven",
+        "Name": "Heaven's Gate, Pearl Class",
+        "Vibe": -8,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 4
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Hell",
+        "Name": "Hell's Gate, Belial Class",
+        "Vibe": 8,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 4
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Heaven",
+        "Name": "Heaven's Gate, Throne Class",
+        "Vibe": -12,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 6
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Hell",
+        "Name": "Hell's Gate, Obsidian Class",
+        "Vibe": 12,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 6
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Heaven",
+        "Name": "Heaven's Gate, Prophecy Class",
+        "Vibe": -16,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 8
+    },
+    {
+        "TYPE": "GATES",
+        "Zone": "Hell",
+        "Name": "Hell's Gate, Apocalypse Class",
+        "Vibe": 16,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 8
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Heaven",
+        "Name": "Love Domes, Lincoln Division",
+        "Vibe": 16,
+        "Desc": "genric discription here",
+        "Size": 5,
+        "radi": 16
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Hell",
+        "Name": "Omnibolges, Sh'Elm Division",
+        "Vibe": -16,
+        "Desc": "genric discription here",
+        "Size": 5,
+        "radi": 16
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Heaven",
+        "Name": "Lome Domes, Kirby Division",
+        "Vibe": 24,
+        "Desc": "genric discription here",
+        "Size": 6,
+        "radi": 24
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Hell",
+        "Name": "Omnibolges, B'Nuchana Division",
+        "Vibe": -24,
+        "Desc": "genric discription here",
+        "Size": 6,
+        "radi": 24
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Heaven",
+        "Name": "Love Domes, Lennon Division",
+        "Vibe": 32,
+        "Desc": "genric discription here",
+        "Size": 7,
+        "radi": 32
+    },
+    {
+        "TYPE": "OMNIBOLGES",
+        "Zone": "Hell",
+        "Name": "Omnibolges, R'Dee Division",
+        "Vibe": -32,
+        "Desc": "genric discription here",
+        "Size": 7,
+        "radi": 32
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Zoned for Envy",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Deadman's Curve",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Out of the Frying Pan",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Another Man's Shoes",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Survey of the Damned",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Very Southgate Mall",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Amphitheaters of Anguish",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Welcome to Your Flightmare",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Hell Octoplex 666",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Swichback Mountains",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "NoBody Burgs",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Elevators, Inc",
+        "Vibe": 5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Envy",
+        "Name": "Escher Pits",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Zoned for Avarice",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Jerky City",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "The Collective",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Bingoslypertukaw!",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Booty Island",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Trick or Treat",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "The Wrong Side of The Tracks",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "You Bet Your Afterlife!",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Shock Market",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Carousels of Greed",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Seizure's Palace",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "Scavenger Hunt",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Avarice",
+        "Name": "DisCorp",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Zoned For Gluttonu",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Taco Inferno",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Sticky's",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Pinhead Pizza",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Bad Parties",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "The Pandimensional House of Vermin",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Ecoli Shack",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Renaissance Paine Faire ",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Not-So-Divine Comedy Clubs",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Bahb's All-U-Must Eat",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Sleez and Sons Candy",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "Soylent Yellow",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Gluttony",
+        "Name": "The Bowels of Hell",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Zoned for Sloth",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "The Itch",
+        "Vibe": 5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Sweat Shops ",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Bitter Harvest Fields",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Faux Heaven",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "The Secretarial Pool of Fire",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Grave Consequences",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Convention Of the Damned",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Sisyphus Mountains",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "The Enchanted Forest of Cable",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Beats the Dickens Out of You",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "Sisyphus Factories",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Sloth",
+        "Name": "666 Pennants Over Perdition Theme Parks",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Zoned for Lust",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Lust Freezers",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Punishing Peep Show Pavilions",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "The Laundromat",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Purple Passion Pulsing Plasma Pods",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Bikini Beach Barbecue!",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Ghost Town",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "The Worst Little Whorehouse in Hell",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Screaming Subspace Voids",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Dates From Hell",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Roboto",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "Ignorance Ain't Bliss",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Lust",
+        "Name": "The Big Tease Shower Towers",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Zoned for Wrath",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Immortal Backalley Battle Warriors",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "The Real Underworld",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "The Post Office Game",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "The Houses of Buggin'",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Gym Class",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Hellrose Place",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Riot!",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Spy Springs",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Illuminatiland",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "Terrorville",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "NP- Complete Parking Garages",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Wrath",
+        "Name": "War! (What is it Good For?)",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "Zoned for Pride",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "The Age of Aquarium",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "Doll House",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "SOUL Farm",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "Simon Says",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "HamsterTube",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "Unfixable Machines",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "San Quentin Scareantino",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "The Zoo",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "The Inquisition",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "Complaint Departments",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "St. Elsescare",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Pride",
+        "Name": "The Loony Bin",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Zoned for Generic Sins",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Islands of Yip Dogs",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Flesh Eating Beasts",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Tooth or Dare",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "The Chalkboard",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Tip of Your Tongue",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Flesh Eating Plants",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "The Evil Carny",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Junior High",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Gross Miscarriages of Justice",
+        "Vibe": 4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Camp Mennihackatorso",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Flesh Rending Machines",
+        "Vibe": 2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Like a Goth to Flames ",
+        "Vibe": 1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Telepathy Towers",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "New Age Hells",
+        "Vibe": -1,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Cracked Mirror Condos",
+        "Vibe": -2,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Deadly Serious Caverns",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Riddle Me This",
+        "Vibe": -4,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Infernal Institutes of Irony",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "Fear, Unlimited",
+        "Vibe": 0,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PITS",
+        "Zone": "Generic",
+        "Name": "A World of Pain",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 1,
+        "radi": 0
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Heaven",
+        "Name": "Heaven Port, Earhart Class",
+        "Vibe": 3,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 3
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Hell",
+        "Name": "Hell Port, Copperfield Class",
+        "Vibe": -3,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 3
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Heaven",
+        "Name": "Heaven Port, Morrison Class",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 6
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Hell",
+        "Name": "Hell Port, Bono Class",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 3,
+        "radi": 6
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Heaven",
+        "Name": "Heaven Port, Kaufman Class",
+        "Vibe": 9,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 9
+    },
+    {
+        "TYPE": "PORTS",
+        "Zone": "Hell",
+        "Name": "Hell Port, Ezsterhaus Class",
+        "Vibe": -9,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 9
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Heaven",
+        "Name": "The Vista Enhancement Doohicky",
+        "Vibe": 10,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 10
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Heaven",
+        "Name": "The Audio Improving Embophone",
+        "Vibe": 12,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 12
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Heaven",
+        "Name": "The Heaven Scent Atomizer",
+        "Vibe": 14,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 14
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Heaven",
+        "Name": "The Creamy Candy Castle",
+        "Vibe": 16,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 16
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Heaven",
+        "Name": "The Fluffy Comfort Dispenser",
+        "Vibe": 18,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 18
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Hell",
+        "Name": "The Ugliness Engine",
+        "Vibe": -10,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 10
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Hell",
+        "Name": "The Crinkly Cacophony Contrivance",
+        "Vibe": -12,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 12
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Hell",
+        "Name": "The Flabbergasting Flatulence Ol-Factory",
+        "Vibe": -14,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 14
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Hell",
+        "Name": "The Wellspring of Unsavoriness",
+        "Vibe": -16,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 16
+    },
+    {
+        "TYPE": "SPECIAL",
+        "Zone": "Hell",
+        "Name": "The Tactile Degradation Gizmo",
+        "Vibe": -18,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 18
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Heaven",
+        "Name": "The 100,000 Penny Pyramid",
+        "Vibe": 5,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 5
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Hell",
+        "Name": "Towers of Unfortunate Missteps",
+        "Vibe": -5,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 5
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Heaven",
+        "Name": "Bahb’s Crystal Cities",
+        "Vibe": 6,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 6
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Hell",
+        "Name": "Palaces of Pincer Peril",
+        "Vibe": -6,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 6
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Heaven",
+        "Name": "Pin City",
+        "Vibe": 7,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 7
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Hell",
+        "Name": "Nearly Unfettered Spheres of Despair",
+        "Vibe": -7,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 7
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Heaven",
+        "Name": "Castles On A Cloud",
+        "Vibe": 8,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 8
+    },
+    {
+        "TYPE": "TOPIA",
+        "Zone": "Hell",
+        "Name": "Eye Scream City",
+        "Vibe": -8,
+        "Desc": "genric discription here",
+        "Size": 4,
+        "radi": 8
+    }
+]
