@@ -3,8 +3,6 @@
 
 WorldManager::WorldManager()
 {
-	m_num_of_planes = 2;
-
 	m_grid_x = 10;
 	m_grid_y = 10;
 
@@ -28,9 +26,8 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 		{
 			for (int j = 0; j < m_grid_x; j++)
 			{ 
-				Vector2 pos = { float(j), float(i) };
-				plane.second.push_back(std::make_unique<GridLocation>(_device, pos, int(plane.first)));
-				std::cout << "Created location " << j << " " << i << std::endl;
+				Vector2 pos = { float(j) + float(plane.first) * (m_grid_x * 0.75f), float(i) + float(plane.first) * (m_grid_y * 0.75f) };
+				plane.second.push_back(std::make_unique<GridLocation>(_device, pos, plane.first, Vector2(j, i)));
 			}
 		}
 
@@ -38,11 +35,18 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 	}
 }
 
-void WorldManager::setConnected(GridLocation& _grid_location, PlaneType _plane)
+/// <summary>
+/// Call this function when roads are placed. Updates the surrounding tiles to be connected.
+/// </summary>
+/// <param name="_grid_location">The grid location the road was placed in.</param>
+/// <param name="_plane">The plane in which the road was placed.</param>
+void WorldManager::setConnected(GridLocation& _grid_location)
 {
 	// Call when road is placed, set connection status of tiles affected
 
-	Vector2 start = _grid_location.getGridData().m_position;
+	PlaneType _plane = _grid_location.getGridData().m_plane;
+
+	Vector2 start = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
 	Vector2 directions[24] =
 	{
@@ -66,16 +70,18 @@ void WorldManager::setConnected(GridLocation& _grid_location, PlaneType _plane)
 	}
 }
 
-void WorldManager::updateVibes(GridLocation& _grid_location, PlaneType _plane)
+void WorldManager::updateVibes(GridLocation& _grid_location)
 {
 	// THIS WORKS FOR 1x1 BUILDINGS
+
+	PlaneType _plane = _grid_location.getGridData().m_plane;
 
 	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
 	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
 
-	Vector2 start_pos = _grid_location.getGridData().m_position;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
 	std::vector<Vector2> range;
 	range.reserve(25);
@@ -153,8 +159,14 @@ std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& WorldManager::g
 	return m_world;
 }
 
-void WorldManager::calculateEfficiency(GridLocation& _grid_location, PlaneType _plane)
+/// <summary>
+/// Calculate the efficiency for a tile. This is used to determine if a fate structure should upgrade itself or not.
+/// </summary>
+/// <param name="_grid_location">The grid location to calculate efficiency for.</param>
+void WorldManager::calculateEfficiency(GridLocation& _grid_location)
 {
+	PlaneType _plane = _grid_location.getGridData().m_plane;
+
 	int distance = 0;
 	int vibe = _grid_location.getGridData().m_vibe;
 	int production = 0;
@@ -175,10 +187,15 @@ void WorldManager::calculateEfficiency(GridLocation& _grid_location, PlaneType _
 	_grid_location.getGridData().m_efficiency = (distance + vibe + production + adjacency);
 }
 
+/// <summary>
+/// Calculate the adjacency score of a tile in Heaven.
+/// </summary>
+/// <param name="_grid_location">The grid location to check.</param>
+/// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 {
-	Vector2 start_pos = _grid_location.getGridData().m_position;
-	PlaneType plane = PlaneType::Heaven;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
+	PlaneType plane = _grid_location.getGridData().m_plane;
 
 	int adjacency = 0;
 
@@ -196,18 +213,22 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 
 		int index = getIndex(new_pos);
 
+		// Check the adjacent tile is a zone
 		if (m_world[plane][index]->getGridData().m_tile_type == TileType::Zone)
 		{
+			// Check if zone types are different
 			if (m_world[plane][index]->getGridData().m_zone_type != _grid_location.getGridData().m_zone_type)
 			{
 				adjacency += 3;
 			}
 			else
 			{
-				// TODO
-				// Check that although it's the same virtue / zone, it's a different species
-				// This will be for adding 1
-				adjacency += 1;
+				// Check that although zone is the same, building species is different
+				if (m_world[plane][index]->getGridData().m_building_data.m_building_species !=
+					_grid_location.getGridData().m_building_data.m_building_species)
+				{
+					adjacency += 1;
+				}
 			}
 		}
 	}
@@ -215,10 +236,15 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 	return adjacency;
 }
 
+/// <summary>
+/// Calculate the adjacency score of a tile in Hell.
+/// </summary>
+/// <param name="_grid_location">The grid location to check.</param>
+/// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 {
-	Vector2 start_pos = _grid_location.getGridData().m_position;
-	PlaneType plane = PlaneType::Hell;
+	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
+	PlaneType plane = _grid_location.getGridData().m_plane;
 
 	int adjacency = 0;
 
@@ -239,12 +265,19 @@ int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 		// If they're the same zone type then less efficient
 		if (m_world[plane][index]->getGridData().m_tile_type == TileType::Zone)
 		{
+			// Check if they're the same sin (zone type)
 			if (m_world[plane][index]->getGridData().m_zone_type == _grid_location.getGridData().m_zone_type)
 			{
-				adjacency += 3;
-
-				// TODO
-				// Add if statements to check species of building when implemented
+				// Check if they're the same species of building
+				if (m_world[plane][index]->getGridData().m_building_data.m_building_species ==
+					_grid_location.getGridData().m_building_data.m_building_species)
+				{
+					adjacency += 3;
+				}
+				else
+				{
+					adjacency++;
+				}
 			}
 		}
 	}
@@ -252,11 +285,22 @@ int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 	return adjacency;
 }
 
+/// <summary>
+/// Get the tile index based on it's Vector2 position.
+/// </summary>
+/// <param name="position">The position of the grid location in relation to the grid.</param>
+/// <returns>An integer index that can be used in m_world array.</returns>
 int WorldManager::getIndex(Vector2 position)
 {
 	return position.x + position.y * m_grid_x;
 }
 
+/// <summary>
+/// Check that a tile index is within range of the grid.
+/// </summary>
+/// <param name="position">The position of the grid location in relation to the grid.</param>
+/// <returns>A boolean in relation to if the index is within range of the grid.
+/// Used to unsure there are no out of index errors during runtime.</returns>
 bool WorldManager::withinRange(Vector2 position)
 {
 	if (position.x > m_grid_x - 1 || position.x < 0 ||

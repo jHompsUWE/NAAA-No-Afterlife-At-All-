@@ -18,27 +18,28 @@ public:
 
     void init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory);
 
-    void setConnected(GridLocation& _grid_location, PlaneType _plane);
+    void setConnected(GridLocation& _grid_location);
 
     // 1x1 update
-    void updateVibes(GridLocation& _grid_location, PlaneType _plane);
+    void updateVibes(GridLocation& _grid_location);
 
     void update(GameData& _game_data) override;
 
-    void render(DrawData* _DD);
+    void render(DrawData* _DD) override;
 
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& getWorld();
-
-private:
-    void calculateEfficiency(GridLocation& _grid_location, PlaneType _plane);
-
-    int adjacencyScoreHeaven(GridLocation& _grid_location);
-    int adjacencyScoreHell(GridLocation& _grid_location);
 
     int getIndex(Vector2 position);
     bool withinRange(Vector2 position);
 
-    int m_num_of_planes;
+private:
+    void calculateEfficiency(GridLocation& _grid_location);
+
+    int adjacencyScoreHeaven(GridLocation& _grid_location);
+    int adjacencyScoreHell(GridLocation& _grid_location);
+
+    
+    
 
     int m_grid_x;
     int m_grid_y;

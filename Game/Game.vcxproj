@@ -284,6 +284,7 @@
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MarchCubes.h" />
     <ClInclude Include="ObjectList.h" />
+    <ClInclude Include="Pathfinding.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlaneType.h" />
     <ClInclude Include="Player.h" />
@@ -339,6 +340,7 @@
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
+    <ClCompile Include="Pathfinding.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='FBXInclude|Win32'">Create</PrecompiledHeader>

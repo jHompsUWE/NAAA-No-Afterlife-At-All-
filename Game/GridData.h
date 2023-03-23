@@ -3,6 +3,7 @@
 #include <d3d11_1.h>
 #include <Model.h>
 #include <iostream>
+#include <tuple>
 #include "SimpleMath.h"
 
 #include "TileType.h"
@@ -67,7 +68,7 @@ struct GridData
 
 	TileType m_tile_type = TileType::None;
 	ZoneType m_zone_type = ZoneType::None;
-	Vector2 m_position = {4, 4};
+	std::tuple<int, int> m_position = { 0, 0 };
 
 	bool m_connected = false;
 	PlaneType m_plane = PlaneType::None;
