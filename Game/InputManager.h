@@ -19,16 +19,10 @@ enum class InputType
     mouse_released,
 	mouse_clicked_released,
     mouse_clicked_with_mod,
+	mouse_scrolled,
+	mouse_scrolled_with_mod,
     mouse_moved
 };
-
-enum class MouseButton
-{
-	left,
-	middle,
-	right
-};
-
 
 struct KeyboardAction
 {
@@ -120,8 +114,8 @@ static const std::unordered_map<std::string, MouseButton> string_to_mouse_button
 	{"middle", MouseButton::middle}
 };
 
-using json = nlohmann::json;
-using json_element = nlohmann::json_abi_v3_11_2::basic_json<std::map, std::vector, std::basic_string<char,
+using Json = nlohmann::json;
+using JsonElement = nlohmann::json_abi_v3_11_2::basic_json<std::map, std::vector, std::basic_string<char,
 std::char_traits<char>, std::allocator<char> >,bool,__int64,unsigned __int64,double, std::allocator,
 nlohmann::json_abi_v3_11_2::adl_serializer, std::vector<unsigned char, std::allocator<unsigned char>>>;
 
@@ -134,7 +128,7 @@ public:
 	////////////////////////////////////////////////////////////
 	/// \brief Is called when the program initializes.
 	////////////////////////////////////////////////////////////
-    void awake() override;
+    void awake(GameData& _game_data) override;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Called every cycle of the game loop.
@@ -149,6 +143,10 @@ public:
     void onEvent(const Event& event) override;
 
 private:
+	////////////////////////////////////////////////////////////
+	/// \brief Loads in the json of action maps at a specified file path.
+	/// \param _filepath The filepath of the json to load in.
+	////////////////////////////////////////////////////////////
     void loadInInputActionsMaps(std::string _filepath);
 
     ////////////////////////////////////////////////////////////
@@ -159,12 +157,21 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a KeyboardAction.
 	////////////////////////////////////////////////////////////
-	KeyboardAction loadKeyboardAction(json_element& element);
+	KeyboardAction loadKeyboardAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a MouseAction.
 	////////////////////////////////////////////////////////////
-	MouseAction loadMouseAction(json_element& element);
+	MouseAction loadMouseAction(JsonElement& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Fires off the game events triggered by mouse button events.
+	/// \param _action The MouseAction containing the keybind data.
+	/// \param _game_data Game Data.
+	/// \param _default_mouse_event The event triggered if the mouse is over UI.
+	/// \param _pressed Whether the button has been pressed or released.
+	////////////////////////////////////////////////////////////
+	void triggerMouseButtonEvent(MouseAction& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will reset the action map back to default. 
@@ -191,6 +198,11 @@ private:
 	////////////////////////////////////////////////////////////
     std::vector<KeyboardAction>* current_key_action_map;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to the current mouse action map. 
+	////////////////////////////////////////////////////////////
+	std::vector<MouseAction>* current_mouse_action_map;
+
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
 	////////////////////////////////////////////////////////////
@@ -205,4 +217,14 @@ private:
 	/// \brief Custom keybinds filename - Load in and use this one.
 	////////////////////////////////////////////////////////////
     std::string custom_bindings_file_name = "keybinds_custom.json";
+	
+	////////////////////////////////////////////////////////////
+	/// \brief Mouse position of the last update cycle. 
+	////////////////////////////////////////////////////////////
+	tuple<int, int> last_mouse_pos;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Unordered map for tying MouseButton to DirectX's ButtonStates.
+	////////////////////////////////////////////////////////////
+	std::unordered_map<MouseButton, Mouse::ButtonStateTracker::ButtonState&> mouse_button_to_button_state;
 };

@@ -8,13 +8,13 @@
 
 #define GET_VARIABLE_NAME(Variable) (#Variable)
 
-using json = nlohmann::json;
+using Json = nlohmann::json;
 
 
 class FileManager : public Manager
 {
 public:
-    void awake() override;
+    void awake(GameData& _game_data) override;
     void update(GameData& _game_data) override;
 
     ////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ public:
 private:
     std::string filepath = "../Data/";
     std::ifstream file;
-    json obj;
+    Json obj;
     std::unique_ptr<SaveStruct> save_struct;
     int test_val;
     

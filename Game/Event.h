@@ -66,7 +66,19 @@ enum class EventType
 
     // GameEvents
     STATE_TRANSITION,
-    SOUL_UPDATE
+    SOUL_UPDATE,
+
+	// Mouse Events
+	MOUSE_CLICK,
+	MOUSE_RELEASE,
+	
+};
+
+enum class MouseButton
+{
+	left,
+	middle,
+	right
 };
 
 class Event
@@ -74,19 +86,43 @@ class Event
 public:
     struct StateTransition
     {
-        int previous;
-        int current;
+        int previous = NULL;
+        int current = NULL;
     };
 
     struct SoulUpdate
     {
-        int count;
+        int count = NULL;
     };
+
+	struct MouseButtonEvent
+	{
+		int x_mouse_pos = NULL;
+		int y_mouse_pos = NULL;
+		MouseButton button = MouseButton::left;
+		bool pressed = NULL;
+	};
+
+	struct MouseScrollEvent
+	{
+		int delta_scroll = NULL;
+		int x_mouse_pos = NULL;
+		int y_mouse_pos = NULL;
+	};
+
+	struct MouseMoveEvent
+	{
+		int x_mouse_pos = NULL;
+		int y_mouse_pos = NULL;
+	};
 
 	union EventPayload
 	{
         StateTransition state_transition;
         SoulUpdate soul_update;
+		MouseButtonEvent mouse_button_event;
+		MouseScrollEvent mouse_scroll_event;
+		MouseMoveEvent mouse_move_event;
 	};
 
 	////////////////////////////////////////////////////////////

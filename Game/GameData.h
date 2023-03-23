@@ -24,5 +24,7 @@ struct GameData
 	Keyboard::KeyboardStateTracker m_KBS_tracker;
 	Mouse::ButtonStateTracker m_mouseButtons;
 	int Year = 0;
+	
+	bool mouse_over_UI = false;
 };
 #endif

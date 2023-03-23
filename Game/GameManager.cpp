@@ -1,11 +1,11 @@
 #include "pch.h"
 #include "GameManager.h"
 
-void GameManager::awake()
+void GameManager::awake(GameData& _game_data)
 {
 	for (auto manager : managers)
 	{
-		manager->awake();
+		manager->awake(_game_data);
 	}
 }
 

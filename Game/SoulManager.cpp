@@ -43,11 +43,6 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	return 0;
 }
 
-void SoulManager::awake()
-{
-
-}
-
 void SoulManager::update(GameData& _game_data)
 {
 	if (_game_data.Year%5 == 0)

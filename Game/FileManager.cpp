@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "FileManager.h"
 
-void FileManager::awake()
+void FileManager::awake(GameData& _game_data)
 {
     save_struct = std::make_unique<SaveStruct>();
     if (file_exist( filepath + "save.json"))
@@ -9,7 +9,6 @@ void FileManager::awake()
         // load file
         //load();
     }    
-    Manager::awake();
 }
 
 void FileManager::update(GameData& _game_data)
@@ -30,7 +29,7 @@ void FileManager::save()
 void FileManager::load()
 {
     std::ifstream file(filepath + "save.json");
-    json json_file = json::parse(file);
+    Json json_file = Json::parse(file);
     file.close();
 
     if (!json_file.empty())
@@ -42,7 +41,7 @@ void FileManager::load()
 
 void FileManager::to_json()
 {
-   obj = json{
+   obj = Json{
        {"Gold", 10},
        {"Bool", true},
        {"Third", 2}

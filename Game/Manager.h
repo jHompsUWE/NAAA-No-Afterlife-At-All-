@@ -8,12 +8,12 @@ class Manager
 {
 public:
 	Manager() = default;
-	~Manager() = default;
+	virtual ~Manager() = default;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Is called when the program initializes.
 	////////////////////////////////////////////////////////////
-	virtual void awake() {};
+	virtual void awake(GameData& _game_data) {};
 
 	////////////////////////////////////////////////////////////
 	/// \brief Called every cycle of the game loop, but before update.

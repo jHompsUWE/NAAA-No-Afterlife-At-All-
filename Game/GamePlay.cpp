@@ -83,7 +83,7 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 
     GameManager::get()->getEventManager()->addListener(remote);
 
-	GameManager::get()->awake();
+	GameManager::get()->awake(*_game_data);
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 

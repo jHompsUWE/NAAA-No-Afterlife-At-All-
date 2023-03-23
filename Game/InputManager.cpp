@@ -2,11 +2,16 @@
 #include "InputManager.h"
 #include "json.hpp"
 
-void InputManager::awake()
+void InputManager::awake(GameData& _game_data)
 {
+	mouse_button_to_button_state = {{MouseButton::right, _game_data.m_mouseButtons.rightButton},
+										{MouseButton::left, _game_data.m_mouseButtons.leftButton},
+										{MouseButton::middle, _game_data.m_mouseButtons.middleButton}};
+	
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
 	current_key_action_map = &game_key_action_map; // in future, will rely on the finite state machine to determine current action map.
+	current_mouse_action_map = &game_mouse_action_map;
 }
 
 void InputManager::update(GameData& _game_data)
@@ -43,7 +48,6 @@ void InputManager::update(GameData& _game_data)
 				{
 					Event event{};
 					event.type = action.command;
-
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 				}
 				break;
@@ -52,7 +56,7 @@ void InputManager::update(GameData& _game_data)
 			case InputType::key_pressed_with_mod: 
 			{
 				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button) &&
-					_game_data.m_KBS_tracker.IsKeyPressed(action.modifier))
+					_game_data.m_KBS.IsKeyDown(action.modifier))
 				{
 					Event event{};
 					event.type = action.command;
@@ -60,38 +64,104 @@ void InputManager::update(GameData& _game_data)
 				}
 				break;
 			}
-
-			case InputType::mouse_clicked: 
-			{
-				//switch (action.key_button) 
-				{
-					//case 
-				}
-
-				break;
-			}
-
-			case InputType::mouse_released:
-			{
-				break;
-			}
-
-			case InputType::mouse_clicked_with_mod: 
-			{
-				break;
-			}
-
-			case InputType::mouse_moved:
-			{
-				break;
-			}
-
 			default:
 			{
 				break;
 			}
 		}		
 	}
+
+	for (auto action : *current_mouse_action_map)
+	{
+		switch (action.type)
+		{
+		case InputType::mouse_clicked: 
+			{
+				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED)
+				{
+					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
+				}					
+			}
+			case InputType::mouse_released:
+			{
+					if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::RELEASED)
+					{
+						triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
+					}	
+				break;
+			}
+			case InputType::mouse_clicked_released:
+			{
+				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED)
+				{
+					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
+				}
+				
+				else if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::RELEASED)
+				{
+					triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
+				}	
+				break;
+			}
+			case InputType::mouse_clicked_with_mod:
+			{
+				if (mouse_button_to_button_state.at(action.button) == Mouse::ButtonStateTracker::PRESSED
+					&& _game_data.m_KBS.IsKeyDown(action.modifier))
+				{
+					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, false);
+				}
+				break;
+			}
+			case InputType::mouse_scrolled: 
+			{
+				if (_game_data.m_MS.scrollWheelValue != 0)
+				{
+					Mouse::Get().ResetScrollWheelValue();
+				}
+				break;
+			}
+			case InputType::mouse_scrolled_with_mod: 
+			{
+				if (_game_data.m_MS.scrollWheelValue != 0
+					&& _game_data.m_KBS.IsKeyDown(action.modifier))
+				{
+					Mouse::Get().ResetScrollWheelValue();
+				}
+				break;
+			}
+			case InputType::mouse_moved:
+			{
+				if (_game_data.m_MS.x != std::get<0>(last_mouse_pos) || _game_data.m_MS.y != std::get<1>(last_mouse_pos))
+				{
+					std::get<0>(last_mouse_pos) = _game_data.m_MS.x;
+					std::get<1>(last_mouse_pos) = _game_data.m_MS.y;
+
+					Event event{};
+					event.type = EventType::MOUSE_CLICK;
+					event.payload.mouse_move_event.x_mouse_pos = std::get<0>(last_mouse_pos);
+					event.payload.mouse_move_event.y_mouse_pos = std::get<1>(last_mouse_pos);
+
+					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+				}
+				break;
+			}
+		
+			default: ;
+		}
+	}
+}
+
+void InputManager::triggerMouseButtonEvent(MouseAction& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const
+{
+	Event event{};
+    	
+	event.type = !_game_data.mouse_over_UI ? event.type = _action.command : event.type = _default_mouse_event;
+	event.payload.mouse_button_event.button = _action.button;
+	event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+	event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+	event.payload.mouse_button_event.pressed = _pressed;
+    
+	GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 }
 
 void InputManager::onEvent(const Event& event)
@@ -109,6 +179,7 @@ void InputManager::onEvent(const Event& event)
 		case State::GAME_PLAY:
 		{
 			current_key_action_map = &game_key_action_map;
+			current_mouse_action_map = &game_mouse_action_map;
 			break;
 		}
 
@@ -139,17 +210,17 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 {
 	// Should utilize FileManager to pull in the .json, so this is temp. 
 	std::ifstream file(_filepath);
-	json input_json;
+	Json input_json;
 
 	if (file.good())
 	{
-		input_json = json::parse(file);
+		input_json = Json::parse(file);
 	}
 	file.close();
 
 	if (!input_json.empty())
 	{
-		for (json_element json_action : input_json["game_state"]["keyboard_inputs"])
+		for (JsonElement json_action : input_json["game_state"]["keyboard_inputs"])
 		{
 			game_key_action_map.emplace_back(loadKeyboardAction(json_action));
 		}
@@ -164,7 +235,7 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 	}
 }
 
-KeyboardAction InputManager::loadKeyboardAction(json_element& element)
+KeyboardAction InputManager::loadKeyboardAction(JsonElement& element)
 {
 	EventType command = string_to_input_action.at(std::string(element["Action"]));
 	InputType type = string_to_input_type.at(std::string(element["Type"]));
@@ -180,7 +251,7 @@ KeyboardAction InputManager::loadKeyboardAction(json_element& element)
 	return KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key };
 }
 
-MouseAction InputManager::loadMouseAction(json_element& element)
+MouseAction InputManager::loadMouseAction(JsonElement& element)
 {
 	EventType command = string_to_input_action.at(std::string(element["Action"]));
 	InputType type = string_to_input_type.at(std::string(element["Type"]));
