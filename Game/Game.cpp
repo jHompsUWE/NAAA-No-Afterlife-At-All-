@@ -142,7 +142,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
     
     
-    
     // GameState initialisation
     for (auto& state : game_states)
     {
@@ -161,6 +160,18 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
+
+    auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
+
+    for (auto build : (*buildings))
+    {
+        if (build["TYPE"] == "SPECIAL")
+        {
+            cout << "Type: " << build["TYPE"];
+            cout << " - Zone: " << build["Zone"];
+            cout << " - Desc: " << build["Desc"] << endl;
+        }
+    }
 
 }
 

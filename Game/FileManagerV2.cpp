@@ -9,6 +9,7 @@ void FileManagerV2::awake()
     AddFile("SaveFile", new ifstream(saveFilePath_));
     AddFile("keybinds_default", new ifstream(default_bindings_file_name));
     AddFile("keybinds_custom", new ifstream(custom_bindings_file_name));
+    AddFile("buildings_table", new ifstream(filepath_ + "buildings_table.json"));
     
 
     for (auto & file : files)
