@@ -28,7 +28,6 @@ void FileManagerV2::awake()
         file.second->close();
     }
 
-    SaveGame();
     Manager::awake();
 }
 
@@ -44,7 +43,7 @@ void FileManagerV2::AddFile(const std::string &fileName, ifstream *file)
 void FileManagerV2::AddJson(const std::string& fileName, ifstream* file)
 {
     json *parse = new json(json::parse(*(file)));
-    jsonFiles.insert(make_pair(fileName, parse));
+    jsonFiles.insert(make_pair(fileName, parse)); 
 }
 json *FileManagerV2::GetJson(const std::string &fileName) const
 {
@@ -62,10 +61,11 @@ string FileManagerV2::GetFile(const std::string& fileName) const
     if (fileNameIt != files.end())
     {
         std::stringstream buffer;
-        buffer << fileNameIt->second->rdbuf();
+        buffer << (*fileNameIt).second->rdbuf();
+        cout << buffer.str() << endl;
         return buffer.str();
     }
-    return nullptr;
+    return "";
 }
 
 void FileManagerV2::LoadGame()

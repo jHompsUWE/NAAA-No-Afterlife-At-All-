@@ -74,3 +74,28 @@ bool GameManager::removeManager(std::shared_ptr<Manager> _manager, ManagerType _
 	}
 	return false;
 }
+
+void GameManager::SaveGame()
+{
+	auto saveFile = file_manager->GetJson("SaveFile");
+	if (!saveFile->empty())
+	{
+		ofstream output("../Data/SaveFile.json");
+		cout << file_manager->GetFile("SaveFile") << endl;
+		// Stuff that needs to be saved
+		(*saveFile)["economy_manager"]["money"] = 120;
+		output << *saveFile;
+		output.close();
+		cout << "File saved" << endl;
+	}
+}
+
+void GameManager::LoadGame()
+{
+	auto saveFile = file_manager->GetJson("SaveFile");
+	if (!saveFile->empty())
+	{
+		auto money = (*saveFile)["economy_manager"]["money"];
+		cout << money << endl;
+	}
+}

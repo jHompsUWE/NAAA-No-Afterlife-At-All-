@@ -559,6 +559,14 @@ void Game::ReadInput()
     {
         ExitGame();
     }
+    if (m_GD->m_KBS.S)
+    {
+        GameManager::get()->SaveGame();
+    }
+    if (m_GD->m_KBS.L)
+    {
+        GameManager::get()->LoadGame();
+    }
 
     // temp - kill later. 
     if (m_GD->m_KBS.N)
