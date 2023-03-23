@@ -161,18 +161,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
-    auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
-
-    for (auto build : (*buildings))
-    {
-        if (build["TYPE"] == "SPECIAL")
-        {
-            cout << "Type: " << build["TYPE"];
-            cout << " - Zone: " << build["Zone"];
-            cout << " - Desc: " << build["Desc"] << endl;
-        }
-    }
-
 }
 
 // Executes the basic game loop.
