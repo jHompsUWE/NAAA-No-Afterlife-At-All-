@@ -92,6 +92,16 @@ void Button::SetToggle(GameObject2D* toggle)
 	toggleWindow = toggle;
 }
 
+void Button::SetToggle(BuildingWindow* toggle)
+{
+	toggleBuildWindow = toggle;
+}
+
+void Button::SetOpenBuildWindow(bool openBuildWindow)
+{
+	openBuildingWindow = openBuildWindow;
+}
+
 void Button::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -106,12 +116,26 @@ void Button::Tick(GameData* _GD)
 	{
 		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 		{
-			if (toggleWindow != nullptr)
-			{
-				toggleWindow->renderable = !toggleWindow->renderable;
-			}
-
+			toggle();
 			pressed = true;
+		}
+	}
+}
+
+void Button::toggle()
+{
+	if (!openBuildingWindow)
+	{
+		if (toggleWindow != nullptr)
+		{
+			toggleWindow->renderable = !toggleWindow->renderable;
+		}
+	}
+	else
+	{
+		if (toggleBuildWindow != nullptr && !toggleBuildWindow->renderable)
+		{
+			toggleBuildWindow->renderable = true;
 		}
 	}
 }

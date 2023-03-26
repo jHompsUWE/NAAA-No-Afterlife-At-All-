@@ -291,11 +291,20 @@
     <ClInclude Include="SelectionHandler.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIRemote.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pathfinding.h">
       <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIRemote.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingButton.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingWindow.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -433,6 +442,18 @@
     </ClCompile>
     <ClCompile Include="Pathfinding.cpp">
       <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRemote.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingButton.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingWindow.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

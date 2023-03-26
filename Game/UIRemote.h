@@ -18,8 +18,11 @@ public:
 	void InitButtonNames();
 
 	void SetButtonToggle(int i, GameObject2D* toggle);
+	void SetButtonToggle(int i, BuildingWindow* toggle);
 
 	void onEvent(const Event& event) override;
+
+	void setString(int stringNum, std::string _text);
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);

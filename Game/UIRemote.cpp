@@ -188,26 +188,35 @@ void UIRemote::InitButtonNames()
 	// Buildings and roads
 	buttons[8]->SetName("Gates");
 	buttons[8]->SetType(EventType::GATES);
+	buttons[8]->SetOpenBuildWindow(true);
 	buttons[9]->SetName("Roads");
 	buttons[9]->SetType(EventType::ROADS);
 	buttons[10]->SetName("Karma Stations");
 	buttons[10]->SetType(EventType::ACTIVATES_KARMA_STATION_ZONING);
+	buttons[10]->SetOpenBuildWindow(true);
 	buttons[11]->SetName("Karma Track");
 	buttons[11]->SetType(EventType::KARMA_TRACK);
 	buttons[12]->SetName("Topias");
 	buttons[12]->SetType(EventType::TOPIAS);
+	buttons[12]->SetOpenBuildWindow(true);
 	buttons[13]->SetName("Training Centre");
 	buttons[13]->SetType(EventType::TRAINING_CENTRE);
+	buttons[13]->SetOpenBuildWindow(true);
 	buttons[14]->SetName("Ports");
 	buttons[14]->SetType(EventType::PORTS);
+	buttons[14]->SetOpenBuildWindow(true);
 	buttons[15]->SetName("Siphons/Banks");
 	buttons[15]->SetType(EventType::SIPHONS_BANKS);
+	buttons[15]->SetOpenBuildWindow(true);
 	buttons[16]->SetName("Special");
 	buttons[16]->SetType(EventType::SPECIAL_BUILDINGS);
+	buttons[16]->SetOpenBuildWindow(true);
 	buttons[17]->SetName("Omnibolges");
 	buttons[17]->SetType(EventType::ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG);
+	buttons[17]->SetOpenBuildWindow(true);
 	buttons[18]->SetName("Limbo Buildings");
 	buttons[18]->SetType(EventType::ACTIVATES_LIMBO_ZONING);
+	buttons[18]->SetOpenBuildWindow(true);
 	buttons[19]->SetName("Zap");
 	buttons[19]->SetType(EventType::NUKE_BUTTON);
 
@@ -280,8 +289,28 @@ void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
 	buttons[i]->SetToggle(toggle);
 }
 
+void UIRemote::SetButtonToggle(int i, BuildingWindow* toggle)
+{
+	buttons[i]->SetToggle(toggle);
+}
+
 void UIRemote::onEvent(const Event& event)
 {
+	for (int i = 0; i < 37; i++)
+	{
+		if (buttons[i]->event_type == event.type)
+		{
+			text[2]->SetString(buttons[i]->buttonName);
+
+			if (!buttons[i]->openBuildingWindow)
+			{
+				buttons[i]->toggle();
+			}
+			
+			break;
+		}
+	}
+
 	switch (event.type)
 	{
 		case EventType::SOUL_UPDATE:
@@ -352,13 +381,30 @@ void UIRemote::Tick(GameData* _GD)
 
 				if (buttons[i]->pressed)
 				{
+					buttons[i]->toggle();
 					text[2]->SetString(buttons[i]->buttonName);
+					
+					if (!buttons[i]->openBuildingWindow)
+					{
 
-					Event event{};
-					event.type = buttons[i]->event_type;
+						Event event{};
+						event.type = buttons[i]->event_type;
 
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-					buttons[i]->pressed = false;
+						GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+
+						buttons[i]->pressed = false;
+					}
+					else
+					{
+						for (int j = 0; j < buttons[i]->toggleBuildWindow->buttons.size(); j++)
+						{
+							buttons[i]->toggleBuildWindow->buttons[j]->SetText(true, buttons[i]->buttonName);
+							buttons[i]->toggleBuildWindow->buttons[j]->SetType(buttons[i]->event_type);
+						}
+
+						buttons[i]->pressed = false;
+					}
+					
 				}
 			}
 		}
