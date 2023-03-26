@@ -67,7 +67,21 @@ void GridLocation::update()
 
 	if (m_grid_data.m_tile_type == TileType::Road)
 	{
-		m_tile->SetColour(Colors::LightCoral.v);
+		m_tile->SetColour(Colors::Black.v);
+	}
+
+	if (m_grid_data.m_tile_type == TileType::Gate)
+	{
+		m_tile->SetColour(Colors::Aquamarine.v);
+	}
+
+	// Make zone grayer if it's not connected
+	if (m_grid_data.m_tile_type == TileType::Zone)
+	{
+		if (!m_grid_data.m_connected)
+		{
+			m_tile->SetColour(Color(m_tile->GetColour().x * 0.35f, m_tile->GetColour().y * 0.35f, m_tile->GetColour().z * 0.35f));
+		}
 	}
 
 	if (m_selected)

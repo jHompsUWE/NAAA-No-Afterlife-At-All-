@@ -5,10 +5,14 @@
 
 #include "Pathfinding.h"
 
-SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD) :
-	m_world_manager(_world_manager), m_GD(_GD)
+SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD, 
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _d3dContext) :
+	m_world_manager(_world_manager), m_GD(_GD), m_d3dContext(_d3dContext)
 {
 	m_plane = PlaneType::Hell;
+	m_selection_type = SelectionType::None;
+
+	update_tile = false;
 }
 
 void SelectionHandler::setStartPos(Vector3 _start_pos)
@@ -52,8 +56,18 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		}
 	}
 
-	updateTiles();
-
+	switch (m_selection_type)
+	{
+	case SelectionType::Zone:
+		updateTiles();
+		break;
+	case SelectionType::Building:
+		updateBuilding();
+		break;
+	case SelectionType::Road:
+		updateRoads();
+		break;
+	}
 }
 
 
@@ -65,18 +79,22 @@ void SelectionHandler::onEvent(const Event& event)
 		{
 			m_zone_type = ZoneType::Green;
 			m_tile_type = TileType::Zone;
+
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::YELLOW_ZONING:
 		{
 			m_zone_type = ZoneType::Yellow;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::ORANGE_ZONING:
 		{
 			m_zone_type = ZoneType::Orange;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::BROWN_ZONING:
@@ -84,36 +102,51 @@ void SelectionHandler::onEvent(const Event& event)
 			std::cout << "brown\n";
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::PURPLE_ZONING:
 		{
 			m_zone_type = ZoneType::Purple;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::RED_ZONING:
 		{
 			m_zone_type = ZoneType::Red;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::BLUE_ZONING:
 		{
 			m_zone_type = ZoneType::Blue;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::GENERIC_ZONING:
 		{
 			m_zone_type = ZoneType::Generic;
 			m_tile_type = TileType::Zone;
+			m_selection_type = SelectionType::Zone;
 			break;
 		}
 		case EventType::ROADS:
 		{
 			m_zone_type = ZoneType::None;
 			m_tile_type = TileType::Road;
+
+			m_selection_type = SelectionType::Road;
+			break;
+		}
+		case EventType::GATES:
+		{
+			m_zone_type = ZoneType::None;
+			m_tile_type = TileType::Gate;
+
+			m_selection_type = SelectionType::Building;
 			break;
 		}
 		default:;
@@ -180,23 +213,6 @@ void SelectionHandler::updateTiles()
 		high_grid.y = std::get<1>(start_grid);
 	}
 
-	if (m_start_tile)
-	{
-		if (update_tile)
-		{
-			if (m_tile_type == TileType::Road)
-			{
-				for (auto tile : pathfinding(*m_start_tile, *m_end_tile, *m_world_manager))
-				{
-					int index = m_world_manager->getIndex(tile);
-
-					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
-				}
-				return;
-			}
-		}
-	}
-
 	for (int i = low_grid.x; i <= high_grid.x; i++)
 	{
 		for (int j = low_grid.y; j <= high_grid.y; j++)
@@ -209,12 +225,69 @@ void SelectionHandler::updateTiles()
 			}
 			else if (update_tile)
 			{
-				m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
-				m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+
+				// Don't overwrite the tile/zone type if there's a building there already
+				if (!m_world_manager->getWorld()[m_plane][index]->getGridData().m_building)
+				{
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+				}
 			}
 		}
 	}
 }
+
+/// <summary>
+/// Update the selected tiles to be roads. Also setting connected in AoE around them
+/// </summary>
+void SelectionHandler::updateRoads()
+{
+	if (m_start_tile)
+	{
+		auto tiles = pathfinding(*m_start_tile, *m_end_tile, *m_world_manager);
+
+		if (currently_selecting)
+		{
+			for (auto tile : tiles)
+			{
+				int index = m_world_manager->getIndex(tile);
+
+				m_world_manager->getWorld()[m_plane][index]->setSelected(true);
+			}
+		}
+
+		else if (update_tile)
+		{
+			for (auto tile : tiles)
+			{
+				int index = m_world_manager->getIndex(tile);
+
+				// Stop placing roads if building is hit
+				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_building)
+				{
+					break;
+				}
+
+				m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+
+				m_world_manager->setConnected(*m_world_manager->getWorld()[m_plane][index]);
+			}
+		}
+	}
+}
+
+/// <summary>
+/// Update the tiles for the building that's being placed.
+/// </summary>
+void SelectionHandler::updateBuilding()
+{
+	if (update_tile)
+	{
+		m_end_tile->createBuilding(m_d3dContext);
+	}
+	
+}
+
 
 /// <summary>
 /// Pathfinding algorithm for placing roads
@@ -263,8 +336,6 @@ GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
 			tile->setSelected(false);
 		}
 	}
-
-	std::cout << pos.x << " " << pos.y << " " << int(m_plane) << "\n";
 	
 	m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)]->setSelected(true);
 

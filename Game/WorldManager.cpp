@@ -125,7 +125,6 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 
 void WorldManager::update(GameData& _game_data)
 {
-	
 	for (auto& plane : m_world)
 	{
 		if (plane.first != PlaneType::Earth)
