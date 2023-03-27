@@ -34,3 +34,60 @@ struct TierBuiding : GenericBuilding
 	TierBuiding*	m_nextUpgrade = nullptr;
 	int				m_upgradeCost = 40000;
 };
+
+static GenericBuilding* building(PlaneType _planetype,string _type,int tier)
+{
+	auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
+	TierBuiding* building = new TierBuiding;
+	for (auto build : (*buildings))
+	{
+		if (build["TYPE"] == _type)
+		{
+			if (build["Zone"] == _planetype)
+			{
+				if (build["tier"] == tier)
+				{
+					building->m_buildingname = build["Name"];
+					building->m_buildingdesc = build["Desc"];
+					building->m_placeable = _planetype;
+					building->m_nextUpgrade;
+					building->m_upgradeCost;
+					building->m_tiername = build["Name"];
+					int size = build["Size"];
+					switch (size)
+					{
+					case 1:
+						{
+							building->m_data.m_building_species = BuildingSpecies::One;
+							break;
+						}
+					case 2:
+						{
+							building->m_data.m_building_species = BuildingSpecies::Two;
+							break;
+						}
+					case 3:
+						{
+							building->m_data.m_building_species = BuildingSpecies::Three;
+							break;
+						}
+					case 4:
+						{
+							building->m_data.m_building_species = BuildingSpecies::Four;
+							break;
+						}
+					default:
+						{
+							building->m_data.m_building_species = BuildingSpecies::None;
+						}
+					}
+					building->m_data.m_size			= build["Size"];
+					building->m_data.m_vibe			= build["Vibe"];
+					building->m_data.m_vibe_radius	= build["radi"];
+					return building;
+				}
+			}
+		}
+	}
+}
+	
