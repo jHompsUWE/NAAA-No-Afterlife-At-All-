@@ -15,7 +15,8 @@ enum class SelectionType
 	None,
 	Zone,
 	Building,
-	Road
+	Road,
+	Nuke
 };
 
 class SelectionHandler: public Listener
@@ -29,6 +30,8 @@ public:
 	void setEndPos(Vector3 _start_pos);
 
 	void update(TPSCamera& tps_cam);
+
+	void draw(DrawData* m_DD);
 
 	void onEvent(const Event& event) override;
 
@@ -48,7 +51,14 @@ private:
 
 	static const int radius = 500;
 
+	/// <summary>
+	/// True whilst highlighting an area to change
+	/// </summary>
 	bool currently_selecting;
+
+	/// <summary>
+	/// Becomes true when selection has finished
+	/// </summary>
 	bool update_tile;
 
 	SelectionType m_selection_type;
@@ -61,7 +71,11 @@ private:
 
 	void updateBuilding();
 
-	void pathfindRoads();
+	void updateNuke();
+
+	void createTempBuilding();
+
+	GPGO* temp_building;
 
 	GridLocation* findNearestTile(Vector3 mouse_pos);
 

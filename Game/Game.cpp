@@ -277,7 +277,7 @@ void Game::Render()
     
     game_states[m_GD->current_state]->render3D();
     //Draw 3D Game Obejects
-    
+    m_selection_handler->draw(m_DD);
 
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it)
     {

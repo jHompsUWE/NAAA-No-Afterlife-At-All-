@@ -100,6 +100,15 @@ GPGO::GPGO(ID3D11DeviceContext* _pd3dImmediateContext, GPGO_TYPE _type, float* _
 	m_worldMat = m_fudge * scaleMat * m_rotMat * transMat;
 }
 
+void GPGO::UpdateWorldPos()
+{
+	Matrix scaleMat = Matrix::CreateScale(m_scale);
+	m_rotMat = Matrix::CreateFromYawPitchRoll(m_yaw, m_pitch, m_roll);
+	Matrix transMat = Matrix::CreateTranslation(m_pos);
+
+	m_worldMat = m_fudge * scaleMat * m_rotMat * transMat;
+}
+
 void GPGO::Tick(GameData* _GD)
 {
 	GameObject::Tick(_GD);

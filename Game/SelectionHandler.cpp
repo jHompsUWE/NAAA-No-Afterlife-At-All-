@@ -67,9 +67,22 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 	case SelectionType::Road:
 		updateRoads();
 		break;
+	case SelectionType::Nuke:
+		updateNuke();
+		break;
+	default:
+		// Do nothing if there's no selection type
+		break;
 	}
 }
 
+void SelectionHandler::draw(DrawData* _DD)
+{
+	if (temp_building)
+	{
+		temp_building->Draw(_DD);
+	}
+}
 
 void SelectionHandler::onEvent(const Event& event)
 {
@@ -147,7 +160,13 @@ void SelectionHandler::onEvent(const Event& event)
 			m_tile_type = TileType::Gate;
 
 			m_selection_type = SelectionType::Building;
+
+			createTempBuilding();
 			break;
+		}
+		case EventType::NUKE_BUTTON:
+		{
+			m_selection_type = SelectionType::Nuke;
 		}
 		default:;
 	}
@@ -283,18 +302,104 @@ void SelectionHandler::updateBuilding()
 {
 	if (update_tile)
 	{
-		m_end_tile->createBuilding(m_d3dContext);
+		// func(PlaneType m_plane, whatever tier);
+
+		if (temp_building)
+		{
+			m_end_tile->getGridData().m_building = temp_building;
+			temp_building = nullptr;
+			createTempBuilding();
+		}
+
+		//m_end_tile->createBuilding(m_d3dContext);
+	}
+	else
+	{
+		temp_building->SetPos(m_end_tile->getTile().GetPos());
+		temp_building->UpdateWorldPos();
 	}
 	
 }
 
-
-/// <summary>
-/// Pathfinding algorithm for placing roads
-/// </summary>
-void SelectionHandler::pathfindRoads()
+void SelectionHandler::updateNuke()
 {
-	std::cout << "TODO\n";
+	std::tuple<int, int> start_grid;
+
+	if (m_start_tile)
+	{
+		start_grid = m_start_tile->getGridData().m_position;
+	}
+
+	std::tuple<int, int> end_grid = m_end_tile->getGridData().m_position;
+
+	bool x_increase = false;
+	bool y_increase = false;
+
+	Vector2 low_grid;
+	Vector2 high_grid;
+
+	if (std::get<0>(start_grid) < std::get<0>(end_grid))
+	{
+		low_grid.x = std::get<0>(start_grid);
+		high_grid.x = std::get<0>(end_grid);
+	}
+	else
+	{
+		low_grid.x = std::get<0>(end_grid);
+		high_grid.x = std::get<0>(start_grid);
+	}
+
+	if (std::get<1>(start_grid) < std::get<1>(end_grid))
+	{
+		low_grid.y = std::get<1>(start_grid);
+		high_grid.y = std::get<1>(end_grid);
+	}
+	else
+	{
+		low_grid.y = std::get<1>(end_grid);
+		high_grid.y = std::get<1>(start_grid);
+	}
+
+	bool road_deleted = false;
+
+	for (int i = low_grid.x; i <= high_grid.x; i++)
+	{
+		for (int j = low_grid.y; j <= high_grid.y; j++)
+		{
+			int index = m_world_manager->getIndex(Vector2(i, j));
+
+			if (currently_selecting)
+			{
+				m_world_manager->getWorld()[m_plane][index]->setSelected(true);
+			}
+			else if (update_tile)
+			{
+				// NUKE EVERYTHING
+				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type == TileType::Road)
+				{
+					road_deleted = true;
+				}
+				m_world_manager->getWorld()[m_plane][index]->nuke();
+			}
+		}
+	}
+
+	if (road_deleted)
+	{
+		m_world_manager->resetConnections();
+	}
+}
+
+void SelectionHandler::createTempBuilding()
+{
+	float* params = new float[3];
+
+	params[0] = 15.0f;
+
+	Vector3 new_pos = m_end_tile->getTile().GetPos();
+	new_pos.y + 5;
+
+	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, new_pos);
 }
 
 /// <summary>
