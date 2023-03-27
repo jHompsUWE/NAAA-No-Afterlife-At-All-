@@ -35,7 +35,9 @@ public:
 
 	void onEvent(const Event& event) override;
 
-	
+	void calculateGridSpaces(Vector2& low_grid, Vector2& high_grid);
+
+
 private:
 	std::shared_ptr<WorldManager> m_world_manager;
 
@@ -75,6 +77,7 @@ private:
 
 	void createTempBuilding();
 
+	GenericBuilding* current_building;
 	GPGO* temp_building;
 
 	GridLocation* findNearestTile(Vector3 mouse_pos);

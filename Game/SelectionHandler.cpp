@@ -112,7 +112,6 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::BROWN_ZONING:
 		{
-			std::cout << "brown\n";
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			m_selection_type = SelectionType::Zone;
@@ -168,7 +167,52 @@ void SelectionHandler::onEvent(const Event& event)
 		{
 			m_selection_type = SelectionType::Nuke;
 		}
-		default:;
+		default:
+		{
+			break;
+		}
+	}
+
+	if (m_selection_type != SelectionType::Building) {
+		delete temp_building; temp_building = nullptr;
+		delete current_building; current_building = nullptr;
+	}
+}
+
+void SelectionHandler::calculateGridSpaces(Vector2& low_grid, Vector2& high_grid)
+{
+	std::tuple<int, int> start_grid;
+
+	if (m_start_tile)
+	{
+		start_grid = m_start_tile->getGridData().m_position;
+	}
+
+	std::tuple<int, int> end_grid = m_end_tile->getGridData().m_position;
+
+	bool x_increase = false;
+	bool y_increase = false;
+
+	if (std::get<0>(start_grid) < std::get<0>(end_grid))
+	{
+		low_grid.x = std::get<0>(start_grid);
+		high_grid.x = std::get<0>(end_grid);
+	}
+	else
+	{
+		low_grid.x = std::get<0>(end_grid);
+		high_grid.x = std::get<0>(start_grid);
+	}
+
+	if (std::get<1>(start_grid) < std::get<1>(end_grid))
+	{
+		low_grid.y = std::get<1>(start_grid);
+		high_grid.y = std::get<1>(end_grid);
+	}
+	else
+	{
+		low_grid.y = std::get<1>(end_grid);
+		high_grid.y = std::get<1>(start_grid);
 	}
 }
 
@@ -195,42 +239,10 @@ Vector3 SelectionHandler::convertPosition(Vector3 _pos_to_convert, TPSCamera& tp
 /// </summary>
 void SelectionHandler::updateTiles()
 {
-	std::tuple<int, int> start_grid;
-
-	if (m_start_tile)
-	{
-		start_grid = m_start_tile->getGridData().m_position;
-	}
-	
-	std::tuple<int, int> end_grid = m_end_tile->getGridData().m_position;
-
-	bool x_increase = false;
-	bool y_increase = false;
-
 	Vector2 low_grid;
 	Vector2 high_grid;
 
-	if (std::get<0>(start_grid) < std::get<0>(end_grid))
-	{
-		low_grid.x = std::get<0>(start_grid);
-		high_grid.x = std::get<0>(end_grid);
-	}
-	else
-	{
-		low_grid.x = std::get<0>(end_grid);
-		high_grid.x = std::get<0>(start_grid);
-	}
-	
-	if (std::get<1>(start_grid) < std::get<1>(end_grid))
-	{
-		low_grid.y = std::get<1>(start_grid);
-		high_grid.y = std::get<1>(end_grid);
-	}
-	else
-	{
-		low_grid.y = std::get<1>(end_grid);
-		high_grid.y = std::get<1>(start_grid);
-	}
+	calculateGridSpaces(low_grid, high_grid);
 
 	for (int i = low_grid.x; i <= high_grid.x; i++)
 	{
@@ -307,9 +319,10 @@ void SelectionHandler::updateBuilding()
 		if (temp_building)
 		{
 			m_end_tile->getGridData().m_building = temp_building;
-			m_end_tile->getGridData().m_building_data = new GenericBuilding(building(m_plane, "GATES", 1));
+			m_end_tile->getGridData().m_building_data = current_building;
 
 			temp_building = nullptr;
+			current_building = nullptr;
 			createTempBuilding();
 		}
 
@@ -325,42 +338,10 @@ void SelectionHandler::updateBuilding()
 
 void SelectionHandler::updateNuke()
 {
-	std::tuple<int, int> start_grid;
-
-	if (m_start_tile)
-	{
-		start_grid = m_start_tile->getGridData().m_position;
-	}
-
-	std::tuple<int, int> end_grid = m_end_tile->getGridData().m_position;
-
-	bool x_increase = false;
-	bool y_increase = false;
-
 	Vector2 low_grid;
 	Vector2 high_grid;
 
-	if (std::get<0>(start_grid) < std::get<0>(end_grid))
-	{
-		low_grid.x = std::get<0>(start_grid);
-		high_grid.x = std::get<0>(end_grid);
-	}
-	else
-	{
-		low_grid.x = std::get<0>(end_grid);
-		high_grid.x = std::get<0>(start_grid);
-	}
-
-	if (std::get<1>(start_grid) < std::get<1>(end_grid))
-	{
-		low_grid.y = std::get<1>(start_grid);
-		high_grid.y = std::get<1>(end_grid);
-	}
-	else
-	{
-		low_grid.y = std::get<1>(end_grid);
-		high_grid.y = std::get<1>(start_grid);
-	}
+	calculateGridSpaces(low_grid, high_grid);
 
 	bool road_deleted = false;
 
@@ -400,6 +381,12 @@ void SelectionHandler::createTempBuilding()
 
 	Vector3 new_pos = m_end_tile->getTile().GetPos();
 	new_pos.y + 5;
+
+	
+
+	current_building = new GenericBuilding(building(m_plane, "GATES", 3));
+
+	params[0] = 15.0f + 25.f * (current_building->m_data.m_size - 1);
 
 	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, new_pos);
 }

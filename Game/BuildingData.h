@@ -58,7 +58,7 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 			if (build["Zone"] == splane)
 			{
 				std::cout << "Zone\n";
-				if (build["tier"] == tier)
+				if (build["Tier"] == tier)
 				{
 					building.m_buildingname = build["Name"];
 					building.m_buildingdesc = build["Desc"];
