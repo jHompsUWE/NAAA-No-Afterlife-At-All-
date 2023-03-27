@@ -70,6 +70,27 @@ void WorldManager::setConnected(GridLocation& _grid_location)
 	}
 }
 
+void WorldManager::resetConnections()
+{
+	for (auto& plane : m_world)
+	{
+		if (plane.first == PlaneType::Earth) { continue; }
+
+		for (auto& tile : plane.second)
+		{
+			tile->getGridData().m_connected = false;
+		}
+
+		for (auto& tile : plane.second)
+		{
+			if (tile->getGridData().m_tile_type == TileType::Road)
+			{
+				setConnected(*tile);
+			}
+		}
+	}
+}
+
 void WorldManager::updateVibes(GridLocation& _grid_location)
 {
 	// THIS WORKS FOR 1x1 BUILDINGS
@@ -79,7 +100,11 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
-	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
+	int vibe = 0;
+	if (_grid_location.getGridData().m_building_data)
+	{
+		vibe = _grid_location.getGridData().m_building_data->m_data.m_vibe;
+	}
 
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
@@ -125,7 +150,6 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 
 void WorldManager::update(GameData& _game_data)
 {
-	
 	for (auto& plane : m_world)
 	{
 		if (plane.first != PlaneType::Earth)
@@ -194,6 +218,8 @@ void WorldManager::calculateEfficiency(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 {
+	if (!_grid_location.getGridData().m_building_data) { return 0; }
+
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
@@ -224,8 +250,8 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 			else
 			{
 				// Check that although zone is the same, building species is different
-				if (m_world[plane][index]->getGridData().m_building_data.m_building_species !=
-					_grid_location.getGridData().m_building_data.m_building_species)
+				if (m_world[plane][index]->getGridData().m_building_data->m_data.m_building_species !=
+					_grid_location.getGridData().m_building_data->m_data.m_building_species)
 				{
 					adjacency += 1;
 				}
@@ -243,6 +269,8 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 {
+	if (!_grid_location.getGridData().m_building_data) { return 0 ; }
+
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
@@ -269,8 +297,8 @@ int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 			if (m_world[plane][index]->getGridData().m_zone_type == _grid_location.getGridData().m_zone_type)
 			{
 				// Check if they're the same species of building
-				if (m_world[plane][index]->getGridData().m_building_data.m_building_species ==
-					_grid_location.getGridData().m_building_data.m_building_species)
+				if (m_world[plane][index]->getGridData().m_building_data->m_data.m_building_species ==
+					_grid_location.getGridData().m_building_data->m_data.m_building_species)
 				{
 					adjacency += 3;
 				}

@@ -25,6 +25,8 @@ public:
 	bool getSelected();
 	void setSelected(bool _selected);
 
+	void nuke();
+
 	void update();
 
 private:

@@ -20,6 +20,9 @@ struct GridData
 {
 	~GridData()
 	{
+		delete m_building_data;
+		m_building_data = nullptr;
+
 		delete m_building;
 		m_building = nullptr;
 	}
@@ -32,6 +35,17 @@ struct GridData
 		m_building = new GPGO(_device.Get(), GPGO_CUBE, (float*)&Colors::Green, params, new_pos);
 
 		std::cout << "Created building" << std::endl;
+	}
+
+	void nuke()
+	{
+		delete m_building_data;
+		m_building_data = nullptr;
+		delete m_building;
+		m_building = nullptr;
+
+		m_tile_type = TileType::None;
+		m_zone_type = ZoneType::None;
 	}
 
 	void Tick(GameData* _GD)
@@ -53,7 +67,6 @@ struct GridData
 		// connected
 	}
 
-
 	void draw(DrawData* _DD)
 	{
 		if (m_building)
@@ -63,7 +76,7 @@ struct GridData
 	}
 
 	// Placeholder for now until actual class is sorted
-	BuildingData m_building_data;
+	GenericBuilding* m_building_data = nullptr;
 	GPGO* m_building = nullptr;
 
 	TileType m_tile_type = TileType::None;

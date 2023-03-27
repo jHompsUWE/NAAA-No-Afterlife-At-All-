@@ -35,55 +35,71 @@ struct TierBuiding : GenericBuilding
 	int				m_upgradeCost = 40000;
 };
 
-static GenericBuilding* building(PlaneType _planetype,string _type,int tier)
+static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 {
 	auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
-	TierBuiding* building = new TierBuiding;
+	TierBuiding building;
+	std:: string splane;
+	if (_planetype == PlaneType::Heaven)
+	{
+		splane = "Heaven";
+	}
+	else if (_planetype == PlaneType::Hell)
+	{
+		splane = "Hell";
+	}
+
+
 	for (auto build : (*buildings))
 	{
 		if (build["TYPE"] == _type)
 		{
-			if (build["Zone"] == _planetype)
+			std::cout << "Type\n";
+			if (build["Zone"] == splane)
 			{
-				if (build["tier"] == tier)
+				std::cout << "Zone\n";
+				if (build["Tier"] == tier)
 				{
-					building->m_buildingname = build["Name"];
-					building->m_buildingdesc = build["Desc"];
-					building->m_placeable = _planetype;
-					building->m_nextUpgrade;
-					building->m_upgradeCost;
-					building->m_tiername = build["Name"];
+					building.m_buildingname = build["Name"];
+					building.m_buildingdesc = build["Desc"];
+					building.m_placeable = _planetype;
+					building.m_nextUpgrade;
+					building.m_upgradeCost;
+					building.m_tiername = build["Name"];
+						
+
+					std::cout << "Desc " << building.m_buildingdesc << " " << build["Desc"] << "\n";
 					int size = build["Size"];
 					switch (size)
 					{
 					case 1:
 						{
-							building->m_data.m_building_species = BuildingSpecies::One;
+							building.m_data.m_building_species = BuildingSpecies::One;
 							break;
 						}
 					case 2:
 						{
-							building->m_data.m_building_species = BuildingSpecies::Two;
+							building.m_data.m_building_species = BuildingSpecies::Two;
 							break;
 						}
 					case 3:
 						{
-							building->m_data.m_building_species = BuildingSpecies::Three;
+							building.m_data.m_building_species = BuildingSpecies::Three;
 							break;
 						}
 					case 4:
 						{
-							building->m_data.m_building_species = BuildingSpecies::Four;
+							building.m_data.m_building_species = BuildingSpecies::Four;
 							break;
 						}
 					default:
 						{
-							building->m_data.m_building_species = BuildingSpecies::None;
+							building.m_data.m_building_species = BuildingSpecies::None;
 						}
 					}
-					building->m_data.m_size			= build["Size"];
-					building->m_data.m_vibe			= build["Vibe"];
-					building->m_data.m_vibe_radius	= build["radi"];
+					building.m_data.m_size			= build["Size"];
+					building.m_data.m_vibe			= build["Vibe"];
+					building.m_data.m_vibe_radius	= build["radi"];
 					return building;
 				}
 			}
