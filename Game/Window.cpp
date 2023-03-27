@@ -49,6 +49,10 @@ Window::~Window()
 	}
 }
 
+/// <summary>
+/// Sets the position of text relative to the window, 
+/// and notes difference between text position and window position
+/// </summary>
 void Window::SetTextPos()
 {
 	windowname->SetPos(m_pos.x - (bounds.width/2), m_pos.y - (bounds.height/2));
@@ -57,6 +61,10 @@ void Window::SetTextPos()
 	windowname->differenceY = windowname->GetPos().y - m_pos.y;
 }
 
+/// <summary>
+/// Checks to see if dragged
+/// </summary>
+/// <param name="_GD"></param>
 void Window::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -89,7 +97,10 @@ void Window::Tick(GameData* _GD)
 }
 
 
-
+/// <summary>
+/// Renders window and its text
+/// </summary>
+/// <param name="_DD"></param>
 void Window::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab

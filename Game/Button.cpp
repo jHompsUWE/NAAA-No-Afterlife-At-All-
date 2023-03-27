@@ -67,6 +67,9 @@ Button::~Button()
 	}
 }
 
+/// <summary>
+/// Sets the bounding box of the button
+/// </summary>
 void Button::SetBounds()
 {
 	ID3D11Resource* pResource;
@@ -77,16 +80,28 @@ void Button::SetBounds()
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 }
 
+/// <summary>
+/// Sets the button name
+/// </summary>
+/// <param name="_name">string value to set it to</param>
 void Button::SetName(string _name)
 {
 	buttonName = _name;
 }
 
+/// <summary>
+/// Sets the button event type to fire off when clicked
+/// </summary>
+/// <param name="_event_type"></param>
 void Button::SetType(EventType _event_type)
 {
 	event_type = _event_type;
 }
 
+/// <summary>
+/// Set the window for the button to toggle
+/// </summary>
+/// <param name="toggle"></param>
 void Button::SetToggle(GameObject2D* toggle)
 {
 	toggleWindow = toggle;
@@ -97,11 +112,19 @@ void Button::SetToggle(BuildingWindow* toggle)
 	toggleBuildWindow = toggle;
 }
 
+/// <summary>
+/// Set if the button is specfically for a tier building selection window
+/// </summary>
+/// <param name="openBuildWindow"></param>
 void Button::SetOpenBuildWindow(bool openBuildWindow)
 {
 	openBuildingWindow = openBuildWindow;
 }
 
+/// <summary>
+/// Checks to see if button is pressed
+/// </summary>
+/// <param name="_GD"></param>
 void Button::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -122,6 +145,10 @@ void Button::Tick(GameData* _GD)
 	}
 }
 
+
+/// <summary>
+/// Toggle the rendering of the button's set window
+/// </summary>
 void Button::toggle()
 {
 	if (!openBuildingWindow)

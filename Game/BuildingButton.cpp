@@ -46,6 +46,9 @@ BuildingButton::~BuildingButton()
 	}
 }
 
+/// <summary>
+/// Sets the bounding box of the button
+/// </summary>
 void BuildingButton::SetBounds()
 {
 	ID3D11Resource* pResource;
@@ -58,12 +61,20 @@ void BuildingButton::SetBounds()
 	setTextPos();
 }
 
+/// <summary>
+/// Sets the name and cost text positions
+/// </summary>
 void BuildingButton::setTextPos()
 {
 	buildName->SetPos(this->GetPos().x - (bounds.width / 4 - buildName->GetString().length()), this->GetPos().y - (bounds.height / 2));
 	buildCost->SetPos(this->GetPos().x - bounds.width/3 - (buildCost->GetString().length()), this->GetPos().y + (bounds.height / 4));
 }
 
+/// <summary>
+/// Set the string of either text
+/// </summary>
+/// <param name="name">True- Sets name, False- Sets cost</param>
+/// <param name="_name">The string value to set it to</param>
 void BuildingButton::SetText(bool name, string _name)
 {
 	if (name)
@@ -76,11 +87,19 @@ void BuildingButton::SetText(bool name, string _name)
 	}
 }
 
+/// <summary>
+/// Set the type of event the button triggers
+/// </summary>
+/// <param name="_event_type"></param>
 void BuildingButton::SetType(EventType _event_type)
 {
 	event_type = _event_type;
 }
 
+/// <summary>
+/// Checks to see if button is hovered over
+/// </summary>
+/// <param name="_GD"></param>
 void BuildingButton::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -100,6 +119,10 @@ void BuildingButton::Tick(GameData* _GD)
 	buildCost->Tick(_GD);
 }
 
+/// <summary>
+/// Sets if the button is hovered over or not
+/// </summary>
+/// <param name="_hover"></param>
 void BuildingButton::SetHover(bool _hover)
 {
 	if (_hover)
@@ -114,6 +137,7 @@ void BuildingButton::SetHover(bool _hover)
 	}
 }
 
+//NOT NEEDED?
 void BuildingButton::toggle()
 {
 	if (toggleWindow != nullptr)
@@ -123,7 +147,10 @@ void BuildingButton::toggle()
 }
 
 
-
+/// <summary>
+/// Renders the button and its text
+/// </summary>
+/// <param name="_DD"></param>
 void BuildingButton::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab

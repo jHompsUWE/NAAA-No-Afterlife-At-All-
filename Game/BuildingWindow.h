@@ -8,10 +8,10 @@
 class BuildingWindow : public GameObject2D
 {
 public:
-	BuildingWindow(string _fileName, ID3D11Device* _GD, int _buttoNum);
+	BuildingWindow(ID3D11Device* _GD, int _buttoNum);
 	virtual ~BuildingWindow();
 
-	void SetTextPos();
+	void SetButtonBounds();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);

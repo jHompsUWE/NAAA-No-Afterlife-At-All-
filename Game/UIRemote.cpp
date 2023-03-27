@@ -165,6 +165,9 @@ UIRemote::~UIRemote()
 	}
 }
 
+/// <summary>
+/// Sets the names and event types of all buttons
+/// </summary>
 void UIRemote::InitButtonNames()
 {
 	// Zones
@@ -261,6 +264,11 @@ void UIRemote::InitButtonNames()
 	buttons[36]->SetType(EventType::FLATTEN_GRID);
 }
 
+
+/// <summary>
+/// Sets the position of buttons and text relative to the overall remote, and the difference to the remote's position. 
+/// Needed for these elements to be dragged with the remote and stay at the same relative position, and for the buttons to be clickable
+/// </summary>
 void UIRemote::SetButtonBounds()
 {
 	for (int i = 0; i < 37; i++)
@@ -284,18 +292,33 @@ void UIRemote::SetButtonBounds()
 	}
 }
 
+/// <summary>
+/// Set the window that a button will toggle the visibilty of when pressed.
+/// </summary>
+/// <param name="i">The number of the button in the array (0-36)</param>
+/// <param name="toggle">GameObject2D</param>
 void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
 {
 	buttons[i]->SetToggle(toggle);
 }
 
+/// <summary>
+/// Set the window that a button will toggle the visibilty of when pressed.
+/// </summary>
+/// <param name="i">The number of the button in the array (0-36)</param>
+/// <param name="toggle">BuildingWindow object</param>
 void UIRemote::SetButtonToggle(int i, BuildingWindow* toggle)
 {
 	buttons[i]->SetToggle(toggle);
 }
 
+/// <summary>
+/// Activates on event
+/// </summary>
+/// <param name="event"></param>
 void UIRemote::onEvent(const Event& event)
 {
+	//Checks to see if event is the same as button type, if so, sets current selection string to event name
 	for (int i = 0; i < 37; i++)
 	{
 		if (buttons[i]->event_type == event.type)
@@ -311,13 +334,16 @@ void UIRemote::onEvent(const Event& event)
 		}
 	}
 
+	//Switch case to check other events
 	switch (event.type)
 	{
+		//Updates SOUL count string
 		case EventType::SOUL_UPDATE:
 		{
 			text[4]->SetString("SOULs: " + std::to_string(event.payload.soul_update.count));
 			break;
 		}
+		//Toggles the renderable value of the remote
 		case EventType::TOGGLE_REMOTE_CONTROL:
 		{
 			renderable = !renderable;
@@ -326,16 +352,22 @@ void UIRemote::onEvent(const Event& event)
 	}
 }
 
+/// <summary>
+/// Checks mouse state to see if remote being dragged, or buttons being pushed
+/// </summary>
+/// <param name="_GD"></param>
 void UIRemote::Tick(GameData* _GD)
 {
+	//Checks the object bounds and the cursor postion
 	bounds.x = m_pos.x - (bounds.width / 2);
 	bounds.y = m_pos.y - (bounds.height / 2);
 
-
 	int mouseX = _GD->m_MS.x;
 	int mouseY = _GD->m_MS.y;
+
 	Vector2 mousepos{ (float)mouseX,(float)mouseY };
 
+	//If mouse clicked while in object bounds - get difference between object and cursor position and start to drag
 	if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 	{
 		differenceX = m_pos.x - _GD->m_MS.x;
@@ -344,6 +376,7 @@ void UIRemote::Tick(GameData* _GD)
 		dragged = true;
 	}
 
+	//If being dragged, move with mouse using the distance value to stay relative
 	if (dragged == true && _GD->m_MS.leftButton == 1)
 	{
 		m_pos.x = _GD->m_MS.x + differenceX;
@@ -366,11 +399,13 @@ void UIRemote::Tick(GameData* _GD)
 		}
 	}
 
+	//If being dragged and button is released - stop
 	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
 	{
 		dragged = false;
 	}
 
+	// Check to see if buttons are pressed
 	if (renderable)
 	{
 		for (int i = 0; i < 37; i++)
@@ -381,12 +416,13 @@ void UIRemote::Tick(GameData* _GD)
 
 				if (buttons[i]->pressed)
 				{
+					//Toggle the button window, and set the remote selection string to buton name
 					buttons[i]->toggle();
 					text[2]->SetString(buttons[i]->buttonName);
 					
+					//Fire event of button event type, then set button's pressed value to false
 					if (!buttons[i]->openBuildingWindow)
 					{
-
 						Event event{};
 						event.type = buttons[i]->event_type;
 
@@ -396,6 +432,7 @@ void UIRemote::Tick(GameData* _GD)
 					}
 					else
 					{
+						//If button is building window toggle, set window buttons text and event type to the value of the pressed button
 						for (int j = 0; j < buttons[i]->toggleBuildWindow->buttons.size(); j++)
 						{
 							buttons[i]->toggleBuildWindow->buttons[j]->SetText(true, buttons[i]->buttonName);
@@ -418,18 +455,18 @@ void UIRemote::Tick(GameData* _GD)
 		}
 	}
 
+	//Change year and money strings for demonstrative purposes
 	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
 	text[1]->SetString(to_string(money -= 1) + "$");
 }
 
 
-
+/// <summary>
+/// Render remote and its button and text arrays
+/// </summary>
+/// <param name="_DD"></param>
 void UIRemote::Draw(DrawData2D* _DD)
 {
-	//nullptr can be changed to a RECT* to define what area of this image to grab
-	//you can also add an extra value at the end to define layer depth
-	//right click and "Go to Defintion/Declaration" to see other version of this in DXTK
-
 	if (renderable)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);

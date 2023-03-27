@@ -7,14 +7,12 @@
 #include <iostream>
 #include "Mouse.h"
 
-BuildingWindow::BuildingWindow(string _fileName, ID3D11Device* _GD, int buttonNum) :m_pTextureRV(nullptr)
+BuildingWindow::BuildingWindow(ID3D11Device* _GD, int buttonNum) :m_pTextureRV(nullptr)
 {
-	string fullfilename = "../Assets/" + _fileName + ".dds";
-	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
-	if (hr != S_OK)
-	{
-		CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
-	}
+	
+	
+	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+	
 
 	//this nasty thing is required to find out the size of this image!
 	ID3D11Resource* pResource;
@@ -25,11 +23,9 @@ BuildingWindow::BuildingWindow(string _fileName, ID3D11Device* _GD, int buttonNu
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
 
-	if (hr != S_OK)
-	{
-		m_scale = Vector2{20 * float(buttonNum), 20 };
-		m_colour = Colors::MediumPurple;
-	}
+	
+	m_scale = Vector2{20 * float(buttonNum), 20 };
+	m_colour = Colors::MediumPurple;
 
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 
@@ -51,7 +47,12 @@ BuildingWindow::~BuildingWindow()
 	}
 }
 
-void BuildingWindow::SetTextPos()
+
+/// <summary>
+/// Sets the size and position of buttons, then sets their bounds 
+/// to check if clicked, and save their relative position to the window
+/// </summary>
+void BuildingWindow::SetButtonBounds()
 {
 	for (int i = 0; i < buttons.size(); i++)
 	{
@@ -78,6 +79,11 @@ void BuildingWindow::SetTextPos()
 	}
 }
 
+/// <summary>
+/// Checks for mouse position to see which button is hovered over, and if mouse is pressed- 
+/// send off event and hide window
+/// </summary>
+/// <param name="_GD"></param>
 void BuildingWindow::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
@@ -112,14 +118,16 @@ void BuildingWindow::Tick(GameData* _GD)
 		
 		renderable = false;
 		hovered->SetHover(false);
-		hovered = nullptr;
 
 		GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 	}
 }
 
 
-
+/// <summary>
+/// Renders window and buttons
+/// </summary>
+/// <param name="_DD"></param>
 void BuildingWindow::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab

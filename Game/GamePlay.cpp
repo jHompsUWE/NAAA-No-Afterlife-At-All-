@@ -25,7 +25,7 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 	//text->SetColour(Color((float*)&Colors::Yellow));
 	//m_GameObjects2D.push_back(text);
 	
-    Window* Planetview = new Window("bug_test", m_d3dDevice.Get(), "Planetview", false, Colors::LightSkyBlue);
+    /*Window* Planetview = new Window("bug_test", m_d3dDevice.Get(), "Planetview", false, Colors::LightSkyBlue);
     Planetview->SetPos(300, 100);
     m_GameObjects2D.push_back(Planetview);
     Planetview->SetTextPos();
@@ -53,22 +53,22 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     /*Window* Advisors = new Window("bug_test", m_d3dDevice.Get(), "Advisors", false, Colors::LightSalmon);
     Advisors->SetPos(600, 300);
     m_GameObjects2D.push_back(Advisors);
-    Advisors->SetTextPos();*/
+    Advisors->SetTextPos();
 
     Window* MicroView = new Window("bug_test", m_d3dDevice.Get(), "MicroView", false, Colors::LightCoral);
     MicroView->SetPos(300, 400);
     m_GameObjects2D.push_back(MicroView);
     MicroView->SetTextPos();
 
-    BuildingWindow* threeWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 3);
+    BuildingWindow* threeWide = new BuildingWindow(m_d3dDevice.Get(), 3);
     threeWide->SetPos(300, 400);
     threeWide->SetTextPos();
 
-    BuildingWindow* fourWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 4);
+    BuildingWindow* fourWide = new BuildingWindow(m_d3dDevice.Get(), 4);
     fourWide->SetPos(300, 400);
     fourWide->SetTextPos();
 
-    BuildingWindow* fiveWide = new BuildingWindow("bug_test", m_d3dDevice.Get(), 5);
+    BuildingWindow* fiveWide = new BuildingWindow(m_d3dDevice.Get(), 5);
     fiveWide->SetPos(300, 400);
     fiveWide->SetTextPos();
 
@@ -105,10 +105,23 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
 
     remote->SetButtonToggle(16, fiveWide);
     remote->SetButtonToggle(17, threeWide);
-    remote->SetButtonToggle(18, threeWide);
+    remote->SetButtonToggle(18, threeWide);*/
     
+    uiManager = new UIManager(m_d3dDevice.Get());
+    
+    
+    m_GameObjects2D.push_back(uiManager->remote);
 
-    GameManager::get()->getEventManager()->addListener(remote);
+    for (int i = 0; i < 3; i++)
+    {
+        m_GameObjects2D.push_back(uiManager->buildWindows[i]);
+    }
+    for (int j = 0; j < 6; j++)
+    {
+        m_GameObjects2D.push_back(uiManager->viewWindows[j]);
+    }
+
+    GameManager::get()->getEventManager()->addListener(uiManager->remote);
 
 	GameManager::get()->awake();
 	return GameStateBase::init(_window, _width, _height, _game_data);
@@ -122,7 +135,8 @@ void GamePlay::reset()
 State GamePlay::update(GameData& _game_data)
 {
 	GameManager::get()->update(_game_data);
-	
+    uiManager->update(_game_data);
+
 	return GameStateBase::update(_game_data);
 }
 
