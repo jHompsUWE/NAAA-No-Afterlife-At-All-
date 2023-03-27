@@ -44,12 +44,12 @@ private:
 	Vector3 m_start_pos;
 	Vector3 m_end_pos;
 
-	GameData* m_GD;
+	GameData* m_GD = nullptr;
 
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext1> m_d3dContext;
 
-	GridLocation* m_start_tile;
-	GridLocation* m_end_tile;
+	GridLocation* m_start_tile = nullptr;
+	GridLocation* m_end_tile = nullptr;
 
 	static const int radius = 500;
 
@@ -77,8 +77,8 @@ private:
 
 	void createTempBuilding();
 
-	GenericBuilding* temp_building_stats;
-	GPGO* temp_building;
+	GenericBuilding* temp_building_stats = nullptr;
+	GPGO* temp_building = nullptr;
 	Vector3 temp_building_pos;
 	void updateTempPos();
 

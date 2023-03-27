@@ -7,12 +7,11 @@
 
 SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD, 
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _d3dContext) :
-	m_world_manager(_world_manager), m_GD(_GD), m_d3dContext(_d3dContext)
+	m_world_manager(_world_manager), m_GD(_GD), m_d3dContext(_d3dContext),
+	m_plane(PlaneType::Heaven), m_selection_type(SelectionType::None), currently_selecting(false),
+	update_tile(false), m_tile_type(TileType::None), m_zone_type(ZoneType::None)
 {
-	m_plane = PlaneType::Hell;
-	m_selection_type = SelectionType::None;
-
-	update_tile = false;
+	
 }
 
 void SelectionHandler::setStartPos(Vector3 _start_pos)
@@ -195,24 +194,24 @@ void SelectionHandler::calculateGridSpaces(Vector2& low_grid, Vector2& high_grid
 
 	if (std::get<0>(start_grid) < std::get<0>(end_grid))
 	{
-		low_grid.x = std::get<0>(start_grid);
-		high_grid.x = std::get<0>(end_grid);
+		low_grid.x = float(std::get<0>(start_grid));
+		high_grid.x = float(std::get<0>(end_grid));
 	}
 	else
 	{
-		low_grid.x = std::get<0>(end_grid);
-		high_grid.x = std::get<0>(start_grid);
+		low_grid.x = float(std::get<0>(end_grid));
+		high_grid.x = float(std::get<0>(start_grid));
 	}
 
 	if (std::get<1>(start_grid) < std::get<1>(end_grid))
 	{
-		low_grid.y = std::get<1>(start_grid);
-		high_grid.y = std::get<1>(end_grid);
+		low_grid.y = float(std::get<1>(start_grid));
+		high_grid.y = float(std::get<1>(end_grid));
 	}
 	else
 	{
-		low_grid.y = std::get<1>(end_grid);
-		high_grid.y = std::get<1>(start_grid);
+		low_grid.y = float(std::get<1>(end_grid));
+		high_grid.y = float(std::get<1>(start_grid));
 	}
 }
 
@@ -378,7 +377,7 @@ void SelectionHandler::updateNuke()
 
 void SelectionHandler::createTempBuilding()
 {
-	temp_building_stats = new GenericBuilding(building(m_plane, "GATES", 3));
+	temp_building_stats = new GenericBuilding(building(m_plane, "GATES", 1));
 
 	float* params = new float[3];
 
@@ -397,8 +396,8 @@ void SelectionHandler::updateTempPos()
 	temp_building_pos = m_end_tile->getTile().GetPos();
 
 	temp_building_pos.y += 10;
-	temp_building_pos.x -= (temp_building_stats->m_data.m_size - 1) * 12.5;
-	temp_building_pos.z -= (temp_building_stats->m_data.m_size - 1) * 12.5;
+	temp_building_pos.x -= (float(temp_building_stats->m_data.m_size - 1)) * 12.5f;
+	temp_building_pos.z -= (float(temp_building_stats->m_data.m_size - 1)) * 12.5f;
 }
 
 /// <summary>
