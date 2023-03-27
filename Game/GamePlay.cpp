@@ -7,6 +7,7 @@
 #include "Window.h"
 #include "AnimatedImageGO2D.h"
 #include "BuildingWindow.h"
+#include "AdvisorWindow.h"
 
 
 bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
@@ -81,17 +82,22 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     m_GameObjects2D.push_back(fourWide);
     m_GameObjects2D.push_back(fiveWide);
 
-    AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
-    animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
-    animated_sprite_test->SetPos(400,300);
-    m_GameObjects2D.push_back(animated_sprite_test);
+    //AnimatedImageGO2D* animated_sprite_test = new AnimatedImageGO2D("angel-advisor-Sheet", 305, m_d3dDevice.Get());
+    //animated_sprite_test->NewAnimation("idle", 5, 60, Vector2(0, 0), true);
+    //animated_sprite_test->SetPos(400,300);
+    //m_GameObjects2D.push_back(animated_sprite_test);
+
+    AdvisorWindow* advisor_window = new AdvisorWindow(m_d3dDevice.Get());
+    //advisor_window->SetPos(300, 400);
+    m_GameObjects2D.push_back(advisor_window);
+
 
     remote->SetButtonToggle(26, Planetview);
     remote->SetButtonToggle(27, Graphview);
     remote->SetButtonToggle(28, Soulview);
     remote->SetButtonToggle(29, MacroManager);
     remote->SetButtonToggle(30, Mapview);
-    remote->SetButtonToggle(31, animated_sprite_test);
+    remote->SetButtonToggle(31, advisor_window);
     remote->SetButtonToggle(32, MicroView);
 
 
