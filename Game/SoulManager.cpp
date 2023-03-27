@@ -5,6 +5,32 @@
 
 void SoulManager::AddSoul(DirectX::SimpleMath::Vector2 location, PlaneType plane)
 {
+	
+	int earth_belif = std::rand()% 15 + 0;
+	std::cout << "num: " << earth_belif << std::endl;
+
+	Soul* soul = new Soul;
+	
+
+	if (earth_belif <= 3 or (earth_belif >= 8 and earth_belif <= 11))
+	{soul->reincarnate = false;}
+	
+
+	if (earth_belif >= 8) 
+	{soul->total_cycles = std::rand() % 15 + 0;}
+	
+	soul->fate = earth_belif;
+	
+	if ((earth_belif + 2) % 4  == 0)
+	{
+		std::cout << " Punishments";
+	}
+	else if ((earth_belif + 3) % 4 == 0)
+	{
+		std::cout << " Rewards";
+	}
+	
+
 	switch (plane)
 	{
 	case PlaneType::Earth:
@@ -45,7 +71,7 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 
 void SoulManager::awake()
 {
-
+	srand(std::time(nullptr));
 }
 
 void SoulManager::update(GameData& _game_data)
