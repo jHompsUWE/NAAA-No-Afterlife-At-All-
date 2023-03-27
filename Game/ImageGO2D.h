@@ -17,9 +17,13 @@ public:
 
 	void SetUV(RECT* animated_uv);
 
+	void CalculateBounds();
+
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
+
+	Vector2 GetImageSize();
 
 	D3D11_TEXTURE2D_DESC Desc;
 
@@ -29,7 +33,7 @@ public:
 protected:
 
 	RECT uv;
-	RECT* uv_ref = &uv;
+	RECT* uv_ref = nullptr;
 
 
 	Rectangle bounds;

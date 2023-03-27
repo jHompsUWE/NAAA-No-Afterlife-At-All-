@@ -6,10 +6,16 @@ class Window :public GameObject2D
 {
 public:
 
+	Window();
 	Window(string _fileName, ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour);
 	virtual ~Window();
 
 	void SetTextPos();
+
+	virtual void DragBounds(GameData* _GD);
+
+	void SetBounds(float width, float height);
+	void SetBounds(Vector2 new_bounds);
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);

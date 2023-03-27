@@ -7,6 +7,10 @@
 #include <iostream>
 #include "Mouse.h"
 
+Window::Window()
+{
+}
+
 Window::Window(string _fileName, ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour) :m_pTextureRV(nullptr)
 {
 	string fullfilename = "../Assets/" + _fileName + ".dds";
@@ -55,6 +59,46 @@ void Window::SetTextPos()
 
 	windowname->differenceX = windowname->GetPos().x - m_pos.x;
 	windowname->differenceY = windowname->GetPos().y - m_pos.y;
+}
+
+void Window::DragBounds(GameData* _GD)
+{
+	bounds.x = m_pos.x - (bounds.width / 2);
+	bounds.y = m_pos.y - (bounds.height / 2);
+
+
+	Vector2 mousepos{ (float)_GD->m_MS.x,(float)_GD->m_MS.y };
+
+	if (renderable && bounds.Contains(mousepos) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	{
+		differenceX = m_pos.x - _GD->m_MS.x;
+		differenceY = m_pos.y - _GD->m_MS.y;
+
+		dragged = true;
+	}
+
+	if (dragged == true)
+	{
+		m_pos.x = _GD->m_MS.x + differenceX;
+		m_pos.y = _GD->m_MS.y + differenceY;
+	}
+
+	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+	{
+		dragged = false;
+	}
+}
+
+void Window::SetBounds(float width, float height)
+{
+	bounds.width = width;
+	bounds.height = height;
+}
+
+void Window::SetBounds(Vector2 new_bounds)
+{
+	bounds.width = new_bounds.x;
+	bounds.height = new_bounds.y;
 }
 
 void Window::Tick(GameData* _GD)
