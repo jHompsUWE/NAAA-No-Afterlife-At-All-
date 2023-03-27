@@ -1053,7 +1053,8 @@
         "Vibe": -4,
         "Desc": "genric discription here",
         "Size": 3,
-        "radi": 2
+        "radi": 2,
+        "Tier": 1
     },
     {
         "TYPE": "GATES",
@@ -1062,7 +1063,8 @@
         "Vibe": 4,
         "Desc": "genric discription here",
         "Size": 3,
-        "radi": 2
+      "radi": 2,
+      "Tier" :  1
     },
     {
         "TYPE": "GATES",
@@ -1071,53 +1073,59 @@
         "Vibe": -8,
         "Desc": "genric discription here",
         "Size": 3,
-        "radi": 4
+      "radi": 4,
+        "Tier":  2
     },
-    {
-        "TYPE": "GATES",
-        "Zone": "Hell",
-        "Name": "Hell's Gate, Belial Class",
-        "Vibe": 8,
-        "Desc": "genric discription here",
-        "Size": 3,
-        "radi": 4
-    },
-    {
-        "TYPE": "GATES",
-        "Zone": "Heaven",
-        "Name": "Heaven's Gate, Throne Class",
-        "Vibe": -12,
-        "Desc": "genric discription here",
-        "Size": 4,
-        "radi": 6
-    },
-    {
-        "TYPE": "GATES",
-        "Zone": "Hell",
-        "Name": "Hell's Gate, Obsidian Class",
-        "Vibe": 12,
-        "Desc": "genric discription here",
-        "Size": 4,
-        "radi": 6
-    },
-    {
-        "TYPE": "GATES",
-        "Zone": "Heaven",
-        "Name": "Heaven's Gate, Prophecy Class",
-        "Vibe": -16,
-        "Desc": "genric discription here",
-        "Size": 4,
-        "radi": 8
-    },
-    {
-        "TYPE": "GATES",
-        "Zone": "Hell",
-        "Name": "Hell's Gate, Apocalypse Class",
-        "Vibe": 16,
-        "Desc": "genric discription here",
-        "Size": 4,
-        "radi": 8
-    },
+  {
+    "TYPE": "GATES",
+    "Zone": "Hell",
+    "Name": "Hell's Gate, Belial Class",
+    "Vibe": 8,
+    "Desc": "genric discription here",
+    "Size": 3,
+    "radi": 4,
+    "Tier": 2
+  },
+  {
+    "TYPE": "GATES",
+    "Zone": "Heaven",
+    "Name": "Heaven's Gate, Throne Class",
+    "Vibe": -12,
+    "Desc": "genric discription here",
+    "Size": 4,
+    "radi": 6,
+    "Tier": 3
+  },
+  {
+    "TYPE": "GATES",
+    "Zone": "Hell",
+    "Name": "Hell's Gate, Obsidian Class",
+    "Vibe": 12,
+    "Desc": "genric discription here",
+    "Size": 4,
+    "radi": 6,
+    "Tier": 3
+  },
+  {
+    "TYPE": "GATES",
+    "Zone": "Heaven",
+    "Name": "Heaven's Gate, Prophecy Class",
+    "Vibe": -16,
+    "Desc": "genric discription here",
+    "Size": 4,
+    "radi": 8,
+    "Tier": 4
+  },
+  {
+    "TYPE": "GATES",
+    "Zone": "Hell",
+    "Name": "Hell's Gate, Apocalypse Class",
+    "Vibe": 16,
+    "Desc": "genric discription here",
+    "Size": 4,
+    "radi": 8,
+    "Tier": 4
+  },
     {
         "TYPE": "OMNIBOLGES",
         "Zone": "Heaven",
