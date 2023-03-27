@@ -307,6 +307,8 @@ void SelectionHandler::updateBuilding()
 		if (temp_building)
 		{
 			m_end_tile->getGridData().m_building = temp_building;
+			m_end_tile->getGridData().m_building_data = new GenericBuilding(building(m_plane, "GATES", 1));
+
 			temp_building = nullptr;
 			createTempBuilding();
 		}
