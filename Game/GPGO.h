@@ -30,9 +30,9 @@ public:
 
 	GPGO_TYPE GetType() { return m_type; }
 
-	Color GetColour() { return m_colour; }
+	Color& GetColour() { return m_colour; }
 	void SetColour(Color _colour) { m_colour = _colour; }
-	//void SetColour(float* _colour) { m_colour = _colour; }
+
 
 	void UpdateWorldPos();
 

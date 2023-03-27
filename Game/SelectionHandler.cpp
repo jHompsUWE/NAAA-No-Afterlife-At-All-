@@ -321,6 +321,8 @@ void SelectionHandler::updateBuilding()
 			m_end_tile->getGridData().m_building = temp_building;
 			m_end_tile->getGridData().m_building_data = temp_building_stats;
 
+			m_end_tile->getGridData().m_building->GetColour().A(1.f);
+
 			temp_building = nullptr;
 			temp_building_stats = nullptr;
 			createTempBuilding();
@@ -386,6 +388,8 @@ void SelectionHandler::createTempBuilding()
 	updateTempPos();
 
 	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, temp_building_pos);
+
+	temp_building->GetColour().A(0.5f);
 }
 
 void SelectionHandler::updateTempPos()
@@ -393,8 +397,8 @@ void SelectionHandler::updateTempPos()
 	temp_building_pos = m_end_tile->getTile().GetPos();
 
 	temp_building_pos.y += 10;
-	temp_building_pos.x += (temp_building_stats->m_data.m_size - 1) * 12.5;
-	temp_building_pos.z += (temp_building_stats->m_data.m_size - 1) * 12.5;
+	temp_building_pos.x -= (temp_building_stats->m_data.m_size - 1) * 12.5;
+	temp_building_pos.z -= (temp_building_stats->m_data.m_size - 1) * 12.5;
 }
 
 /// <summary>
