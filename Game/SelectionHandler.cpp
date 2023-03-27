@@ -175,7 +175,7 @@ void SelectionHandler::onEvent(const Event& event)
 
 	if (m_selection_type != SelectionType::Building) {
 		delete temp_building; temp_building = nullptr;
-		delete current_building; current_building = nullptr;
+		delete temp_building_stats; temp_building_stats = nullptr;
 	}
 }
 
@@ -319,10 +319,10 @@ void SelectionHandler::updateBuilding()
 		if (temp_building)
 		{
 			m_end_tile->getGridData().m_building = temp_building;
-			m_end_tile->getGridData().m_building_data = current_building;
+			m_end_tile->getGridData().m_building_data = temp_building_stats;
 
 			temp_building = nullptr;
-			current_building = nullptr;
+			temp_building_stats = nullptr;
 			createTempBuilding();
 		}
 
@@ -330,7 +330,8 @@ void SelectionHandler::updateBuilding()
 	}
 	else
 	{
-		temp_building->SetPos(m_end_tile->getTile().GetPos());
+		updateTempPos();
+		temp_building->SetPos(temp_building_pos);
 		temp_building->UpdateWorldPos();
 	}
 	
@@ -375,20 +376,25 @@ void SelectionHandler::updateNuke()
 
 void SelectionHandler::createTempBuilding()
 {
+	temp_building_stats = new GenericBuilding(building(m_plane, "GATES", 3));
+
 	float* params = new float[3];
 
 	params[0] = 15.0f;
+	params[0] = 15.0f + 25.f * (temp_building_stats->m_data.m_size - 1);
 
-	Vector3 new_pos = m_end_tile->getTile().GetPos();
-	new_pos.y + 5;
+	updateTempPos();
 
-	
+	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, temp_building_pos);
+}
 
-	current_building = new GenericBuilding(building(m_plane, "GATES", 3));
+void SelectionHandler::updateTempPos()
+{
+	temp_building_pos = m_end_tile->getTile().GetPos();
 
-	params[0] = 15.0f + 25.f * (current_building->m_data.m_size - 1);
-
-	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, new_pos);
+	temp_building_pos.y += 10;
+	temp_building_pos.x += (temp_building_stats->m_data.m_size - 1) * 12.5;
+	temp_building_pos.z += (temp_building_stats->m_data.m_size - 1) * 12.5;
 }
 
 /// <summary>

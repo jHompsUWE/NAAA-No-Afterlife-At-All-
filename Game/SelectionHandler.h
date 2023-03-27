@@ -77,8 +77,10 @@ private:
 
 	void createTempBuilding();
 
-	GenericBuilding* current_building;
+	GenericBuilding* temp_building_stats;
 	GPGO* temp_building;
+	Vector3 temp_building_pos;
+	void updateTempPos();
 
 	GridLocation* findNearestTile(Vector3 mouse_pos);
 
