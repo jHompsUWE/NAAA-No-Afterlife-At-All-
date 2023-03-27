@@ -8,13 +8,12 @@
 #include "ZoneType.h"
 #include "PlaneType.h"
 
-#include "GameManager.h"
 
 enum Fate
 {
 	// SUMA	ists is multiple afterlifes for each reward and/or reward
 	// ALF	ists no reincarnation
-	HANA_ALF__SUMA_ISTS,	//multiple punishments and multiple rewards
+	HANA_ALF__SUMA_ISTS = 1,//multiple punishments and multiple rewards
 	HOHO_ALF__SUMA_ISTS,	//multiple punishments  or multiple rewards
 	OPRA_ALF__SUMA_ISTS,	//multiple punishments
 	OCRA_ALF__SUMA_ISTS,	//multiple rewards
@@ -41,21 +40,20 @@ enum Fate
 };
 
 
-struct EMBO
-{
-	Fate fate;
-};
 
 struct Soul
 {
-	int m_currentcycle;
-	int total_cycles = 1;
-	int current_cycles = 1;
-	bool reincarnate = true;
-	int fate;
-	string life;
-	Vector2 position;
-	ZoneType zonetype;
+	int m_currentcycle = 0;
+	int m_total_cycles = 1;
+
+	int m_yearsleft ;
+	int m_totalyears;
+	bool m_both = false;
+	bool m_reincarnate = true;
+	int m_fate;
+	string m_life;
+	Vector2 m_position;
+	ZoneType m_zonetype;
 };
 
 class SoulManager : public Manager
@@ -71,12 +69,13 @@ class SoulManager : public Manager
 
 public:
 	
-	void AddSoul(DirectX::SimpleMath::Vector2 location,PlaneType plane = PlaneType::Earth);			// add a soul at this location
-	void Wander();																					// run the soul road movement
-	void ZoneCheck();																				//check if zone is attached
-	int TotalSoulsAmmount(PlaneType plane) const;													//get souls per plane NONE : get souls total overall
+	void AddSoul();			// add a soul at this location
+	void Wander();													// run the soul road movement
+	void ZoneCheck();												//check if zone is attached
+	void SoulJudgement();											//check if soul has served its "time"
+	int TotalSoulsAmmount(PlaneType plane) const;					//get souls per plane NONE : get souls total overall
 
-																									// Inherited via Manager
+																	// Inherited via Manager
 	
 	virtual void awake() override;
 	virtual void update(GameData& _game_data) override;

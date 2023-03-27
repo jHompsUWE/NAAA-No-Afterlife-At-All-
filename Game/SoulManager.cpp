@@ -3,49 +3,51 @@
 
 #include <iostream>
 
-void SoulManager::AddSoul(DirectX::SimpleMath::Vector2 location, PlaneType plane)
+/**
+ * \brief add a EMBO to the souls
+ * @details based on the @enum Fate setup the SOUL for afterlife and its route
+ */
+void SoulManager::AddSoul()
 {
 	
 	int earth_belif = std::rand()% 15 + 0;
 	std::cout << "num: " << earth_belif << std::endl;
 
 	Soul* soul = new Soul;
-	
+	soul->m_position = Vector2{-100,-100};	// position the soul of the screen
+	soul->m_totalyears = rand()%900 + 100;		//total years they have to spend on one tile
 
-	if (earth_belif <= 3 or (earth_belif >= 8 and earth_belif <= 11))
-	{soul->reincarnate = false;}
+	
+	if (earth_belif <= 4 or (earth_belif >= 9 and earth_belif <= 12))
+		soul->m_reincarnate = false;			// do they reincaranate / temp or permenet?
 	
 
 	if (earth_belif >= 8) 
-	{soul->total_cycles = std::rand() % 15 + 0;}
+		soul->m_total_cycles = std::rand() % 15 + 10;	// there belife has more then one cycle of a plane;
 	
-	soul->fate = earth_belif;
-	
-	if ((earth_belif + 2) % 4  == 0)
+	soul->m_fate = earth_belif;
+	if ((earth_belif + 3) % 4 == 0)
 	{
-		std::cout << " Punishments";
-	}
-	else if ((earth_belif + 3) % 4 == 0)
-	{
-		std::cout << " Rewards";
-	}
+		soul->m_both = true;
+		m_Hell_wanderingSouls.emplace_back(soul);
+		return;
+	}							// do they believe in going to both planes
 	
+	
+	if ((earth_belif + 1) % 4  == 0)
+	{
+		m_Hell_wanderingSouls.emplace_back(soul);		//only Hell
+		return;
+	}
+	if ((earth_belif) % 4 == 0)
+	{
+		m_Heven_wanderingSouls.emplace_back(soul);		//only Heven
+		return;
+	}
 
-	switch (plane)
-	{
-	case PlaneType::Earth:
-		m_Earth_Souls.emplace_back(new Soul);
-		break;
-	case PlaneType::Heaven:
-		m_Heven_wanderingSouls.emplace_back(new Soul);
-		break;
-	case PlaneType::Hell:
-		m_Heven_wanderingSouls.emplace_back(new Soul);
-		break;
-	case PlaneType::None:
-	default:
-		std::cout << "[Soulmanager.cpp][21] [warn] Plane not picked/None: " << int(plane) << ", " << location.x << " , " << location.y;
-	};
+
+	int random = std::rand() % RAND_MAX;
+	(random % 2 == 0 ? m_Hell_wanderingSouls : m_Heven_wanderingSouls).emplace_back(soul);
 	//std::cout << "soul made";
 }
 
