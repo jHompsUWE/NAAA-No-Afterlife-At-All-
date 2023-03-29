@@ -5,6 +5,8 @@
 #include "Button.h"
 #include <iostream>
 
+#include "VBQuad.h"
+
 bool GameMenu::init(HWND _window, int _width, int _height,GameData* gamedata)
 {
 	newGame = new Button(m_d3dDevice.Get(), nullptr);
@@ -51,8 +53,7 @@ bool GameMenu::init(HWND _window, int _width, int _height,GameData* gamedata)
 
 	ButtonsText[3]->SetString("Quit Game");
 	ButtonsText[3]->SetPos(320, 510);
-
-
+	
 	return GameStateBase::init(_window, _width, _height,gamedata);
 }
 

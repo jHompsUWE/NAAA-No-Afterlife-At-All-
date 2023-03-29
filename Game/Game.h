@@ -26,6 +26,7 @@
 #include "InputManager.h"
 
 #include "SelectionHandler.h"
+#include "VBQuad.h"
 
 using std::list;
 
@@ -149,5 +150,7 @@ private:
     
     Vector3 startPos;
     Vector3 endPos;
+
+    VBQuad* quad;
     
 };

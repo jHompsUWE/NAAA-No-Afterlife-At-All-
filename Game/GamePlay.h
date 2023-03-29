@@ -5,6 +5,7 @@
 #include "EconomyManager.h"
 #include "TileGO.h"
 #include "WorldManager.h"
+#include "VBQuad.h"
 
 class GameObject;
 class GameObject2D;
@@ -43,4 +44,6 @@ private:
     std::shared_ptr<EconomyManager> economy_manager_;
     std::shared_ptr<FileManager> file_manager_;
     std::shared_ptr<WorldManager> world_manager;
+
+    
 };

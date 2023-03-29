@@ -158,6 +158,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD);
 
+
+    VBQuad* quad = new VBQuad();
+    quad->init(m_d3dDevice.Get(), "../Assets/mug.dds", Vector3(0,0,0), Vector3(0,0,0), Vector3(1.0f, 1.0f, 1.0f));
+    m_GameObjects.push_back(quad);
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
 }
@@ -277,7 +281,6 @@ void Game::Render()
     game_states[m_GD->current_state]->render3D();
     //Draw 3D Game Obejects
     
-
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it)
     {
         (*it)->Draw(m_DD);
@@ -289,7 +292,6 @@ void Game::Render()
     m_DD2D->m_Sprites->End();
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
-
     
     Present();
 }
