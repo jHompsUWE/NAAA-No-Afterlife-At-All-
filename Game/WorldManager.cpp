@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "WorldManager.h"
+#include "BuildingData.h"
 
 WorldManager::WorldManager()
 {
@@ -160,6 +161,11 @@ void WorldManager::update(GameData& _game_data)
 			}
 		}
 	}
+}
+
+void WorldManager::lateUpdate(GameData& _game_data)
+{
+
 }
 
 void WorldManager::render(DrawData* _DD)

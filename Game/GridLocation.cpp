@@ -75,7 +75,7 @@ void GridLocation::update()
 		m_tile->SetColour(Colors::Black.v);
 	}
 
-	if (m_grid_data.m_tile_type == TileType::Gate)
+	if (m_grid_data.m_tile_type == TileType::Building)
 	{
 		m_tile->SetColour(Colors::Aquamarine.v);
 	}
@@ -93,4 +93,6 @@ void GridLocation::update()
 	{
 		m_tile->SetColour(Color(m_tile->GetColour().x * 0.75f, m_tile->GetColour().y * 0.75f, m_tile->GetColour().z * 0.75f));
 	}
+
+	//m_grid_data.Tick();
 }

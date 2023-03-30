@@ -3,6 +3,8 @@
 #include "BuildingSpecies.h"
 #include "Capacity.h"
 
+#include "GridData.h"
+
 struct BuildingData
 {
 	BuildingSpecies m_building_species = BuildingSpecies::None;
@@ -25,7 +27,19 @@ struct GenericBuilding
 	std::string		m_buildingdesc = "building decription";
 	int				m_cost = 30;
 	Capacity		m_capacity = { 10,0 };
-	BuildingData	m_data = {};
+	BuildingData 	m_data = {};
+
+	std::vector<GridData*> housing_points;
+
+	void delete_reference()
+	{
+		for (GridData* tile : housing_points)
+		{
+			tile->nuke();
+		}
+
+		delete this;
+	}
 };
 
 struct TierBuiding : GenericBuilding

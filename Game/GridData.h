@@ -10,7 +10,9 @@
 #include "ZoneType.h"
 #include "PlaneType.h"
 #include "GPGO.h"
-#include "BuildingData.h"
+
+
+struct GenericBuilding;
 
 
 using namespace DirectX;
@@ -44,24 +46,19 @@ struct GridData
 		delete m_building;
 		m_building = nullptr;
 
+		//m_shared_building_data.reset();
+
 		m_tile_type = TileType::None;
 		m_zone_type = ZoneType::None;
 	}
 
-	void Tick(GameData* _GD)
+	void Tick()
 	{
-		switch (m_zone_type)
+		if (m_tile_type == TileType::Building && !m_building_data)
 		{
-		case ZoneType::None:	m_building->SetColour	(Colors::White.v)		;	break;
-		case ZoneType::Generic:	m_building->SetColour	(Colors::Ivory.v)	;	break;
-		case ZoneType::Green:	m_building->SetColour	(Colors::Green.v)		;	break;
-		case ZoneType::Yellow:	m_building->SetColour	(Colors::Yellow.v)	;	break;
-		case ZoneType::Orange:	m_building->SetColour	(Colors::Orange.v)	;	break;
-		case ZoneType::Brown:	m_building->SetColour	(Colors::SaddleBrown.v)		;	break;
-		case ZoneType::Purple:	m_building->SetColour	(Colors::Magenta.v)	;	break;
-		case ZoneType::Red:		m_building->SetColour	(Colors::Red.v)		;	break;
-		case ZoneType::Blue:	m_building->SetColour	(Colors::MediumPurple.v)		;	break;
-		default: ;
+			m_tile_type = TileType::None;
+			m_building_data = nullptr;
+			m_building = nullptr;
 		}
 		
 		// connected
@@ -77,6 +74,7 @@ struct GridData
 
 	// Placeholder for now until actual class is sorted
 	GenericBuilding* m_building_data = nullptr;
+	
 	GPGO* m_building = nullptr;
 
 	TileType m_tile_type = TileType::None;

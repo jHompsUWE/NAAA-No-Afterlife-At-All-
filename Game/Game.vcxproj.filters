@@ -306,6 +306,9 @@
     <ClInclude Include="BuildingWindow.h">
       <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FileManagerV2.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -454,6 +457,9 @@
     </ClCompile>
     <ClCompile Include="BuildingWindow.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileManagerV2.cpp">
+      <Filter>Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

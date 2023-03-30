@@ -12,6 +12,6 @@ enum class TileType
 	Lava,
 	Water,
 	Road,
-	Gate,
+	Building,
 	Rock
 };

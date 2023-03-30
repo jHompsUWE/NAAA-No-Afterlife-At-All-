@@ -4,6 +4,7 @@
 #include <math.h>
 
 #include "Pathfinding.h"
+#include "BuildingData.h"
 
 SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD, 
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _d3dContext) :
@@ -155,7 +156,7 @@ void SelectionHandler::onEvent(const Event& event)
 		case EventType::GATES:
 		{
 			m_zone_type = ZoneType::None;
-			m_tile_type = TileType::Gate;
+			m_tile_type = TileType::Building;
 
 			m_selection_type = SelectionType::Building;
 
@@ -257,7 +258,7 @@ void SelectionHandler::updateTiles()
 			{
 
 				// Don't overwrite the tile/zone type if there's a building there already
-				if (!m_world_manager->getWorld()[m_plane][index]->getGridData().m_building)
+				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type == TileType::None)
 				{
 					m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
 					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
@@ -317,8 +318,35 @@ void SelectionHandler::updateBuilding()
 
 		if (temp_building)
 		{
+			if (!checkBuildingPositioning()) { return; }
+
+			//checkBuildingPositioning();
+
+			int size = temp_building_stats->m_data.m_size;
+
+			Vector2 pos(std::get<0>(m_end_tile->getGridData().m_position),
+				std::get<1>(m_end_tile->getGridData().m_position));
+
+			for (int i = pos.y; i > pos.y - size; i--)
+			{
+				for (int j = pos.x; j > pos.x - size; j--)
+				{
+					int index = m_world_manager->getIndex(Vector2(j, i));
+
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data =
+						temp_building_stats;
+
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+
+					//m_world_manager->getWorld()[m_plane][index]->getGridData().m_building = temp_building;
+
+					temp_building_stats->housing_points.push_back(&m_world_manager->getWorld()[m_plane][index]->getGridData());
+
+					std::cout << i << " " << j << std::endl;
+				}
+			}
+
 			m_end_tile->getGridData().m_building = temp_building;
-			m_end_tile->getGridData().m_building_data = temp_building_stats;
 
 			m_end_tile->getGridData().m_building->GetColour().A(1.f);
 
@@ -335,7 +363,37 @@ void SelectionHandler::updateBuilding()
 		temp_building->SetPos(temp_building_pos);
 		temp_building->UpdateWorldPos();
 	}
-	
+}
+
+/// <summary>
+/// Check to ensure all parts of a building are free, so it can be placed
+/// </summary>
+/// <returns> bool for if it's free or not</returns>
+bool SelectionHandler::checkBuildingPositioning()
+{
+	int size = temp_building_stats->m_data.m_size;
+
+	Vector2 pos(std::get<0>(m_end_tile->getGridData().m_position),
+		std::get<1>(m_end_tile->getGridData().m_position));
+
+	for (int i = pos.y; i > pos.y - size; i--)
+	{
+		for (int j = pos.x; j > pos.x - size; j--)
+		{
+			int index = m_world_manager->getIndex(Vector2(j, i));
+
+			if (!m_world_manager->withinRange(Vector2(j, i))) { return false; }
+
+			if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type != TileType::None)
+			{
+				return false;
+			}
+
+			std::cout << i << " " << j << std::endl;
+		}
+	}
+
+	return true;
 }
 
 void SelectionHandler::updateNuke()
@@ -364,7 +422,16 @@ void SelectionHandler::updateNuke()
 				{
 					road_deleted = true;
 				}
-				m_world_manager->getWorld()[m_plane][index]->nuke();
+
+				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type == TileType::Building)
+				{
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data->delete_reference();
+				}
+				else
+				{
+					m_world_manager->getWorld()[m_plane][index]->nuke();
+				}
+				
 			}
 		}
 	}

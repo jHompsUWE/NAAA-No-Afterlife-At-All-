@@ -26,6 +26,8 @@ public:
 
     void update(GameData& _game_data) override;
 
+    void lateUpdate(GameData& _game_data) override;
+
     void render(DrawData* _DD) override;
 
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& getWorld();

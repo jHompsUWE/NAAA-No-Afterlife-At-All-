@@ -72,6 +72,7 @@ private:
 	void updateRoads();
 
 	void updateBuilding();
+	bool checkBuildingPositioning();
 
 	void updateNuke();
 
