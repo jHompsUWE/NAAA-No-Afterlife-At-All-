@@ -106,6 +106,22 @@ public:
         int count = NULL;
     };
 
+	struct InputButton
+	{
+		bool down = NULL;
+	};
+
+	struct InputAxis
+	{
+		float value = NULL;
+	};
+
+	struct InputVector2
+	{
+		float x = NULL;
+		float y = NULL;
+	};
+
 	struct MouseButtonEvent
 	{
 		int x_mouse_pos = NULL;
@@ -131,6 +147,11 @@ public:
 	{
         StateTransition state_transition;
         SoulUpdate soul_update;
+
+		InputButton key_event_data;
+		InputAxis input_axis;
+		InputVector2 input_vector2;
+		
 		MouseButtonEvent mouse_button_event;
 		MouseScrollEvent mouse_scroll_event;
 		MouseMoveEvent mouse_move_event;

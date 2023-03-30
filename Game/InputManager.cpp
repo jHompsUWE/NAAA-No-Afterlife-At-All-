@@ -10,66 +10,34 @@ void InputManager::awake(GameData& _game_data)
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
 	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
+	active_device = Device::KEYBOARD;
 }
-/*
 
 void InputManager::update(GameData& _game_data)
 {
-	for (auto const action : *current_key_action_map)
+	for (auto const action : (*current_action_maps)[(int)active_device])
 	{
-		switch (action.second.type)
+		switch (action.device)
 		{
-			case InteractionType::key_pressed: 
+		case Device::KEYBOARD:
 			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button))
-				{
-					Event event{};
-					event.type = action.first;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
+				checkKeyboardBinding(action, _game_data);
 				break;
 			}
-
-			case InteractionType::key_released: 
+		case Device::MOUSE: 
 			{
-				if (_game_data.m_KBS_tracker.IsKeyReleased(action.second.key_button))
-				{
-					Event event{};
-					event.type = action.first;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
+				checkMouseBinding(action);
 				break;
 			}
-
-			case InteractionType::key_held:
+		case Device::CONTROLLER: 
 			{
-				if (_game_data.m_KBS.IsKeyDown(action.second.key_button))
-				{
-					Event event{};
-					event.type = action.first;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
+				checkControllerBinding(action);
 				break;
 			}
-
-			case InteractionType::key_pressed_with_mod: 
-			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button) &&
-					_game_data.m_KBS.IsKeyDown(action.second.modifier))
-				{
-					Event event{};
-					event.type = action.first;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}		
+		default: ;
+		}
 	}
-
+/*
 	for (auto action : *current_action_maps)
 	{
 		switch (action.second.type)
@@ -148,9 +116,237 @@ void InputManager::update(GameData& _game_data)
 			default: ;
 		}
 	}
+	*/
+}
+
+void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _game_data)
+{
+	switch (action.control_type)
+	{
+		case ControlType::BUTTON:
+			{
+				switch (action.interaction_type)
+				{
+					case InteractionType::BUTTON_PRESSED:
+						{
+							if (_game_data.m_KBS_tracker.IsKeyPressed(action.control.button.x.key))
+							{
+								Event event{};
+								event.type = action.event_type;
+								event.payload.key_event_data.down = true;
+								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+							}
+							break;
+						}
+					case InteractionType::BUTTON_RELEASED: 
+						{
+							if (_game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key))
+							{
+								Event event{};
+								event.type = action.event_type;
+								event.payload.key_event_data.down = false;
+								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+							}
+							break;
+						}
+					case InteractionType::BUTTON_HELD: 
+						{
+							if (_game_data.m_KBS.IsKeyDown(action.control.button.x.key))
+							{
+								Event event{};
+								event.type = action.event_type;
+								event.payload.key_event_data.down = true;
+								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+							}
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_RELEASED: 
+						{
+							if (_game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key)
+								|| _game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key))
+							{
+								Event event{};
+								event.type = action.event_type;
+								event.payload.key_event_data.down = _game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key) ? true : false;
+								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+							}
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_WITH_MOD: 
+						{
+							if (_game_data.m_KBS_tracker.IsKeyPressed(action.control.button.x.key) &&
+								_game_data.m_KBS.IsKeyDown(action.mod.x.key))
+							{
+								Event event{};
+								event.type = action.event_type;
+								event.payload.key_event_data.down = true;
+								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+							}
+							break;
+						}
+					default: ;
+				}
+				break;
+			}
+		
+		case ControlType::AXIS:
+			{
+				switch (action.interaction_type)
+				{
+				case InteractionType::BUTTON_PRESSED:
+					{
+						if (_game_data.m_KBS_tracker.IsKeyPressed(action.control.axis.x.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.axis.neg_x.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							event.payload.input_axis.value = _game_data.m_KBS_tracker.IsKeyPressed(action.control.axis.x.key) ? 1 : -1;
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				case InteractionType::BUTTON_RELEASED: 
+					{
+						if (_game_data.m_KBS_tracker.IsKeyReleased(action.control.axis.x.key)
+							|| _game_data.m_KBS_tracker.IsKeyReleased(action.control.axis.neg_x.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							event.payload.input_axis.value = _game_data.m_KBS_tracker.IsKeyReleased(action.control.axis.x.key) ? 1 : -1;
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				case InteractionType::BUTTON_HELD: 
+					{
+						if (_game_data.m_KBS.IsKeyDown(action.control.axis.x.key)
+							|| _game_data.m_KBS.IsKeyDown(action.control.axis.neg_x.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							event.payload.input_axis.value = _game_data.m_KBS.IsKeyDown(action.control.axis.x.key) ? 1 : -1;
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				default: ;
+				}
+				break;
+			}
+		case ControlType::VECTOR2_4:
+			{
+				switch (action.interaction_type)
+				{
+				case InteractionType::BUTTON_PRESSED:
+					{
+						if (_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							
+							event.payload.input_vector2.x =
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
+
+							event.payload.input_vector2.y =
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
+							
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				case InteractionType::BUTTON_RELEASED: 
+					{
+						if (_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.x.key)
+							|| _game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_x.key)
+							|| _game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.y.key)
+							|| _game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_y.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							
+							event.payload.input_vector2.x =
+								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.x.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
+
+							event.payload.input_vector2.y =
+								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.y.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
+							
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				case InteractionType::BUTTON_HELD: 
+					{
+						if (_game_data.m_KBS.IsKeyDown(action.control.vector2_4.x.key)
+							|| _game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_x.key)
+							|| _game_data.m_KBS.IsKeyDown(action.control.vector2_4.y.key)
+							|| _game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_y.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							
+							event.payload.input_vector2.x =
+								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.x.key) ? 1.0f :
+								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
+
+							event.payload.input_vector2.y =
+								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.y.key) ? 1.0f :
+								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
+							
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				case InteractionType::BUTTON_PRESSED_WITH_MOD: 
+					{
+						if ((_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key)
+							|| _game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key))
+							&& _game_data.m_KBS_tracker.IsKeyPressed(action.mod.x.key))
+						{
+							Event event{};
+							event.type = action.event_type;
+							
+							event.payload.input_vector2.x =
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
+
+							event.payload.input_vector2.y =
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key) ? 1.0f :
+								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
+							
+							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+						}
+						break;
+					}
+				default: ;
+				}
+				break;
+			}
+
+		default: ;
+	}
+}
+
+void InputManager::checkMouseBinding(const ActionBinding& action)
+{
+	
+}
+
+void InputManager::checkControllerBinding(const ActionBinding& action)
+{
+	
 }
 
 
+/*
 void InputManager::triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const
 {
 	Event event{};
@@ -390,6 +586,7 @@ ActionBinding InputManager::loadControllerAction(JsonElement& element)
 	
 	return ActionBinding{event_type, interaction_type, Device::CONTROLLER, control_type, modifier, control};
 }
+
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)
 {

@@ -18,8 +18,6 @@ enum class InteractionType
 	BUTTON_PRESSED_RELEASED,
 
 	BUTTON_PRESSED_WITH_MOD,
-	BUTTON_RELEASED_WITH_MOD,
-	BUTTON_HELD_WITH_MOD,
 	
 	SCROLLED,
 	SCROLLED_WITH_MOD,
@@ -199,8 +197,6 @@ static const std::unordered_map<std::string, InteractionType> string_to_interact
 	{"BUTTON_PRESSED_RELEASED", InteractionType::BUTTON_PRESSED_RELEASED},
 	
 	{"BUTTON_PRESSED_WITH_MOD", InteractionType::BUTTON_PRESSED_WITH_MOD},
-	{"BUTTON_RELEASED_WITH_MOD", InteractionType::BUTTON_RELEASED_WITH_MOD},
-	{"BUTTON_HELD_WITH_MOD", InteractionType::BUTTON_HELD_WITH_MOD},
 	
 	{"SCROLLED", InteractionType::SCROLLED},
 	{"SCROLLED_WITH_MOD", InteractionType::SCROLLED_WITH_MOD},
@@ -276,7 +272,7 @@ public:
 	/// \brief Called every cycle of the game loop.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-    void update(GameData& _game_data) override {};
+    void update(GameData& _game_data) override;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
@@ -311,6 +307,10 @@ private:
 	////////////////////////////////////////////////////////////
 	ActionBinding loadControllerAction(JsonElement& element);
 
+	void checkKeyboardBinding(const ActionBinding& action, GameData& _game_data);
+	void checkMouseBinding(const ActionBinding& action);
+	void checkControllerBinding(const ActionBinding& action);
+
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.
 	/// \param _action The MouseAction containing the keybind data.
@@ -339,6 +339,11 @@ private:
 	/// \brief Pointer to the current action maps container. 
 	////////////////////////////////////////////////////////////
 	std::vector<std::vector<ActionBinding>>* current_action_maps;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Enum representing currently active device for checking input from.
+	////////////////////////////////////////////////////////////
+	Device active_device;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
