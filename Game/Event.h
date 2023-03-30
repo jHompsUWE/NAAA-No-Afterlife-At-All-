@@ -36,10 +36,21 @@ enum class EventType
     ZOOM_OUT,
     SNAP_TO_HEAVEN,
     SNAP_TO_HELL,
+
+	
+	SCROLL_VIEW,
+	ROTATE_REALMS,
+
+
+
+	
+	//
     SCROLL_UP,
     SCROLL_RIGHT,
     SCROLL_LEFT,
     SCROLL_DOWN,
+    //
+	
     ROTATE_REALMS_RIGHT,
     ROTATE_REALMS_LEFT,
     GREEN_ZONING,

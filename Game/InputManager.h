@@ -15,6 +15,8 @@ enum class InteractionType
 	BUTTON_RELEASED,
 	BUTTON_HELD,
 
+	BUTTON_PRESSED_RELEASED,
+
 	BUTTON_PRESSED_WITH_MOD,
 	BUTTON_RELEASED_WITH_MOD,
 	BUTTON_HELD_WITH_MOD,
@@ -22,7 +24,7 @@ enum class InteractionType
 	SCROLLED,
 	SCROLLED_WITH_MOD,
 
-	CURSOR_STICK_MOVED
+	CURSOR_MOVED
 };
 
 enum class ControlType
@@ -35,9 +37,9 @@ enum class ControlType
 
 enum class Device
 {
-	Keyboard,
-	Mouse,
-	Controller
+	KEYBOARD,
+	MOUSE,
+	CONTROLLER
 };
 
 enum class MouseInput
@@ -85,7 +87,7 @@ union BindingType
 	ControllerInput controller_input;	
 };
 
-struct Vector2_4
+struct Vector2_4Control
 {
 	BindingType x;
 	BindingType neg_x;
@@ -93,29 +95,29 @@ struct Vector2_4
 	BindingType neg_y;
 };
 
-struct Vector2_2
+struct Vector2_2Control
 {
 	BindingType x;
 	BindingType y;
 };
 
-struct Axis
+struct AxisControl
 {
 	BindingType x;
 	BindingType neg_x;
 };
 
-struct Button
+struct ButtonControl
 {
 	BindingType x;
 };
 
 union Control
 {
-	Vector2_4 vector2_4;
-	Vector2_2 vector2_2;
-	Axis axis;
-	Button button;
+	Vector2_4Control vector2_4;
+	Vector2_2Control vector2_2;
+	AxisControl axis;
+	ButtonControl button;
 };
 
 struct ActionBinding
@@ -125,6 +127,8 @@ struct ActionBinding
 
 	Device device;
 	ControlType control_type;
+
+	ButtonControl mod;
 	Control control;
 };
 
@@ -180,7 +184,10 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
 	{"CENTER_AND_ZOOM_IN", EventType::CENTER_AND_ZOOM_IN},
 	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
 	{"CENTER_VIEW", EventType::CENTER_VIEW},
-	{"SELECT", EventType::SELECT}
+	{"SELECT", EventType::SELECT},
+///
+	{"SCROLL_VIEW", EventType::SCROLL_VIEW},
+	{"ROTATE_REALMS", EventType::ROTATE_REALMS}
 };
 
 static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =
@@ -188,6 +195,8 @@ static const std::unordered_map<std::string, InteractionType> string_to_interact
 	{"BUTTON_PRESSED", InteractionType::BUTTON_PRESSED},
 	{"BUTTON_RELEASED", InteractionType::BUTTON_RELEASED},
     {"BUTTON_HELD", InteractionType::BUTTON_HELD},
+
+	{"BUTTON_PRESSED_RELEASED", InteractionType::BUTTON_PRESSED_RELEASED},
 	
 	{"BUTTON_PRESSED_WITH_MOD", InteractionType::BUTTON_PRESSED_WITH_MOD},
 	{"BUTTON_RELEASED_WITH_MOD", InteractionType::BUTTON_RELEASED_WITH_MOD},
@@ -196,14 +205,14 @@ static const std::unordered_map<std::string, InteractionType> string_to_interact
 	{"SCROLLED", InteractionType::SCROLLED},
 	{"SCROLLED_WITH_MOD", InteractionType::SCROLLED_WITH_MOD},
 
-	{"CURSOR_STICK_MOVED", InteractionType::CURSOR_STICK_MOVED}
+	{"CURSOR_MOVED", InteractionType::CURSOR_MOVED}
 };
 
 static const std::unordered_map<std::string, Device> string_to_device =
 {
-	{"Keyboard", Device::Keyboard},
-	{"Mouse", Device::Mouse},
-	{"Controller", Device::Controller},
+	{"KEYBOARD", Device::KEYBOARD},
+	{"MOUSE", Device::MOUSE},
+	{"CONTROLLER", Device::CONTROLLER},
 };
 
 static const std::unordered_map<std::string, ControlType> string_to_control_type =
@@ -267,13 +276,13 @@ public:
 	/// \brief Called every cycle of the game loop.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-    void update(GameData& _game_data) override;
+    void update(GameData& _game_data) override {};
 
 	////////////////////////////////////////////////////////////
 	/// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
 	///	\param event The event to be acted upon.
 	////////////////////////////////////////////////////////////
-    void onEvent(const Event& event) override;
+    void onEvent(const Event& event) override {};
 
 private:
 	////////////////////////////////////////////////////////////
@@ -281,12 +290,7 @@ private:
 	/// \param _filepath The filepath of the json to load in.
 	////////////////////////////////////////////////////////////
     void loadInInputActionsMaps(std::string _filepath);
-
-	////////////////////////////////////////////////////////////
-	/// \brief 
-	////////////////////////////////////////////////////////////
-	void addDefaultMouseEvents();
-
+	
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will save any changes to the action map. 
 	////////////////////////////////////////////////////////////
@@ -295,12 +299,12 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a KeyboardAction.
 	////////////////////////////////////////////////////////////
-	std::pair<EventType, KeyboardAction> loadKeyboardAction(JsonElement& element);
+	ActionBinding loadKeyboardAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a MouseAction.
 	////////////////////////////////////////////////////////////
-	std::pair<EventType, MouseAction> loadMouseAction(JsonElement& element);
+	//ActionBinding loadMouseAction(JsonElement& element) ;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.
@@ -309,37 +313,27 @@ private:
 	/// \param _default_mouse_event The event triggered if the mouse is over UI.
 	/// \param _pressed Whether the button has been pressed or released.
 	////////////////////////////////////////////////////////////
-	void triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
+	//void triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will reset the action map back to default. 
 	////////////////////////////////////////////////////////////
     void resetInputActionMaps();
 
-    ////////////////////////////////////////////////////////////
-	/// \brief Key action map for the game state. 
 	////////////////////////////////////////////////////////////
-    std::unordered_map<EventType, KeyboardAction> game_key_action_map;
-
+	/// \brief Action maps for the game state.
 	////////////////////////////////////////////////////////////
-	/// \brief Mouse action map for the game state. 
-	////////////////////////////////////////////////////////////
-	std::unordered_map<EventType, MouseAction> game_mouse_action_map;
+	std::vector<std::vector<ActionBinding>> game_action_maps;
 	
     ////////////////////////////////////////////////////////////
-	/// \brief Key action map for the menu state. 
+	/// \brief Action maps for the menu state. 
 	////////////////////////////////////////////////////////////
-    std::unordered_map<EventType, KeyboardAction> menu_key_action_map;
-
-    ////////////////////////////////////////////////////////////
-	/// \brief Pointer to the current keyboard action map. 
-	////////////////////////////////////////////////////////////
-    std::unordered_map<EventType, KeyboardAction>* current_key_action_map;
+	std::vector<std::vector<ActionBinding>> menu_action_maps;
 
 	////////////////////////////////////////////////////////////
-	/// \brief Pointer to the current mouse action map. 
+	/// \brief Pointer to the current action maps container. 
 	////////////////////////////////////////////////////////////
-	std::unordered_map<EventType, MouseAction>* current_mouse_action_map;
+	std::vector<std::vector<ActionBinding>>* current_action_maps;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
@@ -360,9 +354,4 @@ private:
 	/// \brief Mouse position of the last update cycle. 
 	////////////////////////////////////////////////////////////
 	tuple<int, int> last_mouse_pos;
-
-	////////////////////////////////////////////////////////////
-	/// \brief Unordered map for tying MouseButton to DirectX's ButtonStates.
-	////////////////////////////////////////////////////////////
-	std::unordered_map<MouseButton, Mouse::ButtonStateTracker::ButtonState&> mouse_button_to_button_state;
 };

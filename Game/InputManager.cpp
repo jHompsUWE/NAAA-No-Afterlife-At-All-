@@ -1,18 +1,17 @@
 #include "pch.h"
 #include "InputManager.h"
+
+#include "Button.h"
 #include "json.hpp"
 
 void InputManager::awake(GameData& _game_data)
-{
-	mouse_button_to_button_state = {{MouseButton::right, _game_data.m_mouseButtons.rightButton},
-										{MouseButton::left, _game_data.m_mouseButtons.leftButton},
-										{MouseButton::middle, _game_data.m_mouseButtons.middleButton}};
+{ 
 	
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
-	current_key_action_map = &game_key_action_map; // in future, will rely on the finite state machine to determine current action map.
-	current_mouse_action_map = &game_mouse_action_map;
+	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
 }
+/*
 
 void InputManager::update(GameData& _game_data)
 {
@@ -71,7 +70,7 @@ void InputManager::update(GameData& _game_data)
 		}		
 	}
 
-	for (auto action : *current_mouse_action_map)
+	for (auto action : *current_action_maps)
 	{
 		switch (action.second.type)
 		{
@@ -151,6 +150,7 @@ void InputManager::update(GameData& _game_data)
 	}
 }
 
+
 void InputManager::triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const
 {
 	Event event{};
@@ -172,14 +172,14 @@ void InputManager::onEvent(const Event& event)
 		{
 		case State::GAME_MENU:
 		{
-			current_key_action_map = &menu_key_action_map;
+			current_key_action_map = &menu_action_maps;
 			break;
 		}
 
 		case State::GAME_PLAY:
 		{
 			current_key_action_map = &game_key_action_map;
-			current_mouse_action_map = &game_mouse_action_map;
+			current_action_maps = &game_action_maps;
 			break;
 		}
 
@@ -205,6 +205,7 @@ void InputManager::onEvent(const Event& event)
 		}
 	}
 }
+*/
 
 void InputManager::loadInInputActionsMaps(std::string _filepath)
 {
@@ -220,13 +221,19 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 	if (!input_json.empty())
 	{
-		for (JsonElement json_action : input_json["game_state"]["keyboard_inputs"])
+		std::vector<ActionBinding> temp;
+
+		for (JsonElement json_action : input_json["game_state"]["KEYBOARD"])
 		{
-			game_key_action_map.emplace(loadKeyboardAction(json_action));
+			temp.emplace_back(loadKeyboardAction(json_action));
 		}
-		for (auto json_action : input_json["game_state"]["mouse_inputs"])
+
+		game_action_maps.emplace(game_action_maps.begin() + (int)Device::KEYBOARD, std::move(temp));
+		temp.clear();
+		
+		for (auto json_action : input_json["game_state"]["MOUSE"])
 		{
-			game_mouse_action_map.emplace(loadMouseAction(json_action));
+			//temp.emplace_back(loadMouseAction(json_action));
 		}
 	}
 	else
@@ -235,22 +242,52 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 	}
 }
 
-std::pair<EventType, KeyboardAction> InputManager::loadKeyboardAction(JsonElement& element)
+ActionBinding InputManager::loadKeyboardAction(JsonElement& element)
 {
-	EventType command = string_to_event_type.at(std::string(element["Action"]));
-	InteractionType type = string_to_interaction_type.at(std::string(element["Type"]));
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
 
-	unsigned char key = static_cast<unsigned char>(std::stoi(std::string(element["Key"]), nullptr, 16));
-	unsigned char modifier = NULL;
-
-	if (!std::string(element["Modifier"]).empty())
+	Control control;
+	switch (control_type)
 	{
-		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+		case ControlType::BUTTON:
+			{
+				control.button.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]), nullptr, 16));
+				break;
+			}
+		case ControlType::AXIS:
+			{
+				control.axis.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["X"]), nullptr, 16));
+				control.axis.neg_x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-X"]), nullptr, 16));
+				break;
+			}
+		case ControlType::VECTOR2_4:
+			{
+				control.vector2_4.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["X"]), nullptr, 16));
+				control.vector2_4.neg_x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-X"]), nullptr, 16));
+
+				control.vector2_4.y.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-Y"]), nullptr, 16));
+				control.vector2_4.neg_y.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["Y"]), nullptr, 16));
+				break;
+			}
+		default:
+			{
+				std::cout << "Control Type is unknown for binding: EventType = " << std::string(element["Action"]);
+			}
 	}
 
-	return std::pair<EventType, KeyboardAction> ( command, KeyboardAction{type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
+	ButtonControl modifier;
+	modifier.x.key = Keyboard::Help;
+	if (!std::string(element["Modifier"]).empty())
+	{
+		modifier.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+	}
+
+	return ActionBinding{event_type, interaction_type, Device::KEYBOARD, control_type, modifier, control};
 }
 
+/*
 std::pair<EventType, MouseAction> InputManager::loadMouseAction(JsonElement& element)
 {
 	EventType command = string_to_event_type.at(std::string(element["Action"]));
@@ -265,7 +302,7 @@ std::pair<EventType, MouseAction> InputManager::loadMouseAction(JsonElement& ele
 	}
 	return std::pair<EventType, MouseAction>( command, MouseAction{type, (Keyboard::Keys)modifier, key});
 }
-
+*/
 void InputManager::saveInputActionMapChanges(std::string _filepath)
 {
 	// TODO: Functionality for changing keybinds.

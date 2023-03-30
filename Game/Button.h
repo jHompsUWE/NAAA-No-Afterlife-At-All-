@@ -9,7 +9,7 @@
 // 
 //=================================================================
 
-class Button :public GameObject2D
+class Button : public GameObject2D
 {
 public:
 	Button(ID3D11Device* _GD, GameObject2D* _parent, GameObject2D* _toggle);
