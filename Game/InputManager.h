@@ -9,36 +9,126 @@
 #include "json.hpp"
 #include "GameManager.h"
 
-enum class InputType
+enum class InteractionType
 {
-	key_pressed,
-    key_released,
-    key_held,
-    key_pressed_with_mod,
-    mouse_clicked,
-    mouse_released,
-	mouse_clicked_released,
-    mouse_clicked_with_mod,
-	mouse_scrolled,
-	mouse_scrolled_with_mod,
-    mouse_moved
+	BUTTON_PRESSED,
+	BUTTON_RELEASED,
+	BUTTON_HELD,
+
+	BUTTON_PRESSED_WITH_MOD,
+	BUTTON_RELEASED_WITH_MOD,
+	BUTTON_HELD_WITH_MOD,
+	
+	SCROLLED,
+	SCROLLED_WITH_MOD,
+
+	CURSOR_STICK_MOVED
 };
 
-struct KeyboardAction
+enum class ControlType
 {
-    InputType type;
-    Keyboard::Keys modifier;
-    Keyboard::Keys key_button;
+	BUTTON,
+	AXIS,
+	VECTOR2_2,
+	VECTOR2_4
 };
 
-struct MouseAction
+enum class Device
 {
-	InputType type;
-	Keyboard::Keys modifier;
-	MouseButton button;
+	Keyboard,
+	Mouse,
+	Controller
 };
 
-static const std::unordered_map<std::string, EventType> string_to_input_action =
+enum class MouseInput
+{
+	LEFT_BUTTON,
+	MIDDLE_BUTTON,
+	RIGHT_BUTTON,
+	MOVE,
+	SCROLL
+};
+
+enum class ControllerInput
+{
+	A,
+	B,
+	X,
+	Y,
+
+	LEFT_STICK,
+	RIGHT_STICK,
+	LEFT_SHOULDER,
+	RIGHT_SHOULDER,
+
+	BACK,
+	START,
+
+	D_UP,
+	D_DOWN,
+	D_RIGHT,
+	D_LEFT,
+
+	LEFT_X,
+	LEFT_Y,
+	RIGHT_X,
+	RIGHT_Y,
+
+	LEFT_TRIGGER,
+	RIGHT_TRIGGER
+};
+
+union BindingType
+{
+	Keyboard::Keys key;
+	MouseInput mouse_input;
+	ControllerInput controller_input;	
+};
+
+struct Vector2_4
+{
+	BindingType x;
+	BindingType neg_x;
+	BindingType y;
+	BindingType neg_y;
+};
+
+struct Vector2_2
+{
+	BindingType x;
+	BindingType y;
+};
+
+struct Axis
+{
+	BindingType x;
+	BindingType neg_x;
+};
+
+struct Button
+{
+	BindingType x;
+};
+
+union Control
+{
+	Vector2_4 vector2_4;
+	Vector2_2 vector2_2;
+	Axis axis;
+	Button button;
+};
+
+struct ActionBinding
+{
+	EventType event_type;
+	InteractionType interaction_type;
+
+	Device device;
+	ControlType control_type;
+	Control control;
+};
+
+static const std::unordered_map<std::string, EventType> string_to_event_type =
 {
 	{"PAUSE", EventType::PAUSE},
 	{"LOAD_GAME", EventType::LOAD_GAME},
@@ -93,23 +183,68 @@ static const std::unordered_map<std::string, EventType> string_to_input_action =
 	{"SELECT", EventType::SELECT}
 };
 
-static const std::unordered_map<std::string, InputType> string_to_input_type =
+static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =
 {
-	{"key_pressed", InputType::key_pressed},
-	{"key_released", InputType::key_released},
-    {"key_held", InputType::key_held},
-	{"mouse_clicked", InputType::mouse_clicked},
-	{"mouse_released", InputType::mouse_released},
-	{"mouse_clicked_released", InputType::mouse_clicked_released},
-	{"mouse_clicked_with_mod", InputType::mouse_clicked_with_mod},
-	{"mouse_moved", InputType::mouse_moved}
+	{"BUTTON_PRESSED", InteractionType::BUTTON_PRESSED},
+	{"BUTTON_RELEASED", InteractionType::BUTTON_RELEASED},
+    {"BUTTON_HELD", InteractionType::BUTTON_HELD},
+	
+	{"BUTTON_PRESSED_WITH_MOD", InteractionType::BUTTON_PRESSED_WITH_MOD},
+	{"BUTTON_RELEASED_WITH_MOD", InteractionType::BUTTON_RELEASED_WITH_MOD},
+	{"BUTTON_HELD_WITH_MOD", InteractionType::BUTTON_HELD_WITH_MOD},
+	
+	{"SCROLLED", InteractionType::SCROLLED},
+	{"SCROLLED_WITH_MOD", InteractionType::SCROLLED_WITH_MOD},
+
+	{"CURSOR_STICK_MOVED", InteractionType::CURSOR_STICK_MOVED}
 };
 
-static const std::unordered_map<std::string, MouseButton> string_to_mouse_button =
+static const std::unordered_map<std::string, Device> string_to_device =
 {
-	{"right", MouseButton::right},
-	{"left", MouseButton::left},
-	{"middle", MouseButton::middle}
+	{"Keyboard", Device::Keyboard},
+	{"Mouse", Device::Mouse},
+	{"Controller", Device::Controller},
+};
+
+static const std::unordered_map<std::string, ControlType> string_to_control_type =
+{
+	{"BUTTON", ControlType::BUTTON},
+	{"AXIS", ControlType::AXIS},
+	{"VECTOR2_2", ControlType::VECTOR2_2},
+	{"VECTOR2_4", ControlType::VECTOR2_4},
+};
+
+static const std::unordered_map<std::string, MouseInput> string_to_mouse_input =
+{
+	{"LEFT_BUTTON", MouseInput::LEFT_BUTTON},
+	{"MIDDLE_BUTTON", MouseInput::MIDDLE_BUTTON},
+	{"RIGHT_BUTTON", MouseInput::RIGHT_BUTTON},
+	{"MOVE", MouseInput::MOVE},
+	{"SCROLL", MouseInput::SCROLL}	
+};
+
+static const std::unordered_map<std::string, ControllerInput> string_to_controller_input =
+{
+	{"A", ControllerInput::A},
+	{"B", ControllerInput::B},
+	{"X", ControllerInput::X},
+	{"Y", ControllerInput::Y},
+	{"LEFT_STICK", ControllerInput::LEFT_STICK},
+	{"RIGHT_STICK", ControllerInput::RIGHT_STICK},
+	{"LEFT_SHOULDER", ControllerInput::LEFT_SHOULDER},
+	{"RIGHT_SHOULDER", ControllerInput::RIGHT_SHOULDER},
+	{"BACK", ControllerInput::BACK},
+	{"START", ControllerInput::START},
+	{"D_UP", ControllerInput::D_UP},
+	{"D_DOWN", ControllerInput::D_DOWN},
+	{"D_RIGHT", ControllerInput::D_RIGHT},
+	{"D_LEFT", ControllerInput::D_LEFT},
+	{"LEFT_X", ControllerInput::LEFT_X},
+	{"LEFT_Y", ControllerInput::LEFT_Y},
+	{"RIGHT_X", ControllerInput::RIGHT_X},
+	{"RIGHT_Y", ControllerInput::RIGHT_Y},
+	{"LEFT_TRIGGER", ControllerInput::LEFT_TRIGGER},
+	{"RIGHT_TRIGGER", ControllerInput::RIGHT_TRIGGER}
 };
 
 using Json = nlohmann::json;
@@ -146,6 +281,11 @@ private:
 	/// \param _filepath The filepath of the json to load in.
 	////////////////////////////////////////////////////////////
     void loadInInputActionsMaps(std::string _filepath);
+
+	////////////////////////////////////////////////////////////
+	/// \brief 
+	////////////////////////////////////////////////////////////
+	void addDefaultMouseEvents();
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will save any changes to the action map. 

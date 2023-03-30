@@ -20,7 +20,7 @@ void InputManager::update(GameData& _game_data)
 	{
 		switch (action.second.type)
 		{
-			case InputType::key_pressed: 
+			case InteractionType::key_pressed: 
 			{
 				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button))
 				{
@@ -31,7 +31,7 @@ void InputManager::update(GameData& _game_data)
 				break;
 			}
 
-			case InputType::key_released: 
+			case InteractionType::key_released: 
 			{
 				if (_game_data.m_KBS_tracker.IsKeyReleased(action.second.key_button))
 				{
@@ -42,7 +42,7 @@ void InputManager::update(GameData& _game_data)
 				break;
 			}
 
-			case InputType::key_held:
+			case InteractionType::key_held:
 			{
 				if (_game_data.m_KBS.IsKeyDown(action.second.key_button))
 				{
@@ -53,7 +53,7 @@ void InputManager::update(GameData& _game_data)
 				break;
 			}
 
-			case InputType::key_pressed_with_mod: 
+			case InteractionType::key_pressed_with_mod: 
 			{
 				if (_game_data.m_KBS_tracker.IsKeyPressed(action.second.key_button) &&
 					_game_data.m_KBS.IsKeyDown(action.second.modifier))
@@ -75,14 +75,14 @@ void InputManager::update(GameData& _game_data)
 	{
 		switch (action.second.type)
 		{
-		case InputType::mouse_clicked: 
+		case InteractionType::mouse_clicked: 
 			{
 				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
 				{
 					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
 				}					
 			}
-			case InputType::mouse_released:
+			case InteractionType::mouse_released:
 			{
 					if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::RELEASED)
 					{
@@ -90,7 +90,7 @@ void InputManager::update(GameData& _game_data)
 					}	
 				break;
 			}
-			case InputType::mouse_clicked_released:
+			case InteractionType::mouse_clicked_released:
 			{
 				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
 				{
@@ -103,7 +103,7 @@ void InputManager::update(GameData& _game_data)
 				}	
 				break;
 			}
-			case InputType::mouse_clicked_with_mod:
+			case InteractionType::mouse_clicked_with_mod:
 			{
 				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED
 					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
@@ -112,7 +112,7 @@ void InputManager::update(GameData& _game_data)
 				}
 				break;
 			}
-			case InputType::mouse_scrolled: 
+			case InteractionType::mouse_scrolled: 
 			{
 				if (_game_data.m_MS.scrollWheelValue != 0)
 				{
@@ -120,7 +120,7 @@ void InputManager::update(GameData& _game_data)
 				}
 				break;
 			}
-			case InputType::mouse_scrolled_with_mod: 
+			case InteractionType::mouse_scrolled_with_mod: 
 			{
 				if (_game_data.m_MS.scrollWheelValue != 0
 					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
@@ -129,7 +129,7 @@ void InputManager::update(GameData& _game_data)
 				}
 				break;
 			}
-			case InputType::mouse_moved:
+			case InteractionType::mouse_moved:
 			{
 				if (_game_data.m_MS.x != std::get<0>(last_mouse_pos) || _game_data.m_MS.y != std::get<1>(last_mouse_pos))
 				{
@@ -237,8 +237,8 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 std::pair<EventType, KeyboardAction> InputManager::loadKeyboardAction(JsonElement& element)
 {
-	EventType command = string_to_input_action.at(std::string(element["Action"]));
-	InputType type = string_to_input_type.at(std::string(element["Type"]));
+	EventType command = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType type = string_to_interaction_type.at(std::string(element["Type"]));
 
 	unsigned char key = static_cast<unsigned char>(std::stoi(std::string(element["Key"]), nullptr, 16));
 	unsigned char modifier = NULL;
@@ -253,8 +253,8 @@ std::pair<EventType, KeyboardAction> InputManager::loadKeyboardAction(JsonElemen
 
 std::pair<EventType, MouseAction> InputManager::loadMouseAction(JsonElement& element)
 {
-	EventType command = string_to_input_action.at(std::string(element["Action"]));
-	InputType type = string_to_input_type.at(std::string(element["Type"]));
+	EventType command = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType type = string_to_interaction_type.at(std::string(element["Type"]));
 
 	MouseButton key = string_to_mouse_button.at(std::string(element["Key"]));
 	unsigned char modifier = NULL;

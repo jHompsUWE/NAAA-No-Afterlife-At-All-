@@ -9,6 +9,7 @@
 #include "GameStateBase.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "GamePad.h"
 
 using namespace DirectX;
 
