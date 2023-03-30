@@ -10,7 +10,7 @@
         "Action": "PAUSE",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
-        "Modifier" : "",
+        "Modifier": "",
         "Key": "0x70"
       },
 
@@ -275,8 +275,7 @@
         "Type": "BUTTON_HELD",
         "Control": "VECTOR2_4",
         "Modifier": "",
-        "Key": 
-        {
+        "Key": {
           "X": "0x27",
           "-X": "0x25",
           "Y": "0x26",
@@ -290,8 +289,8 @@
         "Control": "AXIS",
         "Modifier": "",
         "Key": {
-           "X": "0xdd",
-           "-X": "0xdb" 
+          "X": "0xdd",
+          "-X": "0xdb"
         }
       },
 
@@ -391,6 +390,16 @@
         "Control": "BUTTON",
         "Modifier": "",
         "Key": "LEFT_BUTTON"
+      }
+    ],
+
+    "CONTROLLER": [
+      {
+        "Action": "SELECT",
+        "Type": "BUTTON_PRESSED_RELEASED",
+        "Control": "BUTTON",
+        "Modifier": "",
+        "Key": "A"
       }
     ]
   }

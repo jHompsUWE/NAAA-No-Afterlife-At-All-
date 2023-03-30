@@ -233,8 +233,19 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 		
 		for (auto json_action : input_json["game_state"]["MOUSE"])
 		{
-			//temp.emplace_back(loadMouseAction(json_action));
+			temp.emplace_back(loadMouseAction(json_action));
 		}
+
+		game_action_maps.emplace(game_action_maps.begin() + (int)Device::MOUSE, std::move(temp));
+		temp.clear();
+
+		for (auto json_action : input_json["game_state"]["CONTROLLER"])
+		{
+			temp.emplace_back(loadControllerAction(json_action));
+		}
+
+		game_action_maps.emplace(game_action_maps.begin() + (int)Device::CONTROLLER, std::move(temp));
+		temp.clear();
 	}
 	else
 	{
@@ -271,10 +282,7 @@ ActionBinding InputManager::loadKeyboardAction(JsonElement& element)
 				control.vector2_4.neg_y.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["Y"]), nullptr, 16));
 				break;
 			}
-		default:
-			{
-				std::cout << "Control Type is unknown for binding: EventType = " << std::string(element["Action"]);
-			}
+		default:;
 	}
 
 	ButtonControl modifier;
@@ -287,22 +295,102 @@ ActionBinding InputManager::loadKeyboardAction(JsonElement& element)
 	return ActionBinding{event_type, interaction_type, Device::KEYBOARD, control_type, modifier, control};
 }
 
-/*
-std::pair<EventType, MouseAction> InputManager::loadMouseAction(JsonElement& element)
+ActionBinding InputManager::loadMouseAction(JsonElement& element)
 {
-	EventType command = string_to_event_type.at(std::string(element["Action"]));
-	InteractionType type = string_to_interaction_type.at(std::string(element["Type"]));
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
 
-	MouseButton key = string_to_mouse_button.at(std::string(element["Key"]));
-	unsigned char modifier = NULL;
-
+	Control control;
+	switch (control_type)
+	{
+		case ControlType::BUTTON:
+			{
+				control.button.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]));
+				break;
+			}
+		case ControlType::AXIS:
+			{
+				control.axis.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.axis.neg_x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+				break;
+			}
+	case ControlType::VECTOR2_2:
+			{
+				control.vector2_2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.vector2_2.y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+				break;
+			}
+		case ControlType::VECTOR2_4:
+			{
+				control.vector2_4.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.vector2_4.neg_x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+			
+				control.vector2_4.y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["Y"]));
+				control.vector2_4.neg_y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-Y"]));
+				break;
+			}
+		default:;
+	}
+	
+	ButtonControl modifier;
+	modifier.x.key = Keyboard::Help;
 	if (!std::string(element["Modifier"]).empty())
 	{
-		modifier = static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+		modifier.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
 	}
-	return std::pair<EventType, MouseAction>( command, MouseAction{type, (Keyboard::Keys)modifier, key});
+	
+	return ActionBinding{event_type, interaction_type, Device::MOUSE, control_type, modifier, control};
 }
-*/
+
+ActionBinding InputManager::loadControllerAction(JsonElement& element)
+{
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
+
+	Control control;
+	switch (control_type)
+	{
+	case ControlType::BUTTON:
+		{
+			control.button.x.controller_input = string_to_controller_input.at(std::string(element["Key"]));
+			break;
+		}
+	case ControlType::AXIS:
+		{
+			control.axis.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.axis.neg_x.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			break;
+		}
+	case ControlType::VECTOR2_2:
+		{
+			control.vector2_2.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.vector2_2.y.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			break;
+		}
+	case ControlType::VECTOR2_4:
+		{
+			control.vector2_4.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.vector2_4.neg_x.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			
+			control.vector2_4.y.controller_input = string_to_controller_input.at(std::string(element["Key"]["Y"]));
+			control.vector2_4.neg_y.controller_input = string_to_controller_input.at(std::string(element["Key"]["-Y"]));
+			break;
+		}
+	default:;
+	}
+	
+	ButtonControl modifier;
+	modifier.x.controller_input = ControllerInput::BACK;
+	if (!std::string(element["Modifier"]).empty())
+	{
+		modifier.x.controller_input = (ControllerInput)std::stoi(std::string(element["Modifier"]), nullptr, 16);
+	}
+	
+	return ActionBinding{event_type, interaction_type, Device::CONTROLLER, control_type, modifier, control};
+}
+
 void InputManager::saveInputActionMapChanges(std::string _filepath)
 {
 	// TODO: Functionality for changing keybinds.

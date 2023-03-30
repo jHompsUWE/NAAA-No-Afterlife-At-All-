@@ -297,14 +297,19 @@ private:
     void saveInputActionMapChanges(std::string _filepath);
 
 	////////////////////////////////////////////////////////////
-	/// \brief Load and return a KeyboardAction.
+	/// \brief Load and return a keyboard ActionBinding.
 	////////////////////////////////////////////////////////////
 	ActionBinding loadKeyboardAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
-	/// \brief Load and return a MouseAction.
+	/// \brief Load and return a mouse Actionbinding.
 	////////////////////////////////////////////////////////////
-	//ActionBinding loadMouseAction(JsonElement& element) ;
+	ActionBinding loadMouseAction(JsonElement& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a controller ActionBinding.
+	////////////////////////////////////////////////////////////
+	ActionBinding loadControllerAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.
