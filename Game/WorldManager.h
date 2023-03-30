@@ -36,6 +36,8 @@ public:
     bool withinRange(Vector2 position);
 
 private:
+    Microsoft::WRL::ComPtr<ID3D11DeviceContext1>    m_d3dContext;
+
     void calculateEfficiency(GridLocation& _grid_location);
 
     int adjacencyScoreHeaven(GridLocation& _grid_location);

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GridLocation.h"
+#include "BuildingData.h"
 
 GridLocation::GridLocation() : m_tile(nullptr)
 {
@@ -54,7 +55,7 @@ void GridLocation::nuke()
 	m_grid_data.nuke();
 }
 
-void GridLocation::update()
+void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 {
 	switch (m_grid_data.m_zone_type)
 	{
@@ -94,5 +95,9 @@ void GridLocation::update()
 		m_tile->SetColour(Color(m_tile->GetColour().x * 0.75f, m_tile->GetColour().y * 0.75f, m_tile->GetColour().z * 0.75f));
 	}
 
-	//m_grid_data.Tick();
+	if (m_grid_data.m_efficiency > 3)
+	{
+		createBuilding(_device);
+		m_grid_data = building(m_grid_data.m_plane, "idk", 1);
+	}
 }

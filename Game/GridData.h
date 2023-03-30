@@ -41,27 +41,13 @@ struct GridData
 
 	void nuke()
 	{
-		delete m_building_data;
 		m_building_data = nullptr;
 		delete m_building;
 		m_building = nullptr;
 
-		//m_shared_building_data.reset();
-
 		m_tile_type = TileType::None;
 		m_zone_type = ZoneType::None;
-	}
 
-	void Tick()
-	{
-		if (m_tile_type == TileType::Building && !m_building_data)
-		{
-			m_tile_type = TileType::None;
-			m_building_data = nullptr;
-			m_building = nullptr;
-		}
-		
-		// connected
 	}
 
 	void draw(DrawData* _DD)
@@ -74,7 +60,6 @@ struct GridData
 
 	// Placeholder for now until actual class is sorted
 	GenericBuilding* m_building_data = nullptr;
-	
 	GPGO* m_building = nullptr;
 
 	TileType m_tile_type = TileType::None;

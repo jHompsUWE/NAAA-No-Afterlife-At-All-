@@ -34,6 +34,8 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 
 		std::cout << "Plane" << std::endl;
 	}
+
+	m_d3dContext = _device;
 }
 
 /// <summary>
@@ -157,7 +159,7 @@ void WorldManager::update(GameData& _game_data)
 		{
 			for (auto& tile : plane.second)
 			{
-				tile->update();
+				tile->update(m_d3dContext);
 			}
 		}
 	}
