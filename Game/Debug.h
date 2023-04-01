@@ -3,8 +3,9 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <stdio.h>
 
-static enum Serverity { DEBUG, INFO, WARNING, ERROR, TEST };
+static enum Serverity { DEBUG, INFO, WARNING, ERROR};
 
 
 static const char* logEnum2Strings[] = {
@@ -63,7 +64,30 @@ static void log_create(Serverity _serverity, std::string _filename, int _line_nu
 
     // uniform output
     //             [type]  <<[filename]<< [line]  <<  :   <<" message" 
-    std::cout << serverity << filename << linenum << ": " << _message << std::endl;
+
+    switch (_serverity)
+    {
+    case DEBUG:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+        break;
+    case INFO:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+        break;
+    case WARNING:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+        break;
+    case ERROR:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        break;
+    default:
+        break;
+    }
+
+    std::cout << serverity;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    std::cout << filename << linenum << ": " << _message << std::endl;
+    
+    
 }
 
 
