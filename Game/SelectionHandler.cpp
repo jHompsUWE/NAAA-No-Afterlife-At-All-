@@ -81,7 +81,7 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::BROWN_ZONING:
 		{
-			std::cout << "brown\n";
+			CONSOLE(INFO, "Brown");
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			break;
@@ -221,7 +221,7 @@ void SelectionHandler::updateTiles()
 /// </summary>
 void SelectionHandler::pathfindRoads()
 {
-	std::cout << "TODO\n";
+	CONSOLE(DEBUG,"TODO");
 }
 
 /// <summary>
@@ -264,7 +264,7 @@ GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
 		}
 	}
 
-	std::cout << pos.x << " " << pos.y << " " << int(m_plane) << "\n";
+	CONSOLE(INFO, { to_string(pos.x) + " " + to_string(pos.y) + " " + to_string(int(m_plane)) });
 	
 	m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)]->setSelected(true);
 

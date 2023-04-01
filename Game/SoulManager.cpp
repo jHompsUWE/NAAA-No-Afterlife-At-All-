@@ -18,9 +18,9 @@ void SoulManager::AddSoul(DirectX::SimpleMath::Vector2 location, PlaneType plane
 		break;
 	case PlaneType::None:
 	default:
-		std::cout << "[Soulmanager.cpp][21] [warn] Plane not picked/None: " << int(plane) << ", " << location.x << " , " << location.y;
+		CONSOLE(WARNING,"Plane not picked / None:" + to_string(int(plane)) + ", " + to_string(location.x) + ", " + to_string(location.y));
 	};
-	//std::cout << "soul made";
+	//CONSOLE(INFO, "soul made");
 }
 
 int SoulManager::TotalSoulsAmmount(PlaneType plane) const
@@ -34,12 +34,14 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	case PlaneType::Hell:
 		return m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size();
 	case PlaneType::None:
-		return 
+		return
 			m_Heven_wanderingSouls.size() + m_Heven_ZonedSouls.size() +
-					m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size()
-		;
+			m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size()
+			;
+	default:
+		break;
 	}
-	std::cout << "[Soulmanager.cpp][42] [WARN] total souls";
+	CONSOLE(WARNING,"total souls plane not right");
 	return 0;
 }
 
