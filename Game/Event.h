@@ -126,7 +126,6 @@ public:
 	{
 		int x_mouse_pos = NULL;
 		int y_mouse_pos = NULL;
-		MouseButton button = MouseButton::left;
 		bool pressed = NULL;
 	};
 

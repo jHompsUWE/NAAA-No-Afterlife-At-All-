@@ -308,8 +308,8 @@ private:
 	ActionBinding loadControllerAction(JsonElement& element);
 
 	void checkKeyboardBinding(const ActionBinding& action, GameData& _game_data);
-	void checkMouseBinding(const ActionBinding& action);
-	void checkControllerBinding(const ActionBinding& action);
+	void checkMouseBinding(const ActionBinding& action, GameData& _game_data);
+	void checkControllerBinding(const ActionBinding& action, GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.

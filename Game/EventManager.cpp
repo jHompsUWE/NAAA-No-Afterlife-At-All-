@@ -36,6 +36,7 @@ void EventManager::dispatchEvents(GameData& _game_data)
 
 		for (auto listener : listeners)
 		{
+			
 			listener->onEvent(*event);
 		}
 		

@@ -10,7 +10,7 @@ void InputManager::awake(GameData& _game_data)
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
 	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
-	active_device = Device::KEYBOARD;
+	active_device = Device::MOUSE;
 }
 
 void InputManager::update(GameData& _game_data)
@@ -26,97 +26,17 @@ void InputManager::update(GameData& _game_data)
 			}
 		case Device::MOUSE: 
 			{
-				checkMouseBinding(action);
+				checkMouseBinding(action, _game_data);
 				break;
 			}
 		case Device::CONTROLLER: 
 			{
-				checkControllerBinding(action);
+				checkControllerBinding(action, _game_data);
 				break;
 			}
 		default: ;
 		}
 	}
-/*
-	for (auto action : *current_action_maps)
-	{
-		switch (action.second.type)
-		{
-		case InteractionType::mouse_clicked: 
-			{
-				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
-				{
-					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
-				}					
-			}
-			case InteractionType::mouse_released:
-			{
-					if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::RELEASED)
-					{
-						triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
-					}	
-				break;
-			}
-			case InteractionType::mouse_clicked_released:
-			{
-				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED)
-				{
-					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, true);
-				}
-				
-				else if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::RELEASED)
-				{
-					triggerMouseButtonEvent(action, EventType::MOUSE_RELEASE, _game_data, false);
-				}	
-				break;
-			}
-			case InteractionType::mouse_clicked_with_mod:
-			{
-				if (mouse_button_to_button_state.at(action.second.button) == Mouse::ButtonStateTracker::PRESSED
-					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
-				{
-					triggerMouseButtonEvent(action, EventType::MOUSE_CLICK, _game_data, false);
-				}
-				break;
-			}
-			case InteractionType::mouse_scrolled: 
-			{
-				if (_game_data.m_MS.scrollWheelValue != 0)
-				{
-					Mouse::Get().ResetScrollWheelValue();
-				}
-				break;
-			}
-			case InteractionType::mouse_scrolled_with_mod: 
-			{
-				if (_game_data.m_MS.scrollWheelValue != 0
-					&& _game_data.m_KBS.IsKeyDown(action.second.modifier))
-				{
-					Mouse::Get().ResetScrollWheelValue();
-				}
-				break;
-			}
-			case InteractionType::mouse_moved:
-			{
-				if (_game_data.m_MS.x != std::get<0>(last_mouse_pos) || _game_data.m_MS.y != std::get<1>(last_mouse_pos))
-				{
-					std::get<0>(last_mouse_pos) = _game_data.m_MS.x;
-					std::get<1>(last_mouse_pos) = _game_data.m_MS.y;
-
-					Event event{};
-					event.type = EventType::MOUSE_CLICK;
-					event.payload.mouse_move_event.x_mouse_pos = std::get<0>(last_mouse_pos);
-					event.payload.mouse_move_event.y_mouse_pos = std::get<1>(last_mouse_pos);
-
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-		
-			default: ;
-		}
-	}
-	*/
 }
 
 void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _game_data)
@@ -326,21 +246,264 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 						}
 						break;
 					}
-				default: ;
+					default: ;
 				}
 				break;
 			}
-
 		default: ;
 	}
 }
 
-void InputManager::checkMouseBinding(const ActionBinding& action)
+void InputManager::checkMouseBinding(const ActionBinding& action, GameData& _game_data)
 {
-	
+	switch (action.control_type)
+	{
+		case ControlType::BUTTON:
+			{
+				switch (action.interaction_type)
+				{
+					case InteractionType::BUTTON_PRESSED:
+						{
+							switch (action.control.button.x.mouse_input)
+							{
+								case MouseInput::LEFT_BUTTON:
+									{
+										if (_game_data.m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+										{
+											Event event{};
+											event.type = action.event_type;
+											event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+											event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+											event.payload.mouse_button_event.pressed = true;
+											GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+										}
+										break;
+									}
+								case MouseInput::MIDDLE_BUTTON: 
+									{
+										if (_game_data.m_mouseButtons.middleButton == Mouse::ButtonStateTracker::PRESSED)
+										{
+											Event event{};
+											event.type = action.event_type;
+											event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+											event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+											event.payload.mouse_button_event.pressed = true;
+											GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+										}
+										break;
+									}
+								case MouseInput::RIGHT_BUTTON: 
+									{
+										if (_game_data.m_mouseButtons.rightButton == Mouse::ButtonStateTracker::PRESSED)
+										{
+											Event event{};
+											event.type = action.event_type;
+											event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+											event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+											event.payload.mouse_button_event.pressed = true;
+											GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+										}
+										break;
+									}
+								default: ;
+							}
+							break;
+						}
+					case InteractionType::BUTTON_RELEASED:
+						{
+							switch (action.control.button.x.mouse_input)
+							{
+							case MouseInput::LEFT_BUTTON:
+								{
+									if (_game_data.m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = false;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							case MouseInput::MIDDLE_BUTTON: 
+								{
+									if (_game_data.m_mouseButtons.middleButton == Mouse::ButtonStateTracker::RELEASED)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = false;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							case MouseInput::RIGHT_BUTTON: 
+								{
+									if (_game_data.m_mouseButtons.rightButton == Mouse::ButtonStateTracker::RELEASED)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = false;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							default: ;
+							}
+							break;
+						}
+					case InteractionType::BUTTON_HELD:
+						{
+							switch (action.control.button.x.mouse_input)
+							{
+							case MouseInput::LEFT_BUTTON:
+								{
+									if (_game_data.m_mouseButtons.leftButton == Mouse::ButtonStateTracker::HELD)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = true;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							case MouseInput::MIDDLE_BUTTON: 
+								{
+									if (_game_data.m_mouseButtons.middleButton == Mouse::ButtonStateTracker::HELD)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = true;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							case MouseInput::RIGHT_BUTTON: 
+								{
+									if (_game_data.m_mouseButtons.rightButton == Mouse::ButtonStateTracker::HELD)
+									{
+										Event event{};
+										event.type = action.event_type;
+										event.payload.mouse_button_event.x_mouse_pos = _game_data.m_MS.x;
+										event.payload.mouse_button_event.y_mouse_pos = _game_data.m_MS.y;
+										event.payload.mouse_button_event.pressed = true;
+										GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+									}
+									break;
+								}
+							default: ;
+							}
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_RELEASED: 
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_WITH_MOD: 
+						{
+							break;
+						}
+					default: ;
+				}
+				break;
+			}
+		case ControlType::AXIS: 
+			{
+				switch (action.interaction_type)
+				{
+					case InteractionType::BUTTON_PRESSED:
+						{
+							break;
+						}
+					case InteractionType::BUTTON_HELD:
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_RELEASED: 
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_WITH_MOD: 
+						{
+							break;
+						}
+					case InteractionType::SCROLLED: 
+						{
+							break;
+						}
+					case InteractionType::SCROLLED_WITH_MOD: 
+						{
+							break;
+						}
+					default: ;
+				}
+				break;
+			}
+		case ControlType::VECTOR2_2: 
+			{
+				switch (action.interaction_type)
+				{
+					case InteractionType::BUTTON_PRESSED:
+						{
+							break;
+						}
+					case InteractionType::BUTTON_HELD:
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_RELEASED: 
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_WITH_MOD: 
+						{
+							break;
+						}
+					default: ;
+				}
+				break;
+			}
+		case ControlType::VECTOR2_4: 
+			{
+				switch (action.interaction_type)
+				{
+					case InteractionType::BUTTON_PRESSED:
+						{
+							break;
+						}
+					case InteractionType::BUTTON_HELD: 
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_RELEASED: 
+						{
+							break;
+						}
+					case InteractionType::BUTTON_PRESSED_WITH_MOD:
+						{
+							break;
+						}
+					case InteractionType::CURSOR_MOVED: 
+						{
+							break;
+						}
+					default: ;
+				}
+				break;
+			}
+		default: ;
+	}		
 }
 
-void InputManager::checkControllerBinding(const ActionBinding& action)
+void InputManager::checkControllerBinding(const ActionBinding& action, GameData& _game_data)
 {
 	
 }
