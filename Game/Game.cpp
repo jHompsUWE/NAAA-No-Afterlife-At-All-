@@ -129,8 +129,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(economy_manager_, ManagerType::ECONOMY);
     file_manager_ = std::make_shared<FileManager>();
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
-    //input_manager = std::make_shared<InputManager>();
-    //GameManager::get()->addManager(input_manager, ManagerType::INPUT);
+    input_manager = std::make_shared<InputManager>();
+    GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
@@ -210,7 +210,7 @@ void Game::Update(DX::StepTimer const& _timer)
             event.type = EventType::STATE_TRANSITION;
             event.payload.state_transition.current = (int)m_GD->current_state;
             event.payload.state_transition.previous = (int)prev_state;
-            //event_manager->triggerEvent(std::make_shared<Event>(event));
+            event_manager->triggerEvent(std::make_shared<Event>(event));
 
             game_states[m_GD->current_state]->reset();
         }

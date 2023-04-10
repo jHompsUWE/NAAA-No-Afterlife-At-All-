@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "DeviceHandler.h"
 
-/*
+
 bool KeyboardDeviceHandler::checkPressed(const BindingType& _binding_type, const GameData& _data)
 {
     return _data.m_KBS_tracker.IsKeyPressed(_binding_type.key);
@@ -322,4 +322,3 @@ std::pair<float, float> ControllerDeviceHandler::getVector2(const BindingType& _
     default: std::pair<float, float>{0,0};
     }
 }
-*/

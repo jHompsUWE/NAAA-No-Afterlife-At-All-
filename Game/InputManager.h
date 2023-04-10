@@ -1,6 +1,6 @@
 #pragma once
 
-/*
+
 #include <unordered_map>
 #include <memory>
 #include <fstream>
@@ -242,4 +242,3 @@ private:
 	std::shared_ptr<Vector2ControlTypeHandler> vector2_control_handler;
 	std::shared_ptr<Vector2_4ControlTypeHandler> vector2_4_control_handler;
 };
-*/

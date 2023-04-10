@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "InputManager.h"
 
-/*/
+
 #include "Button.h"
 #include "json.hpp"
 
@@ -9,7 +9,7 @@ void InputManager::awake(GameData& _game_data)
 {
 	keyboard_handler = std::make_shared<KeyboardDeviceHandler>();
 	mouse_handler = std::make_shared<MouseDeviceHandler>();
-	controller_handler = std::make_shared<ControlTypeHandler>();
+	controller_handler = std::make_shared<ControllerDeviceHandler>();
 
 	button_control_handler = std::make_shared<ButtonControlTypeHandler>();
 	axis_control_handler  = std::make_shared<AxisControlTypeHandler>();
@@ -350,4 +350,3 @@ void InputManager::resetInputActionMaps()
 {
 	// TODO: Functionality for resetting keybinds to default.
 }
-*/

@@ -448,7 +448,7 @@
     "MOUSE": [
       {
         "Action": "CENTER_AND_ZOOM_IN",
-        "Type": "BUTTON_PRESSED_WITH_MOD",
+        "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
         "ModType": "HELD",
         "ModDevice": "KEYBOARD",

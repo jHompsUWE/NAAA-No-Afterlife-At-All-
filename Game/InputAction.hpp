@@ -1,6 +1,6 @@
 #pragma once
 
-/*
+
 #include "Event.h"
 #include "InputBindingData.h"
 #include "DeviceHandler.h"
@@ -42,4 +42,3 @@ private:
     std::shared_ptr<DeviceHandler> control_device_handler = nullptr;
     std::shared_ptr<DeviceHandler> mod_device_handler = nullptr;
 };
-
