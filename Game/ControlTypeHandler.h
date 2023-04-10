@@ -5,6 +5,7 @@
 #include "DeviceHandler.h"
 #include "InputBindingData.h"
 
+/*
 class ControlTypeHandler
 {
 public:
@@ -69,3 +70,4 @@ static void createVector2Event(const ActionBinding& _action_binding, bool _mod_a
     event.payload.input_vector2_data.y = _y;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 }
+*/

@@ -7,6 +7,14 @@
 #include "Event.h"
 #include "Listener.h"
 
+struct EventPriorityComparator
+{
+	bool operator()(const std::shared_ptr<Event>& a, const std::shared_ptr<Event>& b)
+	{
+		return a->priority > b->priority;
+	}
+};
+
 class EventManager : public Manager
 {
 public:
@@ -43,15 +51,6 @@ public:
 	void lateUpdate(GameData& _game_data) override;
 
 private:
-
-	struct EventPriorityComparator
-	{
-		bool operator()(const std::shared_ptr<Event>& a, const std::shared_ptr<Event> b)
-		{
-			return a->priority > b->priority;
-		}
-	};
-	
 	////////////////////////////////////////////////////////////
 	/// \brief Cycles through all events and, if events are due to be dispatched, will send them to all registered listeners. \n
 	/// A future development would be to filter events to only send to listeners that need them.
@@ -62,7 +61,7 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Priority queue of events to be distributed to listeners.
 	////////////////////////////////////////////////////////////
-	std::priority_queue<std::shared_ptr<Event>, std::shared_ptr<Event>, EventPriorityComparator> events;
+	std::priority_queue<std::shared_ptr<Event>, std::vector<std::shared_ptr<Event>>, EventPriorityComparator> events;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Vector of events to be distributed to listeners after their delay is up.

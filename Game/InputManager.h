@@ -1,5 +1,6 @@
 #pragma once
 
+/*
 #include <unordered_map>
 #include <memory>
 #include <fstream>
@@ -45,12 +46,8 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
     {"ZOOM_OUT", EventType::ZOOM_OUT},
     {"SNAP_TO_HEAVEN", EventType::SNAP_TO_HEAVEN},
     {"SNAP_TO_HELL", EventType::SNAP_TO_HELL},
-    {"SCROLL_UP", EventType::SCROLL_UP},
-    {"SCROLL_RIGHT", EventType::SCROLL_RIGHT},
-    {"SCROLL_LEFT", EventType::SCROLL_LEFT},
-    {"SCROLL_DOWN", EventType::SCROLL_DOWN},
-    {"ROTATE_REALMS_RIGHT", EventType::ROTATE_REALMS_RIGHT},
-    {"ROTATE_REALMS_LEFT", EventType::ROTATE_REALMS_LEFT},
+	{"SCROLL_VIEW", EventType::SCROLL_VIEW},
+	{"ROTATE_REALMS", EventType::ROTATE_REALMS},
     {"GREEN_ZONING", EventType::GREEN_ZONING},
     {"YELLOW_ZONING", EventType::YELLOW_ZONING},
     {"ORANGE_ZONING", EventType::ORANGE_ZONING},
@@ -63,9 +60,8 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
 	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
 	{"CENTER_VIEW", EventType::CENTER_VIEW},
 	{"SELECT", EventType::SELECT},
-///
-	{"SCROLL_VIEW", EventType::SCROLL_VIEW},
-	{"ROTATE_REALMS", EventType::ROTATE_REALMS}
+	{"MOVE_CURSOR", EventType::MOVE_CURSOR}
+
 };
 
 static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =
@@ -73,15 +69,9 @@ static const std::unordered_map<std::string, InteractionType> string_to_interact
 	{"BUTTON_PRESSED", InteractionType::BUTTON_PRESSED},
 	{"BUTTON_RELEASED", InteractionType::BUTTON_RELEASED},
     {"BUTTON_HELD", InteractionType::BUTTON_HELD},
-
 	{"BUTTON_PRESSED_RELEASED", InteractionType::BUTTON_PRESSED_RELEASED},
-	
-	{"BUTTON_PRESSED_WITH_MOD", InteractionType::BUTTON_PRESSED_WITH_MOD},
-	
-	{"SCROLLED", InteractionType::SCROLLED},
-	{"SCROLLED_WITH_MOD", InteractionType::SCROLLED_WITH_MOD},
-
-	{"CURSOR_MOVED", InteractionType::CURSOR_MOVED}
+	{"AXIS", InteractionType::AXIS},
+	{"VECTOR2", InteractionType::VECTOR2}
 };
 
 static const std::unordered_map<std::string, Device> string_to_device =
@@ -97,6 +87,12 @@ static const std::unordered_map<std::string, ControlType> string_to_control_type
 	{"AXIS", ControlType::AXIS},
 	{"VECTOR2_2", ControlType::VECTOR2},
 	{"VECTOR2_4", ControlType::VECTOR2_4},
+};
+
+static const std::unordered_map<std::string, ModifierType> string_to_mod_type =
+{
+	{"NONE", ModifierType::NONE},
+	{"HELD", ModifierType::HELD}
 };
 
 static const std::unordered_map<std::string, MouseInput> string_to_mouse_input =
@@ -124,10 +120,6 @@ static const std::unordered_map<std::string, ControllerInput> string_to_controll
 	{"D_DOWN", ControllerInput::D_DOWN},
 	{"D_RIGHT", ControllerInput::D_RIGHT},
 	{"D_LEFT", ControllerInput::D_LEFT},
-	{"LEFT_X", ControllerInput::LEFT_X},
-	{"LEFT_Y", ControllerInput::LEFT_Y},
-	{"RIGHT_X", ControllerInput::RIGHT_X},
-	{"RIGHT_Y", ControllerInput::RIGHT_Y},
 	{"LEFT_TRIGGER", ControllerInput::LEFT_TRIGGER},
 	{"RIGHT_TRIGGER", ControllerInput::RIGHT_TRIGGER}
 };
@@ -175,21 +167,17 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a keyboard ActionBinding.
 	////////////////////////////////////////////////////////////
-	ActionBinding loadKeyboardAction(JsonElement& element);
+	InputAction loadKeyboardAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a mouse Actionbinding.
 	////////////////////////////////////////////////////////////
-	ActionBinding loadMouseAction(JsonElement& element);
+	InputAction loadMouseAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Load and return a controller ActionBinding.
 	////////////////////////////////////////////////////////////
-	ActionBinding loadControllerAction(JsonElement& element);
-
-	void checkKeyboardBinding(const ActionBinding& action, GameData& _game_data);
-	void checkMouseBinding(const ActionBinding& action, GameData& _game_data);
-	void checkControllerBinding(const ActionBinding& action, GameData& _game_data);
+	InputAction loadControllerAction(JsonElement& element);
 
 	////////////////////////////////////////////////////////////
 	/// \brief Fires off the game events triggered by mouse button events.
@@ -208,17 +196,17 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Action maps for the game state.
 	////////////////////////////////////////////////////////////
-	std::vector<std::vector<ActionBinding>> game_action_maps;
+	std::vector<std::vector<InputAction>> game_action_maps;
 	
     ////////////////////////////////////////////////////////////
 	/// \brief Action maps for the menu state. 
 	////////////////////////////////////////////////////////////
-	std::vector<std::vector<ActionBinding>> menu_action_maps;
+	std::vector<std::vector<InputAction>> menu_action_maps;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Pointer to the current action maps container. 
 	////////////////////////////////////////////////////////////
-	std::vector<std::vector<ActionBinding>>* current_action_maps;
+	std::vector<std::vector<InputAction>>* current_action_maps;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Enum representing currently active device for checking input from.
@@ -243,5 +231,15 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Mouse position of the last update cycle. 
 	////////////////////////////////////////////////////////////
-	tuple<int, int> last_mouse_pos;
+	std::pair<int, int> last_mouse_pos;
+
+	std::shared_ptr<KeyboardDeviceHandler> keyboard_handler;
+	std::shared_ptr<MouseDeviceHandler> mouse_handler;
+	std::shared_ptr<ControllerDeviceHandler> controller_handler;
+
+	std::shared_ptr<ButtonControlTypeHandler> button_control_handler;
+	std::shared_ptr<AxisControlTypeHandler> axis_control_handler;
+	std::shared_ptr<Vector2ControlTypeHandler> vector2_control_handler;
+	std::shared_ptr<Vector2_4ControlTypeHandler> vector2_4_control_handler;
 };
+*/

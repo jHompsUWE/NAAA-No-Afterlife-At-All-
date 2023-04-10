@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "ControlTypeHandler.h"
-
+/*
 void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandler& _mod_device_handler,
                                      ActionBinding& _action_binding, const GameData& _data)
 {
@@ -216,7 +216,4 @@ void Vector2_4ControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHa
         default: ;
     }    
 }
-
-
-
-
+*/

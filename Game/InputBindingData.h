@@ -139,9 +139,6 @@ struct ActionBinding
     EventType event_type;
     InteractionType interaction_type;
     ModifierType mod_type = ModifierType::NONE;
-
-    Device device; // possibly kill.
-    ControlType control_type; // possibly kill.
     
     ButtonControl mod;
     Control control;

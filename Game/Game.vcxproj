@@ -282,7 +282,6 @@
     <ClInclude Include="InputAction.hpp" />
     <ClInclude Include="InputBindingData.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="InteractionTypeHandler.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -343,7 +342,6 @@
     <ClCompile Include="GridLocation.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="InteractionTypeHandler.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />

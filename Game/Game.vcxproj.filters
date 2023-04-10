@@ -324,9 +324,6 @@
     <ClInclude Include="InputBindingData.h">
       <Filter>Input\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InteractionTypeHandler.h">
-      <Filter>Input\Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -465,9 +462,6 @@
       <Filter>Input\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ControlTypeHandler.cpp">
-      <Filter>Input\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InteractionTypeHandler.cpp">
       <Filter>Input\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

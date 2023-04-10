@@ -54,8 +54,7 @@ enum class EventType
 
     // UI Remote specific events
     SIPHONS_BANKS,
-    ROTATE_REALMS_UP,
-    ROTATE_REALMS_DOWN,
+
     FLATTEN_HELL,
     FLATTEN_HEAVEN,
     FLATTEN_KARMA,
@@ -63,7 +62,18 @@ enum class EventType
 
     // GameEvents
     STATE_TRANSITION,
-    SOUL_UPDATE
+    SOUL_UPDATE,
+
+
+	// to delete
+	SCROLL_LEFT,
+	SCROLL_UP,
+	SCROLL_DOWN,
+	SCROLL_RIGHT,
+	ROTATE_REALMS_UP,
+    ROTATE_REALMS_DOWN,
+	ROTATE_REALMS_RIGHT,
+	ROTATE_REALMS_LEFT
 };
 
 class Event

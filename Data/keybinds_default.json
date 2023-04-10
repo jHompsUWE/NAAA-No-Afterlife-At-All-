@@ -10,6 +10,8 @@
         "Action": "PAUSE",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice" :  "",
         "Modifier": "",
         "Key": "0x70"
       },
@@ -18,6 +20,8 @@
         "Action": "LOAD_GAME",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x71"
       },
@@ -26,6 +30,8 @@
         "Action": "LOAD_SCENARIO",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x72"
       },
@@ -34,6 +40,8 @@
         "Action": "SAVE_GAME",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x74"
       },
@@ -42,6 +50,8 @@
         "Action": "QUIT",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x77"
       },
@@ -50,6 +60,8 @@
         "Action": "AUDIO_MENU",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x78"
       },
@@ -58,6 +70,8 @@
         "Action": "NEW_GAME",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x79"
       },
@@ -66,6 +80,8 @@
         "Action": "CLOSE",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x1b"
       },
@@ -74,6 +90,8 @@
         "Action": "PORTS",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x42"
       },
@@ -82,6 +100,8 @@
         "Action": "TOPIAS",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x43"
       },
@@ -90,6 +110,8 @@
         "Action": "GRAPHVIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x44"
       },
@@ -98,6 +120,8 @@
         "Action": "ACTIVATE_MISC_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x45"
       },
@@ -106,6 +130,8 @@
         "Action": "TOGGLE_MAPVIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x46"
       },
@@ -114,6 +140,8 @@
         "Action": "GATES",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x47"
       },
@@ -122,6 +150,8 @@
         "Action": "TOGGLE_HELPERS",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x48"
       },
@@ -130,6 +160,8 @@
         "Action": "SOUL_VIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x49"
       },
@@ -138,6 +170,8 @@
         "Action": "ACTIVATES_KARMA_STATION_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4b"
       },
@@ -146,6 +180,8 @@
         "Action": "ACTIVATES_LIMBO_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4c"
       },
@@ -154,6 +190,8 @@
         "Action": "MICROVIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4d"
       },
@@ -162,6 +200,8 @@
         "Action": "TRAINING_CENTRE",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4e"
       },
@@ -170,6 +210,8 @@
         "Action": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4f"
       },
@@ -178,6 +220,8 @@
         "Action": "TOGGLE_PLANET_VIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x50"
       },
@@ -186,6 +230,8 @@
         "Action": "ROADS",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x52"
       },
@@ -194,6 +240,8 @@
         "Action": "SPECIAL_BUILDINGS",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x53"
       },
@@ -202,6 +250,8 @@
         "Action": "KARMA_TRACK",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x54"
       },
@@ -210,6 +260,8 @@
         "Action": "TOGGLE_MACROMANAGER",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x55"
       },
@@ -218,6 +270,8 @@
         "Action": "NUKE_BUTTON",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x58"
       },
@@ -226,6 +280,8 @@
         "Action": "TOGGLE_REMOTE_CONTROL",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x5a"
       },
@@ -234,6 +290,8 @@
         "Action": "TOGGLE_PREVIOUS_TEMPO_AND_DEVINE_INTERVENTION",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x20"
       },
@@ -242,6 +300,8 @@
         "Action": "ZOOM_IN",
         "Type": "BUTTON_HELD",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0xbb"
       },
@@ -250,6 +310,8 @@
         "Action": "ZOOM_OUT",
         "Type": "BUTTON_HELD",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0xbd"
       },
@@ -258,6 +320,8 @@
         "Action": "SNAP_TO_HEAVEN",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x21"
       },
@@ -266,6 +330,8 @@
         "Action": "SNAP_TO_HELL",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x22"
       },
@@ -274,6 +340,8 @@
         "Action": "SCROLL_VIEW",
         "Type": "BUTTON_HELD",
         "Control": "VECTOR2_4",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": {
           "X": "0x27",
@@ -287,6 +355,8 @@
         "Action": "ROTATE_REALMS",
         "Type": "BUTTON_PRESSED",
         "Control": "AXIS",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": {
           "X": "0xdd",
@@ -298,6 +368,8 @@
         "Action": "GREEN_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x31"
       },
@@ -306,6 +378,8 @@
         "Action": "YELLOW_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x32"
       },
@@ -314,6 +388,8 @@
         "Action": "ORANGE_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x33"
       },
@@ -322,6 +398,8 @@
         "Action": "BROWN_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x34"
       },
@@ -330,6 +408,8 @@
         "Action": "PURPLE_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x35"
       },
@@ -338,6 +418,8 @@
         "Action": "RED_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x36"
       },
@@ -346,6 +428,8 @@
         "Action": "BLUE_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x37"
       },
@@ -354,6 +438,8 @@
         "Action": "GENERIC_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x30"
       }
@@ -364,14 +450,18 @@
         "Action": "CENTER_AND_ZOOM_IN",
         "Type": "BUTTON_PRESSED_WITH_MOD",
         "Control": "BUTTON",
+        "ModType": "HELD",
+        "ModDevice": "KEYBOARD",
         "Modifier": "0xa0",
         "Key": "LEFT_BUTTON"
       },
 
       {
         "Action": "CENTER_AND_ZOOM_OUT",
-        "Type": "BUTTON_PRESSED_WITH_MOD",
+        "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "HELD",
+        "ModDevice": "KEYBOARD",
         "Modifier": "0xa0",
         "Key": "RIGHT_BUTTON"
       },
@@ -380,6 +470,8 @@
         "Action": "CENTER_VIEW",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "RIGHT_BUTTON"
       },
@@ -388,6 +480,8 @@
         "Action": "SELECT",
         "Type": "BUTTON_PRESSED_RELEASED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "LEFT_BUTTON"
       }
@@ -398,6 +492,8 @@
         "Action": "SELECT",
         "Type": "BUTTON_PRESSED_RELEASED",
         "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "A"
       }
