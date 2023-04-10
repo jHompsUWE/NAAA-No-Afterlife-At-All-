@@ -36,23 +36,8 @@ enum class EventType
     ZOOM_OUT,
     SNAP_TO_HEAVEN,
     SNAP_TO_HELL,
-
-	
 	SCROLL_VIEW,
 	ROTATE_REALMS,
-
-
-
-	
-	//
-    SCROLL_UP,
-    SCROLL_RIGHT,
-    SCROLL_LEFT,
-    SCROLL_DOWN,
-    //
-	
-    ROTATE_REALMS_RIGHT,
-    ROTATE_REALMS_LEFT,
     GREEN_ZONING,
     YELLOW_ZONING,
     ORANGE_ZONING,
@@ -65,6 +50,7 @@ enum class EventType
 	CENTER_AND_ZOOM_OUT,
 	CENTER_VIEW,
 	SELECT,
+	MOVE_CURSOR,
 
     // UI Remote specific events
     SIPHONS_BANKS,
@@ -77,19 +63,7 @@ enum class EventType
 
     // GameEvents
     STATE_TRANSITION,
-    SOUL_UPDATE,
-
-	// Mouse Events
-	MOUSE_CLICK,
-	MOUSE_RELEASE,
-	
-};
-
-enum class MouseButton
-{
-	left,
-	middle,
-	right
+    SOUL_UPDATE
 };
 
 class Event
@@ -109,37 +83,20 @@ public:
 	struct InputButton
 	{
 		bool down = NULL;
+		bool mod_active = NULL;
 	};
 
 	struct InputAxis
 	{
 		float value = NULL;
+		bool mod_active = NULL;
 	};
 
 	struct InputVector2
 	{
 		float x = NULL;
 		float y = NULL;
-	};
-
-	struct MouseButtonEvent
-	{
-		int x_mouse_pos = NULL;
-		int y_mouse_pos = NULL;
-		bool pressed = NULL;
-	};
-
-	struct MouseScrollEvent
-	{
-		int delta_scroll = NULL;
-		int x_mouse_pos = NULL;
-		int y_mouse_pos = NULL;
-	};
-
-	struct MouseMoveEvent
-	{
-		int x_mouse_pos = NULL;
-		int y_mouse_pos = NULL;
+		bool mod_active = NULL;
 	};
 
 	union EventPayload
@@ -147,13 +104,9 @@ public:
         StateTransition state_transition;
         SoulUpdate soul_update;
 
-		InputButton key_event_data;
-		InputAxis input_axis;
-		InputVector2 input_vector2;
-		
-		MouseButtonEvent mouse_button_event;
-		MouseScrollEvent mouse_scroll_event;
-		MouseMoveEvent mouse_move_event;
+		InputButton input_button_data;
+		InputAxis input_axis_data;
+		InputVector2 input_vector2_data;
 	};
 
 	////////////////////////////////////////////////////////////
@@ -170,4 +123,9 @@ public:
 	/// \brief The time between the update cycle in which the event is trigger and the update cycle in which it is executed in seconds, defaulted to 0 for an immediate event. 
 	////////////////////////////////////////////////////////////
 	float delay = 0;
+
+	////////////////////////////////////////////////////////////
+	/// \brief The priority of the event, events will be dispatched in order of priority \n 1 = highest priority.
+	////////////////////////////////////////////////////////////
+	int priority = 3;
 };

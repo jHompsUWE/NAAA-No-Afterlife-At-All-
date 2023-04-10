@@ -76,6 +76,24 @@
     <Filter Include="Input\Source Files">
       <UniqueIdentifier>{8c84af62-e95d-4cca-adae-38380c19f59a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{205300ad-4d51-421f-bd2c-ed03dbc36d2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager\Header Files">
+      <UniqueIdentifier>{99097987-b626-47d4-8426-af60d84710db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager\Source Files">
+      <UniqueIdentifier>{01964962-46b5-4088-ba50-933378eb359d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{0b602a93-80a5-4b6d-8649-15ce5cfca811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Header Files">
+      <UniqueIdentifier>{8e38be22-83a3-41c6-9391-fd0ee1389356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Source Files">
+      <UniqueIdentifier>{8226912b-a63a-4f54-adb0-625c36c21b04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -180,15 +198,6 @@
     <ClInclude Include="GPGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameStateBase.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
@@ -255,12 +264,6 @@
     <ClInclude Include="BuildingSpecies.h">
       <Filter>Base\Buildings\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listener.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SoulManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
@@ -290,6 +293,39 @@
     </ClInclude>
     <ClInclude Include="SelectionHandler.h">
       <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIRemote.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>EventManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>EventManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>EventManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputAction.hpp">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>GameManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>GameManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceHandler.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlTypeHandler.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBindingData.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractionTypeHandler.h">
+      <Filter>Input\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -362,12 +398,6 @@
     <ClCompile Include="GPGO.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameStateBase.cpp">
       <Filter>GameStates\Source Files</Filter>
     </ClCompile>
@@ -421,6 +451,24 @@
     </ClCompile>
     <ClCompile Include="SelectionHandler.cpp">
       <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRemote.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>EventManager\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>GameManager\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceHandler.cpp">
+      <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlTypeHandler.cpp">
+      <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InteractionTypeHandler.cpp">
+      <Filter>Input\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

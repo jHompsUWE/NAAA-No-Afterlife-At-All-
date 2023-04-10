@@ -250,6 +250,8 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
+    <ClInclude Include="ControlTypeHandler.h" />
+    <ClInclude Include="DeviceHandler.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
@@ -277,7 +279,10 @@
     <ClInclude Include="GridLocation.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageGO2D.h" />
+    <ClInclude Include="InputAction.hpp" />
+    <ClInclude Include="InputBindingData.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="InteractionTypeHandler.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Loop.h" />
@@ -318,6 +323,8 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
+    <ClCompile Include="ControlTypeHandler.cpp" />
+    <ClCompile Include="DeviceHandler.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileManager.cpp" />
@@ -336,6 +343,7 @@
     <ClCompile Include="GridLocation.cpp" />
     <ClCompile Include="ImageGO2D.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="InteractionTypeHandler.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />

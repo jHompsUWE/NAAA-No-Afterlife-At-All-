@@ -8,127 +8,7 @@
 #include "Manager.h"
 #include "json.hpp"
 #include "GameManager.h"
-
-enum class InteractionType
-{
-	BUTTON_PRESSED,
-	BUTTON_RELEASED,
-	BUTTON_HELD,
-
-	BUTTON_PRESSED_RELEASED,
-
-	BUTTON_PRESSED_WITH_MOD,
-	
-	SCROLLED,
-	SCROLLED_WITH_MOD,
-
-	CURSOR_MOVED
-};
-
-enum class ControlType
-{
-	BUTTON,
-	AXIS,
-	VECTOR2_2,
-	VECTOR2_4
-};
-
-enum class Device
-{
-	KEYBOARD,
-	MOUSE,
-	CONTROLLER
-};
-
-enum class MouseInput
-{
-	LEFT_BUTTON,
-	MIDDLE_BUTTON,
-	RIGHT_BUTTON,
-	MOVE,
-	SCROLL
-};
-
-enum class ControllerInput
-{
-	A,
-	B,
-	X,
-	Y,
-
-	LEFT_STICK,
-	RIGHT_STICK,
-	LEFT_SHOULDER,
-	RIGHT_SHOULDER,
-
-	BACK,
-	START,
-
-	D_UP,
-	D_DOWN,
-	D_RIGHT,
-	D_LEFT,
-
-	LEFT_X,
-	LEFT_Y,
-	RIGHT_X,
-	RIGHT_Y,
-
-	LEFT_TRIGGER,
-	RIGHT_TRIGGER
-};
-
-union BindingType
-{
-	Keyboard::Keys key;
-	MouseInput mouse_input;
-	ControllerInput controller_input;	
-};
-
-struct Vector2_4Control
-{
-	BindingType x;
-	BindingType neg_x;
-	BindingType y;
-	BindingType neg_y;
-};
-
-struct Vector2_2Control
-{
-	BindingType x;
-	BindingType y;
-};
-
-struct AxisControl
-{
-	BindingType x;
-	BindingType neg_x;
-};
-
-struct ButtonControl
-{
-	BindingType x;
-};
-
-union Control
-{
-	Vector2_4Control vector2_4;
-	Vector2_2Control vector2_2;
-	AxisControl axis;
-	ButtonControl button;
-};
-
-struct ActionBinding
-{
-	EventType event_type;
-	InteractionType interaction_type;
-
-	Device device;
-	ControlType control_type;
-
-	ButtonControl mod;
-	Control control;
-};
+#include "InputAction.hpp"
 
 static const std::unordered_map<std::string, EventType> string_to_event_type =
 {
@@ -215,7 +95,7 @@ static const std::unordered_map<std::string, ControlType> string_to_control_type
 {
 	{"BUTTON", ControlType::BUTTON},
 	{"AXIS", ControlType::AXIS},
-	{"VECTOR2_2", ControlType::VECTOR2_2},
+	{"VECTOR2_2", ControlType::VECTOR2},
 	{"VECTOR2_4", ControlType::VECTOR2_4},
 };
 

@@ -24,6 +24,9 @@ struct GameData
 	Mouse::State m_MS;
 	Keyboard::KeyboardStateTracker m_KBS_tracker;
 	Mouse::ButtonStateTracker m_mouseButtons;
+	GamePad::Buttons m_GP_buttons;
+	GamePad::State m_GP_state;
+	
 	int Year = 0;
 	
 	bool mouse_over_UI = false;

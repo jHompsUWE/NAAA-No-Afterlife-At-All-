@@ -53,7 +53,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							{
 								Event event{};
 								event.type = action.event_type;
-								event.payload.key_event_data.down = true;
+								event.payload.input_button_data.down = true;
 								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 							}
 							break;
@@ -64,7 +64,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							{
 								Event event{};
 								event.type = action.event_type;
-								event.payload.key_event_data.down = false;
+								event.payload.input_button_data.down = false;
 								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 							}
 							break;
@@ -75,7 +75,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							{
 								Event event{};
 								event.type = action.event_type;
-								event.payload.key_event_data.down = true;
+								event.payload.input_button_data.down = true;
 								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 							}
 							break;
@@ -87,7 +87,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							{
 								Event event{};
 								event.type = action.event_type;
-								event.payload.key_event_data.down = _game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key) ? true : false;
+								event.payload.input_button_data.down = _game_data.m_KBS_tracker.IsKeyReleased(action.control.button.x.key) ? true : false;
 								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 							}
 							break;
@@ -99,7 +99,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							{
 								Event event{};
 								event.type = action.event_type;
-								event.payload.key_event_data.down = true;
+								event.payload.input_button_data.down = true;
 								GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 							}
 							break;
@@ -120,7 +120,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 						{
 							Event event{};
 							event.type = action.event_type;
-							event.payload.input_axis.value = _game_data.m_KBS_tracker.IsKeyPressed(action.control.axis.x.key) ? 1 : -1;
+							event.payload.input_axis_data.value = _game_data.m_KBS_tracker.IsKeyPressed(action.control.axis.x.key) ? 1 : -1;
 							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 						}
 						break;
@@ -132,7 +132,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 						{
 							Event event{};
 							event.type = action.event_type;
-							event.payload.input_axis.value = _game_data.m_KBS_tracker.IsKeyReleased(action.control.axis.x.key) ? 1 : -1;
+							event.payload.input_axis_data.value = _game_data.m_KBS_tracker.IsKeyReleased(action.control.axis.x.key) ? 1 : -1;
 							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 						}
 						break;
@@ -144,7 +144,7 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 						{
 							Event event{};
 							event.type = action.event_type;
-							event.payload.input_axis.value = _game_data.m_KBS.IsKeyDown(action.control.axis.x.key) ? 1 : -1;
+							event.payload.input_axis_data.value = _game_data.m_KBS.IsKeyDown(action.control.axis.x.key) ? 1 : -1;
 							GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 						}
 						break;
@@ -167,11 +167,11 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							Event event{};
 							event.type = action.event_type;
 							
-							event.payload.input_vector2.x =
+							event.payload.input_vector2_data.x =
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
 
-							event.payload.input_vector2.y =
+							event.payload.input_vector2_data.y =
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
 							
@@ -189,11 +189,11 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							Event event{};
 							event.type = action.event_type;
 							
-							event.payload.input_vector2.x =
+							event.payload.input_vector2_data.x =
 								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.x.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
 
-							event.payload.input_vector2.y =
+							event.payload.input_vector2_data.y =
 								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.y.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyReleased(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
 							
@@ -211,11 +211,11 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							Event event{};
 							event.type = action.event_type;
 							
-							event.payload.input_vector2.x =
+							event.payload.input_vector2_data.x =
 								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.x.key) ? 1.0f :
 								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
 
-							event.payload.input_vector2.y =
+							event.payload.input_vector2_data.y =
 								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.y.key) ? 1.0f :
 								_game_data.m_KBS.IsKeyDown(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
 							
@@ -234,11 +234,11 @@ void InputManager::checkKeyboardBinding(const ActionBinding& action, GameData& _
 							Event event{};
 							event.type = action.event_type;
 							
-							event.payload.input_vector2.x =
+							event.payload.input_vector2_data.x =
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.x.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_x.key) ? -1.0f : 0;
 
-							event.payload.input_vector2.y =
+							event.payload.input_vector2_data.y =
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.y.key) ? 1.0f :
 								_game_data.m_KBS_tracker.IsKeyPressed(action.control.vector2_4.neg_y.key) ? -1.0f : 0;
 							
@@ -447,7 +447,7 @@ void InputManager::checkMouseBinding(const ActionBinding& action, GameData& _gam
 				}
 				break;
 			}
-		case ControlType::VECTOR2_2: 
+		case ControlType::VECTOR2: 
 			{
 				switch (action.interaction_type)
 				{
@@ -674,10 +674,10 @@ ActionBinding InputManager::loadMouseAction(JsonElement& element)
 				control.axis.neg_x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
 				break;
 			}
-	case ControlType::VECTOR2_2:
+	case ControlType::VECTOR2:
 			{
-				control.vector2_2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
-				control.vector2_2.y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+				control.vector2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.vector2.y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
 				break;
 			}
 		case ControlType::VECTOR2_4:
@@ -722,10 +722,10 @@ ActionBinding InputManager::loadControllerAction(JsonElement& element)
 			control.axis.neg_x.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
 			break;
 		}
-	case ControlType::VECTOR2_2:
+	case ControlType::VECTOR2:
 		{
-			control.vector2_2.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
-			control.vector2_2.y.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			control.vector2.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.vector2.y.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
 			break;
 		}
 	case ControlType::VECTOR2_4:

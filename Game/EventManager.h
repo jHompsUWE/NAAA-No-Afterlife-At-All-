@@ -1,5 +1,6 @@
 #pragma once
 
+#include <queue>
 #include <vector>
 
 #include "Manager.h"
@@ -42,6 +43,15 @@ public:
 	void lateUpdate(GameData& _game_data) override;
 
 private:
+
+	struct EventPriorityComparator
+	{
+		bool operator()(const std::shared_ptr<Event>& a, const std::shared_ptr<Event> b)
+		{
+			return a->priority > b->priority;
+		}
+	};
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Cycles through all events and, if events are due to be dispatched, will send them to all registered listeners. \n
 	/// A future development would be to filter events to only send to listeners that need them.
@@ -50,10 +60,15 @@ private:
 	void dispatchEvents(GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
-	/// \brief Vector of events to be distributed to listeners.
+	/// \brief Priority queue of events to be distributed to listeners.
 	////////////////////////////////////////////////////////////
-	std::vector<std::shared_ptr<Event>> events;
+	std::priority_queue<std::shared_ptr<Event>, std::shared_ptr<Event>, EventPriorityComparator> events;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Vector of events to be distributed to listeners after their delay is up.
+	////////////////////////////////////////////////////////////
+	std::vector<std::shared_ptr<Event>> delayed_events;
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Vector of listeners to distribute events to. 
 	////////////////////////////////////////////////////////////
