@@ -95,72 +95,229 @@ float MouseDeviceHandler::getAxis(const BindingType& _binding_type, const GameDa
 
 bool ControllerDeviceHandler::checkPressed(const BindingType& _binding_type, const GameData& _data)
 {
-    switch (_binding_type.controller_input)
+switch (_binding_type.controller_input)
     {
-        case ControllerInput::A:
-            {
-                return _data.m_GP_state.IsAPressed();
-            }
-        case ControllerInput::B: 
-            {
-                return _data.m_GP_state.IsBackPressed();
-            }
-        case ControllerInput::X: 
-            {
-                return _data.m_GP_state.IsXPressed();
-            }
-        case ControllerInput::Y: 
-            {
-                return _data.m_GP_state.IsYPressed();
-            }
-        case ControllerInput::LEFT_STICK: 
-            {
-                return _data.m_GP_state.IsLeftStickPressed();
-            }
-        case ControllerInput::RIGHT_STICK: 
-            {
-                return _data.m_GP_state.IsRightStickPressed();
-            }
-        case ControllerInput::BACK: 
-            {
-                return _data.m_GP_state.IsBackPressed();
-            }
-        case ControllerInput::START: 
-            {
-                return _data.m_GP_state.IsStartPressed();
-            }
-        case ControllerInput::D_UP: 
-            {
-                return _data.m_GP_state.IsDPadUpPressed();
-            }
-        case ControllerInput::D_DOWN: 
-            {
-                return _data.m_GP_state.IsDPadDownPressed();
-            }
-        case ControllerInput::D_RIGHT: 
-            {
-                return _data.m_GP_state.IsDPadRightPressed();
-            }
-        case ControllerInput::D_LEFT: 
-            {
-                return _data.m_GP_state.IsDPadLeftPressed();
-            }
+    case ControllerInput::A:
+        {
+            return _data.m_GP_buttons.a == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::B: 
+        {
+            return _data.m_GP_buttons.b == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::X: 
+        {
+            return _data.m_GP_buttons.x == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::Y: 
+        {
+            return _data.m_GP_buttons.y == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::LEFT_STICK: 
+        {
+            return _data.m_GP_buttons.leftStick == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::RIGHT_STICK: 
+        {
+            return _data.m_GP_buttons.rightStick == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::LEFT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.leftShoulder == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::RIGHT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.rightShoulder == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::BACK: 
+        {
+            return _data.m_GP_buttons.back == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::START: 
+        {
+            return _data.m_GP_buttons.start == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::D_UP: 
+        {
+            return _data.m_GP_buttons.dpadUp == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::D_DOWN: 
+        {
+            return _data.m_GP_buttons.dpadDown == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::D_RIGHT: 
+        {
+            return _data.m_GP_buttons.dpadRight == GamePad::ButtonStateTracker::PRESSED;
+        }
+    case ControllerInput::D_LEFT: 
+        {
+            return _data.m_GP_buttons.dpadLeft == GamePad::ButtonStateTracker::PRESSED;
+        }
         
-        default: ;
+    default: return false;
     }
 }
 
 bool ControllerDeviceHandler::checkReleased(const BindingType& _binding_type, const GameData& _data)
 {
-    
+    switch (_binding_type.controller_input)
+    {
+    case ControllerInput::A:
+        {
+            return _data.m_GP_buttons.a == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::B: 
+        {
+            return _data.m_GP_buttons.b == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::X: 
+        {
+            return _data.m_GP_buttons.x == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::Y: 
+        {
+            return _data.m_GP_buttons.y == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::LEFT_STICK: 
+        {
+            return _data.m_GP_buttons.leftStick == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::RIGHT_STICK: 
+        {
+            return _data.m_GP_buttons.rightStick == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::LEFT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.leftShoulder == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::RIGHT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.rightShoulder == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::BACK: 
+        {
+            return _data.m_GP_buttons.back == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::START: 
+        {
+            return _data.m_GP_buttons.start == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::D_UP: 
+        {
+            return _data.m_GP_buttons.dpadUp == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::D_DOWN: 
+        {
+            return _data.m_GP_buttons.dpadDown == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::D_RIGHT: 
+        {
+            return _data.m_GP_buttons.dpadRight == GamePad::ButtonStateTracker::RELEASED;
+        }
+    case ControllerInput::D_LEFT: 
+        {
+            return _data.m_GP_buttons.dpadLeft == GamePad::ButtonStateTracker::RELEASED;
+        }
+        
+    default: return false;
+    }
 }
 
 bool ControllerDeviceHandler::checkHeld(const BindingType& _binding_type, const GameData& _data)
 {
-    
+        switch (_binding_type.controller_input)
+    {
+    case ControllerInput::A:
+        {
+            return _data.m_GP_buttons.a == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::B: 
+        {
+            return _data.m_GP_buttons.b == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::X: 
+        {
+            return _data.m_GP_buttons.x == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::Y: 
+        {
+            return _data.m_GP_buttons.y == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::LEFT_STICK: 
+        {
+            return _data.m_GP_buttons.leftStick == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::RIGHT_STICK: 
+        {
+            return _data.m_GP_buttons.rightStick == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::LEFT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.leftShoulder == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::RIGHT_SHOULDER: 
+        {
+            return _data.m_GP_buttons.rightShoulder == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::BACK: 
+        {
+            return _data.m_GP_buttons.back == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::START: 
+        {
+            return _data.m_GP_buttons.start == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::D_UP: 
+        {
+            return _data.m_GP_buttons.dpadUp == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::D_DOWN: 
+        {
+            return _data.m_GP_buttons.dpadDown == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::D_RIGHT: 
+        {
+            return _data.m_GP_buttons.dpadRight == GamePad::ButtonStateTracker::HELD;
+        }
+    case ControllerInput::D_LEFT: 
+        {
+            return _data.m_GP_buttons.dpadLeft == GamePad::ButtonStateTracker::HELD;
+        }
+        
+    default: return false;
+    }
+}
+
+float ControllerDeviceHandler::getAxis(const BindingType& _binding_type, const GameData& _data)
+{
+    switch (_binding_type.controller_input)
+    {
+        case ControllerInput::LEFT_TRIGGER:
+            {
+                return _data.m_GP_state.triggers.left;
+            }
+        case ControllerInput::RIGHT_TRIGGER: 
+            {
+                return _data.m_GP_state.triggers.right;
+            }
+        
+        default: return 0.0f;
+    }
 }
 
 std::pair<float, float> ControllerDeviceHandler::getVector2(const BindingType& _binding_type, const GameData& _data)
 {
-    
+    switch (_binding_type.controller_input)
+    {
+        case ControllerInput::LEFT_STICK_VECT:
+            {
+                return std::pair<float, float>{_data.m_GP_state.thumbSticks.leftX, _data.m_GP_state.thumbSticks.leftY};
+            }
+        case ControllerInput::RIGHT_STICK_VECT: 
+            {
+                return std::pair<float, float>{_data.m_GP_state.thumbSticks.rightX, _data.m_GP_state.thumbSticks.rightY};
+            }
+
+    default: std::pair<float, float>{0,0};
+    }
 }

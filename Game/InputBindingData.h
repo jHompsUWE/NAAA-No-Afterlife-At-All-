@@ -62,10 +62,8 @@ enum class ControllerInput
     D_RIGHT,
     D_LEFT,
 
-    LEFT_X,
-    LEFT_Y,
-    RIGHT_X,
-    RIGHT_Y,
+    LEFT_STICK_VECT,
+    RIGHT_STICK_VECT,
 
     LEFT_TRIGGER,
     RIGHT_TRIGGER
