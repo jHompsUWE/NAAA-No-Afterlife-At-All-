@@ -101,11 +101,16 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, 
 		m_grid_data.m_building_data = new GenericBuilding(building(m_grid_data.m_plane, "idk", 1));
 	}
 
-	if (m_grid_data.m_building_data->m_type == "GATES")
+	if (m_grid_data.m_building_data)
 	{
-		Vector2 pos = { float(std::get<0>(m_grid_data.m_position)), float(std::get<1>(m_grid_data.m_position)) };
-		soul_manager->AddSoul(pos, m_grid_data.m_plane);
+		if (m_grid_data.m_building_data->m_type == "GATES")
+		{
+			Vector2 pos = { float(std::get<0>(m_grid_data.m_position)), float(std::get<1>(m_grid_data.m_position)) };
+			soul_manager->AddSoul(pos, m_grid_data.m_plane);
+		}
 	}
+
+	
 
 	
 
