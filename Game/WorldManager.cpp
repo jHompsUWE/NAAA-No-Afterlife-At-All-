@@ -19,8 +19,11 @@ WorldManager::~WorldManager()
 
 }
 
-void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory)
+void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory,
+	SoulManager* soul_manager)
 {
+	m_soul_manager = soul_manager;
+
 	for (auto& plane : m_world)
 	{
 		for (int i = 0; i < m_grid_y; i++)
@@ -159,7 +162,7 @@ void WorldManager::update(GameData& _game_data)
 		{
 			for (auto& tile : plane.second)
 			{
-				tile->update(m_d3dContext);
+				tile->update(m_d3dContext, m_soul_manager);
 			}
 		}
 	}

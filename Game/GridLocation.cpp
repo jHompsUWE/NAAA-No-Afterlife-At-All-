@@ -55,7 +55,7 @@ void GridLocation::nuke()
 	m_grid_data.nuke();
 }
 
-void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
+void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, SoulManager* soul_manager)
 {
 	switch (m_grid_data.m_zone_type)
 	{
@@ -98,6 +98,18 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 	if (m_grid_data.m_efficiency > 3)
 	{
 		createBuilding(_device);
-		m_grid_data = building(m_grid_data.m_plane, "idk", 1);
+		m_grid_data.m_building_data = new GenericBuilding(building(m_grid_data.m_plane, "idk", 1));
 	}
+
+	if (m_grid_data.m_building_data->m_type == "GATES")
+	{
+		Vector2 pos = { float(std::get<0>(m_grid_data.m_position)), float(std::get<1>(m_grid_data.m_position)) };
+		soul_manager->AddSoul(pos, m_grid_data.m_plane);
+	}
+
+	
+
+
+
+	//m_grid_data.m_building_data->update(soul_manager);
 }

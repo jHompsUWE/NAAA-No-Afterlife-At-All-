@@ -134,13 +134,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    world_manager = std::make_shared<WorldManager>();
-    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-    world_manager->init(m_d3dContext, m_fxFactory);
-
     soul_manager = std::make_shared<SoulManager>();
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
     
+    world_manager = std::make_shared<WorldManager>();
+    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
+    world_manager->init(m_d3dContext, m_fxFactory, &*soul_manager);
     
     // GameState initialisation
     for (auto& state : game_states)
