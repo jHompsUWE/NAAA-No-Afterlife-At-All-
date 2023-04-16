@@ -107,20 +107,6 @@ void Button::SetToggle(GameObject2D* toggle)
 	toggleWindow = toggle;
 }
 
-void Button::SetToggle(BuildingWindow* toggle)
-{
-	toggleBuildWindow = toggle;
-}
-
-/// <summary>
-/// Set if the button is specfically for a tier building selection window
-/// </summary>
-/// <param name="openBuildWindow"></param>
-void Button::SetOpenBuildWindow(bool openBuildWindow)
-{
-	openBuildingWindow = openBuildWindow;
-}
-
 /// <summary>
 /// Checks to see if button is pressed
 /// </summary>
@@ -151,22 +137,11 @@ void Button::Tick(GameData* _GD)
 /// </summary>
 void Button::toggle()
 {
-	if (!openBuildingWindow)
+	if (toggleWindow != nullptr)
 	{
-		if (toggleWindow != nullptr)
-		{
-			toggleWindow->renderable = !toggleWindow->renderable;
-		}
-	}
-	else
-	{
-		if (toggleBuildWindow != nullptr && !toggleBuildWindow->renderable)
-		{
-			toggleBuildWindow->renderable = true;
-		}
+		toggleWindow->renderable = !toggleWindow->renderable;
 	}
 }
-
 
 
 void Button::Draw(DrawData2D* _DD)

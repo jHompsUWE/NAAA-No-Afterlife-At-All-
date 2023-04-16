@@ -51,6 +51,12 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
 			return true;
 		}
+	
+	case ManagerType::UI:
+		{
+			ui_manager = reinterpret_cast<UIManager*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }
@@ -69,6 +75,11 @@ bool GameManager::removeManager(std::shared_ptr<Manager> _manager, ManagerType _
 	case ManagerType::FILE:
 		{
 			file_manager = nullptr;
+			return true;
+		}
+	case ManagerType::UI:
+		{
+			ui_manager = nullptr;
 			return true;
 		}
 	}

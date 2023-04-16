@@ -25,7 +25,7 @@
 #include "TileGO.h"
 #include "WorldManager.h"
 #include "InputManager.h"
-
+#include "UIManager.h"
 #include "SelectionHandler.h"
 
 using std::list;
@@ -143,6 +143,7 @@ private:
     std::shared_ptr<InputManager> input_manager;
     std::shared_ptr<WorldManager> world_manager;
     std::shared_ptr<SoulManager> soul_manager;
+    std::shared_ptr<UIManager> ui_manager;
 
     std::shared_ptr<SelectionHandler> m_selection_handler;
 

@@ -3,20 +3,19 @@
 #include "GameObject2D.h"
 #include "UIRemote.h"
 #include "Window.h"
-#include "BuildingWindow.h"
 #include "Button.h"
-#include "BuildingButton.h"
+#include "Manager.h"
 
 
-class UIManager
+class UIManager : public Manager
 {
 public:
-	UIManager(ID3D11Device* _GD);
+	UIManager(ID3D11Device* _ID, GameData* _GD);
 	~UIManager();
 
-	void awake() ;
-	void update(GameData& _game_data);
-	void lateUpdate(GameData& _game_data) ;
+	virtual void awake() override;
+	virtual void update(GameData& _game_data) override;
+	//virtual void lateUpdate(GameData& _game_data) override;
 
 	void Draw(DrawData2D* _DD);
 
@@ -26,10 +25,8 @@ public:
 	//View windows
 	std::array<Window*, 6> viewWindows;
 
-	//Building windows
-	std::array<BuildingWindow*, 3> buildWindows;
-
 private:
-
+	ID3D11Device* m_ID;
+	GameData* m_GD;
 };
 

@@ -140,6 +140,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     soul_manager = std::make_shared<SoulManager>();
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+
+    ui_manager = std::make_shared<UIManager>(m_d3dDevice.Get(), m_GD);
+    GameManager::get()->addManager(ui_manager, ManagerType::UI);
     
     
     // GameState initialisation

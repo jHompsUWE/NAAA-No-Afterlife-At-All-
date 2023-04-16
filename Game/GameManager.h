@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "EventManager.h"
 #include "FileManagerV2.h"
+#include "UIManager.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.
@@ -19,7 +20,8 @@ enum class ManagerType : int
 	FILE,
 	ECONOMY,
 	WORLD,
-	SOUL
+	SOUL,
+	UI
 };
 
 class GameManager
@@ -88,6 +90,9 @@ public:
 	////////////////////////////////////////////////////////////
 	FileManagerV2* getFileManagerV2() { return file_manager; };
 
+
+	UIManager* getUIManager() { return ui_manager; };
+
 	////////////////////////////////////////////////////////////
 	/// \brief Saves the game to a json file. 
 	////////////////////////////////////////////////////////////
@@ -116,6 +121,10 @@ private:
 	/// \brief Pointer to File Manager Event for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	FileManagerV2* file_manager;
+
+
+
+	UIManager* ui_manager;
 };
 
 

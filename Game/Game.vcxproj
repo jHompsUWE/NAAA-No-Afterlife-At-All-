@@ -244,11 +244,12 @@
   <ItemGroup>
     <ClInclude Include="AnimatedImageGO2D.h" />
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="BuildingButton.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
     <ClInclude Include="BuildingWindow.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonOpenBW.h" />
+    <ClInclude Include="ButtonSelectBW.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
@@ -320,9 +321,10 @@
   <ItemGroup>
     <ClCompile Include="AnimatedImageGO2D.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="BuildingButton.cpp" />
     <ClCompile Include="BuildingWindow.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonOpenBW.cpp" />
+    <ClCompile Include="ButtonSelectBW.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
