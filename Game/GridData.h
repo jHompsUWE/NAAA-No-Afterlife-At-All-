@@ -10,7 +10,7 @@
 #include "ZoneType.h"
 #include "PlaneType.h"
 #include "GPGO.h"
-
+#include "Debug.h"
 
 struct GenericBuilding;
 
