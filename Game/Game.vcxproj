@@ -244,6 +244,7 @@
   <ItemGroup>
     <ClInclude Include="AnimatedImageGO2D.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BadThings.h" />
     <ClInclude Include="BuildingButton.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
@@ -320,6 +321,7 @@
   <ItemGroup>
     <ClCompile Include="AnimatedImageGO2D.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BadThings.cpp" />
     <ClCompile Include="BuildingButton.cpp" />
     <ClCompile Include="BuildingWindow.cpp" />
     <ClCompile Include="Button.cpp" />
