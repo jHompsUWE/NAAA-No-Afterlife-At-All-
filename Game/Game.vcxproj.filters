@@ -94,6 +94,15 @@
     <Filter Include="GameManager\Source Files">
       <UniqueIdentifier>{8226912b-a63a-4f54-adb0-625c36c21b04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CursorController">
+      <UniqueIdentifier>{77202d98-36d6-48c8-b8f1-77b6157caaa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CursorController\Header Files">
+      <UniqueIdentifier>{6cb34073-d12b-4dbf-8d69-011a8c40e6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CursorController\Source Files">
+      <UniqueIdentifier>{6bfbc019-fa23-4081-816c-9c5d5899cf07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -324,6 +333,9 @@
     <ClInclude Include="InputBindingData.h">
       <Filter>Input\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CursorController.h">
+      <Filter>CursorController\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -463,6 +475,9 @@
     </ClCompile>
     <ClCompile Include="ControlTypeHandler.cpp">
       <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorController.cpp">
+      <Filter>CursorController\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
