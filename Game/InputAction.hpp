@@ -27,7 +27,7 @@ public:
 
     void setModDeviceHandler(std::shared_ptr<DeviceHandler> _device_handler)
     {
-        control_device_handler = _device_handler;
+        mod_device_handler = _device_handler;
     }
 
     void setControlTypeHandler(std::shared_ptr<ControlTypeHandler> _control_type_handler)

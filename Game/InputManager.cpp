@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "InputManager.h"
 
-
-#include "Button.h"
-#include "json.hpp"
-
 void InputManager::awake(GameData& _game_data)
 {
 	keyboard_handler = std::make_shared<KeyboardDeviceHandler>();
@@ -19,14 +15,15 @@ void InputManager::awake(GameData& _game_data)
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
 	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
-	active_device = Device::MOUSE;
+	active_device = Device::KEYBOARD;
 }
 
 void InputManager::update(GameData& _game_data)
 {
+	
 	for (auto action : (*current_action_maps)[(int)active_device])
 	{
-
+		action.check(_game_data);
 	}
 }
 

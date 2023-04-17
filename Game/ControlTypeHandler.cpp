@@ -4,9 +4,11 @@
 void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandler& _mod_device_handler,
                                      ActionBinding& _action_binding, const GameData& _data)
 {
-    bool mod_active = _action_binding.mod_type == ModifierType::HELD
-    ? _mod_device_handler.checkHeld(_action_binding.mod.x, _data)
-    : false;
+    bool mod_active = false;
+    if (_action_binding.mod_type == ModifierType::HELD)
+    {
+        mod_active = _mod_device_handler.checkHeld(_action_binding.mod.x, _data);
+    }
     
     switch (_action_binding.interaction_type)
     {
@@ -54,9 +56,11 @@ void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandl
 void AxisControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandler& _mod_device_handler,
                                    ActionBinding& _action_binding, const GameData& _data)
 {
-    bool mod_active = _action_binding.mod_type == ModifierType::HELD
-    ? _mod_device_handler.checkHeld(_action_binding.mod.x, _data)
-    : false;
+    bool mod_active = false;
+    if (_action_binding.mod_type == ModifierType::HELD)
+    {
+        mod_active = _mod_device_handler.checkHeld(_action_binding.mod.x, _data);
+    }
     
     switch (_action_binding.interaction_type)
     {
@@ -128,9 +132,11 @@ void AxisControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandler
 void Vector2ControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandler& _mod_device_handler,
                                         ActionBinding& _action_binding, const GameData& _data)
 {
-    bool mod_active = _action_binding.mod_type == ModifierType::HELD
-    ? _mod_device_handler.checkHeld(_action_binding.mod.x, _data)
-    : false;
+    bool mod_active = false;
+    if (_action_binding.mod_type == ModifierType::HELD)
+    {
+        mod_active = _mod_device_handler.checkHeld(_action_binding.mod.x, _data);
+    }
 
     switch (_action_binding.interaction_type)
     {
