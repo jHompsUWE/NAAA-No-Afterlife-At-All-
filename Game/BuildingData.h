@@ -35,11 +35,36 @@ struct TierBuiding : GenericBuilding
 	int				m_upgradeCost = 40000;
 };
 
-static GenericBuilding building(PlaneType _planetype,string _type,int tier)
+static enum TYPE 
+{
+	CLOUDS,
+	PITS,
+	PORTS,
+	SPECIAL,
+	TOPIA,
+	GATES,
+	OMNIBOLGES,
+};
+
+
+const char* TYPEEnum2Strings[] = {
+	"CLOUDS",
+	"PITS",
+	"PORTS",
+	"SPECIAL",
+	"TOPIA",
+	"GATES",
+	"OMNIBOLGES",
+};
+
+
+
+static GenericBuilding building(PlaneType _planetype,TYPE _type,int tier = 0)
 {
 	auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
 	TierBuiding building;
 	std:: string splane;
+	std::string stype = TYPEEnum2Strings[_type];
 	if (_planetype == PlaneType::Heaven)
 	{
 		splane = "Heaven";
@@ -48,7 +73,6 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 	{
 		splane = "Hell";
 	}
-
 
 	for (auto build : (*buildings))
 	{
@@ -101,9 +125,18 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 					building.m_data.m_vibe			= build["Vibe"];
 					building.m_data.m_vibe_radius	= build["radi"];
 					return building;
+					
 				}
 			}
 		}
 	}
+
+	for (auto building : (&buildings))
+	{
+
+	}
+
+
+
 }
 	
