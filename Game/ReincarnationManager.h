@@ -12,6 +12,17 @@ public:
     Soul TurnIntoSoul(EMBO* _embo);  // Save the poor soul from the life on Earth
     
 private:
-    std::vector <std::shared_ptr<EMBO>> test_Earth_Souls;
-    std::vector <std::shared_ptr<Soul>> test_Heven_wanderingSouls;
+    std::vector <std::shared_ptr<EMBO>> earthEMBOs;
+
+    std::vector	<std::shared_ptr<Soul>> hellZonedSouls_;
+    std::vector <std::shared_ptr<Soul>> hellWanderingSouls_;
+
+    std::vector	<std::shared_ptr<Soul>> heavenZonedSouls_;
+    std::vector <std::shared_ptr<Soul>> heavenWanderingSouls_;
+
+    std::vector<std::vector<std::shared_ptr<Soul>>> allContainers;
+
+    void RemoveFromList(EMBO* _embo); 
+    void RemoveFromList(Soul* _soul); 
+	
 };

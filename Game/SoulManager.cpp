@@ -75,6 +75,9 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 
 void SoulManager::awake()
 {
+	shared_ptr<Soul> soul_test;
+	soul_test = make_shared<Soul>();
+	m_Earth_Souls.push_back(soul_test);
 	srand(std::time(nullptr));
 }
 

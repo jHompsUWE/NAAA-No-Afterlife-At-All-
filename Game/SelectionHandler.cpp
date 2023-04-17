@@ -264,7 +264,7 @@ GridLocation* SelectionHandler::findNearestTile(Vector3 mouse_pos)
 		}
 	}
 
-	std::cout << pos.x << " " << pos.y << " " << int(m_plane) << "\n";
+	//std::cout << pos.x << " " << pos.y << " " << int(m_plane) << "\n";
 	
 	m_world_manager->getWorld()[m_plane][m_world_manager->getIndex(pos)]->setSelected(true);
 

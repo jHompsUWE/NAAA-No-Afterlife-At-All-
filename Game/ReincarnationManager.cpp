@@ -5,42 +5,68 @@
 
 void ReincarnationManager::update(GameData& _game_data)
 {
-    if (_game_data.m_KBS_tracker.pressed.T)
+    auto soulManager = GameManager::get()->getSoulManager();
+    
+    for (auto& embo : soulManager->m_Earth_Souls)
     {
-        EMBO* test = GameManager::get()->getSoulManager()->m_Earth_Souls.begin()->get();
-        TurnIntoSoul(test);
+        if (embo != nullptr)
+        {
+            if (embo->m_yearsleft == 0 && embo->m_reincarnate)
+            {
+                TurnIntoSoul(embo.get());
+            }
+        }
     }
-    if (_game_data.m_KBS_tracker.pressed.U)
+
+    hellZonedSouls_ = soulManager->m_Hell_ZonedSouls;
+    hellWanderingSouls_ = soulManager->m_Hell_wanderingSouls;
+    for (auto soul : hellWanderingSouls_)
     {
-        Soul* test = GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.begin()->get();
-        TurnIntoEMBO(test);
+        if (soul != nullptr)
+        {
+            TurnIntoEMBO(soul.get());
+        }
     }
+    
+    heavenZonedSouls_ = soulManager->m_Heven_ZonedSouls;
+    heavenWanderingSouls_ = soulManager->m_Heven_wanderingSouls;
+    
+
+    // Testing
+    // if (_game_data.m_KBS_tracker.pressed.T)
+    // {
+    //     EMBO* test = GameManager::get()->getSoulManager()->m_Earth_Souls.begin()->get();
+    //     TurnIntoSoul(test);
+    // }
+    // if (_game_data.m_KBS_tracker.pressed.U)
+    // {
+    //     Soul* test = GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.begin()->get();
+    //     TurnIntoEMBO(test);
+    // }
+    
     if (_game_data.m_KBS_tracker.pressed.Y)
     {
         std::cout << "soul = " << GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.size() << endl;
-        std::cout << "EMbo = " << GameManager::get()->getSoulManager()->m_Earth_Souls.size() << endl;
+        std::cout << "EMbo = " << earthEMBOs.size() << endl;
     }
 }
 
 void ReincarnationManager::awake()
 {
-    for (int i = 0; i < 10; ++i)
-    {
-        shared_ptr<EMBO> testEMBO = make_shared<EMBO>();
-        shared_ptr<Soul> testSoul = make_shared<Soul>();
-        test_Earth_Souls.push_back(testEMBO);
-        test_Heven_wanderingSouls.push_back(testSoul);
-    }
+    allContainers.push_back(hellZonedSouls_);
+    allContainers.push_back(hellWanderingSouls_);
+    allContainers.push_back(heavenWanderingSouls_);
+    allContainers.push_back(heavenZonedSouls_);
     Manager::awake();
 }
 
+
 EMBO ReincarnationManager::TurnIntoEMBO(Soul* _soul)
 {
-    //if(_soul->m_reincarnate
-    //&& !_soul->m_both
-    //&& _soul->m_currentcycle == _soul->m_total_cycles
-    //&& _soul->m_yearsleft == 0)
-    
+    // if(_soul->m_reincarnate
+    // && !_soul->m_both
+    // && _soul->m_currentcycle == _soul->m_total_cycles
+    // && _soul->m_yearsleft == 0)    
     if(_soul->m_reincarnate
         && !_soul->m_both)
     {
@@ -56,15 +82,23 @@ EMBO ReincarnationManager::TurnIntoEMBO(Soul* _soul)
 
         convertedSoul->m_fate = convertedSoul->earth_belief;
         // Add EMBO to the list
+        // Here we should move the EMBO to the EMBOs list
+        // and remove it from the souls list
+        // Temporary one below...
         GameManager::get()->getSoulManager()->m_Earth_Souls.push_back(shared_ptr<EMBO>(convertedSoul));
+        std::cout << "one soul was converted to EMBO" << endl;
+        RemoveFromList(_soul);
         return *convertedSoul;
-    }
+   }
 }
 
 Soul ReincarnationManager::TurnIntoSoul(EMBO* _embo)
 {
-    // if (_embo->m_yearsleft == 0 && _embo->m_reincarnate)
-    // {
+    // The converted SOUL should be removed from the souls list
+    // then add to the EMBO to the list on earth
+    if (_embo->m_yearsleft == 0 && _embo->m_reincarnate)
+    {
+        std::cout << "one EMBO became a SOUL" << endl;
         auto convertedEmbo = (Soul*)_embo;
         convertedEmbo->m_totalyears = rand()%900 + 100;
 
@@ -77,21 +111,93 @@ Soul ReincarnationManager::TurnIntoSoul(EMBO* _embo)
         {
             convertedEmbo->m_both = true;
             GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
+            RemoveFromList(_embo);
             return *convertedEmbo;
         }
 
         if ((convertedEmbo->earth_belief + 1) % 4 == 0)
         {
             GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
+            RemoveFromList(_embo);
             return *convertedEmbo;
         }
         if (convertedEmbo->earth_belief % 4 == 0)
         {
             GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.emplace_back(convertedEmbo);
+            RemoveFromList(_embo);
             return *convertedEmbo;
         }      
         int random = std::rand() % RAND_MAX;
         (random % 2 == 0 ? GameManager::get()->getSoulManager()->m_Hell_wanderingSouls : GameManager::get()->getSoulManager()->m_Heven_wanderingSouls).emplace_back(convertedEmbo);
+        RemoveFromList(_embo);
         return *convertedEmbo;
-//    }
+   }
+}
+
+void ReincarnationManager::RemoveFromList(EMBO* _embo)
+{
+    if (_embo != nullptr && GameManager::get()->getSoulManager()->m_Earth_Souls.size() != 0)
+    {
+        // auto it = find(earthEMBOs.begin(), earthEMBOs.end(), _embo);
+        // if (it != earthEMBOs.end())
+        // {
+        //     std::cout << "Found in earthEMBOS" << std::endl;
+        //     earthEMBOs.erase(it);
+        // }
+        auto it = std::find_if(GameManager::get()->getSoulManager()->m_Earth_Souls.begin(), 
+                      GameManager::get()->getSoulManager()->m_Earth_Souls.end(),
+                      [_embo](const std::shared_ptr<EMBO>& element) {
+                          return element.get() == _embo;
+                      });
+        // Erase the element from the vector if found
+        if (it != GameManager::get()->getSoulManager()->m_Earth_Souls.end())
+        {
+            GameManager::get()->getSoulManager()->m_Earth_Souls.erase(it);
+            earthEMBOs = GameManager::get()->getSoulManager()->m_Earth_Souls;
+        }
+    }
+}
+
+void ReincarnationManager::RemoveFromList(Soul* _soul)
+{
+    if (_soul != nullptr)
+    {
+        for (auto & container : allContainers)
+        {
+            auto sharedSoulToFind = std::make_shared<Soul>(*_soul);
+            auto it = std::find_if(container.begin(), container.end(), SoulComparator(sharedSoulToFind));
+            if (it != container.end()) {
+                // The object was found in the vector, erase it
+                container.erase(it);
+            }
+            else
+            {
+                cout << "Moving to next container" << endl;
+            }
+        }
+        // auto it2 = find(hellZonedSouls_.begin(), hellZonedSouls_.end(), _soul);
+        // if (it2 != hellZonedSouls_.end())
+        // {
+        //     std::cout << "Found in hellZonedSouls_" << std::endl;
+        //     hellZonedSouls_.erase(it2);
+        // }
+        // auto it3 = find(hellWanderingSouls_.begin(), hellWanderingSouls_.end(), _soul);
+        // if (it3 != hellWanderingSouls_.end())
+        // {
+        //     std::cout << "Found in hellZonedSouls_" << std::endl;
+        //     hellWanderingSouls_.erase(it3);
+        // }
+        // auto it4 = find(heavenZonedSouls_.begin(), heavenZonedSouls_.end(), _soul);
+        // if (it4 != heavenZonedSouls_.end())
+        // {
+        //     std::cout << "Found in hellZonedSouls_" << std::endl;
+        //     heavenZonedSouls_.erase(it4);
+        // }
+        // auto it5 = find(heavenWanderingSouls_.begin(), heavenWanderingSouls_.end(), _soul);
+        // if (it5 != heavenWanderingSouls_.end())
+        // {
+        //     std::cout << "Found in hellZonedSouls_" << std::endl;
+        //     heavenWanderingSouls_.erase(it5);
+        // }   
+    }
 }

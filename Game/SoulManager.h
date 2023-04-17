@@ -41,6 +41,7 @@ enum Fate
 
 struct EMBO
 {
+	int value;
 	int earth_belief;
 	int m_yearsleft ;
 	int m_totalyears;
@@ -56,6 +57,14 @@ struct Soul : EMBO
 	string m_life;
 	Vector2 m_position;
 	ZoneType m_zonetype;
+};
+
+struct SoulComparator {
+	const Soul* soulToFind;
+	SoulComparator(const std::shared_ptr<Soul>& soul) : soulToFind(soul.get()) {}
+	bool operator()(const std::shared_ptr<Soul>& soulPtr) const {
+		return soulPtr->value == soulToFind->value;
+	}
 };
 
 class SoulManager : public Manager
