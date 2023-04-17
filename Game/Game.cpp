@@ -167,10 +167,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
 void Game::Tick()
 {
     m_timer.Tick([&]()
-    {
-        Update(m_timer);
-        lateUpdate(m_timer);
-    });
+        {
+            Update(m_timer);
+            lateUpdate(m_timer);
+        });
     
     Render();
 }
@@ -184,39 +184,42 @@ void Game::Update(DX::StepTimer const& _timer)
     m_GD->m_dt = elapsedTime;
 
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
+    if (!GameManager::get()->isGamePaused())
+    {      
 
-    // GameState updates
-    // Change state depending on update result
-    State prev_state = m_GD->current_state;
-    m_GD->current_state = game_states[m_GD->current_state]->update(*m_GD);
-    if (m_GD->current_state != prev_state)
-    {
-        if (m_GD->current_state == State::GAME_EXIT)
+        // GameState updates
+        // Change state depending on update result
+        State prev_state = m_GD->current_state;
+        m_GD->current_state = game_states[m_GD->current_state]->update(*m_GD);
+        if (m_GD->current_state != prev_state)
         {
-            // Exit game
-            return;
-        }
-        else
-        {
-            if (m_GD->current_state == State::GAME_PLAY)
+            if (m_GD->current_state == State::GAME_EXIT)
             {
-                GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
+                // Exit game
+                return;
             }
-            else if (prev_state == State::GAME_PLAY)
+            else
             {
-                GameManager::get()->getEventManager()->removeListener(&game_states[prev_state]->getCam());
+                if (m_GD->current_state == State::GAME_PLAY)
+                {
+                    GameManager::get()->getEventManager()->addListener(&game_states[m_GD->current_state]->getCam());
+                }
+                else if (prev_state == State::GAME_PLAY)
+                {
+                    GameManager::get()->getEventManager()->removeListener(&game_states[prev_state]->getCam());
+                }
+
+                Event event{};
+                event.type = EventType::STATE_TRANSITION;
+                event.payload.state_transition.current = (int)m_GD->current_state;
+                event.payload.state_transition.previous = (int)prev_state;
+                event_manager->triggerEvent(std::make_shared<Event>(event));
+
+                game_states[m_GD->current_state]->reset();
             }
-
-            Event event{};
-            event.type = EventType::STATE_TRANSITION;
-            event.payload.state_transition.current = (int)m_GD->current_state;
-            event.payload.state_transition.previous = (int)prev_state;
-            event_manager->triggerEvent(std::make_shared<Event>(event));
-
-            game_states[m_GD->current_state]->reset();
-        }
+        }                
     }
-
+    m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
 
     //this will update the audio engine but give us chance to do somehting else if that isn't working
     if (!m_audioEngine->Update())
@@ -234,9 +237,6 @@ void Game::Update(DX::StepTimer const& _timer)
             (*it)->Tick(m_GD);
         }
     }
-
-    m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
-
     ReadInput();
     //upon space bar switch camera state
     //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
@@ -250,6 +250,10 @@ void Game::Update(DX::StepTimer const& _timer)
         {
             m_GD->m_GS = GS_PLAY_MAIN_CAM;
         }
+    }
+    if (m_GD->m_KBS_tracker.pressed.O)
+    {
+        GameManager::get()->PauseGame();
     }
 }
 

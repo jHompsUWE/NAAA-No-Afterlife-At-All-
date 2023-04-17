@@ -52,7 +52,10 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		}
 	}
 
-	updateTiles();
+	if (!GameManager::get()->isGamePaused())
+	{
+		updateTiles();
+	}
 
 }
 
