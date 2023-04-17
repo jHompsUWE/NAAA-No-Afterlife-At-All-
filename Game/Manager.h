@@ -31,5 +31,11 @@ public:
 	/// \brief Called every cycle of the game loop, but after update.
 	///	\param _m_DD DrawData pointer.
 	////////////////////////////////////////////////////////////
-	virtual void render(DrawData* m_DD) {};
+	virtual void render(DrawData* _draw_data) {};
+
+	////////////////////////////////////////////////////////////
+	/// \brief Called every cycle of the game loop, but after update.
+	///	\param _m_DD DrawData pointer.
+	////////////////////////////////////////////////////////////
+	virtual void render2D(DrawData2D* _draw_data) {};
 };

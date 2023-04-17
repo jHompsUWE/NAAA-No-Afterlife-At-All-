@@ -94,6 +94,18 @@ float MouseDeviceHandler::getAxis(const BindingType& _binding_type, const GameDa
     }
 }
 
+std::pair<float, float> MouseDeviceHandler::getVector2(const BindingType& _binding_type, const GameData& _data)
+{
+    switch (_binding_type.mouse_input)
+    {
+        case MouseInput::MOVE: 
+        {
+            return std::pair<float, float >{_data.m_MS_last.x - _data.m_MS.x, _data.m_MS_last.y - _data.m_MS.y};
+        }
+        default: std::pair<float, float>{0,0};
+    }
+}
+
 bool ControllerDeviceHandler::checkPressed(const BindingType& _binding_type, const GameData& _data)
 {
 switch (_binding_type.controller_input)

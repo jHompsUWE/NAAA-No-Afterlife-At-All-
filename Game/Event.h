@@ -51,6 +51,7 @@ enum class EventType
 	CENTER_VIEW,
 	SELECT,
 	MOVE_CURSOR,
+	CURSOR_MOVED,
 
     // UI Remote specific events
     SIPHONS_BANKS,
@@ -109,10 +110,18 @@ public:
 		bool mod_active = NULL;
 	};
 
+	struct CursorData
+	{
+		float x = NULL;
+		float y = NULL;
+		bool selected = false;
+	};
+
 	union EventPayload
 	{
         StateTransition state_transition;
         SoulUpdate soul_update;
+		CursorData cursor_data;
 
 		InputButton input_button_data;
 		InputAxis input_axis_data;

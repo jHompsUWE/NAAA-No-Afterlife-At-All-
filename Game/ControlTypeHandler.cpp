@@ -16,7 +16,7 @@ void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandl
             {
                 if (_device_handler.checkPressed(_action_binding.control.button.x, _data))
                 {
-                    createButtonEvent(_action_binding, mod_active, true);
+                    createButtonEvent(_action_binding, mod_active, true, LastButtonState::PRESSED);
                 }
                 break;
             }
@@ -24,7 +24,7 @@ void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandl
             {
                 if (_device_handler.checkReleased(_action_binding.control.button.x, _data))
                 {
-                    createButtonEvent(_action_binding, mod_active, false);
+                    createButtonEvent(_action_binding, mod_active, false, LastButtonState::RELEASED);
                 }
                 break;
             }
@@ -32,7 +32,7 @@ void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandl
             {
                 if (_device_handler.checkHeld(_action_binding.control.button.x, _data))
                 {
-                    createButtonEvent(_action_binding, mod_active, true);
+                    createButtonEvent(_action_binding, mod_active, true, LastButtonState::DOWN);
                 }
                 break;
             }
@@ -40,11 +40,11 @@ void ButtonControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHandl
             {
                 if (_device_handler.checkPressed(_action_binding.control.button.x, _data))
                 {
-                    createButtonEvent(_action_binding, mod_active, true);
+                    createButtonEvent(_action_binding, mod_active, true, LastButtonState::PRESSED);
                 }
                 else if (_device_handler.checkReleased(_action_binding.control.button.x, _data))
                 {
-                    createButtonEvent(_action_binding, mod_active, false);
+                    createButtonEvent(_action_binding, mod_active, false, LastButtonState::RELEASED);
                 }
                 break;
             }

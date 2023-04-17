@@ -15,7 +15,7 @@ void InputManager::awake(GameData& _game_data)
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
 	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
-	active_device = Device::KEYBOARD;
+	active_device = Device::MOUSE;
 }
 
 void InputManager::update(GameData& _game_data)
@@ -186,7 +186,7 @@ InputAction InputManager::loadMouseAction(JsonElement& element)
 			}
 	case ControlType::VECTOR2:
 			{
-				control.vector2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.vector2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]));
 				control_type_handler = vector2_control_handler;
 				break;
 			}

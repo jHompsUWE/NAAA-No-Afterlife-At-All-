@@ -484,6 +484,16 @@
         "ModDevice": "",
         "Modifier": "",
         "Key": "LEFT_BUTTON"
+      },
+
+      {
+        "Action": "MOVE_CURSOR",
+        "Type": "VECTOR2",
+        "Control": "VECTOR2_2",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "MOVE"
       }
     ],
 

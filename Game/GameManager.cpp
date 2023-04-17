@@ -25,13 +25,22 @@ void GameManager::lateUpdate(GameData& _game_data)
 	}
 }
 
-void GameManager::render(DrawData* m_DD)
+void GameManager::render(DrawData* _draw_data)
 {
 	for (auto manager : managers)
 	{
-		manager->render(m_DD);
+		manager->render(_draw_data);
 	}
 }
+
+void GameManager::render2D(DrawData2D* _draw_data)
+{
+	for (auto manager : managers)
+	{
+		manager->render2D(_draw_data);
+	}
+}
+
 
 bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _type)
 {

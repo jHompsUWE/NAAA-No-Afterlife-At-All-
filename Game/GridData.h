@@ -29,8 +29,6 @@ struct GridData
 		params[0] = 15.0f;
 		Vector3 new_pos(_pos.x, _pos.y + 5, _pos.z);
 		m_building = new GPGO(_device.Get(), GPGO_CUBE, (float*)&Colors::Green, params, new_pos);
-
-		std::cout << "Created building" << std::endl;
 	}
 
 	void Tick(GameData* _GD)

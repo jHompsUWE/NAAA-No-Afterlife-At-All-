@@ -29,6 +29,7 @@ public:
     bool checkReleased(const BindingType& _binding_type, const GameData& _data) override;
     bool checkHeld(const BindingType& _binding_type, const GameData& _data) override;
     float getAxis(const BindingType& _binding_type, const GameData& _data) override;
+    std::pair<float, float> getVector2(const BindingType& _binding_type, const GameData& _data) override;
 };
 
 class ControllerDeviceHandler : public DeviceHandler

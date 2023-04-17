@@ -78,12 +78,7 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     remote->SetButtonToggle(30, Mapview);
     remote->SetButtonToggle(31, animated_sprite_test);
     remote->SetButtonToggle(32, MicroView);
-
-    
-
-    GameManager::get()->getEventManager()->addListener(remote);
-
-	GameManager::get()->awake(*_game_data);
+	
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 
@@ -113,7 +108,7 @@ void GamePlay::render3D()
 
 void GamePlay::render2D()
 {
-	
+	GameManager::get()->render2D(m_DD2D);
 	GameStateBase::render2D();
 }
 

@@ -107,7 +107,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     game_states.insert(std::make_pair(State::GAME_PAUSED,   std::make_unique<GamePaused>    (State::GAME_PAUSED,   m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     game_states.insert(std::make_pair(State::GAME_OVER,     std::make_unique<GameOver>      (State::GAME_OVER,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     
-    
 
     //example basic 2D stuff
     //ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
@@ -131,6 +130,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(file_manager_, ManagerType::FILE);
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
+
+    cursor = std::make_shared<CursorController>("bug_test", m_d3dDevice.Get());
+    GameManager::get()->getEventManager()->addListener(&*cursor);
 
     world_manager = std::make_shared<WorldManager>();
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
@@ -160,6 +162,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
+    GameManager::get()->awake(*m_GD);
+
 }
 
 // Executes the basic game loop.
@@ -177,6 +181,7 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    cursor->update(*m_GD);
     auto mouse = m_mouse->GetState();
     m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());
@@ -257,7 +262,7 @@ void Game::lateUpdate(DX::StepTimer const& _timer)
 
 // Draws the scene.
 void Game::Render()
-{
+{    
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
     {
@@ -284,6 +289,7 @@ void Game::Render()
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
     game_states[m_GD->current_state]->render2D();
+    cursor->Draw(m_DD2D);
     m_DD2D->m_Sprites->End();
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
@@ -604,6 +610,7 @@ void Game::ReadInput()
             }
         }
     }
+    m_GD->m_MS_last = m_GD->m_MS;
     m_GD->m_MS = m_mouse->GetState();
 }
 

@@ -24,6 +24,7 @@ struct GameData
 	Mouse::State m_MS;
 	Keyboard::KeyboardStateTracker m_KBS_tracker;
 	Mouse::ButtonStateTracker m_mouseButtons;
+	Mouse::State m_MS_last;
 	GamePad::ButtonStateTracker m_GP_buttons;
 	GamePad::State m_GP_state;
 	

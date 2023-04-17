@@ -43,18 +43,19 @@ public:
 };
 
 
-static void createButtonEvent(const ActionBinding& _action_binding, bool _mod_active, bool _down)
+static void createButtonEvent( ActionBinding& _action_binding, bool _mod_active, bool _down, LastButtonState _state)
 {
+    _action_binding.last_state.button_state = _state;
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;
     event.payload.input_button_data.down = _down;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-    std::cout << "event button created" << std::endl;
 }
 
-static void createAxisEvent(const ActionBinding& _action_binding, bool _mod_active, float _value)
+static void createAxisEvent(ActionBinding& _action_binding, bool _mod_active, float _value)
 {
+    _action_binding.last_state.axis_state.value = _value;
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;
@@ -62,13 +63,15 @@ static void createAxisEvent(const ActionBinding& _action_binding, bool _mod_acti
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 }
 
-static void createVector2Event(const ActionBinding& _action_binding, bool _mod_active,  float _x, float _y)
+static void createVector2Event(ActionBinding& _action_binding, bool _mod_active,  float _x, float _y)
 {
+    _action_binding.last_state.vector2_state.x = _x;
+    _action_binding.last_state.vector2_state.y = _y;
+    
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;
     event.payload.input_vector2_data.x = _x;
     event.payload.input_vector2_data.y = _y;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-    std::cout << "event vector created" << std::endl;
 }

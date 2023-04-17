@@ -61,7 +61,13 @@ public:
 	/// \brief Called every cycle of the game loop, but after update.
 	///	\param _timer DeltaTime.
 	////////////////////////////////////////////////////////////
-	void render(DrawData* m_DD);
+	void render(DrawData* _draw_data);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Called every cycle of the game loop, but after update.
+	///	\param _timer DeltaTime.
+	////////////////////////////////////////////////////////////
+	void render2D(DrawData2D* _draw_data);
 	
 	////////////////////////////////////////////////////////////
 	/// \brief Attempts to add a manager to the vector of managers to updated each tick.
