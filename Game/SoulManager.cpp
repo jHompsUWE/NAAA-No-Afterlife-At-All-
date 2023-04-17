@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "GameManager.h"
+
 /**
  * \brief add a EMBO to the souls
  * @details based on the @enum Fate setup the SOUL for afterlife and its route
@@ -83,7 +85,7 @@ void SoulManager::update(GameData& _game_data)
 		int length = 10;
 		for (size_t i = 0; i < length; i++)
 		{
-			AddSoul(DirectX::SimpleMath::Vector2{ 1,1 });
+			AddSoul();
 		}
 	}
 	if (_game_data.Year%10 == 0)
@@ -91,8 +93,8 @@ void SoulManager::update(GameData& _game_data)
 		int length = 10;
 		for (size_t i = 0; i < length; i++)
 		{
-			m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
-			m_Earth_Souls.pop_back();
+			//m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
+			//m_Earth_Souls.pop_back();
 		}
 
 		Event event{};

@@ -39,18 +39,20 @@ enum Fate
 	OCRA_RALF_SUSA_ISTS,	//one reward
 };
 
+struct EMBO
+{
+	int earth_belief;
+	int m_yearsleft ;
+	int m_totalyears;
+	bool m_reincarnate = true;
+	int m_fate;
+};
 
-
-struct Soul
+struct Soul : EMBO
 {
 	int m_currentcycle = 0;
 	int m_total_cycles = 1;
-
-	int m_yearsleft ;
-	int m_totalyears;
 	bool m_both = false;
-	bool m_reincarnate = true;
-	int m_fate;
 	string m_life;
 	Vector2 m_position;
 	ZoneType m_zonetype;
@@ -58,6 +60,7 @@ struct Soul
 
 class SoulManager : public Manager
 {
+public:
 	std::vector	<std::shared_ptr<Soul>> m_Hell_ZonedSouls;
 	std::vector <std::shared_ptr<Soul>> m_Hell_wanderingSouls;
 
@@ -65,9 +68,9 @@ class SoulManager : public Manager
 	std::vector <std::shared_ptr<Soul>> m_Heven_wanderingSouls;
 	
 	
-	std::vector <std::shared_ptr<Soul>> m_Earth_Souls;
+	std::vector <std::shared_ptr<EMBO>> m_Earth_Souls;
 
-public:
+
 	
 	void AddSoul();			// add a soul at this location
 	void Wander();													// run the soul road movement

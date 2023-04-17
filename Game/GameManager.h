@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "EventManager.h"
 #include "FileManagerV2.h"
+#include "SoulManager.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.
@@ -19,7 +20,8 @@ enum class ManagerType : int
 	FILE,
 	ECONOMY,
 	WORLD,
-	SOUL
+	SOUL,
+	REINCARNATION
 };
 
 class GameManager
@@ -89,6 +91,11 @@ public:
 	FileManagerV2* getFileManagerV2() { return file_manager; };
 
 	////////////////////////////////////////////////////////////
+	/// \brief Returns pointer to File Manager Event, use this for triggering events. 
+	////////////////////////////////////////////////////////////
+	SoulManager* getSoulManager() { return soulManager; };
+
+	////////////////////////////////////////////////////////////
 	/// \brief Saves the game to a json file. 
 	////////////////////////////////////////////////////////////
 	void SaveGame();
@@ -116,6 +123,12 @@ private:
 	/// \brief Pointer to File Manager Event for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	FileManagerV2* file_manager;
+
+
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to File Manager Event for accessing derived class members.
+	////////////////////////////////////////////////////////////
+	SoulManager* soulManager;
 };
 
 
