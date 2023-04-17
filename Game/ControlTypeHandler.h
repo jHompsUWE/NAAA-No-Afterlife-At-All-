@@ -50,6 +50,7 @@ static void createButtonEvent(const ActionBinding& _action_binding, bool _mod_ac
     event.type = _action_binding.event_type;
     event.payload.input_button_data.down = _down;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+    std::cout << "event button created" << std::endl;
 }
 
 static void createAxisEvent(const ActionBinding& _action_binding, bool _mod_active, float _value)
@@ -69,4 +70,5 @@ static void createVector2Event(const ActionBinding& _action_binding, bool _mod_a
     event.payload.input_vector2_data.x = _x;
     event.payload.input_vector2_data.y = _y;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+    std::cout << "event vector created" << std::endl;
 }

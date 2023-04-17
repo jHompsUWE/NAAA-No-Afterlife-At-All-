@@ -11,6 +11,9 @@
 #include "GameManager.h"
 #include "InputAction.hpp"
 
+#include "Button.h"
+#include "json.hpp"
+
 static const std::unordered_map<std::string, EventType> string_to_event_type =
 {
 	{"PAUSE", EventType::PAUSE},
