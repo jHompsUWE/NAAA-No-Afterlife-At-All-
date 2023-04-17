@@ -315,6 +315,7 @@
     <ClInclude Include="VBspiral.h" />
     <ClInclude Include="vertex.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowDraggable.h" />
     <ClInclude Include="WorldManager.h" />
     <ClInclude Include="ZoneType.h" />
   </ItemGroup>
@@ -375,6 +376,7 @@
     <ClCompile Include="VBGO.cpp" />
     <ClCompile Include="VBSnail.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowDraggable.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>

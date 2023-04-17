@@ -23,28 +23,35 @@ void UIManager::awake()
     remote->SetPos(100, 230);
     remote->SetButtonBounds();
 
-    viewWindows[0] = new Window("bug_test", m_ID, "Planetview", false, Colors::LightSkyBlue);
+    viewWindows[0] = new WindowDraggable(m_ID, "Planetview", false, Colors::LightSkyBlue);
     viewWindows[0]->SetPos(300, 100);
 
-    viewWindows[1] = new Window("bug_test", m_ID, "Graphview", false, Colors::LightBlue);
+    viewWindows[1] = new WindowDraggable(m_ID, "Graphview", false, Colors::LightBlue);
     viewWindows[1]->SetPos(600, 100);
 
-    viewWindows[2] = new Window("bug_test", m_ID, "Soulview", false, Colors::LightGreen);
+    viewWindows[2] = new WindowDraggable(m_ID, "Soulview", false, Colors::LightGreen);
     viewWindows[2]->SetPos(300, 200);
 
-    viewWindows[3] = new Window("bug_test", m_ID, "Macro\nManager", false, Colors::LightYellow);
+    viewWindows[3] = new WindowDraggable(m_ID, "Macro\nManager", false, Colors::LightYellow);
     viewWindows[3]->SetPos(600, 200);
 
-    viewWindows[4] = new Window("bug_test", m_ID, "Mapview", false, Colors::LightPink);
+    viewWindows[4] = new WindowDraggable(m_ID, "Mapview", false, Colors::LightPink);
     viewWindows[4]->SetPos(300, 300);
 
-    viewWindows[5] = new Window("bug_test", m_ID, "MicroView", false, Colors::LightCoral);
+    viewWindows[5] = new WindowDraggable(m_ID, "MicroView", false, Colors::LightCoral);
     viewWindows[5]->SetPos(300, 400);
 
-
-    for (int j = 0; j < 6; j++)
+    for (int i = 0; i < 6; i++)
     {
-        viewWindows[j]->SetTextPos();
+        viewWindows[i]->SetTextPos();
+    }
+
+
+    for (int i = 0; i < 3; i++)
+    {
+        buildWindows[i] = new BuildingWindow(m_ID, i + 3);
+        buildWindows[i]->SetPos(300, 400);
+        //buildWindows[i]->SetButtonBounds();
     }
 
     remote->SetButtonToggle(26, viewWindows[0]);
@@ -76,6 +83,11 @@ void UIManager::Draw(DrawData2D* _DD)
     for (int j = 0; j < 6; j++)
     {
         viewWindows[j]->Draw(_DD);
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        buildWindows[i]->Draw(_DD);
     }
 
 }

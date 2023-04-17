@@ -207,7 +207,6 @@ void UIRemote::onEvent(const Event& event)
 		if (buttons[i]->event_type == event.type)
 		{
 			text[2]->SetString(buttons[i]->buttonName);
-
 			buttons[i]->toggle();
 			
 			
@@ -298,7 +297,6 @@ void UIRemote::Tick(GameData* _GD)
 				if (buttons[i]->pressed)
 				{
 					//Toggle the button window, and set the remote selection string to buton name
-					buttons[i]->toggle();
 					text[2]->SetString(buttons[i]->buttonName);
 					
 					//Fire event of button event type, then set button's pressed value to false

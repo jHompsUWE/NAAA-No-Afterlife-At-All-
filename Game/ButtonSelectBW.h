@@ -1,5 +1,2 @@
 #pragma once
-class ButtonSelectBW
-{
-};
-
+#include "GameObject2D.h"

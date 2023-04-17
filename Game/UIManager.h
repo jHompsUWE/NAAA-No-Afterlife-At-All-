@@ -2,9 +2,10 @@
 
 #include "GameObject2D.h"
 #include "UIRemote.h"
-#include "Window.h"
+#include "WindowDraggable.h"
 #include "Button.h"
 #include "Manager.h"
+#include "BuildingWindow.h"
 
 
 class UIManager : public Manager
@@ -23,7 +24,9 @@ public:
 	UIRemote* remote;
 
 	//View windows
-	std::array<Window*, 6> viewWindows;
+	std::array<WindowDraggable*, 6> viewWindows;
+
+	std::array<BuildingWindow*, 3> buildWindows;
 
 private:
 	ID3D11Device* m_ID;
