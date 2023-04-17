@@ -2,6 +2,8 @@
 #include "WorldManager.h"
 #include "BuildingData.h"
 
+#define random(min, max) rand() % (max - min + 1) + min;
+
 WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y), m_soul_manager(nullptr)
 {
 	int total_size = m_grid_x * m_grid_y;
@@ -36,6 +38,8 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 	}
 
 	m_d3dContext = _device;
+
+	generateWorld();
 }
 
 /// <summary>
@@ -342,5 +346,32 @@ bool WorldManager::withinRange(Vector2 position)
 	if (position.x > m_grid_x - 1 || position.x < 0 ||
 		position.y > m_grid_y - 1 || position.y < 0) return false;
 	return true;
+}
+
+/// <summary>
+/// Generate the world so there are rocks / rivers
+/// </summary>
+void WorldManager::generateWorld()
+{
+	int number_of_rocks = 10;
+
+	for (auto& plane : m_world)
+	{
+		for (int i = 0; i < number_of_rocks; i++)
+		{
+			int x = random(0, m_grid_x - 1);
+			int y = random(0, m_grid_y - 1);
+			int index = y * m_grid_x + x;
+
+			if (plane.second[index]->getGridData().m_tile_type != TileType::Rock)
+			{
+				plane.second[index]->getGridData().m_tile_type = TileType::Rock;
+				plane.second[index]->createBuilding(m_d3dContext);
+				plane.second[index]->getGridData().m_building->SetColour(Colors::Gray.v);
+			}
+		}
+	}
+
+	
 }
 

@@ -445,7 +445,9 @@ void SelectionHandler::updateNuke()
 
 void SelectionHandler::createTempBuilding()
 {
-	temp_building_stats = new GenericBuilding(building(m_plane, "GATES", 1));
+	temp_building_stats = new GateBuilding(building(m_plane, "GATES", 1));
+
+	//temp_building_stats = 
 
 	float* params = new float[3];
 

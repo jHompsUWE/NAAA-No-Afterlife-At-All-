@@ -54,20 +54,25 @@ void SoulManager::update(GameData& _game_data)
 {
 	if (_game_data.Year%5 == 0)
 	{
+		//AddSoul(DirectX::SimpleMath::Vector2{ 1,1 });
 		int length = 10;
 		for (size_t i = 0; i < length; i++)
 		{
-			AddSoul(DirectX::SimpleMath::Vector2{ 1,1 });
+			//AddSoul(DirectX::SimpleMath::Vector2{ 1,1 });
 		}
 	}
 	if (_game_data.Year%10 == 0)
 	{
-		int length = 10;
-		for (size_t i = 0; i < length; i++)
+		if (m_Earth_Souls.size() >= 10)
 		{
-			m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
-			m_Earth_Souls.pop_back();
+			int length = 10;
+			for (size_t i = 0; i < length; i++)
+			{
+				m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
+				m_Earth_Souls.pop_back();
+			}
 		}
+		
 
 		Event event{};
 		event.type = EventType::SOUL_UPDATE;
@@ -80,4 +85,13 @@ void SoulManager::update(GameData& _game_data)
 
 void SoulManager::lateUpdate(GameData& _game_data)
 {
+}
+
+void SoulManager::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+	case EventType::ADD_SOUL:
+		AddSoul(Vector2(event.payload.add_soul.x, event.payload.add_soul.y), event.payload.add_soul.plane);
+	}
 }

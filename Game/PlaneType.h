@@ -2,8 +2,8 @@
 
 enum class PlaneType
 {
-	Heaven,
-	Earth,
-	Hell,
-	None
+	Heaven = 0,
+	Earth = 1,
+	Hell = 2,
+	None = 3
 };

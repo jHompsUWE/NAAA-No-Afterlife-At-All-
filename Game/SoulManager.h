@@ -21,7 +21,7 @@ struct Soul
 	ZoneType zonetype;
 };
 
-class SoulManager : public Manager
+class SoulManager : public Manager, public Listener
 {
 	std::vector	<std::shared_ptr<Soul>> m_Hell_ZonedSouls;
 	std::vector <std::shared_ptr<Soul>> m_Hell_wanderingSouls;
@@ -33,7 +33,8 @@ class SoulManager : public Manager
 	std::vector <std::shared_ptr<Soul>> m_Earth_Souls;
 
 public:
-	
+	void onEvent(const Event& event) override;
+
 	void AddSoul(DirectX::SimpleMath::Vector2 location,PlaneType plane = PlaneType::Earth);			// add a soul at this location
 	void Wander();																					// run the soul road movement
 	void ZoneCheck();																				//check if zone is attached

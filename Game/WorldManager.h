@@ -46,6 +46,8 @@ private:
     int adjacencyScoreHeaven(GridLocation& _grid_location);
     int adjacencyScoreHell(GridLocation& _grid_location);
 
+    void generateWorld();
+
     int m_grid_x;
     int m_grid_y;
     

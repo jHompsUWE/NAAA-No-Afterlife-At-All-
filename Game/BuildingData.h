@@ -5,6 +5,7 @@
 
 #include "GridData.h"
 #include "SoulManager.h"
+#include "Listener.h"
 
 struct BuildingData
 {
@@ -33,7 +34,7 @@ struct GenericBuilding
 
 	std::vector<GridData*> housing_points;
 
-	virtual void update(SoulManager* soul_manager)
+	virtual void update()
 	{
 		// Update building
 	}
@@ -58,9 +59,25 @@ struct TierBuiding : GenericBuilding
 
 struct GateBuilding : GenericBuilding
 {
-	void update(SoulManager* soul_manager) override
+	GateBuilding(GenericBuilding gen_building) : GenericBuilding(gen_building) {};
+
+	void update() override
 	{
-		//soul_manager->AddSoul()
+		//if (!housing_points.empty())
+		{
+			CONSOLE(DEBUG, "update gate");
+
+			Event event{};
+			event.type = EventType::ADD_SOUL;
+
+			event.payload.add_soul.plane = housing_points[0]->m_plane;
+			event.payload.add_soul.x = std::get<0>(housing_points[0]->m_position);
+			event.payload.add_soul.y = std::get<1>(housing_points[0]->m_position);
+
+			GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+		}
+
+		
 	}
 };
 
