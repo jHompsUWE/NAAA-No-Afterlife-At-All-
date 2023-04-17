@@ -2,11 +2,8 @@
 #include "WorldManager.h"
 #include "BuildingData.h"
 
-WorldManager::WorldManager()
+WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y), m_soul_manager(nullptr)
 {
-	m_grid_x = 10;
-	m_grid_y = 10;
-
 	int total_size = m_grid_x * m_grid_y;
 	
 	m_world[PlaneType::Heaven].reserve(total_size);

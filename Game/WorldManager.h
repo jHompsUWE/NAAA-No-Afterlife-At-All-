@@ -15,7 +15,7 @@ class WorldManager :
     public Manager
 {
 public:
-    WorldManager();
+    WorldManager(int size_x, int size_y);
     ~WorldManager();
 
     void init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory,
