@@ -154,7 +154,7 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 	}
 	else
 	{
-		std::cout << "file is empty";
+		CONSOLE(ERROR,"FILE IS EMPTY");
 	}
 }
 

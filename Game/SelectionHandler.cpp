@@ -112,6 +112,7 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::BROWN_ZONING:
 		{
+			CONSOLE(INFO, "Brown");
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			m_selection_type = SelectionType::Zone;
