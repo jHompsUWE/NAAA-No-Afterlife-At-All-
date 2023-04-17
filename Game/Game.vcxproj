@@ -251,6 +251,7 @@
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
     <ClInclude Include="ControlTypeHandler.h" />
+    <ClInclude Include="CursorController.h" />
     <ClInclude Include="DeviceHandler.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />
@@ -323,6 +324,7 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
     <ClCompile Include="ControlTypeHandler.cpp" />
+    <ClCompile Include="CursorController.cpp" />
     <ClCompile Include="DeviceHandler.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
