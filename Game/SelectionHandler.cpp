@@ -378,7 +378,7 @@ void SelectionHandler::updateNuke()
 
 void SelectionHandler::createTempBuilding()
 {
-	temp_building_stats = new GenericBuilding(building(m_plane, "GATES", 3));
+	temp_building_stats = new GenericBuilding(building(m_plane, GATES,3));
 
 	float* params = new float[3];
 
@@ -390,6 +390,8 @@ void SelectionHandler::createTempBuilding()
 	temp_building = new GPGO(m_d3dContext.Get(), GPGO_CUBE, (float*)&Colors::DarkOrange, params, temp_building_pos);
 
 	temp_building->GetColour().A(0.5f);
+
+	std::cout << temp_building_stats->m_buildingname;
 }
 
 void SelectionHandler::updateTempPos()

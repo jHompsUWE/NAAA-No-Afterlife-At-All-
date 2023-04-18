@@ -47,29 +47,57 @@ static enum TYPE
 };
 
 
-const char* TYPEEnum2Strings[] = {
-	"CLOUDS",
-	"PITS",
-	"PORTS",
-	"SPECIAL",
-	"TOPIA",
-	"GATES",
-	"OMNIBOLGES",
-};
 
 
-
-static GenericBuilding building(PlaneType _planetype,TYPE _type,int tier = 0)
+static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 {
 	auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
+
 	TierBuiding building;
+
 	std:: string splane;
-	std::string stype = TYPEEnum2Strings[_type];
-	if (_planetype == PlaneType::Heaven)
+
+	std::string stype;
+
+	switch (_type)
+	{
+	case CLOUDS:
+		stype = "CLOUDS";
+		break;
+	case PITS:
+		stype = "PITS";
+		break;
+	case PORTS:
+		stype = "PORTS";
+		break;
+	case SPECIAL:
+		stype = "SPECIAL";
+		break;
+	case TOPIA:
+		stype = "TOPIA";
+		break;
+	case GATES:
+		stype = "GATES";
+		break;
+	case OMNIBOLGES:
+		stype = "OMNIBOLGES";
+		break;
+	default:
+		break;
+	}
+
+
+
+
+
+
+
+
+	if (_plane == PlaneType::Heaven)
 	{
 		splane = "Heaven";
 	}
-	else if (_planetype == PlaneType::Hell)
+	else if (_plane == PlaneType::Hell)
 	{
 		splane = "Hell";
 	}
@@ -86,7 +114,7 @@ static GenericBuilding building(PlaneType _planetype,TYPE _type,int tier = 0)
 				{
 					building.m_buildingname = build["Name"];
 					building.m_buildingdesc = build["Desc"];
-					building.m_placeable = _planetype;
+					building.m_placeable = _plane;
 					building.m_nextUpgrade;
 					building.m_upgradeCost;
 					building.m_tiername = build["Name"];
@@ -124,19 +152,13 @@ static GenericBuilding building(PlaneType _planetype,TYPE _type,int tier = 0)
 					building.m_data.m_size			= build["Size"];
 					building.m_data.m_vibe			= build["Vibe"];
 					building.m_data.m_vibe_radius	= build["radi"];
+					//std::cout << building.m_buildingname << std::endl;
+					//std::cout << building.m_buildingdesc << std::endl;
 					return building;
 					
 				}
 			}
 		}
 	}
-
-	for (auto building : (&buildings))
-	{
-
-	}
-
-
-
 }
 	
