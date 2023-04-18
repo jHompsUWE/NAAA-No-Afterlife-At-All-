@@ -99,3 +99,14 @@ void GameManager::LoadGame()
 		cout << money << endl;
 	}
 }
+
+void GameManager::PauseGame()
+{
+	game_paused = !game_paused;
+}
+
+
+bool GameManager::isGamePaused() const
+{
+	return game_paused;
+}
