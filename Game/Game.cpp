@@ -161,6 +161,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
+    pair<string, string> test;
+    test = DataGenerator::GenerateData();
+    cout << test.second << endl;
+
 }
 
 // Executes the basic game loop.

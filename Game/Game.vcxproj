@@ -252,6 +252,7 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
+    <ClInclude Include="DataGenerator.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DrawData.h" />
@@ -325,6 +326,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
+    <ClCompile Include="DataGenerator.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileManager.cpp" />

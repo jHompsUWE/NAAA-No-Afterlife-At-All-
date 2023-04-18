@@ -27,6 +27,7 @@
 #include "InputManager.h"
 
 #include "SelectionHandler.h"
+#include "DataGenerator.h"
 
 using std::list;
 
