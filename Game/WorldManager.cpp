@@ -110,8 +110,8 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 			if (abs(i) + abs(j) <= radius)
 			{
 				// This is within the radius of the object so update vibe
-				pos = { start_pos.x + j, start_pos.y + i };
-				std::cout << pos.x << " " << pos.y << std::endl;
+				//pos = { start_pos.x + j, start_pos.y + i };
+				//std::cout << pos.x << " " << pos.y << std::endl;
 				//m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
 				//m_world[_plane][getIndex(pos)]->getTile().SetColour(Color(0, 1, 0));
 			}

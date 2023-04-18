@@ -51,6 +51,11 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
 			return true;
 		}
+	case ManagerType::SOUL:
+		{
+			soulManager = reinterpret_cast<SoulManager*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }

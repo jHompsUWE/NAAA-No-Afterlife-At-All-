@@ -25,6 +25,7 @@
 #include "TileGO.h"
 #include "WorldManager.h"
 #include "InputManager.h"
+#include "ReincarnationManager.h"
 
 #include "SelectionHandler.h"
 #include "DataGenerator.h"
@@ -144,6 +145,7 @@ private:
     std::shared_ptr<InputManager> input_manager;
     std::shared_ptr<WorldManager> world_manager;
     std::shared_ptr<SoulManager> soul_manager;
+    std::shared_ptr<ReincarnationManager> reincarnation_manager;
 
     std::shared_ptr<SelectionHandler> m_selection_handler;
 
