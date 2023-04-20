@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CursorController.h"
+#include "debug.h"
 
 #include "GameManager.h"
 
@@ -27,6 +28,5 @@ void CursorController::onEvent(const Event& event)
     if (event.type == EventType::MOVE_CURSOR)
     {
         move_direction = Vector2{event.payload.input_vector2_data.x, event.payload.input_vector2_data.y};
-        std::cout << move_direction.x << " : " << move_direction.y;
     }
 }

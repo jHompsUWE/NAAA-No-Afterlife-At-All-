@@ -252,6 +252,7 @@
     <ClInclude Include="CMOGO.h" />
     <ClInclude Include="ControlTypeHandler.h" />
     <ClInclude Include="CursorController.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="DeviceHandler.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="ConstantBuffer.h" />

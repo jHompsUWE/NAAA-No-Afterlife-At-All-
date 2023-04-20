@@ -18,7 +18,7 @@ static const char* logEnum2Strings[] = {
 /// <summary>add a serverity from the enum DEBUG,INFO,WARN,ERROR then the message {stuff} (its a string) </summary>
 /// <param name="serverity">: enum on how servere the log is</param>
 /// <param name="message">: the log detailed message </param>
-#define CONSOLE(serverity, message) log_create(serverity, __FILE__, __LINE__, message)
+#define CONSOLE(serverity, message) log_create(serverity, __FILE__, __LINE__ ,message)
 
 static void addbrace(std::string& string)
 {
@@ -33,7 +33,7 @@ static void addbrace(std::string& string)
 /// <param name="_filename"> the file it came from</param>
 /// <param name="_line_number"> the line the log came from</param>
 /// <param name="_message"> the log detailed message </param>
-static void log_create(Serverity _serverity, std::string _filename, int _line_number, std::string _message)
+static void log_create(Serverity _serverity, std::string _filename, int _line_number,std::string _message)
 {
     //type initilisers
     std::string linenum;
@@ -63,8 +63,8 @@ static void log_create(Serverity _serverity, std::string _filename, int _line_nu
     addbrace(linenum);
 
     // uniform output
-    //             [type]  <<[filename]<< [line]  <<  :   <<" message" 
-
+    //            type]  <<[filename]<< [line]  <<  :   <<" message" 
+    //std::cout << _time;
     switch (_serverity)
     {
     case DEBUG:
@@ -82,7 +82,7 @@ static void log_create(Serverity _serverity, std::string _filename, int _line_nu
     default:
         break;
     }
-
+    
     std::cout << serverity;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     std::cout << filename << linenum << ": " << _message << std::endl;
