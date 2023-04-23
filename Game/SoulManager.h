@@ -9,7 +9,7 @@
 #include "PlaneType.h"
 
 #include "GameManager.h"
-
+#include "GridLocation.h"
 
 struct Soul
 {
@@ -33,12 +33,15 @@ class SoulManager : public Manager, public Listener
 	std::vector <std::shared_ptr<Soul>> m_Earth_Souls;
 
 public:
-	void onEvent(const Event& event) override;
+	explicit SoulManager(map<PlaneType, vector<unique_ptr<GridLocation>>>& world);;
 
+	
+	void onEvent(const Event& event) override;
 	void AddSoul(DirectX::SimpleMath::Vector2 location,PlaneType plane = PlaneType::Earth);			// add a soul at this location
+	void wandering(shared_ptr<Soul> _soul,PlaneType _plane);
 	void Wander();																					// run the soul road movement
 	void ZoneCheck();																				//check if zone is attached
-	int TotalSoulsAmmount(PlaneType plane) const;													//get souls per plane NONE : get souls total overall
+	int TotalSoulsAmmount(PlaneType _plane) const;													//get souls per plane NONE : get souls total overall
 
 																									// Inherited via Manager
 	
@@ -47,7 +50,8 @@ public:
 	virtual void lateUpdate(GameData& _game_data) override;
 
 private:
-	float m_time;
+	float m_time = 0.f;
+	map<PlaneType, vector<unique_ptr<GridLocation>>>& game_world;
 };
 
 

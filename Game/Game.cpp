@@ -134,8 +134,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    soul_manager = std::make_shared<SoulManager>();
-    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+    
 
     event_manager->addListener(&*soul_manager);
     
@@ -157,7 +156,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world[PlaneType::Heaven][12]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][36]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25]);
-    
+
+    soul_manager = std::make_shared<SoulManager>(world_manager->getWorld());
+    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD, m_d3dContext);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
