@@ -110,5 +110,10 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, 
 		}
 	}
 
+	if (m_grid_data.m_tile_type == TileType::Water)
+	{
+		m_tile->SetColour(Colors::LightBlue.v);
+	}
+
 	//m_grid_data.m_building_data->update(soul_manager);
 }

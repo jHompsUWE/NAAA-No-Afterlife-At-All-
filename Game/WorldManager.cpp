@@ -369,8 +369,52 @@ void WorldManager::generateWorld()
 				plane.second[index]->createBuilding(m_d3dContext);
 				plane.second[index]->getGridData().m_building->SetColour(Colors::Gray.v);
 			}
+			std::cout << "created rock" << std::endl;
+			CONSOLE(DEBUG, "created rock");
 		}
 	}
+
+	int river_direction = random(1, 2);
+
+	int river_start = 0;
+
+
+	river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
+
+	for (auto& plane : m_world)
+	{
+		for (int j = river_start; j < river_start + 3; j++)
+		{
+			for (int i = 0; i < m_grid_x; i++)
+			{
+				int index = j * m_grid_x + i;
+				plane.second[index]->getGridData().m_tile_type = TileType::Water;
+				plane.second[index]->getTile().SetColour(Colors::LightBlue.v);
+				CONSOLE(DEBUG, "set tile");
+			}
+		}
+		
+	}
+	/*
+	switch (river_direction)
+	{
+	case 1:
+		
+		break;
+	case 2:
+		river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
+
+		for (auto& plane : m_world)
+		{
+			for (int i = 0; i < m_grid_x; i++)
+			{
+				plane.second[river_start * m_grid_x + i]->getGridData().m_tile_type = TileType::Water;
+				plane.second[river_start * m_grid_x + i]->getTile().SetColour(Colors::BlueViolet.v);
+				CONSOLE(DEBUG, "set tile");
+			}
+		}
+		break;
+	}*/
 
 	
 }
