@@ -1,15 +1,15 @@
 #pragma once
 #include <memory>
 #include <vector>
-#include <d3d11_1.h>
+//#include <d3d11_1.h>
 #include <SimpleMath.h>
 #include "Manager.h"
-#include "ImageGO2D.h"
-#include "ZoneType.h"
-#include "PlaneType.h"
+//#include "ImageGO2D.h"
+//#include "ZoneType.h"
+//#include "PlaneType.h"
 
-#include "GameManager.h"
-#include "GridLocation.h"
+//#include "GameManager.h"
+#include "WorldManager.h"
 
 struct Soul
 {
@@ -33,10 +33,11 @@ class SoulManager : public Manager, public Listener
 	std::vector <std::shared_ptr<Soul>> m_Earth_Souls;
 
 public:
-	explicit SoulManager(map<PlaneType, vector<unique_ptr<GridLocation>>>& world);;
+	explicit SoulManager(shared_ptr<WorldManager> world_manager);
 
 	
 	void onEvent(const Event& event) override;
+	void zone_checking(shared_ptr<Soul> soul, PlaneType plane);
 	void AddSoul(DirectX::SimpleMath::Vector2 location,PlaneType plane = PlaneType::Earth);			// add a soul at this location
 	void wandering(shared_ptr<Soul> _soul,PlaneType _plane);
 	void Wander();																					// run the soul road movement
@@ -51,7 +52,7 @@ public:
 
 private:
 	float m_time = 0.f;
-	map<PlaneType, vector<unique_ptr<GridLocation>>>& game_world;
+	shared_ptr<WorldManager> world_manager;
 };
 
 

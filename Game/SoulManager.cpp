@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "SoulManager.h"
 
-#include "BuildingData.h"
+//#include "BuildingData.h"
+#include "GameManager.h"
 #include "Pathfinding.h"
-#include "WorldManager.h"
+//#include "WorldManager.h"
 
 //#include "WorldManager.h"
 
-SoulManager::SoulManager(map<PlaneType, vector<unique_ptr<GridLocation>>>& world): game_world(world)
+SoulManager::SoulManager(shared_ptr<WorldManager> _world_manager) :world_manager(_world_manager)
 {
 	srand(time(nullptr));
 }
@@ -114,32 +115,78 @@ void SoulManager::onEvent(const Event& event)
 }
 
 
+void SoulManager::zone_checking(shared_ptr<Soul> soul, PlaneType _plane)
+{
+	Vector2 radius_directions[20] =
+		{
+		{ 1, 1}, { 2, 0}, { 3, 0},
+		{ 0,-2}, { 0,-3}, {-2, 0},
+		{-3, 0}, { 0, 2}, { 0, 3},
+		{ 1, 2}, { 2, 1}, { 1,-1},
+		{ 1,-2}, { 2,-1}, {-1, 1},
+		{-1, 2}, {-2, 1}, {-1,-1},
+		{-1,-2}, {-2,-1}
+		};
+	Vector2 connected_radius[4] = { {1,0}, {0,-1}, {-1,0}, {0,1} };
+	
+	Vector2 pos = soul->position; 
+	int soulindex = world_manager->getIndex(soul->position);
+
+
+	std::vector<int> connected_index = {};
+	std::vector<int> radius_indexs= {};
+	connected_index.emplace_back(soulindex);
+		
+	for (auto direction : connected_radius)
+	{
+		connected_index.emplace_back(world_manager->getIndex(soul->position + direction));
+	}
+		
+	for (auto direction : radius_directions)
+	{
+		radius_indexs.emplace_back(world_manager->getIndex(soul->position + direction));
+	}
+		
+	auto& plane = world_manager->getWorld()[_plane];
+	for (auto index : connected_index)
+	{
+		auto& grid_data = plane[index]->getGridData();
+		if (grid_data.m_connected == true && grid_data.m_zone_type == soul->zonetype && grid_data.m_building_data != nullptr)
+		{
+			auto& building = grid_data.m_building_data;
+			if (building->m_capacity.MaximumCapacity > building->m_capacity.CurrentCapacity)
+			{
+				(soul->reincarnate
+					 ?building->m_capacity.TemporaryCapacity
+					 :building->m_capacity.PermanentCapacity).emplace_back(soul);
+				m_Heven_ZonedSouls.emplace_back(move(soul));
+				building->m_capacity.CurrentCapacity++;
+			}
+		}
+	}
+	for (auto index : radius_indexs)
+	{
+		auto& grid_data = plane[index]->getGridData();
+		if (grid_data.m_connected != true && grid_data.m_zone_type == soul->Soul::zonetype && grid_data.m_building_data != nullptr)
+		{
+			auto& building = grid_data.m_building_data;
+			if (building->m_capacity.MaximumCapacity > building->m_capacity.CurrentCapacity)
+			{
+				(soul->Soul::reincarnate
+					 ?building->m_capacity.TemporaryCapacity
+					 :building->m_capacity.PermanentCapacity).emplace_back(soul);
+				m_Heven_ZonedSouls.emplace_back(move(soul));
+				building->m_capacity.CurrentCapacity++;
+			}
+		}
+	}
+}
+
 void SoulManager::ZoneCheck()
 {
-	Vector2 directions[24] =
-{
-		{1, 0}, {2, 0}, {3, 0}, // right
-		{0, -1}, {0, -2}, {0, -3}, // back
-		{-1, 0}, {-2, 0}, {-3, 0}, // left
-		{0, 1}, {0, 2}, {0, 3}, // front
-		{1, 1}, {1, 2}, {2, 1}, // top right
-		{1, -1}, {1, -2}, {2, -1}, // bottom right
-		{-1, 1}, {-1, 2}, {-2, 1}, // top left
-		{-1, -1}, {-1, -2}, {-2, -1} // bottom left
-};
 	for (auto soul : m_Heven_wanderingSouls)
 	{
-		Vector2 pos = soul->position; 
-		int soulindex = WorldManager::getIndex(soul->Soul::position);
-		int north = WorldManager::getIndex(Vector2{pos.x,pos.y + 1});
-		int east =	WorldManager::getIndex(Vector2{pos.x + 1,pos.y});
-		int south = WorldManager::getIndex(Vector2{pos.x,pos.y - 1});
-		int west =	WorldManager::getIndex(Vector2{pos.x - 1,pos.y});
-
-		if (game_world[PlaneType::Heaven][soulindex]->getGridData().)
-		{
-			
-		}
+		zone_checking(soul,PlaneType::Heaven);
 	}
 }
 
@@ -149,14 +196,14 @@ void SoulManager::ZoneCheck()
 void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 {
 	Vector2 pos = soul->position; 
-	int soulindex = WorldManager::getIndex(soul->Soul::position);
-	int north = WorldManager::getIndex(Vector2{pos.x,pos.y + 1});
-	int east =	WorldManager::getIndex(Vector2{pos.x + 1,pos.y});
-	int south = WorldManager::getIndex(Vector2{pos.x,pos.y - 1});
-	int west =	WorldManager::getIndex(Vector2{pos.x - 1,pos.y});
+	int soulindex = world_manager->getIndex(soul->Soul::position);
+	int north = world_manager->getIndex(Vector2{pos.x,pos.y + 1});
+	int east =	world_manager->getIndex(Vector2{pos.x + 1,pos.y});
+	int south = world_manager->getIndex(Vector2{pos.x,pos.y - 1});
+	int west =	world_manager->getIndex(Vector2{pos.x - 1,pos.y});
 	bool failedn,failede,faileds,failedw = false;
-	if (game_world[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Building ||
-		game_world[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Road)
+	if (world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Building ||
+		world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Road)
 	{
 		bool wandering = true;
 		while (wandering)
@@ -166,7 +213,7 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 			{
 			case 1 and !failedn:
 				{
-					if (game_world[plane][north]->getGridData().m_tile_type == TileType::Road)
+					if (world_manager->getWorld()[plane][north]->getGridData().m_tile_type == TileType::Road)
 					{
 						soul->position = Vector2{pos.x,pos.y + 1};
 						wandering = false;
@@ -179,7 +226,7 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 			case 2 and (!failede):
 				{
-					if (game_world[plane][east]->getGridData().m_tile_type == TileType::Road)
+					if (world_manager->getWorld()[plane][east]->getGridData().m_tile_type == TileType::Road)
 					{
 						soul->position = Vector2{pos.x + 1,pos.y};
 						wandering = false;
@@ -192,7 +239,7 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 			case 3 and !faileds:
 				{
-					if (game_world[plane][south]->getGridData().m_tile_type == TileType::Road)
+					if (world_manager->getWorld()[plane][south]->getGridData().m_tile_type == TileType::Road)
 					{
 						soul->position = Vector2{pos.x,pos.y - 1};
 						wandering = false;
@@ -204,7 +251,7 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 					break;
 				}
 			case 4 and !failedw:
-				if (game_world[plane][west]->getGridData().m_tile_type == TileType::Road)
+				if (world_manager->getWorld()[plane][west]->getGridData().m_tile_type == TileType::Road)
 				{
 					soul->position = Vector2{pos.x - 1,pos.y};
 					wandering = false;
