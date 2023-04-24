@@ -28,7 +28,7 @@ public:
 
 	void nuke();
 
-	void update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, SoulManager* soul_manager);
+	void update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device);
 
 private:
 	GridData m_grid_data;

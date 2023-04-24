@@ -9,8 +9,7 @@ enum class TileType
 	// Colors represent differents sins/virtues
 	None,
 	Zone,
-	Lava,
-	Water,
+	River,
 	Road,
 	Building,
 	Rock

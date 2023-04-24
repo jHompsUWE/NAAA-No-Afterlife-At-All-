@@ -6,11 +6,11 @@
 
 WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y), m_soul_manager(nullptr)
 {
-	int total_size = m_grid_x * m_grid_y;
+	m_total_tiles = m_grid_x * m_grid_y;
 	
-	m_world[PlaneType::Heaven].reserve(total_size);
-	m_world[PlaneType::Earth].reserve(total_size);
-	m_world[PlaneType::Hell].reserve(total_size);
+	m_world[PlaneType::Heaven].reserve(m_total_tiles);
+	m_world[PlaneType::Earth].reserve(m_total_tiles);
+	m_world[PlaneType::Hell].reserve(m_total_tiles);
 }
 
 WorldManager::~WorldManager()
@@ -163,7 +163,7 @@ void WorldManager::update(GameData& _game_data)
 		{
 			for (auto& tile : plane.second)
 			{
-				tile->update(m_d3dContext, m_soul_manager);
+				tile->update(m_d3dContext);
 			}
 		}
 	}
@@ -353,7 +353,25 @@ bool WorldManager::withinRange(Vector2 position)
 /// </summary>
 void WorldManager::generateWorld()
 {
-	int number_of_rocks = 10;
+	// Generate Rivers
+	int river_start = 0;
+
+	for (auto& plane : m_world)
+	{
+		river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
+
+		for (int j = river_start; j < river_start + int(m_grid_y * 0.2); j++)
+		{
+			for (int i = 0; i < m_grid_x; i++)
+			{
+				int index = j * m_grid_x + i;
+				plane.second[index]->getGridData().m_tile_type = TileType::River;
+				plane.second[index]->getTile().SetColour(Colors::LightBlue.v);
+			}
+		}
+	}
+
+	int number_of_rocks = random(int(m_total_tiles * 0.05), int(m_total_tiles * 0.15));
 
 	for (auto& plane : m_world)
 	{
@@ -363,7 +381,7 @@ void WorldManager::generateWorld()
 			int y = random(0, m_grid_y - 1);
 			int index = y * m_grid_x + x;
 
-			if (plane.second[index]->getGridData().m_tile_type != TileType::Rock)
+			if (plane.second[index]->getGridData().m_tile_type == TileType::None)
 			{
 				plane.second[index]->getGridData().m_tile_type = TileType::Rock;
 				plane.second[index]->createBuilding(m_d3dContext);
@@ -374,47 +392,10 @@ void WorldManager::generateWorld()
 		}
 	}
 
-	int river_direction = random(1, 2);
-
-	int river_start = 0;
+	
 
 
-	river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
-
-	for (auto& plane : m_world)
-	{
-		for (int j = river_start; j < river_start + 3; j++)
-		{
-			for (int i = 0; i < m_grid_x; i++)
-			{
-				int index = j * m_grid_x + i;
-				plane.second[index]->getGridData().m_tile_type = TileType::Water;
-				plane.second[index]->getTile().SetColour(Colors::LightBlue.v);
-				CONSOLE(DEBUG, "set tile");
-			}
-		}
-		
-	}
-	/*
-	switch (river_direction)
-	{
-	case 1:
-		
-		break;
-	case 2:
-		river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
-
-		for (auto& plane : m_world)
-		{
-			for (int i = 0; i < m_grid_x; i++)
-			{
-				plane.second[river_start * m_grid_x + i]->getGridData().m_tile_type = TileType::Water;
-				plane.second[river_start * m_grid_x + i]->getTile().SetColour(Colors::BlueViolet.v);
-				CONSOLE(DEBUG, "set tile");
-			}
-		}
-		break;
-	}*/
+	
 
 	
 }

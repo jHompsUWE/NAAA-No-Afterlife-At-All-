@@ -50,6 +50,7 @@ private:
 
     int m_grid_x;
     int m_grid_y;
+    int m_total_tiles;
     
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>> m_world;
 

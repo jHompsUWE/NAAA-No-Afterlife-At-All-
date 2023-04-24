@@ -55,7 +55,7 @@ void GridLocation::nuke()
 	m_grid_data.nuke();
 }
 
-void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, SoulManager* soul_manager)
+void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 {
 	switch (m_grid_data.m_zone_type)
 	{
@@ -110,9 +110,18 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, 
 		}
 	}
 
-	if (m_grid_data.m_tile_type == TileType::Water)
+	if (m_grid_data.m_tile_type == TileType::River)
 	{
-		m_tile->SetColour(Colors::LightBlue.v);
+		switch (m_grid_data.m_plane)
+		{
+		case PlaneType::Heaven:
+			m_tile->SetColour(Colors::LightBlue.v);
+			break;
+		case PlaneType::Hell:
+			m_tile->SetColour(Colors::DarkRed.v);
+			break;
+		}
+		
 	}
 
 	//m_grid_data.m_building_data->update(soul_manager);
