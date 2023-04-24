@@ -10,6 +10,7 @@
 #include "../DirectXTK/Inc/Effects.h" //this clashes with a SDK file so must explitily state it
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "GamePad.h"
 #include "Audio.h"
 #include <map>
 // Needs to be included here or it doesn't work
@@ -123,6 +124,7 @@ private:
     void ReadInput(); //Get current Mouse and Keyboard states
     std::unique_ptr<DirectX::Keyboard> m_keyboard;
     std::unique_ptr<DirectX::Mouse> m_mouse;
+    std::unique_ptr<DirectX::GamePad> m_gamepad;
 
     list<GameObject*> m_GameObjects; //data structure to hold pointers to the 3D Game Objects
     list<GameObject2D*> m_GameObjects2D; //data structure to hold pointers to the 2D Game Objects 
