@@ -5,31 +5,43 @@
 class ReincarnationManager : public Manager
 {
 public:
+    bool operator == (const EMBO* _embo) const
+    {
+        return true;
+    }
+    
     void update(GameData& _game_data) override;
     void awake() override;
 
     EMBO TurnIntoEMBO(Soul* _soul); // return the EMBO with all the soul data
     Soul TurnIntoSoul(EMBO* _embo);  // Save the poor soul from the life on Earth
 
-    static EMBO SoulToEMBO(Soul& _soul);
-    static Soul EMBOToSoul(EMBO& _embo);    
+    EMBO SoulToEMBO(Soul& _soul);
+    bool EMBOToSoul(EMBO& _embo);    
     
 private:    
-    std::vector <std::shared_ptr<EMBO>> earthEMBOs;
+    std::vector <EMBO*> earthEMBOs;
 
-    std::vector	<std::shared_ptr<Soul>> hellZonedSouls_;
-    std::vector <std::shared_ptr<Soul>> hellWanderingSouls_;
+    std::vector	<Soul*> hellZonedSouls_;
+    std::vector <Soul*> hellWanderingSouls_;
 
-    std::vector	<std::shared_ptr<Soul>> heavenZonedSouls_;
-    std::vector <std::shared_ptr<Soul>> heavenWanderingSouls_;
+    std::vector	<Soul*> heavenZonedSouls_;
+    std::vector <Soul*> heavenWanderingSouls_;
 
-    std::vector<std::vector<std::shared_ptr<Soul>>> allContainers;
+    std::vector<std::vector<Soul*>> allContainers;
 
     void RemoveFromList(EMBO* _embo); 
-    void RemoveFromList(Soul* _soul); 
+    void RemoveFromList(Soul* _soul);
 
-    static void RemoveEntity(Soul& _soul);
-    static void RemoveEntity(EMBO& _embo);
+    bool compareEMBOs(const EMBO* a, const EMBO* b);
+    bool compareSOULs(const Soul* a, const Soul* b);
+    void removeMatchingEMBOs(std::vector<EMBO*>& earthEMBOs, const EMBO& target);
+    void removeMatchingSOULs(const Soul& target);
+
+
+    void RemoveEntity(Soul& _soul);
+    void RemoveEntity(EMBO& _embo);
 
     bool doOnce = true;
+
 };

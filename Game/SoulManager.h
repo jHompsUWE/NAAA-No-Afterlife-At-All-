@@ -61,8 +61,8 @@ struct Soul : EMBO
 
 struct SoulComparator {
 	const Soul* soulToFind;
-	SoulComparator(const std::shared_ptr<Soul>& soul) : soulToFind(soul.get()) {}
-	bool operator()(const std::shared_ptr<Soul>& soulPtr) const {
+	SoulComparator(const Soul*& soul) : soulToFind(soul) {}
+	bool operator()(const Soul*& soulPtr) const {
 		return soulPtr->value == soulToFind->value;
 	}
 };
@@ -70,14 +70,14 @@ struct SoulComparator {
 class SoulManager : public Manager
 {
 public:
-	std::vector	<std::shared_ptr<Soul>> m_Hell_ZonedSouls;
-	std::vector <std::shared_ptr<Soul>> m_Hell_wanderingSouls;
+	std::vector	<Soul*> m_Hell_ZonedSouls;
+	std::vector <Soul*> m_Hell_wanderingSouls;
 
-	std::vector	<std::shared_ptr<Soul>> m_Heven_ZonedSouls;
-	std::vector <std::shared_ptr<Soul>> m_Heven_wanderingSouls;
+	std::vector	<Soul*> m_Heven_ZonedSouls;
+	std::vector <Soul*> m_Heven_wanderingSouls;
 	
 	
-	std::vector <std::shared_ptr<EMBO>> m_Earth_Souls;
+	std::vector <EMBO*> m_Earth_Souls;
 
 
 	
