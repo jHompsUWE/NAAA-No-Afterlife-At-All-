@@ -24,40 +24,45 @@ OptionBar::OptionBar(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 
 	auto dataList = GameManager::get()->getFileManagerV2()->GetJson("option_buttons");
 
-	optionWindows[0] = new OptionBarWindow(_GD, 1);
+	//optionWindows.emplace_back(new OptionBarWindow(_GD, 1));
 
 	int j = 0;
 	for (auto window : (*dataList)["Windows"])
 	{
-		optionWindows[j] = (new OptionBarWindow(_GD, window["NumButtons"]));
-		optionWindows[j]->SetPos(Vector2(100, 150));
+		Vector2 position = Vector2(window["Position"]["X"], window["Position"]["Y"]);
+		optionWindows.emplace_back(new OptionBarWindow(_GD, window["NumButtons"], position));
 
-		for (int k = 0; k < window["NumButtons"]; k++)
+
+		int k = 0;
+		for (auto button : window["ButtonText"])
 		{
-			optionWindows[j]->SetButtonText(k, string(window["ButtonText"][k]));
+			optionWindows.back()->SetButtonText(k, string(button));
+			k += 1;
 		}
+
+
+		/*for (int k = 0; k < window["NumButtons"]; k++)
+		{
+			optionWindows.back()->SetButtonText(k, string(window["ButtonText"][k]));
+		}*/
+
 		j += 1;
 	}
 	
-	cout << "Scream"; 
 	int i = 0;
 
 	for (auto button : (*dataList)["Buttons"])
 	{
 		string name = string(button["Text"]);
-		optionButtons[i] = new OptionBarButton(_GD, (i + 1) * 1.5, name);
-		optionButtons[i]->setToggle(optionWindows[0]);
+		Vector2 position = Vector2(button["Position"]["X"], button["Position"]["Y"]);
+		optionButtons[i] = new OptionBarButton(_GD, position, name);
+		optionButtons[i]->setToggle(optionWindows[i]);
 		optionButtons[i]->SetBounds();
+
+		optionButtons[i]->centreText();
 
 		i += 1;
 	}
-
-	/*for (int i = 0; i < optionButtons.size(); i++)
-	{
-		optionButtons[i] = new OptionBarButton(_GD, (i+1)*1.5, (*dataList)["Buttons"]["Text"][i]);
-		optionButtons[i]->setToggle(optionWindows[0]);
-		optionButtons[i]->SetBounds();
-	}*/
 
 }
 
@@ -68,12 +73,14 @@ OptionBar::~OptionBar()
 
 void OptionBar::Tick(GameData* _GD)
 {
+	
 	for (int i = 0; i < optionButtons.size(); i++)
 	{
 		optionButtons[i]->Tick(_GD);
+
 		if (optionButtons[i]->pressed)
 		{
-			optionButtons[i]->Toggle();
+			optionButtons[i]->Toggle(true);
 			optionButtons[i]->pressed = false;
 		}
 
@@ -81,10 +88,6 @@ void OptionBar::Tick(GameData* _GD)
 		{
 			if (hovered != optionButtons[i] && hovered != nullptr)
 			{
-				if (hovered != nullptr && hovered->toggle->renderable)
-				{
-					optionButtons[i]->Toggle();
-				}
 				hovered->SetHover(false);
 			}
 
@@ -97,6 +100,11 @@ void OptionBar::Tick(GameData* _GD)
 			{
 				hovered = nullptr;
 			}
+		}
+
+		for (int i = 0; i < optionWindows.size(); i++)
+		{
+			optionWindows[i]->Tick(_GD);
 		}
 		
 	}
@@ -111,8 +119,8 @@ void OptionBar::Draw(DrawData2D* _DD)
 		optionButtons[i]->Draw(_DD);
 	}
 
-	/*for (int i = 0; i < optionWindows.size(); i++)
+	for (int i = 0; i < optionWindows.size(); i++)
 	{
-		optionWindows[0]->Draw(_DD);
-	}*/
+		optionWindows[i]->Draw(_DD);
+	}
 }

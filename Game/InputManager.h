@@ -6,7 +6,7 @@
 
 #include "Manager.h"
 #include "json.hpp"
-#include "GameManager.h"
+//#include "GameManager.h"
 #include "FileManagerV2.h"
 
 enum class InputType

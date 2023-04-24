@@ -4,7 +4,7 @@
 #include "DrawData2D.h"
 #include "GameData.h"
 
-OptionBarButton::OptionBarButton(ID3D11Device* _GD, float xi, string text)
+OptionBarButton::OptionBarButton(ID3D11Device* _GD, Vector2 pos, string text)
 {
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
 
@@ -19,14 +19,14 @@ OptionBarButton::OptionBarButton(ID3D11Device* _GD, float xi, string text)
 	SetScale(Vector2(20, 10));
 	m_colour = Colors::LightGoldenrodYellow;
 
-	SetPos(Vector2(60 * xi,5));
+	SetPos(Vector2(pos));
 
 	buttonText = new TextGO2D(text);
 	buttonText->SetScale(Vector2(0.5, 0.5));
 	
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 	
-	buttonText->SetPos(GetPos().x - bounds.width/2, GetPos().y - bounds.height/4);
+	buttonText->SetPos(GetPos().x - bounds.width/2, GetPos().y);
 	buttonText->SetColour(Colors::Black);
 }
 
@@ -44,19 +44,19 @@ void OptionBarButton::Tick(GameData* _GD)
 	int mouseY = _GD->m_MS.y;
 	Vector2 mousepos{ (float)mouseX,(float)mouseY };
 
-	if (_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 	{
-		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
+		if (!hover)
+		{
+			SetHover(true);
+		}
+
+		if (_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
 		{
 			pressed = true;
 		}
 	}
-
-	if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && hover == false)
-	{
-		SetHover(true);
-	}
-
+	
 	if (hover && !(bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y })))
 	{
 		SetHover(false);
@@ -89,14 +89,26 @@ void OptionBarButton::setText(string _string)
 	buttonText->SetString(_string);
 }
 
+void OptionBarButton::centreText()
+{
+	buttonText->SetPos(GetPos().x - bounds.width / 2, GetPos().y - bounds.height / 4);
+}
+
 void OptionBarButton::setToggle(Window* _toggle)
 {
 	toggle = _toggle;
 }
 
-void OptionBarButton::Toggle()
+void OptionBarButton::Toggle(bool toggleOn)
 {
-	toggle->renderable = !toggle->renderable;
+	if (toggleOn)
+	{
+		toggle->renderable = true;
+	}
+	else
+	{
+		toggle->renderable = false;
+	}
 }
 
 

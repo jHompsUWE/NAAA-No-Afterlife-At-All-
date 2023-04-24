@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "InputManager.h"
+#include "GameManager.h"
 
 void InputManager::awake()
 {

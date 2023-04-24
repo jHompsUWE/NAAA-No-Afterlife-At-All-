@@ -7,8 +7,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 57.5,
-        "Y": 94
+        "X": 50,
+        "Y": 5
       },
       "Toggle": "GREEN_ZONING"
     },
@@ -19,8 +19,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 85.5,
-        "Y": 94
+        "X": 150,
+        "Y": 5
       },
       "Toggle": "YELLOW_ZONING"
     },
@@ -31,8 +31,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 113.5,
-        "Y": 94
+        "X": 250,
+        "Y": 5
       },
       "Toggle": "ORANGE_ZONING"
     },
@@ -43,8 +43,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 141.5,
-        "Y": 94
+        "X": 350,
+        "Y": 5
       },
       "Toggle": "BROWN_ZONING"
     }
@@ -56,8 +56,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 57.5,
-        "Y": 148
+        "X": 50,
+        "Y": 165
       },
       "NumButtons": 7,
       "ButtonText": {
@@ -76,8 +76,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 57.5,
-        "Y": 148
+        "X": 150,
+        "Y": 105
       },
       "NumButtons": 4,
       "ButtonText": {
@@ -93,8 +93,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 57.5,
-        "Y": 148
+        "X": 250,
+        "Y": 145
       },
       "NumButtons": 6,
       "ButtonText": {
@@ -112,8 +112,8 @@
         "Y": 6
       },
       "Position": {
-        "X": 57.5,
-        "Y": 148
+        "X": 350,
+        "Y": 185
       },
       "NumButtons": 8,
       "ButtonText": {

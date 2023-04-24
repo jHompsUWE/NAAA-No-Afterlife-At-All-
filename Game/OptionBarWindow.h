@@ -6,7 +6,7 @@
 class OptionBarWindow : public Window
 {
 public:
-	OptionBarWindow(ID3D11Device* _GD, int buttonNum);
+	OptionBarWindow(ID3D11Device* _GD, int buttonNum, Vector2 pos);
 	~OptionBarWindow();
 
 	virtual void Tick(GameData* _GD) override;
@@ -18,5 +18,7 @@ public:
 	std::vector <OptionBarButton*> buttons;
 
 	OptionBarButton* hovered;
+
+	//bool renderable = false;
 
 };

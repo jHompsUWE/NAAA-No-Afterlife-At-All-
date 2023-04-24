@@ -6,7 +6,7 @@
 #include "GameManager.h"
 
 
-OptionBarWindow::OptionBarWindow(ID3D11Device* _GD, int buttonNum)
+OptionBarWindow::OptionBarWindow(ID3D11Device* _GD, int buttonNum, Vector2 pos)
 {
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
 
@@ -19,14 +19,22 @@ OptionBarWindow::OptionBarWindow(ID3D11Device* _GD, int buttonNum)
 
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
-	m_scale = (Vector2(30,50));
+	m_scale = (Vector2(20,10*buttonNum));
 	m_colour = Colors::LightGoldenrodYellow;
 
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 
+	SetPos(pos);
+
 	for (int i = 0; i < buttonNum; i++)
 	{
-		buttons[i] = new OptionBarButton(_GD, 0, "Text");
+		buttons.emplace_back(new OptionBarButton(_GD, Vector2(GetPos().x, 50 + (20 * (i+1))), "Text"));
+		buttons.back()->SetScale(Vector2(20, 5));
+		//buttons.back()->SetPos(Vector2(GetPos().x - bounds.width / 2, GetPos().y - bounds.height / 2));
+		buttons.back()->buttonText->SetScale(Vector2(0.4,0.4));
+		buttons.back()->buttonText->SetPos(buttons.back()->GetPos().x - bounds.width / 2, buttons.back()->GetPos().y - bounds.height / (20 + i+1));
+		buttons.back()->buttonText->SetColour(Colors::Black);
+		buttons.back()->setToggle(this);
 	}
 
 	renderable = false;
@@ -52,28 +60,7 @@ void OptionBarWindow::SetButtonText(int button, string text)
 /// </summary>
 void OptionBarWindow::SetButtonBounds()
 {
-	for (int i = 0; i < buttons.size(); i++)
-	{
-		int j = 0;
-		if (buttons.size() == 3)
-		{
-			j = (this->m_pos.x - this->bounds.width / 3) + (i * 80);
-		}
-		else if (buttons.size() == 4)
-		{
-			j = (this->m_pos.x - this->bounds.width / 2.65) + (i * 80);
-		}
-		else
-		{
-			j = (this->m_pos.x - this->bounds.width / 2.5) + (i * 80);
-		}
 
-		buttons[i]->SetPos(j, this->GetPos().y);
-
-		buttons[i]->SetBounds();
-
-		buttons[i]->bounds.height = 1000;
-	}
 }
 
 
@@ -93,14 +80,15 @@ void OptionBarWindow::Tick(GameData* _GD)
 
 	if (renderable)
 	{
-		if (hovered != nullptr && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+		if (hovered != nullptr && hovered->pressed)
 		{
-			Event event{};
-			event.type = hovered->event_type;
+			/*Event event{};
+			event.type = hovered->event_type;*/
 
-			renderable = false;
+			hovered->Toggle(false);
+			hovered->pressed = false;
 
-			GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+			//GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 		}
 
 		for (int i = 0; i < buttons.size(); i++)
@@ -132,6 +120,11 @@ void OptionBarWindow::Draw(DrawData2D* _DD)
 	if (renderable)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
+
+		for (int i = 0; i < buttons.size(); i++)
+		{
+			buttons[i]->Draw(_DD);
+		}
 	}
 
 }

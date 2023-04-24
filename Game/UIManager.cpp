@@ -128,5 +128,5 @@ void UIManager::Draw(DrawData2D* _DD)
         buildWindows[i]->Draw(_DD);
     }
 
-    optBar->Draw(_DD);
+   optBar->Draw(_DD);
 }
