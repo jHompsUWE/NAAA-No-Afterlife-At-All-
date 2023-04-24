@@ -293,9 +293,18 @@ void SelectionHandler::updateRoads()
 			for (auto tile : tiles)
 			{
 				int index = m_world_manager->getIndex(tile);
+				auto& world = m_world_manager->getWorld();
 
 				// Stop placing roads if building is hit
-				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_building)
+				if (world[m_plane][index]->getGridData().m_building)
+				{
+					break;
+				}
+				if (world[m_plane][index]->getGridData().m_tile_type == TileType::River)
+				{
+					break;
+				}
+				if (world[m_plane][index]->getGridData().m_tile_type == TileType::Rock)
 				{
 					break;
 				}
