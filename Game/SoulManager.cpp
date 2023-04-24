@@ -11,6 +11,11 @@
 SoulManager::SoulManager(shared_ptr<WorldManager> _world_manager) :world_manager(_world_manager)
 {
 	srand(time(nullptr));
+
+	for (size_t i = 0; i < 1000; i++)
+	{
+		AddSoul();
+	}
 }
 
 #include "GameManager.h"
@@ -26,7 +31,7 @@ void SoulManager::AddSoul()
 	std::cout << "num: " << earth_belif << std::endl;
 
 	Soul* soul = new Soul;
-	soul->m_position = Vector2{-100,-100};	// position the soul of the screen
+	soul->m_position = Vector2{0,0};			// position the soul on the grid
 	soul->m_totalyears = rand()%900 + 100;		//total years they have to spend on one tile
 
 	
@@ -108,6 +113,14 @@ void SoulManager::update(GameData& _game_data)
 	ZoneCheck();
 	Wander();
 
+	for (auto& EMBO : m_Earth_Souls)
+	{
+		EMBO->m_yearsleft--;
+		if (EMBO->m_totalyears <= 0)
+		{
+
+		}
+	}
 
 
 
@@ -148,7 +161,7 @@ void SoulManager::onEvent(const Event& event)
 }
 
 
-void SoulManager::zone_checking(shared_ptr<Soul> soul, PlaneType _plane)
+void SoulManager::zone_checking(Soul* soul, PlaneType _plane)
 {
 	Vector2 radius_directions[20] =
 		{
@@ -162,34 +175,47 @@ void SoulManager::zone_checking(shared_ptr<Soul> soul, PlaneType _plane)
 		};
 	Vector2 connected_radius[4] = { {1,0}, {0,-1}, {-1,0}, {0,1} };
 	
-	Vector2 pos = soul->position; 
-	int soulindex = world_manager->getIndex(soul->position);
+	Vector2 pos = soul->m_position; 
+	int soulindex = world_manager->getIndex(soul->m_position);
 
 
 	std::vector<int> connected_index = {};
 	std::vector<int> radius_indexs= {};
-	connected_index.emplace_back(soulindex);
+	if (world_manager->withinRange(soul->m_position))
+	{
+		connected_index.emplace_back(world_manager->getIndex(soul->m_position));
+	}
+	//connected_index.emplace_back(soulindex);
 		
 	for (auto direction : connected_radius)
 	{
-		connected_index.emplace_back(world_manager->getIndex(soul->position + direction));
+		if (!world_manager.get()->withinRange(soul->m_position + direction))
+		{
+			continue;
+		}
+		connected_index.emplace_back(world_manager->getIndex(soul->m_position + direction));
 	}
 		
 	for (auto direction : radius_directions)
 	{
-		radius_indexs.emplace_back(world_manager->getIndex(soul->position + direction));
+		if (!world_manager.get()->withinRange(soul->m_position + direction))
+		{
+			continue;
+		}
+		radius_indexs.emplace_back(world_manager->getIndex(soul->m_position + direction));
 	}
 		
 	auto& plane = world_manager->getWorld()[_plane];
 	for (auto index : connected_index)
 	{
+	
 		auto& grid_data = plane[index]->getGridData();
-		if (grid_data.m_connected == true && grid_data.m_zone_type == soul->zonetype && grid_data.m_building_data != nullptr)
+		if (grid_data.m_connected == true && (grid_data.m_zone_type == soul->m_zonetype || grid_data.m_zone_type == ZoneType::Generic) && grid_data.m_building_data != nullptr)
 		{
 			GenericBuilding* building = grid_data.m_building_data;
 			if (building->m_capacity.MaximumCapacity > building->m_capacity.CurrentCapacity)
 			{
-				(soul->reincarnate
+				(soul->m_reincarnate
 					 ?building->m_capacity.TemporaryCapacity
 					 :building->m_capacity.PermanentCapacity).emplace_back(soul);
 				m_Heven_ZonedSouls.emplace_back(move(soul));
@@ -200,12 +226,12 @@ void SoulManager::zone_checking(shared_ptr<Soul> soul, PlaneType _plane)
 	for (auto index : radius_indexs)
 	{
 		auto& grid_data = plane[index]->getGridData();
-		if (grid_data.m_connected != true && grid_data.m_zone_type == soul->Soul::zonetype && grid_data.m_building_data != nullptr)
+		if (grid_data.m_connected != true && (grid_data.m_zone_type == soul->m_zonetype || grid_data.m_zone_type == ZoneType::Generic) && grid_data.m_building_data != nullptr)
 		{
 			auto& building = grid_data.m_building_data;
 			if (building->m_capacity.MaximumCapacity > building->m_capacity.CurrentCapacity)
 			{
-				(soul->Soul::reincarnate
+				(soul->m_reincarnate
 					 ?building->m_capacity.TemporaryCapacity
 					 :building->m_capacity.PermanentCapacity).emplace_back(soul);
 				m_Heven_ZonedSouls.emplace_back(move(soul));
@@ -226,36 +252,47 @@ void SoulManager::ZoneCheck()
 
 
 
-void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
+void SoulManager::wandering(Soul* soul,PlaneType plane)
 {
-	Vector2 pos = soul->position; 
-	int soulindex = world_manager->getIndex(soul->Soul::position);
-	int north = world_manager->getIndex(Vector2{pos.x,pos.y + 1});
-	int east =	world_manager->getIndex(Vector2{pos.x + 1,pos.y});
-	int south = world_manager->getIndex(Vector2{pos.x,pos.y - 1});
-	int west =	world_manager->getIndex(Vector2{pos.x - 1,pos.y});
+	Vector2 directons[4] = {{0,1},{1,0},{-1,0},{0,-1}};
+	int cardinal[4] = {-1000,-1000,-1000,-1000};
+	Vector2 pos = soul->m_position;
+	int soulindex = world_manager->getIndex(soul->m_position);
+	for (int i = 0; i < 4; ++i)
+	{
+		if (world_manager->withinRange(pos + directons[i]))
+		{
+			cardinal[i] = world_manager->getIndex(pos + directons[i]);
+		}
+	}
+	
 	bool failedn = false;
 	bool failede = false;
 	bool faileds = false;
 	bool failedw = false;
-	if (world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Building ||
-		world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Road)
+	
+	if (soulindex <= 0 || (world_manager->getWorld()[plane][soulindex]->getGridData().m_tile_type != TileType::Building ||
+		world_manager->getWorld()[plane][soulindex]->getGridData().m_tile_type != TileType::Road))
 	{
-		bool wandering = true;
-		while (wandering)
+		return;
+	}
+	
+	bool wandering = true;
+	while (wandering)
+	{
+		int rand = std::rand() % 4 + 1;
+		switch (rand)
 		{
-			int rand = std::rand() % 4 + 1;
-			switch (rand)
+		case 1:
 			{
-			case 1:
-			{
-				if (failedn)
+				if (failedn or cardinal[0] <= -1)
 				{
+					failedn = true;
 					break;
 				}
-				if (world_manager->getWorld()[plane][north]->getGridData().m_tile_type == TileType::Road)
+				if (world_manager->getWorld()[plane][cardinal[0]]->getGridData().m_tile_type == TileType::Road)
 				{
-					soul->position = Vector2{ pos.x,pos.y + 1 };
+					soul->m_position = Vector2{ pos.x,pos.y + 1 };
 					wandering = false;
 				}
 				else
@@ -264,15 +301,16 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 				break;
 			}
-			case 2:
+		case 2:
 			{
-				if (failede)
+				if (failede or cardinal[1] <= -1)
 				{
+					failede = true;
 					break;
 				}
-				if (world_manager->getWorld()[plane][east]->getGridData().m_tile_type == TileType::Road)
+				if (world_manager->getWorld()[plane][cardinal[1]]->getGridData().m_tile_type == TileType::Road)
 				{
-					soul->position = Vector2{ pos.x + 1,pos.y };
+					soul->m_position = Vector2{ pos.x + 1,pos.y };
 					wandering = false;
 				}
 				else
@@ -281,15 +319,16 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 				break;
 			}
-			case 3:
+		case 3:
 			{
-				if (faileds)
+				if (faileds or cardinal[2] <= -1)
 				{
+					faileds = true;
 					break;
 				}
-				if (world_manager->getWorld()[plane][south]->getGridData().m_tile_type == TileType::Road)
+				if (world_manager->getWorld()[plane][cardinal[2]]->getGridData().m_tile_type == TileType::Road)
 				{
-					soul->position = Vector2{ pos.x,pos.y - 1 };
+					soul->m_position = Vector2{ pos.x,pos.y - 1 };
 					wandering = false;
 				}
 				else
@@ -298,15 +337,16 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 				break;
 			}
-			case 4:
+		case 4:
 			{
-				if (failedw)
+				if (failedw or cardinal[3] <= -1)
 				{
+					failedw = true;
 					break;
 				}
-				if (world_manager->getWorld()[plane][west]->getGridData().m_tile_type == TileType::Road)
+				if (world_manager->getWorld()[plane][cardinal[3]]->getGridData().m_tile_type == TileType::Road)
 				{
-					soul->position = Vector2{ pos.x - 1,pos.y };
+					soul->m_position = Vector2{ pos.x - 1,pos.y };
 					wandering = false;
 				}
 				else
@@ -315,17 +355,16 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 				}
 				break;
 			}
-			default:
-				{
-					CONSOLE(ERROR,"THIS SHOULD NOT PRINT: " + std::to_string(rand));
-					break;
-				};
-			}
-			if (failedn && failede && faileds && failedw)
+		default:
 			{
-				wandering = false;
-				// event soul cannot move?
-			}
+				CONSOLE(ERROR,"THIS SHOULD NOT PRINT: " + std::to_string(rand));
+				break;
+			};
+		}
+		if (failedn && failede && faileds && failedw)
+		{
+			wandering = false;
+			// event soul cannot move?
 		}
 	}
 }

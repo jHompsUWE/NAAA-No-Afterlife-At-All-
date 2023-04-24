@@ -47,6 +47,12 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 			m_start_tile = current_nearest;
 
 			currently_selecting = true;
+			if (current_nearest->getGridData().m_building_data != nullptr)
+			{
+				CONSOLE(DEBUG,"current capacity: " + to_string(current_nearest->getGridData().m_building_data->m_capacity.CurrentCapacity));
+				CONSOLE(DEBUG,"temp: " + to_string(current_nearest->getGridData().m_building_data->m_capacity.TemporaryCapacity.size()));
+				CONSOLE(DEBUG,"perm: " + to_string(current_nearest->getGridData().m_building_data->m_capacity.PermanentCapacity.size()));
+			}
 		}
 		if (m_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
 		{
@@ -268,6 +274,9 @@ void SelectionHandler::updateTiles()
 				{
 					m_world_manager->getWorld()[m_plane][index]->getGridData().m_zone_type = m_zone_type;
 					m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type = m_tile_type;
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data = new GenericBuilding();
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data->m_capacity.MaximumCapacity = 10;
+					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data->m_capacity.CurrentCapacity = 0;
 				}
 			}
 		}
@@ -472,7 +481,7 @@ void SelectionHandler::createTempBuilding()
 
 	temp_building->GetColour().A(0.5f);
 
-	std::cout << temp_building_stats->m_buildingname;
+	//std::cout << temp_building_stats->m_buildingname;
 }
 
 void SelectionHandler::updateTempPos()

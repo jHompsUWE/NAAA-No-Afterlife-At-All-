@@ -143,7 +143,7 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 	{
 		if (build["TYPE"] == stype)
 		{
-			std::cout << "Type\n";
+			//std::cout << "Type\n";
 			if (build["Zone"] == splane)
 			{
 				std::cout << "Zone\n";

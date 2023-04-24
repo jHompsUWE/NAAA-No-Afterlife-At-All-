@@ -141,7 +141,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     reincarnation_manager = std::make_shared<ReincarnationManager>();
     GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
 
-    event_manager->addListener(&*soul_manager);
+    
     
     world_manager = std::make_shared<WorldManager>(10, 10);
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
@@ -167,6 +167,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD, m_d3dContext);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
+    event_manager->addListener(&*soul_manager);
 
     pair<string, string> test;
     test = DataGenerator::GenerateData();
@@ -195,7 +196,7 @@ void Game::Update(DX::StepTimer const& _timer)
     m_GD->m_dt = elapsedTime;
 
     auto pad = m_gamepad->GetState(0);
-    std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
+    //std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
     if (pad.IsConnected())
     {
         std::cout << "test";

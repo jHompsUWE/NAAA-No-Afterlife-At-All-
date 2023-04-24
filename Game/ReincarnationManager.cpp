@@ -34,20 +34,20 @@ void ReincarnationManager::update(GameData& _game_data)
     //         TurnIntoEMBO(soul.get());
     //     }
     // }
-    for (auto soulIter = soulManager->m_Hell_wanderingSouls.begin(); soulIter != soulManager->m_Hell_wanderingSouls.end();)
+    for (auto* soulIter : soulManager->m_Hell_ZonedSouls)
     {
-        if (*soulIter != nullptr)
+        if (soulIter != nullptr)
         {
-            TurnIntoEMBO((*soulIter).get());              
+            TurnIntoEMBO(soulIter);              
             //soulIter = soulManager->m_Hell_wanderingSouls.erase(soulIter);
         }
     }
 
-    for (auto soulIter = soulManager->m_Heven_wanderingSouls.begin(); soulIter != soulManager->m_Heven_wanderingSouls.end();)
+    for (auto* soulIter : soulManager->m_Heven_ZonedSouls)
     {
-        if (*soulIter != nullptr)
+        if (soulIter != nullptr)
         {
-            TurnIntoEMBO((*soulIter).get());               
+            TurnIntoEMBO(soulIter);               
             //soulIter = soulManager->m_Heven_wanderingSouls.erase(soulIter);
         }
     }
@@ -171,7 +171,7 @@ void ReincarnationManager::RemoveFromList(Soul* _soul)
 {
     if (_soul != nullptr)
     {
-        std::shared_ptr<Soul> soulToRemove = make_shared<Soul>(*_soul);
+        Soul* soulToRemove = _soul;
         // Get references to the containers
         auto& hellZonedSouls = GameManager::get()->getSoulManager()->m_Hell_ZonedSouls;
         auto& hellWanderingSouls = GameManager::get()->getSoulManager()->m_Hell_wanderingSouls;
@@ -180,17 +180,18 @@ void ReincarnationManager::RemoveFromList(Soul* _soul)
 
         // Search and remove the item from the Hell Zoned Souls container
         auto hellZonedIter = std::find_if(hellZonedSouls.begin(), hellZonedSouls.end(),
-            [&](const std::shared_ptr<Soul>& soul) {
-                return soul.get() == soulToRemove.get();
+            [&](const Soul* soul) {
+                return soul == soulToRemove;
             });
-        if (hellZonedIter != hellZonedSouls.end()) {
+        if (hellZonedIter != hellZonedSouls.end()) 
+        {
             hellZonedSouls.erase(hellZonedIter);
         }
 
         // Search and remove the item from the Hell Wandering Souls container
         auto hellWanderingIter = std::find_if(hellWanderingSouls.begin(), hellWanderingSouls.end(),
-            [&](const std::shared_ptr<Soul>& soul) {
-                return soul.get() == soulToRemove.get();
+            [&](const Soul* soul) {
+                return soul == soulToRemove;
             });
         if (hellWanderingIter != hellWanderingSouls.end()) {
             hellWanderingSouls.erase(hellWanderingIter);
@@ -198,8 +199,8 @@ void ReincarnationManager::RemoveFromList(Soul* _soul)
 
         // Search and remove the item from the Heven Zoned Souls container
         auto hevenZonedIter = std::find_if(hevenZonedSouls.begin(), hevenZonedSouls.end(),
-            [&](const std::shared_ptr<Soul>& soul) {
-                return soul.get() == soulToRemove.get();
+            [&](const Soul* soul) {
+                return soul == soulToRemove;
             });
         if (hevenZonedIter != hevenZonedSouls.end()) {
             hevenZonedSouls.erase(hevenZonedIter);
@@ -207,8 +208,8 @@ void ReincarnationManager::RemoveFromList(Soul* _soul)
 
         // Search and remove the item from the Heven Wandering Souls container
         auto hevenWanderingIter = std::find_if(hevenWanderingSouls.begin(), hevenWanderingSouls.end(),
-            [&](const std::shared_ptr<Soul>& soul) {
-                return soul.get() == soulToRemove.get();
+            [&](const Soul* soul) {
+                return soul == soulToRemove;
             });
         if (hevenWanderingIter != hevenWanderingSouls.end()) {
             hevenWanderingSouls.erase(hevenWanderingIter);

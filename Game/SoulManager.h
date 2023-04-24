@@ -42,7 +42,6 @@ enum Fate
 };
 
 struct EMBO
-struct Soul
 {
 	int value;
 	int earth_belief;
@@ -64,8 +63,8 @@ struct Soul : EMBO
 
 struct SoulComparator {
 	const Soul* soulToFind;
-	SoulComparator(const std::shared_ptr<Soul>& soul) : soulToFind(soul.get()) {}
-	bool operator()(const std::shared_ptr<Soul>& soulPtr) const {
+	SoulComparator(const Soul* & soul) : soulToFind(soul) {}
+	bool operator()(const Soul* & soulPtr) const {
 		return soulPtr->value == soulToFind->value;
 	}
 };
@@ -73,11 +72,11 @@ struct SoulComparator {
 class SoulManager : public Manager, public Listener
 {
 public:
-	std::vector	<std::shared_ptr<Soul>> m_Hell_ZonedSouls;
-	std::vector <std::shared_ptr<Soul>> m_Hell_wanderingSouls;
+	std::vector	<Soul*> m_Hell_ZonedSouls;
+	std::vector <Soul*> m_Hell_wanderingSouls;
 
-	std::vector	<std::shared_ptr<Soul>> m_Heven_ZonedSouls;
-	std::vector <std::shared_ptr<Soul>> m_Heven_wanderingSouls;
+	std::vector	<Soul*> m_Heven_ZonedSouls;
+	std::vector <Soul*> m_Heven_wanderingSouls;
 	
 	
 	std::vector <std::shared_ptr<EMBO>> m_Earth_Souls;
@@ -85,8 +84,8 @@ public:
 	explicit SoulManager(shared_ptr<WorldManager> world_manager);
 	void AddSoul();			// add a soul at this location
 	void onEvent(const Event& event) override;
-	void zone_checking(shared_ptr<Soul> soul, PlaneType plane);
-	void wandering(shared_ptr<Soul> _soul,PlaneType _plane);
+	void zone_checking(Soul* soul, PlaneType plane);
+	void wandering(Soul* _soul,PlaneType _plane);
 	void Wander();																					// run the soul road movement
 	void ZoneCheck();																				//check if zone is attached
 	int TotalSoulsAmmount(PlaneType _plane) const;													//get souls per plane NONE : get souls total overall
