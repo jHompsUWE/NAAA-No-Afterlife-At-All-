@@ -17,12 +17,15 @@ void ReincarnationManager::update(GameData& _game_data)
     //         }
     //     }
     // }
-    for (auto soulIter = soulManager->m_Earth_Souls.begin(); soulIter != soulManager->m_Earth_Souls.end();)
+    if (!soulManager->m_Earth_Souls.empty())
     {
-        if (*soulIter != nullptr)
+        for (auto soulIter = soulManager->m_Earth_Souls.begin(); soulIter != soulManager->m_Earth_Souls.end();)
         {
-            TurnIntoSoul((*soulIter).get());
-            //soulIter = soulManager->m_Earth_Souls.erase(soulIter);
+            if (*soulIter != nullptr)
+            {
+                TurnIntoSoul((*soulIter).get());
+                //soulIter = soulManager->m_Earth_Souls.erase(soulIter);
+            }
         }
     }
     // hellZonedSouls_ = soulManager->m_Hell_ZonedSouls;
@@ -34,21 +37,27 @@ void ReincarnationManager::update(GameData& _game_data)
     //         TurnIntoEMBO(soul.get());
     //     }
     // }
-    for (auto soulIter = soulManager->m_Hell_wanderingSouls.begin(); soulIter != soulManager->m_Hell_wanderingSouls.end();)
+    if (!soulManager->m_Hell_wanderingSouls.empty())
     {
-        if (*soulIter != nullptr)
+        for (auto soulIter = soulManager->m_Hell_wanderingSouls.begin(); soulIter != soulManager->m_Hell_wanderingSouls.end();)
         {
-            TurnIntoEMBO((*soulIter).get());              
-            //soulIter = soulManager->m_Hell_wanderingSouls.erase(soulIter);
+            if (*soulIter != nullptr)
+            {
+                TurnIntoEMBO((*soulIter).get());              
+                //soulIter = soulManager->m_Hell_wanderingSouls.erase(soulIter);
+            }
         }
     }
 
-    for (auto soulIter = soulManager->m_Heven_wanderingSouls.begin(); soulIter != soulManager->m_Heven_wanderingSouls.end();)
+    if (!soulManager->m_Heven_wanderingSouls.empty())
     {
-        if (*soulIter != nullptr)
+        for (auto soulIter = soulManager->m_Heven_wanderingSouls.begin(); soulIter != soulManager->m_Heven_wanderingSouls.end();)
         {
-            TurnIntoEMBO((*soulIter).get());               
-            //soulIter = soulManager->m_Heven_wanderingSouls.erase(soulIter);
+            if (*soulIter != nullptr)
+            {
+                TurnIntoEMBO((*soulIter).get());               
+                //soulIter = soulManager->m_Heven_wanderingSouls.erase(soulIter);
+            }
         }
     }
     
@@ -95,7 +104,7 @@ EMBO ReincarnationManager::TurnIntoEMBO(Soul* _soul)
         // Temporary one below...
         GameManager::get()->getSoulManager()->m_Earth_Souls.push_back(shared_ptr<EMBO>(convertedSoul));
         std::cout << "one soul was converted to EMBO" << endl;
-        RemoveFromList(_soul);
+        //RemoveFromList(_soul);
         return *convertedSoul;
    }
 }
@@ -141,6 +150,75 @@ Soul ReincarnationManager::TurnIntoSoul(EMBO* _embo)
         //RemoveFromList(_embo);
         return *convertedEmbo;
    }
+}
+
+EMBO ReincarnationManager::SoulToEMBO(Soul& _soul)
+{
+    if(_soul.m_reincarnate && !_soul.m_both
+        && _soul.m_currentcycle == _soul.m_total_cycles
+        && _soul.m_yearsleft == 0)
+    {
+        // Casting to a EMBO        
+        auto convertedSoul = static_cast<EMBO&>(_soul);
+        convertedSoul.earth_belief = std::rand()% 15 + 0;
+        convertedSoul.m_totalyears = rand()%120 + 1;
+
+        // Define if the soul can reincarnate
+        if (convertedSoul.earth_belief <= 4 or (convertedSoul.earth_belief >= 9 and convertedSoul.earth_belief <= 12))
+            convertedSoul.m_reincarnate = false;
+
+        convertedSoul.m_fate = convertedSoul.earth_belief;
+        // Add EMBO to the list
+        // Here we should move the EMBO to the EMBOs list
+        // and remove it from the souls list
+        // Temporary one below...
+        GameManager::get()->getSoulManager()->m_Earth_Souls.push_back(shared_ptr<EMBO>(&convertedSoul));
+        std::cout << "one soul was converted to EMBO" << endl;
+        //RemoveFromList(&_soul);
+        return convertedSoul;
+    }
+}
+
+Soul ReincarnationManager::EMBOToSoul(EMBO& _embo)
+{
+    // The converted SOUL should be removed from the souls list
+    // then add to the EMBO to the list on earth
+    if (_embo.m_yearsleft == 0 && _embo.m_reincarnate)
+    {
+        std::cout << "one EMBO became a SOUL" << endl;
+        Soul* convertedEmbo = new Soul; // Allocate memory for Soul object
+        //auto convertedEmbo = (Soul*)_embo;
+        convertedEmbo->m_totalyears = rand()%900 + 100;
+        
+        if (convertedEmbo->earth_belief >= 8)
+        {
+            convertedEmbo->m_total_cycles = std::rand() % 15 + 10;
+        }
+        
+        if ((convertedEmbo->earth_belief + 3) % 4 == 0)
+        {
+            convertedEmbo->m_both = true;
+            GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
+            //RemoveFromList(_embo);
+            return *convertedEmbo;
+        }
+        if ((convertedEmbo->earth_belief + 1) % 4 == 0)
+        {
+            GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
+            //RemoveFromList(_embo);
+            return *convertedEmbo;
+        }
+        if (convertedEmbo->earth_belief % 4 == 0)
+        {
+            GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.emplace_back(convertedEmbo);
+            //RemoveFromList(_embo);
+            return *convertedEmbo;
+        }      
+        int random = std::rand() % RAND_MAX;
+        (random % 2 == 0 ? GameManager::get()->getSoulManager()->m_Hell_wanderingSouls : GameManager::get()->getSoulManager()->m_Heven_wanderingSouls).emplace_back(convertedEmbo);
+        //RemoveFromList(_embo);
+        return *convertedEmbo;
+    }
 }
 
 void ReincarnationManager::RemoveFromList(EMBO* _embo)

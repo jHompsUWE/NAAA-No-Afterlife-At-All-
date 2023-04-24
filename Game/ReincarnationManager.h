@@ -10,6 +10,9 @@ public:
 
     EMBO TurnIntoEMBO(Soul* _soul); // return the EMBO with all the soul data
     Soul TurnIntoSoul(EMBO* _embo);  // Save the poor soul from the life on Earth
+
+    static EMBO SoulToEMBO(Soul& _soul);
+    static Soul EMBOToSoul(EMBO& _embo);
     
 private:    
     std::vector <std::shared_ptr<EMBO>> earthEMBOs;
