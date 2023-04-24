@@ -81,7 +81,6 @@ struct GateBuilding : GenericBuilding
 	}
 };
 
-static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 static enum TYPE 
 {
 	CLOUDS,
@@ -92,8 +91,6 @@ static enum TYPE
 	GATES,
 	OMNIBOLGES,
 };
-
-
 
 
 static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
@@ -133,13 +130,6 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 		break;
 	}
 
-
-
-
-
-
-
-
 	if (_plane == PlaneType::Heaven)
 	{
 		splane = "Heaven";
@@ -151,7 +141,7 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 
 	for (auto build : (*buildings))
 	{
-		if (build["TYPE"] == _type)
+		if (build["TYPE"] == stype)
 		{
 			std::cout << "Type\n";
 			if (build["Zone"] == splane)
@@ -171,6 +161,7 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 
 					std::cout << "Desc " << building.m_buildingdesc << " " << build["Desc"] << "\n";
 					int size = build["Size"];
+					CONSOLE(DEBUG, "Building size " + std::to_string(size));
 					switch (size)
 					{
 					case 1:

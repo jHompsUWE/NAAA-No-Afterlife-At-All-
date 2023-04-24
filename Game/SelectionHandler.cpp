@@ -287,7 +287,6 @@ void SelectionHandler::updateRoads()
 				m_world_manager->getWorld()[m_plane][index]->setSelected(true);
 			}
 		}
-
 		else if (update_tile)
 		{
 			for (auto tile : tiles)
@@ -324,8 +323,6 @@ void SelectionHandler::updateBuilding()
 {
 	if (update_tile)
 	{
-		// func(PlaneType m_plane, whatever tier);
-
 		if (temp_building)
 		{
 			if (!checkBuildingPositioning()) { return; }
@@ -364,8 +361,6 @@ void SelectionHandler::updateBuilding()
 			temp_building_stats = nullptr;
 			createTempBuilding();
 		}
-
-		//m_end_tile->createBuilding(m_d3dContext);
 	}
 	else
 	{
@@ -398,8 +393,6 @@ bool SelectionHandler::checkBuildingPositioning()
 			{
 				return false;
 			}
-
-			std::cout << i << " " << j << std::endl;
 		}
 	}
 
@@ -415,6 +408,8 @@ void SelectionHandler::updateNuke()
 
 	bool road_deleted = false;
 
+	auto& world = m_world_manager->getWorld();
+
 	for (int i = low_grid.x; i <= high_grid.x; i++)
 	{
 		for (int j = low_grid.y; j <= high_grid.y; j++)
@@ -423,23 +418,26 @@ void SelectionHandler::updateNuke()
 
 			if (currently_selecting)
 			{
-				m_world_manager->getWorld()[m_plane][index]->setSelected(true);
+				world[m_plane][index]->setSelected(true);
 			}
 			else if (update_tile)
 			{
 				// NUKE EVERYTHING
-				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type == TileType::Road)
+				if (world[m_plane][index]->getGridData().m_tile_type == TileType::Road)
 				{
 					road_deleted = true;
 				}
 
-				if (m_world_manager->getWorld()[m_plane][index]->getGridData().m_tile_type == TileType::Building)
+				if (world[m_plane][index]->getGridData().m_tile_type == TileType::Building)
 				{
-					m_world_manager->getWorld()[m_plane][index]->getGridData().m_building_data->delete_reference();
+					world[m_plane][index]->getGridData().m_building_data->delete_reference();
 				}
 				else
 				{
-					m_world_manager->getWorld()[m_plane][index]->nuke();
+					if (world[m_plane][index]->getGridData().m_tile_type == TileType::River) continue;
+					if (world[m_plane][index]->getGridData().m_tile_type == TileType::Rock) continue;
+
+					world[m_plane][index]->nuke();
 				}
 				
 			}
@@ -454,7 +452,7 @@ void SelectionHandler::updateNuke()
 
 void SelectionHandler::createTempBuilding()
 {
-	temp_building_stats = new GenericBuilding(building(m_plane, GATES,3));
+	temp_building_stats = new GenericBuilding(building(m_plane, GATES,1));
 
 	//temp_building_stats = 
 
