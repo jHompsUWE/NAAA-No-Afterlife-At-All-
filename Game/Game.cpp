@@ -69,6 +69,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //Hide the mouse pointer
     ShowCursor(true);
 
+    m_gamepad = std::make_unique<GamePad>();
+    
     //create GameData struct and populate its pointers
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
@@ -134,8 +136,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    soul_manager = std::make_shared<SoulManager>();
-    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
+    
 
     reincarnation_manager = std::make_shared<ReincarnationManager>();
     GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
@@ -160,7 +161,9 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world[PlaneType::Heaven][12]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][36]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25]);
-    
+
+    soul_manager = std::make_shared<SoulManager>(world_manager);
+    GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD, m_d3dContext);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
@@ -191,6 +194,15 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
+    auto pad = m_gamepad->GetState(0);
+    std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
+    if (pad.IsConnected())
+    {
+        std::cout << "test";
+        
+    }
+    
+    
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
     if (!GameManager::get()->isGamePaused())
     {      

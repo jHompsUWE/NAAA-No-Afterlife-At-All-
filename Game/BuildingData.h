@@ -4,7 +4,6 @@
 #include "Capacity.h"
 
 #include "GridData.h"
-#include "SoulManager.h"
 #include "Listener.h"
 #include "GameManager.h"
 
@@ -82,24 +81,67 @@ struct GateBuilding : GenericBuilding
 	}
 };
 
-static GenericBuilding building(PlaneType _planetype,string _type,int tier)
+static enum TYPE 
+{
+	CLOUDS,
+	PITS,
+	PORTS,
+	SPECIAL,
+	TOPIA,
+	GATES,
+	OMNIBOLGES,
+};
+
+
+static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 {
 	auto buildings = GameManager::get()->getFileManagerV2()->GetJson("buildings_table");
+
 	TierBuiding building;
+
 	std:: string splane;
-	if (_planetype == PlaneType::Heaven)
+
+	std::string stype;
+
+	switch (_type)
+	{
+	case CLOUDS:
+		stype = "CLOUDS";
+		break;
+	case PITS:
+		stype = "PITS";
+		break;
+	case PORTS:
+		stype = "PORTS";
+		break;
+	case SPECIAL:
+		stype = "SPECIAL";
+		break;
+	case TOPIA:
+		stype = "TOPIA";
+		break;
+	case GATES:
+		stype = "GATES";
+		break;
+	case OMNIBOLGES:
+		stype = "OMNIBOLGES";
+		break;
+	default:
+		break;
+	}
+
+	if (_plane == PlaneType::Heaven)
 	{
 		splane = "Heaven";
 	}
-	else if (_planetype == PlaneType::Hell)
+	else if (_plane == PlaneType::Hell)
 	{
 		splane = "Hell";
 	}
 
-
 	for (auto build : (*buildings))
 	{
-		if (build["TYPE"] == _type)
+		if (build["TYPE"] == stype)
 		{
 			std::cout << "Type\n";
 			if (build["Zone"] == splane)
@@ -109,7 +151,7 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 				{
 					building.m_buildingname = build["Name"];
 					building.m_buildingdesc = build["Desc"];
-					building.m_placeable = _planetype;
+					building.m_placeable = _plane;
 					building.m_nextUpgrade;
 					building.m_upgradeCost;
 					building.m_tiername = build["Name"];
@@ -119,6 +161,7 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 
 					std::cout << "Desc " << building.m_buildingdesc << " " << build["Desc"] << "\n";
 					int size = build["Size"];
+					CONSOLE(DEBUG, "Building size " + std::to_string(size));
 					switch (size)
 					{
 					case 1:
@@ -149,7 +192,10 @@ static GenericBuilding building(PlaneType _planetype,string _type,int tier)
 					building.m_data.m_size			= build["Size"];
 					building.m_data.m_vibe			= build["Vibe"];
 					building.m_data.m_vibe_radius	= build["radi"];
+					//std::cout << building.m_buildingname << std::endl;
+					//std::cout << building.m_buildingdesc << std::endl;
 					return building;
+					
 				}
 			}
 		}

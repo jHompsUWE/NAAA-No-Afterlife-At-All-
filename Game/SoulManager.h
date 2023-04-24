@@ -1,13 +1,15 @@
 #pragma once
 #include <memory>
 #include <vector>
-#include <d3d11_1.h>
+//#include <d3d11_1.h>
 #include <SimpleMath.h>
 #include "Manager.h"
-#include "ImageGO2D.h"
-#include "ZoneType.h"
-#include "PlaneType.h"
+//#include "ImageGO2D.h"
+//#include "ZoneType.h"
+//#include "PlaneType.h"
 
+//#include "GameManager.h"
+#include "WorldManager.h"
 
 enum Fate
 {
@@ -40,6 +42,7 @@ enum Fate
 };
 
 struct EMBO
+struct Soul
 {
 	int value;
 	int earth_belief;
@@ -79,23 +82,22 @@ public:
 	
 	std::vector <std::shared_ptr<EMBO>> m_Earth_Souls;
 
-
-	
+	explicit SoulManager(shared_ptr<WorldManager> world_manager);
 	void AddSoul();			// add a soul at this location
-	void Wander();													// run the soul road movement
-	void ZoneCheck();												//check if zone is attached
-	void SoulJudgement();											//check if soul has served its "time"
-	int TotalSoulsAmmount(PlaneType plane) const;					//get souls per plane NONE : get souls total overall
 	void onEvent(const Event& event) override;
-
-																	// Inherited via Manager
+	void zone_checking(shared_ptr<Soul> soul, PlaneType plane);
+	void wandering(shared_ptr<Soul> _soul,PlaneType _plane);
+	void Wander();																					// run the soul road movement
+	void ZoneCheck();																				//check if zone is attached
+	int TotalSoulsAmmount(PlaneType _plane) const;													//get souls per plane NONE : get souls total overall
 	
 	virtual void awake() override;
 	virtual void update(GameData& _game_data) override;
 	virtual void lateUpdate(GameData& _game_data) override;
 
 private:
-	float m_time;
+	float m_time = 0.f;
+	shared_ptr<WorldManager> world_manager;
 };
 
 

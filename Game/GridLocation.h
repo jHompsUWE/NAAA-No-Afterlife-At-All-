@@ -3,7 +3,7 @@
 #include "GridData.h"
 #include "TileGO.h"
 #include "GPGO.h"
-#include "SoulManager.h"
+//#include "SoulManager.h"
 
 /////////////////////////////////////////////////
 /// This Class houses the in-world tile object and an instance of the struct
