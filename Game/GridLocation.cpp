@@ -98,7 +98,7 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 	if (m_grid_data.m_efficiency > 3)
 	{
 		createBuilding(_device);
-		m_grid_data.m_building_data = new GenericBuilding(building(m_grid_data.m_plane, "idk", 1));
+		m_grid_data.m_building_data = new GenericBuilding(building(m_grid_data.m_plane, CLOUDS, 1));
 	}
 
 	if (m_grid_data.m_building_data)

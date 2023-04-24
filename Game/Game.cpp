@@ -69,6 +69,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //Hide the mouse pointer
     ShowCursor(true);
 
+    m_gamepad = std::make_unique<GamePad>();
+    
     //create GameData struct and populate its pointers
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
@@ -192,6 +194,15 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
+    auto pad = m_gamepad->GetState(0);
+    std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
+    if (pad.IsConnected())
+    {
+        std::cout << "test";
+        
+    }
+    
+    
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
     if (!GameManager::get()->isGamePaused())
     {      
