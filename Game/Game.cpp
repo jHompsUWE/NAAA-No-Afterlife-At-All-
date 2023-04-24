@@ -139,7 +139,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     event_manager->addListener(&*soul_manager);
     
-    world_manager = std::make_shared<WorldManager>(30, 20);
+    world_manager = std::make_shared<WorldManager>(10, 10);
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
     world_manager->init(m_d3dContext, m_fxFactory, &*soul_manager);
     

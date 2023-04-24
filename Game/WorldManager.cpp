@@ -371,6 +371,7 @@ void WorldManager::generateWorld()
 		}
 	}
 
+	// Generate a number of rocks based on total number of tiles
 	int number_of_rocks = random(int(m_total_tiles * 0.05), int(m_total_tiles * 0.15));
 
 	for (auto& plane : m_world)
@@ -387,7 +388,7 @@ void WorldManager::generateWorld()
 				plane.second[index]->createBuilding(m_d3dContext);
 				plane.second[index]->getGridData().m_building->SetColour(Colors::Gray.v);
 			}
-			std::cout << "created rock" << std::endl;
+
 			CONSOLE(DEBUG, "created rock");
 		}
 	}
