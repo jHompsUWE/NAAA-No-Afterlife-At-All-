@@ -3,6 +3,7 @@
 #include "Mouse.h"
 #include <math.h>
 
+#include "GameManager.h"
 #include "Pathfinding.h"
 
 SelectionHandler::SelectionHandler(std::shared_ptr<WorldManager> _world_manager, GameData* _GD) :
