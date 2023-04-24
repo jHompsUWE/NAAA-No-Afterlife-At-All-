@@ -1,4 +1,5 @@
 #pragma once
+#include "PlaneType.h"
 
 enum class EventType
 {
@@ -62,7 +63,8 @@ enum class EventType
 
     // GameEvents
     STATE_TRANSITION,
-    SOUL_UPDATE
+    SOUL_UPDATE,
+    ADD_SOUL
 };
 
 class Event
@@ -79,10 +81,18 @@ public:
         int count;
     };
 
+    struct AddSoul
+    {
+        PlaneType plane = PlaneType::None;
+        int x;
+        int y;
+    };
+
 	union EventPayload
 	{
         StateTransition state_transition;
         SoulUpdate soul_update;
+        AddSoul add_soul;
 	};
 
 	////////////////////////////////////////////////////////////

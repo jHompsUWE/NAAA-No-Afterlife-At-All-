@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "WorldManager.h"
+#include "BuildingData.h"
 
-WorldManager::WorldManager()
+#define random(min, max) rand() % (max - min + 1) + min;
+
+WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y), m_soul_manager(nullptr)
 {
-	m_grid_x = 10;
-	m_grid_y = 10;
-
-	int total_size = m_grid_x * m_grid_y;
+	m_total_tiles = m_grid_x * m_grid_y;
 	
-	m_world[PlaneType::Heaven].reserve(total_size);
-	m_world[PlaneType::Earth].reserve(total_size);
-	m_world[PlaneType::Hell].reserve(total_size);
+	m_world[PlaneType::Heaven].reserve(m_total_tiles);
+	m_world[PlaneType::Earth].reserve(m_total_tiles);
+	m_world[PlaneType::Hell].reserve(m_total_tiles);
 }
 
 WorldManager::~WorldManager()
@@ -18,8 +18,11 @@ WorldManager::~WorldManager()
 
 }
 
-void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory)
+void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory,
+	SoulManager* soul_manager)
 {
+	m_soul_manager = soul_manager;
+
 	for (auto& plane : m_world)
 	{
 		for (int i = 0; i < m_grid_y; i++)
@@ -31,8 +34,12 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 			}
 		}
 
-		std::cout << "Plane" << std::endl;
+		CONSOLE(INFO, "Plane");
 	}
+
+	m_d3dContext = _device;
+
+	generateWorld();
 }
 
 /// <summary>
@@ -70,6 +77,27 @@ void WorldManager::setConnected(GridLocation& _grid_location)
 	}
 }
 
+void WorldManager::resetConnections()
+{
+	for (auto& plane : m_world)
+	{
+		if (plane.first == PlaneType::Earth) { continue; }
+
+		for (auto& tile : plane.second)
+		{
+			tile->getGridData().m_connected = false;
+		}
+
+		for (auto& tile : plane.second)
+		{
+			if (tile->getGridData().m_tile_type == TileType::Road)
+			{
+				setConnected(*tile);
+			}
+		}
+	}
+}
+
 void WorldManager::updateVibes(GridLocation& _grid_location)
 {
 	// THIS WORKS FOR 1x1 BUILDINGS
@@ -79,7 +107,11 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 	int radius = 3;
 		//_grid_location.getGridData().m_stored_building->getBuildingData().m_vibe_radius;
 	
-	int vibe = _grid_location.getGridData().m_building_data.m_vibe;
+	int vibe = 0;
+	if (_grid_location.getGridData().m_building_data)
+	{
+		vibe = _grid_location.getGridData().m_building_data->m_data.m_vibe;
+	}
 
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 
@@ -110,8 +142,8 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 			if (abs(i) + abs(j) <= radius)
 			{
 				// This is within the radius of the object so update vibe
-				//pos = { start_pos.x + j, start_pos.y + i };
-				//std::cout << pos.x << " " << pos.y << std::endl;
+				pos = { start_pos.x + j, start_pos.y + i };
+				CONSOLE(INFO, { std::to_string(pos.x) + " " + std::to_string(pos.y) });
 				//m_world[_plane][getIndex(pos)].getGridData().m_vibe += vibe;
 				//m_world[_plane][getIndex(pos)]->getTile().SetColour(Color(0, 1, 0));
 			}
@@ -125,17 +157,21 @@ void WorldManager::updateVibes(GridLocation& _grid_location)
 
 void WorldManager::update(GameData& _game_data)
 {
-	
 	for (auto& plane : m_world)
 	{
 		if (plane.first != PlaneType::Earth)
 		{
 			for (auto& tile : plane.second)
 			{
-				tile->update();
+				tile->update(m_d3dContext);
 			}
 		}
 	}
+}
+
+void WorldManager::lateUpdate(GameData& _game_data)
+{
+
 }
 
 void WorldManager::render(DrawData* _DD)
@@ -194,6 +230,8 @@ void WorldManager::calculateEfficiency(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 {
+	if (!_grid_location.getGridData().m_building_data) { return 0; }
+
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
@@ -224,8 +262,8 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 			else
 			{
 				// Check that although zone is the same, building species is different
-				if (m_world[plane][index]->getGridData().m_building_data.m_building_species !=
-					_grid_location.getGridData().m_building_data.m_building_species)
+				if (m_world[plane][index]->getGridData().m_building_data->m_data.m_building_species !=
+					_grid_location.getGridData().m_building_data->m_data.m_building_species)
 				{
 					adjacency += 1;
 				}
@@ -243,6 +281,8 @@ int WorldManager::adjacencyScoreHeaven(GridLocation& _grid_location)
 /// <returns>The adjacency score used in efficiency calculations.</returns>
 int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 {
+	if (!_grid_location.getGridData().m_building_data) { return 0 ; }
+
 	Vector2 start_pos = { float(std::get<0>(_grid_location.getGridData().m_position)), float(std::get<1>(_grid_location.getGridData().m_position)) };
 	PlaneType plane = _grid_location.getGridData().m_plane;
 
@@ -269,8 +309,8 @@ int WorldManager::adjacencyScoreHell(GridLocation& _grid_location)
 			if (m_world[plane][index]->getGridData().m_zone_type == _grid_location.getGridData().m_zone_type)
 			{
 				// Check if they're the same species of building
-				if (m_world[plane][index]->getGridData().m_building_data.m_building_species ==
-					_grid_location.getGridData().m_building_data.m_building_species)
+				if (m_world[plane][index]->getGridData().m_building_data->m_data.m_building_species ==
+					_grid_location.getGridData().m_building_data->m_data.m_building_species)
 				{
 					adjacency += 3;
 				}
@@ -306,5 +346,58 @@ bool WorldManager::withinRange(Vector2 position)
 	if (position.x > m_grid_x - 1 || position.x < 0 ||
 		position.y > m_grid_y - 1 || position.y < 0) return false;
 	return true;
+}
+
+/// <summary>
+/// Generate the world so there are rocks / rivers
+/// </summary>
+void WorldManager::generateWorld()
+{
+	// Generate Rivers
+	int river_start = 0;
+
+	for (auto& plane : m_world)
+	{
+		river_start = random(int(m_grid_y * 0.2), int(m_grid_y * 0.8));
+
+		for (int j = river_start; j < river_start + int(m_grid_y * 0.2); j++)
+		{
+			for (int i = 0; i < m_grid_x; i++)
+			{
+				int index = j * m_grid_x + i;
+				plane.second[index]->getGridData().m_tile_type = TileType::River;
+				plane.second[index]->getTile().SetColour(Colors::LightBlue.v);
+			}
+		}
+	}
+
+	// Generate a number of rocks based on total number of tiles
+	int number_of_rocks = random(int(m_total_tiles * 0.05), int(m_total_tiles * 0.15));
+
+	for (auto& plane : m_world)
+	{
+		for (int i = 0; i < number_of_rocks; i++)
+		{
+			int x = random(0, m_grid_x - 1);
+			int y = random(0, m_grid_y - 1);
+			int index = y * m_grid_x + x;
+
+			if (plane.second[index]->getGridData().m_tile_type == TileType::None)
+			{
+				plane.second[index]->getGridData().m_tile_type = TileType::Rock;
+				plane.second[index]->createBuilding(m_d3dContext);
+				plane.second[index]->getGridData().m_building->SetColour(Colors::Gray.v);
+			}
+
+			CONSOLE(DEBUG, "created rock");
+		}
+	}
+
+	
+
+
+	
+
+	
 }
 

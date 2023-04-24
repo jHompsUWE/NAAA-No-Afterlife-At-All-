@@ -8,5 +8,6 @@ enum class BuildingSpecies
 	Empty,
 	One,
 	Two,
-	Three
+	Three,
+	Four
 };

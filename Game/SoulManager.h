@@ -67,7 +67,7 @@ struct SoulComparator {
 	}
 };
 
-class SoulManager : public Manager
+class SoulManager : public Manager, public Listener
 {
 public:
 	std::vector	<std::shared_ptr<Soul>> m_Hell_ZonedSouls;
@@ -86,6 +86,7 @@ public:
 	void ZoneCheck();												//check if zone is attached
 	void SoulJudgement();											//check if soul has served its "time"
 	int TotalSoulsAmmount(PlaneType plane) const;					//get souls per plane NONE : get souls total overall
+	void onEvent(const Event& event) override;
 
 																	// Inherited via Manager
 	

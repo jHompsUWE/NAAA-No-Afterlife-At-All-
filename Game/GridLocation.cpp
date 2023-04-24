@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GridLocation.h"
+#include "BuildingData.h"
 
 GridLocation::GridLocation() : m_tile(nullptr)
 {
@@ -18,7 +19,7 @@ GridLocation::GridLocation(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device,
     float* params = new float[3];
     params[0] = 25.0f; params[1] = 5.0f; params[2] = 25.0f;
     m_tile = new GPGO(_device.Get(), GPGO_BOX, (float*)&Colors::White, params, 
-        Vector3(_world_pos.x * 25.0f, 0.0f, _world_pos.y * 25.0f));
+        Vector3(_world_pos.x * 25.5f, 0.0f, _world_pos.y * 25.5f));
 
     m_grid_data.m_position = std::make_tuple<int, int>(int(grid_pos.x), int(grid_pos.y));
 
@@ -49,7 +50,12 @@ GPGO& GridLocation::getTile()
 bool GridLocation::getSelected() { return m_selected; }
 void GridLocation::setSelected(bool _selected) { m_selected = _selected; }
 
-void GridLocation::update()
+void GridLocation::nuke()
+{
+	m_grid_data.nuke();
+}
+
+void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 {
 	switch (m_grid_data.m_zone_type)
 	{
@@ -67,11 +73,56 @@ void GridLocation::update()
 
 	if (m_grid_data.m_tile_type == TileType::Road)
 	{
-		m_tile->SetColour(Colors::LightCoral.v);
+		m_tile->SetColour(Colors::Black.v);
+	}
+
+	if (m_grid_data.m_tile_type == TileType::Building)
+	{
+		m_tile->SetColour(Colors::Aquamarine.v);
+	}
+
+	// Make zone grayer if it's not connected
+	if (m_grid_data.m_tile_type == TileType::Zone)
+	{
+		if (!m_grid_data.m_connected)
+		{
+			m_tile->SetColour(Color(m_tile->GetColour().x * 0.35f, m_tile->GetColour().y * 0.35f, m_tile->GetColour().z * 0.35f));
+		}
 	}
 
 	if (m_selected)
 	{
 		m_tile->SetColour(Color(m_tile->GetColour().x * 0.75f, m_tile->GetColour().y * 0.75f, m_tile->GetColour().z * 0.75f));
 	}
+
+	if (m_grid_data.m_efficiency > 3)
+	{
+		createBuilding(_device);
+		m_grid_data.m_building_data = new GenericBuilding(building(m_grid_data.m_plane, "idk", 1));
+	}
+
+	if (m_grid_data.m_building_data)
+	{
+		if (m_grid_data.m_building_data->m_type == "GATES")
+		{
+			m_grid_data.m_building_data->update();
+			
+		}
+	}
+
+	if (m_grid_data.m_tile_type == TileType::River)
+	{
+		switch (m_grid_data.m_plane)
+		{
+		case PlaneType::Heaven:
+			m_tile->SetColour(Colors::LightBlue.v);
+			break;
+		case PlaneType::Hell:
+			m_tile->SetColour(Colors::DarkRed.v);
+			break;
+		}
+		
+	}
+
+	//m_grid_data.m_building_data->update(soul_manager);
 }

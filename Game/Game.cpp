@@ -134,16 +134,17 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    world_manager = std::make_shared<WorldManager>();
-    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-    world_manager->init(m_d3dContext, m_fxFactory);
-
     soul_manager = std::make_shared<SoulManager>();
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
 
     reincarnation_manager = std::make_shared<ReincarnationManager>();
     GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
+
+    event_manager->addListener(&*soul_manager);
     
+    world_manager = std::make_shared<WorldManager>(10, 10);
+    GameManager::get()->addManager(world_manager, ManagerType::WORLD);
+    world_manager->init(m_d3dContext, m_fxFactory, &*soul_manager);
     
     // GameState initialisation
     for (auto& state : game_states)
@@ -155,12 +156,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     }
 
 	auto& world = world_manager->getWorld();
-    world[PlaneType::Heaven][2]->createBuilding(m_d3dContext);
-    world[PlaneType::Heaven][1]->createBuilding(m_d3dContext);
-    world[PlaneType::Heaven][0]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][15]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][12]->createBuilding(m_d3dContext);
+    world[PlaneType::Heaven][36]->createBuilding(m_d3dContext);
     world_manager->updateVibes(*world[PlaneType::Heaven][25]);
     
-    m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD);
+    m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD, m_d3dContext);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
 
@@ -288,7 +289,7 @@ void Game::Render()
     
     game_states[m_GD->current_state]->render3D();
     //Draw 3D Game Obejects
-    
+    m_selection_handler->draw(m_DD);
 
     for (list<GameObject*>::iterator it = m_GameObjects.begin(); it != m_GameObjects.end(); ++it)
     {
