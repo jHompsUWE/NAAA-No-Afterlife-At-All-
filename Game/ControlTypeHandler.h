@@ -68,8 +68,6 @@ static void createVector2Event(ActionBinding& _action_binding, bool _mod_active,
 {
     _action_binding.last_state.vector2_state.x = _x;
     _action_binding.last_state.vector2_state.y = _y;
-
-    CONSOLE(Serverity::INFO, std::to_string(_action_binding.last_state.vector2_state.x) + "," + std::to_string(_action_binding.last_state.vector2_state.y));
     
     Event event{};
     event.priority = 1;

@@ -62,9 +62,8 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
 	{"CENTER_AND_ZOOM_IN", EventType::CENTER_AND_ZOOM_IN},
 	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
 	{"CENTER_VIEW", EventType::CENTER_VIEW},
-	{"SELECT", EventType::SELECT},
+	{"SELECT_CURSOR", EventType::SELECT_CURSOR},
 	{"MOVE_CURSOR", EventType::MOVE_CURSOR}
-
 };
 
 static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =
@@ -199,7 +198,7 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Action maps for the game state.
 	////////////////////////////////////////////////////////////
-	std::vector<std::vector<InputAction>> game_action_maps;
+	std::vector<InputAction> game_action_map;
 	
     ////////////////////////////////////////////////////////////
 	/// \brief Action maps for the menu state. 
@@ -209,12 +208,7 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Pointer to the current action maps container. 
 	////////////////////////////////////////////////////////////
-	std::vector<std::vector<InputAction>>* current_action_maps;
-
-	////////////////////////////////////////////////////////////
-	/// \brief Enum representing currently active device for checking input from.
-	////////////////////////////////////////////////////////////
-	Device active_device;
+	std::vector<InputAction>* current_action_map;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 

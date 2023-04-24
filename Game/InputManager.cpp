@@ -14,14 +14,13 @@ void InputManager::awake(GameData& _game_data)
 	
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
-	current_action_maps = &game_action_maps; // in future, will rely on the finite state machine to determine current action map.
-	active_device = Device::MOUSE;
+	current_action_map = &game_action_map; // in future, will rely on the finite state machine to determine current action map.
 }
 
 void InputManager::update(GameData& _game_data)
 {
 	
-	for (auto action : (*current_action_maps)[(int)active_device])
+	for (auto action : (*current_action_map))
 	{
 		action.check(_game_data);
 	}
@@ -42,31 +41,20 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 	if (!input_json.empty())
 	{
-		std::vector<InputAction> temp;
-
 		for (JsonElement json_action : input_json["game_state"]["KEYBOARD"])
 		{
-			temp.emplace_back(loadKeyboardAction(json_action));
+			game_action_map.emplace_back(loadKeyboardAction(json_action));
 		}
-
-		game_action_maps.emplace(game_action_maps.begin() + (int)Device::KEYBOARD, std::move(temp));
-		temp.clear();
 		
 		for (auto json_action : input_json["game_state"]["MOUSE"])
 		{
-			temp.emplace_back(loadMouseAction(json_action));
+			game_action_map.emplace_back(loadMouseAction(json_action));
 		}
-
-		game_action_maps.emplace(game_action_maps.begin() + (int)Device::MOUSE, std::move(temp));
-		temp.clear();
 
 		for (auto json_action : input_json["game_state"]["CONTROLLER"])
 		{
-			temp.emplace_back(loadControllerAction(json_action));
+			game_action_map.emplace_back(loadControllerAction(json_action));
 		}
-
-		game_action_maps.emplace(game_action_maps.begin() + (int)Device::CONTROLLER, std::move(temp));
-		temp.clear();
 	}
 	else
 	{

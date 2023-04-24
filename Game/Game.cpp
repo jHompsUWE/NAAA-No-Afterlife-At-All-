@@ -62,6 +62,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     //set up keyboard and mouse system
     //documentation here: https://github.com/microsoft/DirectXTK/wiki/Mouse-and-keyboard-input
+    m_game_pad = std::make_unique<GamePad>();
     m_keyboard = std::make_unique<Keyboard>();
     m_mouse = std::make_unique<Mouse>();
     m_mouse->SetWindow(_window);
@@ -131,7 +132,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    cursor = std::make_shared<CursorController>("bug_test", m_d3dDevice.Get());
+    cursor = std::make_shared<CursorController>("cursor", m_d3dDevice.Get());
     GameManager::get()->getEventManager()->addListener(&*cursor);
 
     world_manager = std::make_shared<WorldManager>();
@@ -181,7 +182,7 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
-    cursor->update(*m_GD);
+    cursor->Tick(m_GD);
     auto mouse = m_mouse->GetState();
     m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());
@@ -556,6 +557,9 @@ void Game::OnDeviceLost()
 
 void Game::ReadInput()
 {
+    m_GD->m_GP_state = m_game_pad->GetState(0);
+    m_GD->m_GP_buttons.Update(m_GD->m_GP_state);
+    
     m_GD->m_KBS = m_keyboard->GetState();
     m_GD->m_KBS_tracker.Update(m_GD->m_KBS);
     //quit game on hiting escape

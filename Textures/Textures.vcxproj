@@ -154,6 +154,9 @@
     <ImageContentTask Include="..\..\..\..\Sprites\Advisors\Scarle\angel-advisor-Sheet.dds" />
     <ImageContentTask Include="..\..\..\..\Sprites\Advisors\Scarle\devil-advisor-Sheet.dds" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="cursor.dds" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />

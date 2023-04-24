@@ -477,7 +477,7 @@
       },
 
       {
-        "Action": "SELECT",
+        "Action": "SELECT_CURSOR",
         "Type": "BUTTON_PRESSED_RELEASED",
         "Control": "BUTTON",
         "ModType": "NONE",
@@ -499,7 +499,7 @@
 
     "CONTROLLER": [
       {
-        "Action": "SELECT",
+        "Action": "SELECT_CURSOR",
         "Type": "BUTTON_PRESSED_RELEASED",
         "Control": "BUTTON",
         "ModType": "NONE",
