@@ -163,6 +163,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_selection_handler = std::make_unique<SelectionHandler>(world_manager, m_GD);
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
+    GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
 
 }
 

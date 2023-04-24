@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "Manager.h"
 #include "BuildingWindow.h"
+#include "OptionBar.h"
 
 
 class UIManager : public Manager
@@ -22,6 +23,7 @@ public:
 
 	//General remote
 	UIRemote* remote;
+	OptionBar* optBar;
 
 	//View windows
 	std::array<WindowDraggable*, 6> viewWindows;

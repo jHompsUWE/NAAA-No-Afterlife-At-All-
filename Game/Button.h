@@ -6,8 +6,9 @@
 class Button :public GameObject2D
 {
 public:
-	Button(ID3D11Device* _GD, GameObject2D* _parent, GameObject2D* _toggle);
+	Button();
 	Button(ID3D11Device* _GD, GameObject2D* _parent);
+	Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _type);
 	virtual ~Button();
 
 	virtual void Tick(GameData* _GD);
@@ -16,9 +17,6 @@ public:
 	void SetBounds();
 	void SetName(string _name);
 	void SetType(EventType _event_type);
-	void SetToggle(GameObject2D* toggle);
-
-	void toggle();
 
 	float differenceX;
 	float differenceY;
@@ -32,9 +30,6 @@ protected:
 	Rectangle bounds;
 
 	GameObject2D* parentWindow;
-
-	GameObject2D* toggleWindow;
 	
-
 	ID3D11ShaderResourceView* m_pTextureRV;
 };

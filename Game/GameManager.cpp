@@ -42,21 +42,26 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 	switch (_type)
 	{
 	case ManagerType::EVENT:
-		{
-			event_manager = reinterpret_cast<EventManager*>(&*_manager);
-			return true;
-		}
+	{
+		event_manager = reinterpret_cast<EventManager*>(&*_manager);
+		return true;
+	}
 	case ManagerType::FILE:
-		{
-			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
-			return true;
-		}
-	
+	{
+		file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
+		return true;
+	}
+
 	case ManagerType::UI:
-		{
-			ui_manager = reinterpret_cast<UIManager*>(&*_manager);
-			return true;
-		}
+	{
+		ui_manager = reinterpret_cast<UIManager*>(&*_manager);
+		return true;
+	}
+
+	case ManagerType::INPUT:
+	{
+		input_manager = reinterpret_cast<InputManager*>(&*_manager);
+	}
 	}
 	return false;
 }

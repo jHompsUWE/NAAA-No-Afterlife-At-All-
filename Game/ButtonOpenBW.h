@@ -1,42 +1,23 @@
 #pragma once
-#include "GameObject2D.h"
+#include "Button.h"
 #include "BuildingWindow.h"
 #include "Event.h"
 
-class ButtonOpenBW :public GameObject2D
+class ButtonOpenBW :public Button
 {
 public:
-	ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent, BuildingWindow* _toggle);
 	ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent);
+	ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _type);
 	virtual ~ButtonOpenBW();
 
-	virtual void Tick(GameData* _GD);
-	virtual void Draw(DrawData2D* _DD);
-
-	void SetBounds();
-	void SetName(string _name);
-	void SetType(EventType _event_type);
 	void SetToggle(BuildingWindow* toggle);
 
+	BuildingWindow* GetToggle();
 	void toggle();
 
-	float differenceX;
-	float differenceY;
-
-	string buttonName = "Button";
-	EventType event_type;
-
-	bool pressed = false;
 
 protected:
-	Rectangle bounds;
-
-	GameObject2D* parentWindow;
-
 	BuildingWindow* toggleWindow;
-
-
-	ID3D11ShaderResourceView* m_pTextureRV;
 };
 
 

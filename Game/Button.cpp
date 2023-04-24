@@ -7,30 +7,9 @@
 #include "Mouse.h"
 #include <iostream>
 
-Button::Button(ID3D11Device* _GD, GameObject2D* _parent, GameObject2D* _toggle) :m_pTextureRV(nullptr)
+Button::Button()
 {
-	
-	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
-	
 
-	//this nasty thing is required to find out the size of this image!
-	ID3D11Resource* pResource;
-	D3D11_TEXTURE2D_DESC Desc;
-	m_pTextureRV->GetResource(&pResource);
-	((ID3D11Texture2D*)pResource)->GetDesc(&Desc);
-
-	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
-
-	
-	
-	SetScale(6.f);
-	m_colour = Colors::Lavender;
-	
-
-	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
-
-	parentWindow = _parent;
-	toggleWindow = _toggle;
 }
 
 Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
@@ -50,6 +29,31 @@ Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
 
 
 	SetScale(6.f);
+	m_colour = Colors::Lavender;
+
+
+	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
+
+	parentWindow = _parent;
+}
+
+Button::Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _event) :m_pTextureRV(nullptr)
+{
+
+	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+
+	//this nasty thing is required to find out the size of this image!
+	ID3D11Resource* pResource;
+	D3D11_TEXTURE2D_DESC Desc;
+	m_pTextureRV->GetResource(&pResource);
+	((ID3D11Texture2D*)pResource)->GetDesc(&Desc);
+
+	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
+
+	SetName(_name);
+	SetScale(_scale);
+	SetPos(_position);
+	SetType(_event);
 	m_colour = Colors::Lavender;
 
 
@@ -98,14 +102,6 @@ void Button::SetType(EventType _event_type)
 	event_type = _event_type;
 }
 
-/// <summary>
-/// Set the window for the button to toggle
-/// </summary>
-/// <param name="toggle"></param>
-void Button::SetToggle(GameObject2D* toggle)
-{
-	toggleWindow = toggle;
-}
 
 /// <summary>
 /// Checks to see if button is pressed
@@ -125,24 +121,10 @@ void Button::Tick(GameData* _GD)
 	{
 		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
 		{
-			toggle();
 			pressed = true;
 		}
 	}
 }
-
-
-/// <summary>
-/// Toggle the rendering of the button's set window
-/// </summary>
-void Button::toggle()
-{
-	if (toggleWindow != nullptr)
-	{
-		toggleWindow->renderable = !toggleWindow->renderable;
-	}
-}
-
 
 void Button::Draw(DrawData2D* _DD)
 {

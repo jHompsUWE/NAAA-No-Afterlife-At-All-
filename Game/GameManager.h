@@ -8,6 +8,7 @@
 #include "EventManager.h"
 #include "FileManagerV2.h"
 #include "UIManager.h"
+#include "InputManager.h"
 
 ////////////////////////////////////////////////////////////
 /// \brief Enum for specifying derived Manager classes.
@@ -93,6 +94,9 @@ public:
 
 	UIManager* getUIManager() { return ui_manager; };
 
+
+	InputManager* getInputManager() { return input_manager; };
+
 	////////////////////////////////////////////////////////////
 	/// \brief Saves the game to a json file. 
 	////////////////////////////////////////////////////////////
@@ -125,6 +129,9 @@ private:
 
 
 	UIManager* ui_manager;
+
+
+	InputManager* input_manager;
 };
 
 

@@ -7,6 +7,11 @@
 #include <iostream>
 #include "Mouse.h"
 
+ImageGO2D::ImageGO2D() : m_pTextureRV(nullptr)
+{
+
+}
+
 ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) : m_pTextureRV(nullptr)
 {
 	string fullfilename = "../Assets/" + _fileName + ".dds";

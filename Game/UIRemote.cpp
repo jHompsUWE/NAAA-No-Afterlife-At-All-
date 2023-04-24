@@ -30,46 +30,66 @@ UIRemote::UIRemote(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 	//INIT BUTTONS
 	//////////////
 
-	// Zones, buildings and roads buttons
-	int yDistancing = 27;
-	int yOffset = 10;
-
 	auto dataList = GameManager::get()->getFileManagerV2()->GetJson("remote_buttons");
 
-	for (int i = 0; i < 37; i++)
+	int i = 0;
+	for (auto json_buttons : (*dataList)["Buttons"])
 	{
-		buttons[i] = new Button(_GD, this);
+		string name = string(json_buttons["Name"]);
+		Vector2 scale = Vector2((json_buttons["Scale"]["X"]), (json_buttons["Scale"]["Y"]));
+		Vector2 pos = Vector2((json_buttons["Position"]["X"]), (json_buttons["Position"]["Y"] + 40));
+		EventType eventT = string_to_event.at(string(json_buttons["Event"]));
+		
+		buttonsSwitch[i] = new Button(_GD, this, name, scale, pos, eventT);
 
-		string name = string((*dataList)["name"][i]);
-		buttons[i]->SetName(name);
-
-		float scaleX = std::stof((*dataList)["scaleX"][i].get<std::string>());
-		float scaleY = std::stof((*dataList)["scaleY"][i].get<std::string>());
-		buttons[i]->SetScale(Vector2(scaleX,scaleY));
-
-		float posX = std::stof((*dataList)["posX"][i].get<std::string>());
-		float posY = std::stof((*dataList)["posY"][i].get<std::string>());
-		buttons[i]->SetPos(Vector2(posX,posY));
+		i += 1;
 	}
+
+	int j = 0;
+	for (auto json_buttons : (*dataList)["BuildingButtons"])
+	{
+		string name = string(json_buttons["Name"]);
+		Vector2 scale = Vector2((json_buttons["Scale"]["X"]), (json_buttons["Scale"]["Y"]));
+		Vector2 pos = Vector2((json_buttons["Position"]["X"]), (json_buttons["Position"]["Y"] + 40));
+		EventType eventT = string_to_event.at(string(json_buttons["Event"]));
+
+		buttonsBuilding[j] = new ButtonOpenBW(_GD, this, name, scale, pos, eventT);
+
+		j += 1;
+	}
+
+	int k = 0;
+	for (auto json_buttons : (*dataList)["WindowButtons"])
+	{
+		string name = string(json_buttons["Name"]);
+		Vector2 scale = Vector2((json_buttons["Scale"]["X"]), (json_buttons["Scale"]["Y"]));
+		Vector2 pos = Vector2((json_buttons["Position"]["X"]), (json_buttons["Position"]["Y"] + 40));
+		EventType eventT = string_to_event.at(string(json_buttons["Event"]));
+
+		buttonsWindow[k] = new ButtonToggleWindow(_GD, this, name, scale, pos, eventT);
+
+		k += 1;
+	}
+
 
 	// Setting buttons colours
 	// Zone buttons
-	buttons[0]->SetColour(Colors::Green);
+	/*buttons[0]->SetColour(Colors::Green);
 	buttons[1]->SetColour(Colors::Yellow);
 	buttons[2]->SetColour(Colors::Orange);
 	buttons[3]->SetColour(Colors::SaddleBrown);
 	buttons[4]->SetColour(Colors::Magenta);
 	buttons[5]->SetColour(Colors::Red);
-	buttons[6]->SetColour(Colors::MediumPurple);
+	buttons[6]->SetColour(Colors::MediumPurple);*/
 
 	// Camera buttons
-	buttons[20]->SetColour(Colors::DarkRed);
+	/*buttons[20]->SetColour(Colors::DarkRed);
 	buttons[21]->SetColour(Colors::DarkRed);
 	buttons[22]->SetColour(Colors::DarkRed);
 	buttons[23]->SetColour(Colors::DarkRed);
-	buttons[26]->SetColour(Colors::Purple);
+	buttons[26]->SetColour(Colors::Purple);*/
 
-	InitButtonEvents();
+	//InitButtonEvents();
 
 	////////////
 	// INIT TEXT
@@ -110,71 +130,35 @@ UIRemote::~UIRemote()
 }
 
 /// <summary>
-/// Sets the names and event types of all buttons
-/// </summary>
-void UIRemote::InitButtonEvents()
-{
-	// Zones
-	buttons[0]->SetType(EventType::GREEN_ZONING);
-	buttons[1]->SetType(EventType::YELLOW_ZONING);
-	buttons[2]->SetType(EventType::ORANGE_ZONING);
-	buttons[3]->SetType(EventType::BROWN_ZONING);
-	buttons[4]->SetType(EventType::PURPLE_ZONING);
-	buttons[5]->SetType(EventType::RED_ZONING);
-	buttons[6]->SetType(EventType::BLUE_ZONING);
-	buttons[7]->SetType(EventType::GENERIC_ZONING);
-
-	// Buildings and roads
-	buttons[8]->SetType(EventType::GATES);
-	buttons[9]->SetType(EventType::ROADS);
-	buttons[10]->SetType(EventType::ACTIVATES_KARMA_STATION_ZONING);
-	buttons[11]->SetType(EventType::KARMA_TRACK);
-	buttons[12]->SetType(EventType::TOPIAS);
-	buttons[13]->SetType(EventType::TRAINING_CENTRE);
-	buttons[14]->SetType(EventType::PORTS);
-	buttons[15]->SetType(EventType::SIPHONS_BANKS);
-	buttons[16]->SetType(EventType::SPECIAL_BUILDINGS);
-	buttons[17]->SetType(EventType::ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG);
-	buttons[18]->SetType(EventType::ACTIVATES_LIMBO_ZONING);
-	buttons[19]->SetType(EventType::NUKE_BUTTON);
-
-	// Camera view
-	buttons[20]->SetType(EventType::ROTATE_REALMS_UP);
-	buttons[21]->SetType(EventType::ROTATE_REALMS_LEFT);
-	buttons[22]->SetType(EventType::ROTATE_REALMS_DOWN);
-	buttons[23]->SetType(EventType::ROTATE_REALMS_RIGHT);
-	buttons[24]->SetType(EventType::ZOOM_IN);
-	buttons[25]->SetType(EventType::ZOOM_OUT);
-
-	// Window toggles
-	buttons[26]->SetType(EventType::TOGGLE_PLANET_VIEW);
-	buttons[27]->SetType(EventType::GRAPHVIEW);
-	buttons[28]->SetType(EventType::SOUL_VIEW);
-	buttons[29]->SetType(EventType::TOGGLE_MACROMANAGER);
-	buttons[30]->SetType(EventType::TOGGLE_MAPVIEW);
-	buttons[31]->SetType(EventType::TOGGLE_HELPERS);
-	buttons[32]->SetType(EventType::MICROVIEW);
-
-	// Flatten views
-	buttons[33]->SetType(EventType::FLATTEN_HELL);
-	buttons[34]->SetType(EventType::FLATTEN_HEAVEN);
-	buttons[35]->SetType(EventType::FLATTEN_KARMA);
-	buttons[36]->SetType(EventType::FLATTEN_GRID);
-}
-
-
-/// <summary>
 /// Sets the position of buttons and text relative to the overall remote, and the difference to the remote's position. 
 /// Needed for these elements to be dragged with the remote and stay at the same relative position, and for the buttons to be clickable
 /// </summary>
 void UIRemote::SetButtonBounds()
 {
-	for (int i = 0; i < 37; i++)
+	for (int i = 0; i < buttonsSwitch.size(); i++)
 	{
-		if (buttons[i] != nullptr)
+		if (buttonsSwitch[i] != nullptr)
 		{
-			buttons[i]->differenceX = buttons[i]->GetPos().x - m_pos.x;
-			buttons[i]->differenceY = buttons[i]->GetPos().y - m_pos.y;
+			buttonsSwitch[i]->differenceX = buttonsSwitch[i]->GetPos().x - m_pos.x;
+			buttonsSwitch[i]->differenceY = buttonsSwitch[i]->GetPos().y - m_pos.y;
+		}
+	}
+
+	for (int i = 0; i < buttonsBuilding.size(); i++)
+	{
+		if (buttonsBuilding[i] != nullptr)
+		{
+			buttonsBuilding[i]->differenceX = buttonsBuilding[i]->GetPos().x - m_pos.x;
+			buttonsBuilding[i]->differenceY = buttonsBuilding[i]->GetPos().y - m_pos.y;
+		}
+	}
+
+	for (int i = 0; i < buttonsWindow.size(); i++)
+	{
+		if (buttonsWindow[i] != nullptr)
+		{
+			buttonsWindow[i]->differenceX = buttonsWindow[i]->GetPos().x - m_pos.x;
+			buttonsWindow[i]->differenceY = buttonsWindow[i]->GetPos().y - m_pos.y;
 		}
 	}
 
@@ -189,11 +173,15 @@ void UIRemote::SetButtonBounds()
 	}
 }
 
-void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
+void UIRemote::SetButtonToggle(int i, Window* toggle)
 {
-	buttons[i]->SetToggle(toggle);
+	buttonsWindow[i]->SetToggle(toggle);
 }
 
+void UIRemote::SetButtonToggle(int i, BuildingWindow* toggle)
+{
+	buttonsBuilding[i]->SetToggle(toggle);
+}
 
 /// <summary>
 /// Activates on event
@@ -202,14 +190,21 @@ void UIRemote::SetButtonToggle(int i, GameObject2D* toggle)
 void UIRemote::onEvent(const Event& event)
 {
 	//Checks to see if event is the same as button type, if so, sets current selection string to event name
-	for (int i = 0; i < 37; i++)
+	for (int i = 0; i < buttonsSwitch.size(); i++)
 	{
-		if (buttons[i]->event_type == event.type)
+		if (buttonsSwitch[i]->event_type == event.type)
 		{
-			text[2]->SetString(buttons[i]->buttonName);
-			buttons[i]->toggle();
-			
-			
+			text[2]->SetString(buttonsSwitch[i]->buttonName);
+			break;
+		}
+	}
+
+	for (int i = 0; i < buttonsWindow.size(); i++)
+	{
+		if (buttonsWindow[i]->event_type == event.type)
+		{
+			text[2]->SetString(buttonsWindow[i]->buttonName);
+			buttonsWindow[i]->Toggle();
 			break;
 		}
 	}
@@ -238,79 +233,140 @@ void UIRemote::onEvent(const Event& event)
 /// <param name="_GD"></param>
 void UIRemote::Tick(GameData* _GD)
 {
-	//Checks the object bounds and the cursor postion
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
-
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-	//If mouse clicked while in object bounds - get difference between object and cursor position and start to drag
-	if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-	{
-		differenceX = m_pos.x - _GD->m_MS.x;
-		differenceY = m_pos.y - _GD->m_MS.y;
-
-		dragged = true;
-	}
-
-	//If being dragged, move with mouse using the distance value to stay relative
-	if (dragged == true && _GD->m_MS.leftButton == 1)
-	{
-		m_pos.x = _GD->m_MS.x + differenceX;
-		m_pos.y = _GD->m_MS.y + differenceY;
-
-		for (int i = 0; i < 37; i++)
-		{
-			if (buttons[i] != nullptr)
-			{
-				buttons[i]->SetPos(m_pos.x + buttons[i]->differenceX, m_pos.y + buttons[i]->differenceY);
-			}
-		}
-
-		for (int i = 0; i < 8; i++)
-		{
-			if (text[i] != nullptr)
-			{
-				text[i]->SetPos(m_pos.x + text[i]->differenceX, m_pos.y + text[i]->differenceY);
-			}
-		}
-	}
-
-	//If being dragged and button is released - stop
-	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
-	{
-		dragged = false;
-	}
-
-	// Check to see if buttons are pressed
 	if (renderable)
 	{
-		for (int i = 0; i < 37; i++)
+		if (!buildingWindowOpen)
 		{
-			if (buttons[i] != nullptr)
+		//Checks the object bounds and the cursor postion
+		bounds.x = m_pos.x - (bounds.width / 2);
+		bounds.y = m_pos.y - (bounds.height / 2);
+
+		int mouseX = _GD->m_MS.x;
+		int mouseY = _GD->m_MS.y;
+
+		Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+
+		//If mouse clicked while in object bounds - get difference between object and cursor position and start to drag
+		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+		{
+			differenceX = m_pos.x - _GD->m_MS.x;
+			differenceY = m_pos.y - _GD->m_MS.y;
+
+			dragged = true;
+		}
+
+		//If being dragged, move with mouse using the distance value to stay relative
+		if (dragged == true && _GD->m_MS.leftButton == 1)
+		{
+			m_pos.x = _GD->m_MS.x + differenceX;
+			m_pos.y = _GD->m_MS.y + differenceY;
+
+			for (int i = 0; i < buttonsSwitch.size(); i++)
 			{
-				buttons[i]->Tick(_GD);
-
-				if (buttons[i]->pressed)
+				if (buttonsSwitch[i] != nullptr)
 				{
-					//Toggle the button window, and set the remote selection string to buton name
-					text[2]->SetString(buttons[i]->buttonName);
-					
-					//Fire event of button event type, then set button's pressed value to false
-					
-					Event event{};
-						event.type = buttons[i]->event_type;
+					buttonsSwitch[i]->SetPos(m_pos.x + buttonsSwitch[i]->differenceX, m_pos.y + buttonsSwitch[i]->differenceY);
+				}
+			}
 
-						GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+			for (int i = 0; i < buttonsBuilding.size(); i++)
+			{
+				if (buttonsBuilding[i] != nullptr)
+				{
+					buttonsBuilding[i]->SetPos(m_pos.x + buttonsBuilding[i]->differenceX, m_pos.y + buttonsBuilding[i]->differenceY);
+				}
+			}
 
-						buttons[i]->pressed = false;
-					
+			for (int i = 0; i < buttonsWindow.size(); i++)
+			{
+				if (buttonsWindow[i] != nullptr)
+				{
+					buttonsWindow[i]->SetPos(m_pos.x + buttonsWindow[i]->differenceX, m_pos.y + buttonsWindow[i]->differenceY);
+				}
+			}
+
+			for (int i = 0; i < 8; i++)
+			{
+				if (text[i] != nullptr)
+				{
+					text[i]->SetPos(m_pos.x + text[i]->differenceX, m_pos.y + text[i]->differenceY);
 				}
 			}
 		}
+
+		//If being dragged and button is released - stop
+		if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+		{
+			dragged = false;
+		}
+
+		// Check to see if buttons are pressed
+
+		for (int i = 0; i < buttonsSwitch.size(); i++)
+		{
+			if (buttonsSwitch[i] != nullptr)
+			{
+				buttonsSwitch[i]->Tick(_GD);
+
+				if (buttonsSwitch[i]->pressed)
+				{
+					//Fire event of button event type, then set button's pressed value to false
+					Event event{};
+					event.type = buttonsSwitch[i]->event_type;
+
+					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+
+					buttonsSwitch[i]->pressed = false;
+				}
+			}
+		}
+
+		for (int i = 0; i < buttonsBuilding.size(); i++)
+		{
+			if (buttonsBuilding[i] != nullptr)
+			{
+				buttonsBuilding[i]->Tick(_GD);
+
+				if (buttonsBuilding[i]->pressed)
+				{
+					//Fire event of button event type, then set button's pressed value to false
+
+					text[2]->SetString(buttonsBuilding[i]->buttonName);
+
+					for (int j = 0; j < buttonsBuilding[i]->GetToggle()->buttons.size(); j++)
+					{
+						buttonsBuilding[i]->GetToggle()->SetPosition(buttonsBuilding[i]->GetPos());
+						buttonsBuilding[i]->GetToggle()->buttons[j]->SetText(true, buttonsBuilding[i]->buttonName);
+						buttonsBuilding[i]->GetToggle()->buttons[j]->SetType(buttonsBuilding[i]->event_type);
+					}
+
+					buttonsBuilding[i]->toggle();
+					buttonsBuilding[i]->pressed = false;
+				}
+			}
+		}
+
+		for (int i = 0; i < buttonsWindow.size(); i++)
+		{
+			if (buttonsWindow[i] != nullptr)
+			{
+				buttonsWindow[i]->Tick(_GD);
+
+				if (buttonsWindow[i]->pressed)
+				{
+					//Fire event of button event type, then set button's pressed value to false
+					Event event{};
+					event.type = buttonsWindow[i]->event_type;
+
+					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+
+					buttonsWindow[i]->pressed = false;
+				}
+			}
+		}
+	}
+
 
 		for (int i = 0; i < 8; i++)
 		{
@@ -319,11 +375,11 @@ void UIRemote::Tick(GameData* _GD)
 				text[i]->Tick(_GD);
 			}
 		}
-	}
 
-	//Change year and money strings for demonstrative purposes
-	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
-	text[1]->SetString(to_string(money -= 1) + "$");
+		//Change year and money strings for demonstrative purposes
+		text[0]->SetString("Year: " + to_string(_GD->Year += 1));
+		text[1]->SetString(to_string(money -= 1) + "$");
+	}
 }
 
 
@@ -338,11 +394,27 @@ void UIRemote::Draw(DrawData2D* _DD)
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
 
 
-		for (int i = 0; i < 37; i++)
+		for (int i = 0; i < buttonsSwitch.size(); i++)
 		{
-			if (buttons[i] != nullptr)
+			if (buttonsSwitch[i] != nullptr)
 			{
-				buttons[i]->Draw(_DD);
+				buttonsSwitch[i]->Draw(_DD);
+			}
+		}
+
+		for (int i = 0; i < buttonsBuilding.size(); i++)
+		{
+			if (buttonsBuilding[i] != nullptr)
+			{
+				buttonsBuilding[i]->Draw(_DD);
+			}
+		}
+
+		for (int i = 0; i < buttonsWindow.size(); i++)
+		{
+			if (buttonsWindow[i] != nullptr)
+			{
+				buttonsWindow[i]->Draw(_DD);
 			}
 		}
 

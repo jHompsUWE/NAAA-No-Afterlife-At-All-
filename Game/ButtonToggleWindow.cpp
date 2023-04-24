@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ButtonOpenBW.h"
+#include "ButtonToggleWindow.h"
 #include "DDSTextureLoader.h"
 #include "DrawData2D.h"
 #include "GameData.h"
@@ -7,7 +7,7 @@
 #include "Mouse.h"
 #include <iostream>
 
-ButtonOpenBW::ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent)
+ButtonToggleWindow::ButtonToggleWindow(ID3D11Device* _GD, GameObject2D* _parent)
 {
 
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
@@ -32,7 +32,7 @@ ButtonOpenBW::ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent)
 	parentWindow = _parent;
 }
 
-ButtonOpenBW::ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _event)
+ButtonToggleWindow::ButtonToggleWindow(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _event)
 {
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
 
@@ -54,7 +54,7 @@ ButtonOpenBW::ButtonOpenBW(ID3D11Device* _GD, GameObject2D* _parent, string _nam
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 }
 
-ButtonOpenBW::~ButtonOpenBW()
+ButtonToggleWindow::~ButtonToggleWindow()
 {
 	if (m_pTextureRV)
 	{
@@ -67,26 +67,18 @@ ButtonOpenBW::~ButtonOpenBW()
 /// Set the window for the button to toggle
 /// </summary>
 /// <param name="toggle"></param>
-void ButtonOpenBW::SetToggle(BuildingWindow* toggle)
+void ButtonToggleWindow::SetToggle(Window* toggle)
 {
 	toggleWindow = toggle;
-}
-
-BuildingWindow* ButtonOpenBW::GetToggle()
-{
-	return toggleWindow;
 }
 
 /// <summary>
 /// Toggle the rendering of the button's set window
 /// </summary>
-void ButtonOpenBW::toggle()
+void ButtonToggleWindow::Toggle()
 {
 	if (toggleWindow != nullptr)
 	{
-		if (!toggleWindow->renderable)
-		{
-			toggleWindow->renderable = true;
-		}
+		toggleWindow->renderable = !toggleWindow->renderable;
 	}
 }

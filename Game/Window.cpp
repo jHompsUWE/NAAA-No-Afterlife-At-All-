@@ -27,4 +27,8 @@ void Window::Tick(GameData* _GD)
 
 void Window::Draw(DrawData2D* _DD)
 {
+	if (renderable)
+	{
+		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
+	}
 }

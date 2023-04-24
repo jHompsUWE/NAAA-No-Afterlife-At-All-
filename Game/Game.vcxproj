@@ -250,6 +250,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonOpenBW.h" />
     <ClInclude Include="ButtonSelectBW.h" />
+    <ClInclude Include="ButtonToggleWindow.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="Capacity.h" />
     <ClInclude Include="CMOGO.h" />
@@ -288,8 +289,12 @@
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MarchCubes.h" />
     <ClInclude Include="ObjectList.h" />
+    <ClInclude Include="OptionBar.h" />
+    <ClInclude Include="OptionBarButton.h" />
+    <ClInclude Include="OptionBarWindow.h" />
     <ClInclude Include="Pathfinding.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PlanetView.h" />
     <ClInclude Include="PlaneType.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
@@ -326,6 +331,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonOpenBW.cpp" />
     <ClCompile Include="ButtonSelectBW.cpp" />
+    <ClCompile Include="ButtonToggleWindow.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="CMOGO.cpp" />
     <ClCompile Include="EconomyManager.cpp" />
@@ -350,6 +356,9 @@
     <ClCompile Include="light.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="MarchCubes.cpp" />
+    <ClCompile Include="OptionBar.cpp" />
+    <ClCompile Include="OptionBarButton.cpp" />
+    <ClCompile Include="OptionBarWindow.cpp" />
     <ClCompile Include="Pathfinding.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -359,6 +368,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PlanetView.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SelectionHandler.cpp" />
     <ClCompile Include="SoulManager.cpp" />

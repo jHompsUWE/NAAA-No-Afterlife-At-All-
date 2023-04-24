@@ -7,7 +7,7 @@
 #include <iostream>
 #include "Mouse.h"
 
-WindowDraggable::WindowDraggable(ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour) :m_pTextureRV(nullptr)
+WindowDraggable::WindowDraggable(ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour)
 {
 
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
