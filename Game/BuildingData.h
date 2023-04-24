@@ -6,6 +6,7 @@
 #include "GridData.h"
 #include "SoulManager.h"
 #include "Listener.h"
+#include "GameManager.h"
 
 struct BuildingData
 {

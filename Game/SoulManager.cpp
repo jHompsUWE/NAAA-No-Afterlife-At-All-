@@ -101,8 +101,8 @@ void SoulManager::update(GameData& _game_data)
 			int length = 10;
 			for (size_t i = 0; i < length; i++)
 			{
-				m_Heven_wanderingSouls.push_back(m_Earth_Souls.back());
-				m_Earth_Souls.pop_back();
+				//m_Heven_wanderingSouls.push_back(std::move(m_Earth_Souls.back().));
+				//m_Earth_Souls.pop_back();
 			}
 		}
 		
@@ -122,9 +122,9 @@ void SoulManager::lateUpdate(GameData& _game_data)
 
 void SoulManager::onEvent(const Event& event)
 {
-	switch (event.type)
-	{
-	case EventType::ADD_SOUL:
-		AddSoul(Vector2(event.payload.add_soul.x, event.payload.add_soul.y), event.payload.add_soul.plane);
-	}
+	//switch (event.type)
+	//{
+	//case EventType::ADD_SOUL:
+		//AddSoul(Vector2(event.payload.add_soul.x, event.payload.add_soul.y), event.payload.add_soul.plane);
+	//}
 }
