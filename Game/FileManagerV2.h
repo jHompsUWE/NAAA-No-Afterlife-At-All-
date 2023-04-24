@@ -17,7 +17,7 @@ public:
     json *GetJson(const std::string &fileName) const;
     string GetFile(const std::string &fileName) const;
 
-    void LoadGame();
+    void LoadGame();    
     void SaveGame();
 
 private:

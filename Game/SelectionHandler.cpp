@@ -3,6 +3,7 @@
 #include "Mouse.h"
 #include <math.h>
 
+#include "GameManager.h"
 #include "Pathfinding.h"
 #include "BuildingData.h"
 
@@ -56,6 +57,8 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		}
 	}
 
+	if (!GameManager::get()->isGamePaused())
+    {
 	switch (m_selection_type)
 	{
 	case SelectionType::Zone:
@@ -74,7 +77,9 @@ void SelectionHandler::update(TPSCamera& tps_cam)
 		// Do nothing if there's no selection type
 		break;
 	}
+    }
 }
+
 
 void SelectionHandler::draw(DrawData* _DD)
 {

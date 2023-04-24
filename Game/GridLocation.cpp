@@ -110,5 +110,19 @@ void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 		}
 	}
 
+	if (m_grid_data.m_tile_type == TileType::River)
+	{
+		switch (m_grid_data.m_plane)
+		{
+		case PlaneType::Heaven:
+			m_tile->SetColour(Colors::LightBlue.v);
+			break;
+		case PlaneType::Hell:
+			m_tile->SetColour(Colors::DarkRed.v);
+			break;
+		}
+		
+	}
+
 	//m_grid_data.m_building_data->update(soul_manager);
 }

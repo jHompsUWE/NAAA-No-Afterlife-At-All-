@@ -51,6 +51,11 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			file_manager = reinterpret_cast<FileManagerV2*>(&*_manager);
 			return true;
 		}
+	case ManagerType::SOUL:
+		{
+			soulManager = reinterpret_cast<SoulManager*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }
@@ -98,4 +103,15 @@ void GameManager::LoadGame()
 		auto money = (*saveFile)["economy_manager"]["money"];
 		cout << money << endl;
 	}
+}
+
+void GameManager::PauseGame()
+{
+	game_paused = !game_paused;
+}
+
+
+bool GameManager::isGamePaused() const
+{
+	return game_paused;
 }
