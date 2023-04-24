@@ -55,7 +55,7 @@ void GridLocation::nuke()
 	m_grid_data.nuke();
 }
 
-void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, SoulManager* soul_manager)
+void GridLocation::update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device)
 {
 	switch (m_grid_data.m_zone_type)
 	{

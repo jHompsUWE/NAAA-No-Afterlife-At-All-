@@ -163,7 +163,7 @@ void WorldManager::update(GameData& _game_data)
 		{
 			for (auto& tile : plane.second)
 			{
-				tile->update(m_d3dContext, m_soul_manager);
+				tile->update(m_d3dContext);
 			}
 		}
 	}

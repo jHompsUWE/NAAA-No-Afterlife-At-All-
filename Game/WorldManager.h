@@ -35,7 +35,7 @@ public:
 
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>>& getWorld();
 
-    static int getIndex(Vector2 position);
+    int getIndex(Vector2 position);
     bool withinRange(Vector2 position);
 
 private:
@@ -48,8 +48,8 @@ private:
 
     void generateWorld();
 
-    static int m_grid_x;
-    static int m_grid_y;
+    int m_grid_x;
+    int m_grid_y;
     
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>> m_world;
 

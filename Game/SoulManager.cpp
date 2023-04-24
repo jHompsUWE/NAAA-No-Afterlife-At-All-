@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SoulManager.h"
 
-//#include "BuildingData.h"
+#include "BuildingData.h"
 #include "GameManager.h"
 #include "Pathfinding.h"
 //#include "WorldManager.h"
@@ -153,7 +153,7 @@ void SoulManager::zone_checking(shared_ptr<Soul> soul, PlaneType _plane)
 		auto& grid_data = plane[index]->getGridData();
 		if (grid_data.m_connected == true && grid_data.m_zone_type == soul->zonetype && grid_data.m_building_data != nullptr)
 		{
-			auto& building = grid_data.m_building_data;
+			GenericBuilding* building = grid_data.m_building_data;
 			if (building->m_capacity.MaximumCapacity > building->m_capacity.CurrentCapacity)
 			{
 				(soul->reincarnate
@@ -201,59 +201,79 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 	int east =	world_manager->getIndex(Vector2{pos.x + 1,pos.y});
 	int south = world_manager->getIndex(Vector2{pos.x,pos.y - 1});
 	int west =	world_manager->getIndex(Vector2{pos.x - 1,pos.y});
-	bool failedn,failede,faileds,failedw = false;
+	bool failedn = false;
+	bool failede = false;
+	bool faileds = false;
+	bool failedw = false;
 	if (world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Building ||
 		world_manager->getWorld()[PlaneType::Heaven][soulindex]->getGridData().m_tile_type == TileType::Road)
 	{
 		bool wandering = true;
 		while (wandering)
 		{
-			int rand = rand() % 4 + 1;
+			int rand = std::rand() % 4 + 1;
 			switch (rand)
 			{
-			case 1 and !failedn:
+			case 1:
+			{
+				if (failedn)
 				{
-					if (world_manager->getWorld()[plane][north]->getGridData().m_tile_type == TileType::Road)
-					{
-						soul->position = Vector2{pos.x,pos.y + 1};
-						wandering = false;
-					}
-					else
-					{
-						failedn = true;
-					}
 					break;
 				}
-			case 2 and (!failede):
+				if (world_manager->getWorld()[plane][north]->getGridData().m_tile_type == TileType::Road)
 				{
-					if (world_manager->getWorld()[plane][east]->getGridData().m_tile_type == TileType::Road)
-					{
-						soul->position = Vector2{pos.x + 1,pos.y};
-						wandering = false;
-					}
-					else
-					{
-						failede = true;
-					}
+					soul->position = Vector2{ pos.x,pos.y + 1 };
+					wandering = false;
+				}
+				else
+				{
+					failedn = true;
+				}
+				break;
+			}
+			case 2:
+			{
+				if (failede)
+				{
 					break;
 				}
-			case 3 and !faileds:
+				if (world_manager->getWorld()[plane][east]->getGridData().m_tile_type == TileType::Road)
 				{
-					if (world_manager->getWorld()[plane][south]->getGridData().m_tile_type == TileType::Road)
-					{
-						soul->position = Vector2{pos.x,pos.y - 1};
-						wandering = false;
-					}
-					else
-					{
-						faileds = true;
-					}
+					soul->position = Vector2{ pos.x + 1,pos.y };
+					wandering = false;
+				}
+				else
+				{
+					failede = true;
+				}
+				break;
+			}
+			case 3:
+			{
+				if (faileds)
+				{
 					break;
 				}
-			case 4 and !failedw:
+				if (world_manager->getWorld()[plane][south]->getGridData().m_tile_type == TileType::Road)
+				{
+					soul->position = Vector2{ pos.x,pos.y - 1 };
+					wandering = false;
+				}
+				else
+				{
+					faileds = true;
+				}
+				break;
+			}
+			case 4:
+			{
+				if (failedw)
+				{
+					break;
+				}
 				if (world_manager->getWorld()[plane][west]->getGridData().m_tile_type == TileType::Road)
 				{
-					soul->position = Vector2{pos.x - 1,pos.y};
+					soul->position = Vector2{ pos.x - 1,pos.y };
 					wandering = false;
 				}
 				else
@@ -261,6 +281,7 @@ void SoulManager::wandering(shared_ptr<Soul> soul,PlaneType plane)
 					failedw = true;
 				}
 				break;
+			}
 			default:
 				{
 					CONSOLE(ERROR,"THIS SHOULD NOT PRINT: " + std::to_string(rand));

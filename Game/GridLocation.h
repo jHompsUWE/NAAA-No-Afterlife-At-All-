@@ -3,7 +3,7 @@
 #include "GridData.h"
 #include "TileGO.h"
 #include "GPGO.h"
-#include "SoulManager.h"
+//#include "SoulManager.h"
 
 /////////////////////////////////////////////////
 /// This Class houses the in-world tile object and an instance of the struct
@@ -28,7 +28,7 @@ public:
 
 	void nuke();
 
-	void update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, SoulManager* soul_manager);
+	void update(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device);
 
 private:
 	GridData m_grid_data;
