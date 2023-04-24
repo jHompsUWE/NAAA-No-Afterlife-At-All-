@@ -12,7 +12,7 @@ public:
     Soul TurnIntoSoul(EMBO* _embo);  // Save the poor soul from the life on Earth
 
     static EMBO SoulToEMBO(Soul& _soul);
-    static Soul EMBOToSoul(EMBO& _embo);
+    static Soul EMBOToSoul(EMBO& _embo);    
     
 private:    
     std::vector <std::shared_ptr<EMBO>> earthEMBOs;
@@ -27,5 +27,9 @@ private:
 
     void RemoveFromList(EMBO* _embo); 
     void RemoveFromList(Soul* _soul); 
-	
+
+    static void RemoveEntity(Soul& _soul);
+    static void RemoveEntity(EMBO& _embo);
+
+    bool doOnce = true;
 };

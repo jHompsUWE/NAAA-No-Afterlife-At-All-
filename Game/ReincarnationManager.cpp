@@ -5,61 +5,69 @@
 
 void ReincarnationManager::update(GameData& _game_data)
 {
-    auto soulManager = GameManager::get()->getSoulManager();
-    
-    // for (auto& embo : soulManager->m_Earth_Souls)
+    if (doOnce)
+    {
+        if (!GameManager::get()->getSoulManager()->m_Earth_Souls.empty())
+        {
+            EMBOToSoul(*GameManager::get()->getSoulManager()->m_Earth_Souls.at(0));
+            doOnce = false;
+        }
+    }
+    // auto soulManager = GameManager::get()->getSoulManager();
+    //
+    // // for (auto& embo : soulManager->m_Earth_Souls)
+    // // {
+    // //     if (embo != nullptr)
+    // //     {
+    // //         if (embo->m_yearsleft == 0 && embo->m_reincarnate)
+    // //         {
+    // //             TurnIntoSoul(embo.get());
+    // //         }
+    // //     }
+    // // }
+    // if (!soulManager->m_Earth_Souls.empty())
     // {
-    //     if (embo != nullptr)
+    //     for (auto soulIter = soulManager->m_Earth_Souls.begin(); soulIter != soulManager->m_Earth_Souls.end();)
     //     {
-    //         if (embo->m_yearsleft == 0 && embo->m_reincarnate)
+    //         if (*soulIter != nullptr)
     //         {
-    //             TurnIntoSoul(embo.get());
+    //             TurnIntoSoul((*soulIter).get());
+    //             //soulIter = soulManager->m_Earth_Souls.erase(soulIter);
     //         }
     //     }
     // }
-    if (!soulManager->m_Earth_Souls.empty())
-    {
-        for (auto soulIter = soulManager->m_Earth_Souls.begin(); soulIter != soulManager->m_Earth_Souls.end();)
-        {
-            if (*soulIter != nullptr)
-            {
-                TurnIntoSoul((*soulIter).get());
-                //soulIter = soulManager->m_Earth_Souls.erase(soulIter);
-            }
-        }
-    }
-    // hellZonedSouls_ = soulManager->m_Hell_ZonedSouls;
-    // hellWanderingSouls_ = soulManager->m_Hell_wanderingSouls;
-    // for (auto soul :  soulManager->m_Hell_wanderingSouls)
+    // // hellZonedSouls_ = soulManager->m_Hell_ZonedSouls;
+    // // hellWanderingSouls_ = soulManager->m_Hell_wanderingSouls;
+    // // for (auto soul :  soulManager->m_Hell_wanderingSouls)
+    // // {
+    // //     if (soul != nullptr)
+    // //     {
+    // //         TurnIntoEMBO(soul.get());
+    // //     }
+    // // }
+    // if (!soulManager->m_Hell_wanderingSouls.empty())
     // {
-    //     if (soul != nullptr)
+    //     for (auto soulIter = soulManager->m_Hell_wanderingSouls.begin(); soulIter != soulManager->m_Hell_wanderingSouls.end();)
     //     {
-    //         TurnIntoEMBO(soul.get());
+    //         if (*soulIter != nullptr)
+    //         {
+    //             TurnIntoEMBO((*soulIter).get());              
+    //             //soulIter = soulManager->m_Hell_wanderingSouls.erase(soulIter);
+    //         }
     //     }
     // }
-    if (!soulManager->m_Hell_wanderingSouls.empty())
-    {
-        for (auto soulIter = soulManager->m_Hell_wanderingSouls.begin(); soulIter != soulManager->m_Hell_wanderingSouls.end();)
-        {
-            if (*soulIter != nullptr)
-            {
-                TurnIntoEMBO((*soulIter).get());              
-                //soulIter = soulManager->m_Hell_wanderingSouls.erase(soulIter);
-            }
-        }
-    }
-
-    if (!soulManager->m_Heven_wanderingSouls.empty())
-    {
-        for (auto soulIter = soulManager->m_Heven_wanderingSouls.begin(); soulIter != soulManager->m_Heven_wanderingSouls.end();)
-        {
-            if (*soulIter != nullptr)
-            {
-                TurnIntoEMBO((*soulIter).get());               
-                //soulIter = soulManager->m_Heven_wanderingSouls.erase(soulIter);
-            }
-        }
-    }
+    //
+    // if (!soulManager->m_Heven_wanderingSouls.empty())
+    // {
+    //     for (auto soulIter = soulManager->m_Heven_wanderingSouls.begin(); soulIter != soulManager->m_Heven_wanderingSouls.end();)
+    //     {
+    //         if (*soulIter != nullptr)
+    //         {
+    //             TurnIntoEMBO((*soulIter).get());               
+    //             //soulIter = soulManager->m_Heven_wanderingSouls.erase(soulIter);
+    //         }
+    //     }
+    // }
     
     if (_game_data.m_KBS_tracker.pressed.Y)
     {
@@ -175,6 +183,7 @@ EMBO ReincarnationManager::SoulToEMBO(Soul& _soul)
         GameManager::get()->getSoulManager()->m_Earth_Souls.push_back(shared_ptr<EMBO>(&convertedSoul));
         std::cout << "one soul was converted to EMBO" << endl;
         //RemoveFromList(&_soul);
+        RemoveEntity(_soul);
         return convertedSoul;
     }
 }
@@ -199,27 +208,98 @@ Soul ReincarnationManager::EMBOToSoul(EMBO& _embo)
         {
             convertedEmbo->m_both = true;
             GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
-            //RemoveFromList(_embo);
+            RemoveEntity(_embo);
             return *convertedEmbo;
         }
         if ((convertedEmbo->earth_belief + 1) % 4 == 0)
         {
             GameManager::get()->getSoulManager()->m_Hell_wanderingSouls.emplace_back(convertedEmbo);
-            //RemoveFromList(_embo);
+            RemoveEntity(_embo);
             return *convertedEmbo;
         }
         if (convertedEmbo->earth_belief % 4 == 0)
         {
             GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.emplace_back(convertedEmbo);
-            //RemoveFromList(_embo);
+            RemoveEntity(_embo);
             return *convertedEmbo;
         }      
         int random = std::rand() % RAND_MAX;
         (random % 2 == 0 ? GameManager::get()->getSoulManager()->m_Hell_wanderingSouls : GameManager::get()->getSoulManager()->m_Heven_wanderingSouls).emplace_back(convertedEmbo);
-        //RemoveFromList(_embo);
+        RemoveEntity(_embo);
         return *convertedEmbo;
     }
 }
+
+void ReincarnationManager::RemoveEntity(EMBO& _embo)
+{
+    auto& earthEMBO = GameManager::get()->getSoulManager()->m_Earth_Souls;
+    
+    auto it = std::find_if(earthEMBO.begin(), earthEMBO.end(),
+        [_embo](const std::shared_ptr<EMBO>& element) {
+                  return element.get() == &_embo;
+              });
+    // Erase the element from the vector if found
+    if (it != GameManager::get()->getSoulManager()->m_Earth_Souls.end())
+    {
+        GameManager::get()->getSoulManager()->m_Earth_Souls.erase(it);
+    }
+}
+
+void ReincarnationManager::RemoveEntity(Soul& _soul)
+{
+    auto& hellZonedSouls = GameManager::get()->getSoulManager()->m_Hell_ZonedSouls;
+    auto& hellWanderingSouls = GameManager::get()->getSoulManager()->m_Hell_wanderingSouls;
+    auto& hevenZonedSouls = GameManager::get()->getSoulManager()->m_Heven_ZonedSouls;
+    auto& hevenWanderingSouls = GameManager::get()->getSoulManager()->m_Heven_wanderingSouls;
+
+    // if (!hellZonedSouls.empty())
+    // {
+    //     hellZonedSouls.erase(std::find(hellZonedSouls.begin(), hellZonedSouls.end(), _soul));
+    // }
+
+    // for (auto element : hellZonedSouls)
+    // {
+    //     if (element.get() == &_soul)
+    //     {
+    //         hellZonedSouls.erase(std::find(hellZonedSouls.begin(), 
+    //                   hellZonedSouls.end(), _soul));
+    //         break;
+    //     }
+    // }
+    // for (auto element : hellWanderingSouls)
+    // {
+    //     if (element.get() == &_soul)
+    //     {
+    //         hellWanderingSouls.erase(std::find(hellWanderingSouls.begin(), 
+    //                   hellWanderingSouls.end(), _soul));
+    //         break;
+    //     }
+    // }
+    //
+    // // Heaven
+    //
+    // for (auto element : hevenZonedSouls)
+    // {
+    //     if (element.get() == &_soul)
+    //     {
+    //         hevenZonedSouls.erase(std::find(hevenZonedSouls.begin(), 
+    //                   hevenZonedSouls.end(), _soul));
+    //         break;
+    //     }
+    // }
+    //
+    // for (auto element : hevenWanderingSouls)
+    // {
+    //     if (element.get() == &_soul)
+    //     {
+    //         hevenWanderingSouls.erase(std::find(hevenWanderingSouls.begin(), 
+    //                   hevenWanderingSouls.end(), _soul));
+    //         break;
+    //     }
+    // }
+}
+
+
 
 void ReincarnationManager::RemoveFromList(EMBO* _embo)
 {
@@ -249,7 +329,7 @@ void ReincarnationManager::RemoveFromList(Soul* _soul)
 {
     if (_soul != nullptr)
     {
-        std::shared_ptr<Soul> soulToRemove = make_shared<Soul>(*_soul);
+        std::shared_ptr<Soul> soulToRemove = make_unique<Soul>(*_soul);
         // Get references to the containers
         auto& hellZonedSouls = GameManager::get()->getSoulManager()->m_Hell_ZonedSouls;
         auto& hellWanderingSouls = GameManager::get()->getSoulManager()->m_Hell_wanderingSouls;

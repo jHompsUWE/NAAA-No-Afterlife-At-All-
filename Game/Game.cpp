@@ -141,8 +141,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     soul_manager = std::make_shared<SoulManager>();
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
 
-    //reincarnation_manager = std::make_shared<ReincarnationManager>();
-    //GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
+    reincarnation_manager = std::make_shared<ReincarnationManager>();
+    GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
     
     
     // GameState initialisation
