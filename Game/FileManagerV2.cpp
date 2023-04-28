@@ -11,6 +11,8 @@ void FileManagerV2::awake()
     AddFile("keybinds_custom", new ifstream(custom_bindings_file_name));
     AddFile("buildings_table", new ifstream(filepath_ + "buildings_table.json"));
     AddFile("souls_name", new ifstream(filepath_ + "souls_name.json"));
+    AddFile("remote_buttons", new ifstream(filepath_ + "remote_buttons.json"));
+    AddFile("option_buttons", new ifstream(filepath_ + "option_buttons.json"));
     
 
     for (auto & file : files)

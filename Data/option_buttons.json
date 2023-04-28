@@ -1,0 +1,131 @@
+{
+  "Buttons": [
+    {
+      "Text": "File",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 50,
+        "Y": 5
+      },
+      "Toggle": "GREEN_ZONING"
+    },
+    {
+      "Text": "Global",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 150,
+        "Y": 5
+      },
+      "Toggle": "YELLOW_ZONING"
+    },
+    {
+      "Text": "Window",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 250,
+        "Y": 5
+      },
+      "Toggle": "ORANGE_ZONING"
+    },
+    {
+      "Text": "Tutorial",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 350,
+        "Y": 5
+      },
+      "Toggle": "BROWN_ZONING"
+    }
+  ],
+  "Windows": [
+    {
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 50,
+        "Y": 165
+      },
+      "NumButtons": 7,
+      "ButtonText": {
+        "0": "Save Game",
+        "1": "Load Game",
+        "2": "Load Scenario",
+        "3": "Delete Game",
+        "4": "New Game",
+        "5": "Afterlife v1.0",
+        "6": "Exit Game"
+      }
+    },
+    {
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 150,
+        "Y": 105
+      },
+      "NumButtons": 4,
+      "ButtonText": {
+        "0": "Audio Settings",
+        "1": "Tempo",
+        "2": "Bad Things",
+        "3": "Misc Option"
+      }
+    },
+    {
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 250,
+        "Y": 145
+      },
+      "NumButtons": 6,
+      "ButtonText": {
+        "0": "Helpers",
+        "1": "Planetview",
+        "2": "Graphview",
+        "3": "Mapview",
+        "4": "MacroManager",
+        "5": "Remote Control"
+      }
+    },
+    {
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 350,
+        "Y": 185
+      },
+      "NumButtons": 8,
+      "ButtonText": {
+        "0": "Getting Started",
+        "1": "Lost SOULs",
+        "2": "Basic Karma",
+        "3": "Your Workforce",
+        "4": "Graphs and Maps",
+        "5": "Limbos",
+        "6": "Rocks and Siphons",
+        "7": "Ports"
+      }
+    }
+  ]
+}

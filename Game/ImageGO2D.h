@@ -12,6 +12,7 @@
 class ImageGO2D :public GameObject2D
 {
 public:
+	ImageGO2D();
 	ImageGO2D(string _fileName, ID3D11Device* _GD);
 	virtual ~ImageGO2D();
 
@@ -26,15 +27,20 @@ public:
 
 
 	bool renderable = true;
+	
+	Rectangle bounds;
+	
+	ID3D11ShaderResourceView* m_pTextureRV;
+
 protected:
 
 	RECT uv;
 	RECT* uv_ref = &uv;
 
 
-	Rectangle bounds;
+	
 
-	ID3D11ShaderResourceView* m_pTextureRV;
+	
 };
 
 #endif

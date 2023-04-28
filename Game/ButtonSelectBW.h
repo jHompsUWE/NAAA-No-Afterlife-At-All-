@@ -4,11 +4,11 @@
 #include "Window.h"
 #include "Event.h"
 
-class BuildingButton :public GameObject2D
+class ButtonSelectBW :public GameObject2D
 {
 public:
-	BuildingButton(ID3D11Device* _GD, GameObject2D* _parent, string _buttonName);
-	virtual ~BuildingButton();
+	ButtonSelectBW(ID3D11Device* _GD, GameObject2D* _parent, string _buttonName);
+	virtual ~ButtonSelectBW();
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
@@ -24,14 +24,18 @@ public:
 
 	EventType event_type;
 	bool hover = false;
-	
+
 	TextGO2D* buildName;
 	TextGO2D* buildCost;
 
 	Rectangle bounds;
 
+
+	float differenceX;
+	float differenceY;
+
 protected:
-	
+
 
 	GameObject2D* parentWindow;
 	GameObject2D* toggleWindow;

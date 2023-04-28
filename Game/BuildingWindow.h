@@ -1,35 +1,23 @@
 #pragma once
-#include "GameObject2D.h"
+#include "Window.h"
 #include "TextGO2D.h"
-#include "BuildingButton.h"
+#include "ButtonSelectBW.h"
 #include <vector>
-#include "GameManager.h"
 
-class BuildingWindow : public GameObject2D
+class BuildingWindow : public Window
 {
 public:
-	BuildingWindow(string _fileName, ID3D11Device* _GD, int _buttoNum);
-	virtual ~BuildingWindow();
+	BuildingWindow(ID3D11Device* _GD, int numOfButtons);
+	~BuildingWindow();
 
-	void SetTextPos();
+	virtual void Tick(GameData* _GD) override;
+	virtual void Draw(DrawData2D* _DD) override;
+	void SetPosition(Vector2 _pos);
 
-	virtual void Tick(GameData* _GD);
-	virtual void Draw(DrawData2D* _DD);
+	void SetButtonBounds();
 
-
-	std::vector<BuildingButton*> buttons;
+	std::vector <ButtonSelectBW*> buttons;
 
 protected:
-
-	ID3D11ShaderResourceView* m_pTextureRV;
-	Rectangle bounds;
-
-	
-	BuildingButton* hovered;
-
-
-	Vector2 m_scale;
-
-	float renderOrder;
+	ButtonSelectBW* hovered;
 };
-

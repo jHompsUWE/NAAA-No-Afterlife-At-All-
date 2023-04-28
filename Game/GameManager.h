@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "EventManager.h"
 #include "FileManagerV2.h"
+#include "UIManager.h"
 #include "SoulManager.h"
 
 ////////////////////////////////////////////////////////////
@@ -22,6 +23,7 @@ enum class ManagerType : int
 	WORLD,
 	SOUL,
 	REINCARNATION
+	UI
 };
 
 class GameManager
@@ -90,6 +92,12 @@ public:
 	////////////////////////////////////////////////////////////
 	FileManagerV2* getFileManagerV2() { return file_manager; };
 
+
+	UIManager* getUIManager() { return ui_manager; };
+
+
+	InputManager* getInputManager() { return input_manager; };
+
 	////////////////////////////////////////////////////////////
 	/// \brief Returns pointer to File Manager Event, use this for triggering events. 
 	////////////////////////////////////////////////////////////
@@ -142,6 +150,10 @@ private:
 	/// \brief Pointer to File Manager Event for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	SoulManager* soulManager;
+
+
+
+	UIManager* ui_manager;
 };
 
 

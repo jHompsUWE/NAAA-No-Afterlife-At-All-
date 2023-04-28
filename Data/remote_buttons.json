@@ -1,0 +1,452 @@
+{
+  "Buttons": [
+    {
+      "Name": "Envy/Content",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 94
+      },
+      "Event": "GREEN_ZONING"
+    },
+    {
+      "Name": "Avarice/Charity",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 94
+      },
+      "Event": "YELLOW_ZONING"
+    },
+    {
+      "Name": "Glut/Tempered",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 94
+      },
+      "Event": "ORANGE_ZONING"
+    },
+    {
+      "Name": "Sloth/Diligence",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 94
+      },
+      "Event": "BROWN_ZONING"
+    },
+    {
+      "Name": "Lust/Chastity",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 121
+      },
+      "Event": "PURPLE_ZONING"
+    },
+    {
+      "Name": "Wrath/Peace",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 121
+      },
+      "Event": "RED_ZONING"
+    },
+    {
+      "Name": "Pride/Humility",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 121
+      },
+      "Event": "BLUE_ZONING"
+    },
+    {
+      "Name": "Generic Zone",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 121
+      },
+      "Event": "GENERIC_ZONING"
+    },
+    {
+      "Name": "Roads",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 148
+      },
+      "Event": "ROADS"
+    },
+    {
+      "Name": "Karma Track",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 148
+      },
+      "Event": "KARMA_TRACK"
+    },
+    {
+      "Name": "Zap",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 202
+      },
+      "Event": "NUKE_BUTTON"
+    },
+    {
+      "Name": "View Up",
+      "Scale": {
+        "X": 6,
+        "Y": 3
+      },
+      "Position": {
+        "X": 74.5,
+        "Y": 223.6
+      },
+      "Event": "ROTATE_REALMS_UP"
+    },
+    {
+      "Name": "View Left",
+      "Scale": {
+        "X": 3.5,
+        "Y": 6
+      },
+      "Position": {
+        "X": 52.5,
+        "Y": 245.2
+      },
+      "Event": "ROTATE_REALMS_LEFT"
+    },
+    {
+      "Name": "View Down",
+      "Scale": {
+        "X": 6,
+        "Y": 3
+      },
+      "Position": {
+        "X": 74.5,
+        "Y": 266.3
+      },
+      "Event": "ROTATE_REALMS_DOWN"
+    },
+    {
+      "Name": "View Right",
+      "Scale": {
+        "X": 3.5,
+        "Y": 6
+      },
+      "Position": {
+        "X": 96.5,
+        "Y": 245.2
+      },
+      "Event": "ROTATE_REALMS_RIGHT"
+    },
+    {
+      "Name": "Zoom In",
+      "Scale": {
+        "X": 3.5,
+        "Y": 8
+      },
+      "Position": {
+        "X": 117.5,
+        "Y": 237.1
+      },
+      "Event": "ZOOM_IN"
+    },
+    {
+      "Name": "Zoom Out",
+      "Scale": {
+        "X": 3.5,
+        "Y": 8
+      },
+      "Position": {
+        "X": 137.5,
+        "Y": 253.3
+      },
+      "Event": "ZOOM_OUT"
+    },
+    {
+      "Name": "Flatten Hell",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 364
+      },
+      "Event": "FLATTEN_HELL"
+    },
+    {
+      "Name": "Flatten Heaven",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 364
+      },
+      "Event": "FLATTEN_HEAVEN"
+    },
+    {
+      "Name": "Flatten Karma",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 364
+      },
+      "Event": "FLATTEN_KARMA"
+    },
+    {
+      "Name": "Flatten Grid",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 364
+      },
+      "Event": "FLATTEN_GRID"
+    }
+  ],
+  "BuildingButtons": [
+    {
+      "Name": "Gates",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 148
+      },
+      "Event": "GATES"
+    },
+    {
+      "Name": "Karma Stations",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 148
+      },
+      "Event": "ACTIVATES_KARMA_STATION_ZONING"
+    },
+    {
+      "Name": "Topias",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 175
+      },
+      "Event": "TOPIAS"
+    },
+    {
+      "Name": "Training Centre",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 175
+      },
+      "Event": "TRAINING_CENTRE"
+    },
+    {
+      "Name": "Ports",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 175
+      },
+      "Event": "PORTS"
+    },
+    {
+      "Name": "Siphons/Banks",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 175
+      },
+      "Event": "SIPHONS_BANKS"
+    },
+    {
+      "Name": "Special",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 202
+      },
+      "Event": "SPECIAL_BUILDINGS"
+    },
+    {
+      "Name": "Omnibolges",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 202
+      },
+      "Event": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG"
+    },
+    {
+      "Name": "Limbo Buildings",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 202
+      },
+      "Event": "ACTIVATES_LIMBO_ZONING"
+    }
+  ],
+  "WindowButtons": [
+    {
+      "Name": "Planet View",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 74.5,
+        "Y": 245.2
+      },
+      "Event": "TOGGLE_PLANET_VIEW"
+    },
+    {
+      "Name": "Graphview",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 57.5,
+        "Y": 288.4
+      },
+      "Event": "GRAPHVIEW"
+    },
+    {
+      "Name": "Soulview",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 85.5,
+        "Y": 288.4
+      },
+      "Event": "SOUL_VIEW"
+    },
+    {
+      "Name": "MacroManager",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 113.5,
+        "Y": 288.4
+      },
+      "Event": "TOGGLE_MACROMANAGER"
+    },
+    {
+      "Name": "Mapview",
+      "Scale": {
+        "X": 6,
+        "Y": 6
+      },
+      "Position": {
+        "X": 141.5,
+        "Y": 288.4
+      },
+      "Event": "TOGGLE_MAPVIEW"
+    },
+    {
+      "Name": "Advisors",
+      "Scale": {
+        "X": 18,
+        "Y": 12
+      },
+      "Position": {
+        "X": 74.5,
+        "Y": 326.4
+      },
+      "Event": "TOGGLE_HELPERS"
+    },
+    {
+      "Name": "Microview",
+      "Scale": {
+        "X": 12,
+        "Y": 12
+      },
+      "Position": {
+        "X": 136.5,
+        "Y": 326.4
+      },
+      "Event": "MICROVIEW"
+    }
+  ]
+}

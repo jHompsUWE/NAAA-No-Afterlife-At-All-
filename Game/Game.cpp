@@ -141,6 +141,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     reincarnation_manager = std::make_shared<ReincarnationManager>();
     GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
 
+    ui_manager = std::make_shared<UIManager>(m_d3dDevice.Get(), m_GD);
+    GameManager::get()->addManager(ui_manager, ManagerType::UI);
     
     
     world_manager = std::make_shared<WorldManager>(10, 10);
@@ -168,6 +170,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
     event_manager->addListener(&*soul_manager);
+    GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
 
     pair<string, string> test;
     test = DataGenerator::GenerateData();

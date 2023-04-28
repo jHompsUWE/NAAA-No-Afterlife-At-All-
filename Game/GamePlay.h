@@ -5,6 +5,7 @@
 #include "EconomyManager.h"
 #include "TileGO.h"
 #include "WorldManager.h"
+#include "UIManager.h"
 
 class GameObject;
 class GameObject2D;
@@ -38,6 +39,8 @@ private:
     //Camera* m_cam = NULL; //principle camera
     TPSCamera* m_TPScam = NULL;//TPS cam
     Light* m_light = NULL; //base light
+
+    UIManager* uiManager;
     
     std::shared_ptr<EventManager> event_manager;
     std::shared_ptr<EconomyManager> economy_manager_;

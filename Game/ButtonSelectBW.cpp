@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "BuildingButton.h"
+#include "ButtonSelectBW.h"
 #include "DDSTextureLoader.h"
 #include "DrawData2D.h"
 #include "GameData.h"
@@ -7,7 +7,7 @@
 #include "Mouse.h"
 #include <iostream>
 
-BuildingButton::BuildingButton(ID3D11Device* _GD, GameObject2D* _parent, string buttonName) :m_pTextureRV(nullptr)
+ButtonSelectBW::ButtonSelectBW(ID3D11Device* _GD, GameObject2D* _parent, string buttonName) :m_pTextureRV(nullptr)
 {
 
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
@@ -37,7 +37,7 @@ BuildingButton::BuildingButton(ID3D11Device* _GD, GameObject2D* _parent, string 
 	buildCost->SetScale(0.3);
 }
 
-BuildingButton::~BuildingButton()
+ButtonSelectBW::~ButtonSelectBW()
 {
 	if (m_pTextureRV)
 	{
@@ -46,7 +46,10 @@ BuildingButton::~BuildingButton()
 	}
 }
 
-void BuildingButton::SetBounds()
+/// <summary>
+/// Sets the bounding box of the button
+/// </summary>
+void ButtonSelectBW::SetBounds()
 {
 	ID3D11Resource* pResource;
 	D3D11_TEXTURE2D_DESC Desc;
@@ -58,13 +61,21 @@ void BuildingButton::SetBounds()
 	setTextPos();
 }
 
-void BuildingButton::setTextPos()
+/// <summary>
+/// Sets the name and cost text positions
+/// </summary>
+void ButtonSelectBW::setTextPos()
 {
 	buildName->SetPos(this->GetPos().x - (bounds.width / 4 - buildName->GetString().length()), this->GetPos().y - (bounds.height / 2));
-	buildCost->SetPos(this->GetPos().x - bounds.width/3 - (buildCost->GetString().length()), this->GetPos().y + (bounds.height / 4));
+	buildCost->SetPos(this->GetPos().x - bounds.width / 3 - (buildCost->GetString().length()), this->GetPos().y + (bounds.height / 4));
 }
 
-void BuildingButton::SetText(bool name, string _name)
+/// <summary>
+/// Set the string of either text
+/// </summary>
+/// <param name="name">True- Sets name, False- Sets cost</param>
+/// <param name="_name">The string value to set it to</param>
+void ButtonSelectBW::SetText(bool name, string _name)
 {
 	if (name)
 	{
@@ -76,12 +87,20 @@ void BuildingButton::SetText(bool name, string _name)
 	}
 }
 
-void BuildingButton::SetType(EventType _event_type)
+/// <summary>
+/// Set the type of event the button triggers
+/// </summary>
+/// <param name="_event_type"></param>
+void ButtonSelectBW::SetType(EventType _event_type)
 {
 	event_type = _event_type;
 }
 
-void BuildingButton::Tick(GameData* _GD)
+/// <summary>
+/// Checks to see if button is hovered over
+/// </summary>
+/// <param name="_GD"></param>
+void ButtonSelectBW::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
 	bounds.y = m_pos.y - (bounds.height / 2);
@@ -100,7 +119,11 @@ void BuildingButton::Tick(GameData* _GD)
 	buildCost->Tick(_GD);
 }
 
-void BuildingButton::SetHover(bool _hover)
+/// <summary>
+/// Sets if the button is hovered over or not
+/// </summary>
+/// <param name="_hover"></param>
+void ButtonSelectBW::SetHover(bool _hover)
 {
 	if (_hover)
 	{
@@ -114,7 +137,8 @@ void BuildingButton::SetHover(bool _hover)
 	}
 }
 
-void BuildingButton::toggle()
+//NOT NEEDED?
+void ButtonSelectBW::toggle()
 {
 	if (toggleWindow != nullptr)
 	{
@@ -123,8 +147,11 @@ void BuildingButton::toggle()
 }
 
 
-
-void BuildingButton::Draw(DrawData2D* _DD)
+/// <summary>
+/// Renders the button and its text
+/// </summary>
+/// <param name="_DD"></param>
+void ButtonSelectBW::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab
 	//you can also add an extra value at the end to define layer depth

@@ -1,15 +1,13 @@
 #include "pch.h"
-#include "BuildingWindow.h"
+#include "OptionBarWindow.h"
 #include "DDSTextureLoader.h"
 #include "DrawData2D.h"
 #include "GameData.h"
 #include "GameManager.h"
 
 
-BuildingWindow::BuildingWindow(ID3D11Device* _GD, int buttonNum)
+OptionBarWindow::OptionBarWindow(ID3D11Device* _GD, int buttonNum, Vector2 pos)
 {
-
-
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
 
 
@@ -21,23 +19,28 @@ BuildingWindow::BuildingWindow(ID3D11Device* _GD, int buttonNum)
 
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
-
-
-	m_scale = Vector2{ 20 * float(buttonNum), 20 };
-	m_colour = Colors::MediumPurple;
+	m_scale = (Vector2(20,10*buttonNum));
+	m_colour = Colors::LightGoldenrodYellow;
 
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 
-	renderable = false;
+	SetPos(pos);
 
 	for (int i = 0; i < buttonNum; i++)
 	{
-		buttons.push_back(new ButtonSelectBW{ _GD, this, std::to_string(i) });
-		buttons[i]->SetScale(Vector2(18, 18));
+		buttons.emplace_back(new OptionBarButton(_GD, Vector2(GetPos().x, 50 + (20 * (i+1))), "Text"));
+		buttons.back()->SetScale(Vector2(20, 5));
+		//buttons.back()->SetPos(Vector2(GetPos().x - bounds.width / 2, GetPos().y - bounds.height / 2));
+		buttons.back()->buttonText->SetScale(Vector2(0.4,0.4));
+		buttons.back()->buttonText->SetPos(buttons.back()->GetPos().x - bounds.width / 2, buttons.back()->GetPos().y - bounds.height / (20 + i+1));
+		buttons.back()->buttonText->SetColour(Colors::Black);
+		buttons.back()->setToggle(this);
 	}
+
+	renderable = false;
 }
 
-BuildingWindow::~BuildingWindow()
+OptionBarWindow::~OptionBarWindow()
 {
 	if (m_pTextureRV)
 	{
@@ -46,34 +49,18 @@ BuildingWindow::~BuildingWindow()
 	}
 }
 
+void OptionBarWindow::SetButtonText(int button, string text)
+{
+	buttons[button]->setText(text);
+}
+
 /// <summary>
 /// Sets the size and position of buttons, then sets their bounds 
 /// to check if clicked, and save their relative position to the window
 /// </summary>
-void BuildingWindow::SetButtonBounds()
+void OptionBarWindow::SetButtonBounds()
 {
-	for (int i = 0; i < buttons.size(); i++)
-	{
-		int j = 0;
-		if (buttons.size() == 3)
-		{
-			j = (this->m_pos.x - this->bounds.width / 3) + (i * 80);
-		}
-		else if (buttons.size() == 4)
-		{
-			j = (this->m_pos.x - this->bounds.width / 2.65) + (i * 80);
-		}
-		else
-		{
-			j = (this->m_pos.x - this->bounds.width / 2.5) + (i * 80);
-		}
-		
-		buttons[i]->SetPos(j, this->GetPos().y);
 
-		buttons[i]->SetBounds();
-		
-		buttons[i]->bounds.height = 1000;
-	}		
 }
 
 
@@ -82,7 +69,7 @@ void BuildingWindow::SetButtonBounds()
 /// send off event and hide window
 /// </summary>
 /// <param name="_GD"></param>
-void BuildingWindow::Tick(GameData* _GD)
+void OptionBarWindow::Tick(GameData* _GD)
 {
 	bounds.x = m_pos.x - (bounds.width / 2);
 	bounds.y = m_pos.y - (bounds.height / 2);
@@ -93,14 +80,15 @@ void BuildingWindow::Tick(GameData* _GD)
 
 	if (renderable)
 	{
-		if (hovered != nullptr && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+		if (hovered != nullptr && hovered->pressed)
 		{
-			Event event{};
-			event.type = hovered->event_type;
+			/*Event event{};
+			event.type = hovered->event_type;*/
 
-			renderable = false;
+			hovered->Toggle(false);
+			hovered->pressed = false;
 
-			GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+			//GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 		}
 
 		for (int i = 0; i < buttons.size(); i++)
@@ -120,37 +108,15 @@ void BuildingWindow::Tick(GameData* _GD)
 	}
 }
 
-
-
-void BuildingWindow::SetPosition(Vector2 _pos)
-{
-	SetPos(_pos);
-
-	if (m_pos.x < (0 + bounds.width/2))
-	{
-		SetPos(0 + bounds.width / 2, GetPos().y);
-	}
-
-	SetButtonBounds();
-
-	if (hovered != nullptr)
-	{
-		hovered->SetHover(false);
-		hovered = nullptr;
-	}
-	
-}
-
 /// <summary>
 /// Renders window and buttons
 /// </summary>
 /// <param name="_DD"></param>
-void BuildingWindow::Draw(DrawData2D* _DD)
+void OptionBarWindow::Draw(DrawData2D* _DD)
 {
 	//nullptr can be changed to a RECT* to define what area of this image to grab
 	//you can also add an extra value at the end to define layer depth
 	//right click and "Go to Defintion/Declaration" to see other version of this in DXTK
-
 	if (renderable)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);

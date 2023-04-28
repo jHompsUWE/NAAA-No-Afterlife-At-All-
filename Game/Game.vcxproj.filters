@@ -76,6 +76,15 @@
     <Filter Include="Input\Source Files">
       <UniqueIdentifier>{8c84af62-e95d-4cca-adae-38380c19f59a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\2D\Windows">
+      <UniqueIdentifier>{10e7b527-718b-49cb-b85d-1f8b01e8ada0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\2D\Windows\Header Files">
+      <UniqueIdentifier>{2fbf3d7c-3b80-42fd-9e74-d3df83efc5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\2D\Windows\Source Files">
+      <UniqueIdentifier>{5612f5aa-1797-4468-9e84-a11016143ca5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -300,7 +309,13 @@
     <ClInclude Include="UIManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BuildingButton.h">
+    <ClInclude Include="FileManagerV2.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonOpenBW.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelectBW.h">
       <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BuildingWindow.h">
@@ -311,6 +326,24 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowDraggable.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonToggleWindow.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlanetView.h">
+      <Filter>GameObjects\2D\Windows\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionBar.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionBarButton.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionBarWindow.h">
+      <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -455,7 +488,13 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BuildingButton.cpp">
+    <ClCompile Include="FileManagerV2.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonOpenBW.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSelectBW.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BuildingWindow.cpp">
@@ -463,6 +502,24 @@
     </ClCompile>
     <ClCompile Include="FileManagerV2.cpp">
       <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowDraggable.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonToggleWindow.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanetView.cpp">
+      <Filter>GameObjects\2D\Windows\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionBar.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionBarButton.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionBarWindow.cpp">
+      <Filter>GameObjects\2D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
