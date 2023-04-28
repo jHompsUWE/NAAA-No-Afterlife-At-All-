@@ -22,7 +22,7 @@ enum class ManagerType : int
 	ECONOMY,
 	WORLD,
 	SOUL,
-	REINCARNATION
+	REINCARNATION,
 	UI
 };
 
@@ -95,8 +95,6 @@ public:
 
 	UIManager* getUIManager() { return ui_manager; };
 
-
-	InputManager* getInputManager() { return input_manager; };
 
 	////////////////////////////////////////////////////////////
 	/// \brief Returns pointer to File Manager Event, use this for triggering events. 

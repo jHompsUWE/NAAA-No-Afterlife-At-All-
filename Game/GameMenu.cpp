@@ -3,7 +3,8 @@
 #include "GameData.h"
 #include "GameObject2D.h";
 #include "Button.h"
-#include <iostream>
+//#include <iostream>
+#include "Debug.h"
 
 bool GameMenu::init(HWND _window, int _width, int _height,GameData* gamedata)
 {

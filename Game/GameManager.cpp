@@ -56,7 +56,6 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 			soulManager = reinterpret_cast<SoulManager*>(&*_manager);
 			return true;
 		}
-	}
 
 	case ManagerType::UI:
 	{
@@ -64,10 +63,6 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 		return true;
 	}
 
-	case ManagerType::INPUT:
-	{
-		input_manager = reinterpret_cast<InputManager*>(&*_manager);
-	}
 	}
 	return false;
 }

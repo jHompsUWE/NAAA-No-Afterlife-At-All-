@@ -85,6 +85,15 @@
     <Filter Include="GameObjects\2D\Windows\Source Files">
       <UniqueIdentifier>{5612f5aa-1797-4468-9e84-a11016143ca5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\2D\VariantButtons">
+      <UniqueIdentifier>{02db43fa-2e43-4e65-9ef6-910d4cc5fdea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\2D\VariantButtons\Source Files">
+      <UniqueIdentifier>{2552d3f0-6a62-4c8b-a7ec-f1468c3fd3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\2D\VariantButtons\Header Files">
+      <UniqueIdentifier>{df255d85-9da6-4628-a46a-06c576c0958f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -273,14 +282,8 @@
     <ClInclude Include="SoulManager.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DrawData2D.h">
       <Filter>GameObjects\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Base\Header Files</Filter>
@@ -312,29 +315,11 @@
     <ClInclude Include="FileManagerV2.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonOpenBW.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonSelectBW.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BuildingWindow.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileManagerV2.h">
       <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowDraggable.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonToggleWindow.h">
-      <Filter>GameObjects\2D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlanetView.h">
-      <Filter>GameObjects\2D\Windows\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OptionBar.h">
       <Filter>GameObjects\2D\Header Files</Filter>
@@ -342,8 +327,35 @@
     <ClInclude Include="OptionBarButton.h">
       <Filter>GameObjects\2D\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataGenerator.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReincarnationManager.h">
+      <Filter>Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingWindow.h">
+      <Filter>GameObjects\2D\Windows\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GameObjects\2D\Windows\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowDraggable.h">
+      <Filter>GameObjects\2D\Windows\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="OptionBarWindow.h">
       <Filter>GameObjects\2D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>GameObjects\2D\VariantButtons\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonOpenBW.h">
+      <Filter>GameObjects\2D\VariantButtons\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelectBW.h">
+      <Filter>GameObjects\2D\VariantButtons\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonToggleWindow.h">
+      <Filter>GameObjects\2D\VariantButtons\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -458,12 +470,6 @@
     <ClCompile Include="SoulManager.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Input\Source Files</Filter>
     </ClCompile>
@@ -491,26 +497,8 @@
     <ClCompile Include="FileManagerV2.cpp">
       <Filter>Base\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonOpenBW.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonSelectBW.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BuildingWindow.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FileManagerV2.cpp">
       <Filter>Base\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowDraggable.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonToggleWindow.cpp">
-      <Filter>GameObjects\2D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlanetView.cpp">
-      <Filter>GameObjects\2D\Windows\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OptionBar.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
@@ -520,6 +508,33 @@
     </ClCompile>
     <ClCompile Include="OptionBarWindow.cpp">
       <Filter>GameObjects\2D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataGenerator.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReincarnationManager.cpp">
+      <Filter>Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingWindow.cpp">
+      <Filter>GameObjects\2D\Windows\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GameObjects\2D\Windows\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowDraggable.cpp">
+      <Filter>GameObjects\2D\Windows\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>GameObjects\2D\VariantButtons\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonOpenBW.cpp">
+      <Filter>GameObjects\2D\VariantButtons\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSelectBW.cpp">
+      <Filter>GameObjects\2D\VariantButtons\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonToggleWindow.cpp">
+      <Filter>GameObjects\2D\VariantButtons\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
