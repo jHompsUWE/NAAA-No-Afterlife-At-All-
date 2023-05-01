@@ -63,6 +63,16 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 		return true;
 	}
 
+	case ManagerType::WORLD:
+		{
+			world_manager = reinterpret_cast<WorldManager*>(&*_manager);
+			return true;
+		}
+	case ManagerType::BAD_THINGS:
+		{
+			bad_things_manager_ = reinterpret_cast<BadThingsManager*>(&_manager);
+			return true;
+		}
 	}
 	return false;
 }

@@ -15,6 +15,7 @@
 #include <map>
 // Needs to be included here or it doesn't work
 // This is due to deconstructor not existing with a forward declaration
+#include "BadThingsManager.h"
 #include "GameStateBase.h"
 
 #include "GameManager.h"
@@ -30,6 +31,7 @@
 #include "ReincarnationManager.h"
 #include "SelectionHandler.h"
 #include "DataGenerator.h"
+#include "BadThings/BadThingsBOP.h"
 
 using std::list;
 
@@ -151,6 +153,10 @@ private:
     std::shared_ptr<ReincarnationManager> reincarnation_manager;
 
     std::shared_ptr<SelectionHandler> m_selection_handler;
+
+    //std::shared_ptr<WorldManager>
+    std::unique_ptr<BadThingsBOP> bad_things_bop_;
+    std::shared_ptr<BadThingsManager> bad_things_manager_;
 
     // Mouse to world
     Vector3 CorrectPos(Vector3 _inVector);

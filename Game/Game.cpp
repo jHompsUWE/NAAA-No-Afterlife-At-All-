@@ -135,6 +135,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(file_managerV2_, ManagerType::FILE);
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
+    
 
     
 
@@ -172,9 +173,15 @@ void Game::Initialize(HWND _window, int _width, int _height)
     event_manager->addListener(&*soul_manager);
     GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
 
+       
+
     pair<string, string> test;
     test = DataGenerator::GenerateData();
     CONSOLE(Serverity::DEBUG, test.second);
+    bad_things_bop_ = std::make_unique<BadThingsBOP>();
+
+    bad_things_manager_ = std::make_shared<BadThingsManager>();
+    GameManager::get()->addManager(bad_things_manager_, ManagerType::BAD_THINGS);
 }
 
 // Executes the basic game loop.
@@ -192,6 +199,12 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
+    // We can trigger BadThings
+    if (bad_things_bop_ != nullptr)
+    {
+        bad_things_bop_.get()->TriggerBadThing(*m_GD);
+    }
+    
     auto mouse = m_mouse->GetState();
     m_GD->m_mouseButtons.Update(mouse);
     float elapsedTime = float(_timer.GetElapsedSeconds());

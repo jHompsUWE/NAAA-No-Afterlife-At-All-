@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 
+#include "BadThingsManager.h"
 #include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
@@ -23,7 +24,8 @@ enum class ManagerType : int
 	WORLD,
 	SOUL,
 	REINCARNATION,
-	UI
+	UI,
+	BAD_THINGS
 };
 
 class GameManager
@@ -92,6 +94,10 @@ public:
 	////////////////////////////////////////////////////////////
 	FileManagerV2* getFileManagerV2() { return file_manager; };
 
+	////////////////////////////////////////////////////////////
+	/// \brief Returns pointer to World Manager Event, use this for triggering events. 
+	////////////////////////////////////////////////////////////
+	WorldManager* getWorldManager() { return world_manager; };
 
 	UIManager* getUIManager() { return ui_manager; };
 
@@ -136,6 +142,16 @@ private:
 	/// \brief Pointer to File Manager Event for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	FileManagerV2* file_manager;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to World Manager Event for accessing derived class members.
+	////////////////////////////////////////////////////////////
+	WorldManager* world_manager;
+
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to Bad Thing Manager Event for accessing derived class members.
+	////////////////////////////////////////////////////////////
+	BadThingsManager* bad_things_manager_;
 
 
 	////////////////////////////////////////////////////////////
