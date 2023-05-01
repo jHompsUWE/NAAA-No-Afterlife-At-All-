@@ -357,6 +357,8 @@ void SelectionHandler::updateBuilding()
 
 			m_end_tile->getGridData().m_building->GetColour().A(1.f);
 
+			m_end_tile->getGridData().m_building_data->sendBuildingPosition();
+
 			temp_building = nullptr;
 			temp_building_stats = nullptr;
 			createTempBuilding();

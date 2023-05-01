@@ -34,6 +34,8 @@ struct GenericBuilding
 
 	std::vector<GridData*> housing_points;
 
+	virtual void sendBuildingPosition() {}
+
 	virtual void update()
 	{
 		// Update building
@@ -61,20 +63,25 @@ struct GateBuilding : GenericBuilding
 {
 	GateBuilding(GenericBuilding gen_building) : GenericBuilding(gen_building) {};
 
+	void sendBuildingPosition() override
+	{
+		Event event{};
+		event.type = EventType::GATE_POSITION;
+
+		event.payload.gate_position.plane = housing_points[0]->m_plane;
+		event.payload.gate_position.x = std::get<0>(housing_points[0]->m_position);
+		event.payload.gate_position.y = std::get<1>(housing_points[0]->m_position);
+
+		GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+	}
+
 	void update() override
 	{
 		//if (!housing_points.empty())
 		{
 			CONSOLE(DEBUG, "update gate");
 
-			Event event{};
-			event.type = EventType::ADD_SOUL;
-
-			event.payload.add_soul.plane = housing_points[0]->m_plane;
-			event.payload.add_soul.x = std::get<0>(housing_points[0]->m_position);
-			event.payload.add_soul.y = std::get<1>(housing_points[0]->m_position);
-
-			GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+			
 		}
 
 		

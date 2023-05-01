@@ -64,7 +64,7 @@ enum class EventType
     // GameEvents
     STATE_TRANSITION,
     SOUL_UPDATE,
-    ADD_SOUL
+    GATE_POSITION
 };
 
 class Event
@@ -81,7 +81,7 @@ public:
         int count;
     };
 
-    struct AddSoul
+    struct GatePosition
     {
         PlaneType plane = PlaneType::None;
         int x;
@@ -92,7 +92,7 @@ public:
 	{
         StateTransition state_transition;
         SoulUpdate soul_update;
-        AddSoul add_soul;
+        GatePosition gate_position;
 	};
 
 	////////////////////////////////////////////////////////////
