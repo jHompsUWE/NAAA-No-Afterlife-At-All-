@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "BadThingsParent.h"
 
+
 class BadThingsBOP : public BadThingsParent
 {
 public:

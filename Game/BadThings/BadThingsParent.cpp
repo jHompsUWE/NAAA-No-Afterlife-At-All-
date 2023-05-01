@@ -2,6 +2,9 @@
 #include "BadThingsParent.h"
 
 
+BadThingsParent::BadThingsParent()
+= default;
+
 void BadThingsParent::TriggerBadThing(GameData& game_data)
 {
 }

@@ -156,7 +156,6 @@ private:
 
     //std::shared_ptr<WorldManager>
     std::unique_ptr<BadThingsBOP> bad_things_bop_;
-    std::shared_ptr<BadThingsManager> bad_things_manager_;
 
     // Mouse to world
     Vector3 CorrectPos(Vector3 _inVector);

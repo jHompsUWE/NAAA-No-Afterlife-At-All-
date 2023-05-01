@@ -17,7 +17,7 @@ enum BadThingsTypes
 class BadThingsParent
 {
 public:
-    BadThingsParent() = default;
+    BadThingsParent();
     virtual ~BadThingsParent() = default;
     virtual void TriggerBadThing(GameData& game_data);
     virtual void ResetBadThing();
@@ -30,7 +30,7 @@ protected:
     BadThingsTypes badThingType = NONE;
     bool doOnce = true;
     int year = 0;
-    int duration;
+    int duration{};
     bool finished = false;
     
 };

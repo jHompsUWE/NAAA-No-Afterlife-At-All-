@@ -179,9 +179,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     test = DataGenerator::GenerateData();
     CONSOLE(Serverity::DEBUG, test.second);
     bad_things_bop_ = std::make_unique<BadThingsBOP>();
-
-    bad_things_manager_ = std::make_shared<BadThingsManager>();
-    GameManager::get()->addManager(bad_things_manager_, ManagerType::BAD_THINGS);
 }
 
 // Executes the basic game loop.

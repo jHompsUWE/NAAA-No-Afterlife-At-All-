@@ -2,8 +2,6 @@
 
 #include <vector>
 #include <memory>
-
-#include "BadThingsManager.h"
 #include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
@@ -24,8 +22,7 @@ enum class ManagerType : int
 	WORLD,
 	SOUL,
 	REINCARNATION,
-	UI,
-	BAD_THINGS
+	UI
 };
 
 class GameManager
@@ -147,12 +144,6 @@ private:
 	/// \brief Pointer to World Manager Event for accessing derived class members.
 	////////////////////////////////////////////////////////////
 	WorldManager* world_manager;
-
-	////////////////////////////////////////////////////////////
-	/// \brief Pointer to Bad Thing Manager Event for accessing derived class members.
-	////////////////////////////////////////////////////////////
-	BadThingsManager* bad_things_manager_;
-
 
 	////////////////////////////////////////////////////////////
 	/// \brief Bool to keep track if the game is paused.
