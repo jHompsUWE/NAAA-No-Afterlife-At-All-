@@ -40,6 +40,8 @@ public:
 
 private:
 
+
+
 	Vector2 image_size;
 	int cell_size;
 	int current_frame = 0;

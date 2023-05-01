@@ -17,7 +17,7 @@ AnimatedImageGO2D::AnimatedImageGO2D(string _filename, int acell_size, ID3D11Dev
 
 	sprite->SetUV(uv);
 
-
+	renderable = true;
 	
 }
 
@@ -166,9 +166,9 @@ void AnimatedImageGO2D::Draw(DrawData2D* _DD)
 
 void AnimatedImageGO2D::UpdateProperties()
 {
-	sprite->SetColour(this->m_colour);
-	sprite->SetOrigin(this->m_origin);
-	sprite->SetPos(this->m_pos);
-	sprite->SetRot(this->m_rotation);
-	sprite->SetScale(this->m_scale);
+	sprite->SetColour(m_colour);
+	sprite->SetOrigin(m_origin);
+	sprite->SetPos(m_pos);
+	sprite->SetRot(m_rotation);
+	sprite->SetScale(m_scale);
 }

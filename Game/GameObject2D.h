@@ -28,6 +28,7 @@ public:
 	//getters
 	Vector2		GetPos() { return m_pos; }
 	Vector2		GetScale() { return m_scale; }
+	Vector2		GetOffset() { return m_offset; }
 
 	float		GetRotation() { return m_rotation; }
 
@@ -38,6 +39,8 @@ public:
 
 	void SetPos(Vector2 _pos) { m_pos = _pos; }
 	void SetPos(float x, float y) { m_pos.x = x, m_pos.y = y; }
+	void SetOffset(Vector2 offset) { m_offset = offset; }
+	void SetOffset(float x, float y) { m_offset.x = x, m_offset.y = y; }
 	void SetRot(float _rot) { m_rotation = _rot; }
 	void SetColour(Color _colour) { m_colour = _colour; }
 	void SetColour(XMVECTORF32 _colour) { m_colour = _colour; }
@@ -50,6 +53,7 @@ public:
 
 protected:
 	Vector2 m_pos;
+	Vector2 m_offset;
 	float m_rotation;
 	Vector2 m_scale;
 	Color m_colour;

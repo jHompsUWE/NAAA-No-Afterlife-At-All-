@@ -61,6 +61,17 @@ void ImageGO2D::SetUV(RECT* animated_uv)
 	uv_ref = animated_uv;
 }
 
+void ImageGO2D::CalculateBounds()
+{
+	ID3D11Resource* pResource;
+	m_pTextureRV->GetResource(&pResource);
+	((ID3D11Texture2D*)pResource)->GetDesc(&Desc);
+
+	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
+
+	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
+}
+
 
 
 
@@ -85,6 +96,11 @@ void ImageGO2D::Draw(DrawData2D* _DD)
 	{
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, uv_ref, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
 	}
+}
+
+Vector2 ImageGO2D::GetImageSize()
+{
+	return Vector2(bounds.width, bounds.height);
 }
 
 

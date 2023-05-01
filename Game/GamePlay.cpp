@@ -5,6 +5,9 @@
 #include "TextGO2D.h"
 #include "UIRemote.h"
 #include "Window.h"
+#include "AnimatedImageGO2D.h"
+#include "BuildingWindow.h"
+#include "AdvisorWindow.h"
 
 
 
@@ -26,7 +29,10 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     fiveWide->SetPos(300, 400);
     fiveWide->SetTextPos();*/
 
-    /*remote->SetButtonToggle(8, fourWide);
+    AdvisorWindow* advisor_window = new AdvisorWindow(m_d3dDevice.Get());
+    advisor_window->SetPos(300, 400);
+    m_GameObjects2D.push_back(advisor_window);
+    remote->SetButtonToggle(31, advisor_window);
     remote->SetButtonToggle(10, threeWide);
     remote->SetButtonToggle(12, fourWide);*/
   
