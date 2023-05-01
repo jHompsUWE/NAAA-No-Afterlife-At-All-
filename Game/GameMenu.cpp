@@ -73,7 +73,7 @@ State GameMenu::update(GameData& _game_data)
 	{
 		if (NFButtons[i]->pressed)
 		{
-			CONSOLE(INFO, NFButtons[i]->buttonName);
+			std::cout << NFButtons[i]->buttonName << "\n";
 			NFButtons[i]->pressed = false;
 		}
 	}

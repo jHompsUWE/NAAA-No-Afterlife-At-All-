@@ -2,7 +2,6 @@
 
 #include "DrawData.h"
 #include "GameData.h"
-#include "Debug.h"
 
 
 class Manager

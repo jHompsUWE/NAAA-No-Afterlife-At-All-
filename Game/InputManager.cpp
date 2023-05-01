@@ -19,13 +19,11 @@ void InputManager::awake(GameData& _game_data)
 
 void InputManager::update(GameData& _game_data)
 {
-	
 	for (auto action : (*current_action_map))
 	{
 		action.check(_game_data);
 	}
 }
-
 
 void InputManager::loadInInputActionsMaps(std::string _filepath)
 {
@@ -323,7 +321,8 @@ InputAction InputManager::loadControllerAction(JsonElement& element)
 		input_action.setModDeviceHandler(mod_device_handler);
 	}
 	
-	return input_action;}
+	return input_action;
+}
 
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)

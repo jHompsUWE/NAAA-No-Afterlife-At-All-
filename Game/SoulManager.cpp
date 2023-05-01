@@ -79,21 +79,19 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	case PlaneType::Hell:
 		return m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size();
 	case PlaneType::None:
-		return
+		return 
 			m_Heven_wanderingSouls.size() + m_Heven_ZonedSouls.size() +
-			m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size()
-			;
-	default:
-		break;
+					m_Hell_wanderingSouls.size() + m_Hell_ZonedSouls.size()
+		;
 	}
-	CONSOLE(WARNING,"total souls plane not right");
+	std::cout << "[Soulmanager.cpp][42] [WARN] total souls";
 	return 0;
 }
 
 void SoulManager::awake(GameData& _game_data)
 {
-	shared_ptr<Soul> soul_test;
-	soul_test = make_shared<Soul>();
+	EMBO* soul_test = new EMBO();
+	soul_test->earth_belief = 2;
 	m_Earth_Souls.push_back(soul_test);
 	srand(std::time(nullptr));
 }

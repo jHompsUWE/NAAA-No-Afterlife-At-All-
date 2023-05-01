@@ -79,7 +79,7 @@ public:
 	std::vector <Soul*> m_Heven_wanderingSouls;
 	
 	
-	std::vector <std::shared_ptr<EMBO>> m_Earth_Souls;
+	std::vector <EMBO*> m_Earth_Souls;
 
 	explicit SoulManager(shared_ptr<WorldManager> world_manager);
 	void AddSoul();			// add a soul at this location

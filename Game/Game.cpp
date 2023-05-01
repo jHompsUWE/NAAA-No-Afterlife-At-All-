@@ -68,13 +68,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_mouse->SetWindow(_window);
     m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
-    ShowCursor(true);
+    ShowCursor(false);
     
     //create GameData struct and populate its pointers
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
     m_GD->current_state = State::GAME_MENU;
-
 
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
@@ -177,7 +176,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     pair<string, string> test;
     test = DataGenerator::GenerateData();
-    cout << test.second << endl;
 }
 
 // Executes the basic game loop.
@@ -199,17 +197,7 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
-    cursor->Tick(m_GD);
-
-
-    auto pad = m_gamepad->GetState(0);
-    //std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
-    if (pad.IsConnected())
-    {
-        std::cout << "test";
-        
-    }
-    
+    cursor->Tick(m_GD);    
     
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
     if (!GameManager::get()->isGamePaused())
@@ -586,6 +574,7 @@ void Game::OnDeviceLost()
 
 void Game::ReadInput()
 {
+    m_GD->m_MS_last = m_GD->m_MS;
     m_GD->m_MS = m_mouse->GetState();
     m_GD->m_mouseButtons.Update(m_GD->m_MS);
     

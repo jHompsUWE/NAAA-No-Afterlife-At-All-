@@ -13,7 +13,7 @@ std::pair<std::string, std::string> DataGenerator::GenerateData()
     {
         string name =  (*dataList)["names"][std::rand() % 30];
         string bio = GenerateBio(name, *dataList);
-        cout << bio << endl;
+        //cout << bio << endl;
         return std::make_pair(name, bio);        
     }
     return std::make_pair("", "");

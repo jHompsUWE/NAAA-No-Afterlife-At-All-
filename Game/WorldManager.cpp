@@ -34,7 +34,7 @@ void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, Di
 			}
 		}
 
-		CONSOLE(INFO, "Plane");
+		std::cout << "Plane" << std::endl;
 	}
 
 	m_d3dContext = _device;

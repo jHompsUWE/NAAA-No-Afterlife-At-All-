@@ -13,7 +13,7 @@ void FileManager::awake(GameData& _game_data)
 
 void FileManager::update(GameData& _game_data)
 {
-    //CONSOLE(DEBUG, {to_string(test_val)});
+    //std::cout << test_val << std::endl;
 }
 
 void FileManager::save()
@@ -36,7 +36,7 @@ void FileManager::load()
     {
         test_val = json_file["Gold"];        
     }
-    CONSOLE(DEBUG, {to_string(test_val)});
+    std::cout << test_val << std::endl;
 }
 
 void FileManager::to_json()
