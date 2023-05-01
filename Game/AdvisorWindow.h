@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "ImageGO2D.h"
 #include "GameObject2D.h"
+#include "TextGO2D.h"
 #include <vector>
 #include "AnimatedImageGO2D.h"
 
@@ -20,11 +21,15 @@ public:
 
 private:
 
-	ImageGO2D* background_sprite;
-	AnimatedImageGO2D* angel_sprite;
-	AnimatedImageGO2D* devil_sprite;
+	//std::vector<GameObject2D*>& w_components;
 
-	std::vector<GameObject2D*> w_components;
+	std::shared_ptr<ImageGO2D> background_sprite = nullptr;
+	std::shared_ptr<AnimatedImageGO2D> angel_sprite = nullptr;
+	std::shared_ptr<AnimatedImageGO2D> devil_sprite = nullptr;
+	std::shared_ptr<TextGO2D> subtitles = nullptr;
+	std::shared_ptr<TextGO2D> subtitles_test = nullptr;
+
+
 
 
 

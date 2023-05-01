@@ -7,12 +7,16 @@
 #include <iostream>
 #include "Mouse.h"
 
-Window::Window()
+Window::Window() 
 {
+	
 }
 
-Window::Window(string _fileName, ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour) :m_pTextureRV(nullptr)
+Window::Window(string _fileName, ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour) : m_pTextureRV(nullptr)
 {
+
+	
+
 	string fullfilename = "../Assets/" + _fileName + ".dds";
 	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
 	if (hr != S_OK)
@@ -37,11 +41,18 @@ Window::Window(string _fileName, ID3D11Device* _GD, string _windowName, bool ren
 
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
 
-	windowname = new TextGO2D(_windowName);
+	windowname = std::make_shared<TextGO2D>(_windowName);
 	windowname->SetColour(Colors::Black);
 	windowname->SetScale(0.7);
 
 	renderable = render;
+
+
+	Init(_GD);
+
+
+
+
 }
 
 Window::~Window()
@@ -51,6 +62,15 @@ Window::~Window()
 		m_pTextureRV->Release();
 		m_pTextureRV = nullptr;
 	}
+}
+
+void Window::Init(ID3D11Device* _GD)
+{
+	close_button_sprite = std::make_shared<ImageGO2D>("close-button", _GD);
+	close_button_sprite->SetOrigin(Vector2(close_button_sprite->GetImageSize().x, 0));
+	
+	
+
 }
 
 void Window::SetTextPos()
@@ -101,36 +121,52 @@ void Window::SetBounds(Vector2 new_bounds)
 	bounds.height = new_bounds.y;
 }
 
-void Window::Tick(GameData* _GD)
+void Window::UpdateCloseButton()
 {
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
 
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-	if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	if (w_components.size() > 0)
 	{
-		differenceX = m_pos.x - _GD->m_MS.x;
-		differenceY = m_pos.y - _GD->m_MS.y;
-
-		dragged = true;
-	}
-
-	if (dragged == true && _GD->m_MS.leftButton == 1)
-	{
-		m_pos.x = _GD->m_MS.x + differenceX;
-		m_pos.y = _GD->m_MS.y + differenceY;
-
-		windowname->SetPos(m_pos.x + windowname->differenceX, m_pos.y + windowname->differenceY);
-	}
-
-	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
-	{
-		dragged = false;
+		GameObject2D& close_button_ref = *w_components[w_components.size()];
+		close_button_ref.SetOffset(20000, 0);
 	}
 }
+
+
+
+void Window::Tick(GameData* _GD)
+{
+	//bounds.x = m_pos.x - (bounds.width / 2);
+	//bounds.y = m_pos.y - (bounds.height / 2);
+
+	//int mouseX = _GD->m_MS.x;
+	//int mouseY = _GD->m_MS.y;
+	//Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+	//if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
+	//{
+	//	differenceX = m_pos.x - _GD->m_MS.x;
+	//	differenceY = m_pos.y - _GD->m_MS.y;
+
+	//	dragged = true;
+	//}
+
+	//if (dragged == true && _GD->m_MS.leftButton == 1)
+	//{
+	//	m_pos.x = _GD->m_MS.x + differenceX;
+	//	m_pos.y = _GD->m_MS.y + differenceY;
+
+	//	windowname->SetPos(m_pos.x + windowname->differenceX, m_pos.y + windowname->differenceY);
+	//}
+
+	//if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+	//{
+	//	dragged = false;
+	//}
+
+	//UpdateCloseButton();
+}
+
+
 
 
 
@@ -145,5 +181,6 @@ void Window::Draw(DrawData2D* _DD)
 		_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
 		windowname->Draw(_DD);
 	}
+
 
 }
