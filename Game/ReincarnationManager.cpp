@@ -14,7 +14,7 @@ void ReincarnationManager::update(GameData& _game_data)
     }
     if (!GameManager::get()->getSoulManager()->m_Heven_wanderingSouls.empty())
     {
-        for (auto & soul : GameManager::get()->getSoulManager()->m_Hell_wanderingSouls)
+        for (auto & soul : GameManager::get()->getSoulManager()->m_Heven_wanderingSouls)
         {
             SoulToEMBO(*soul);
         }
@@ -46,10 +46,10 @@ void ReincarnationManager::awake()
 
 EMBO ReincarnationManager::SoulToEMBO(Soul& _soul)
 {
-    // if(_soul.m_reincarnate && !_soul.m_both
-    //     && _soul.m_currentcycle == _soul.m_total_cycles
-    //     && _soul.m_yearsleft == 0)
-    if(_soul.m_reincarnate && !_soul.m_both)
+     if(_soul.m_reincarnate && !_soul.m_both
+         && _soul.m_currentcycle == _soul.m_total_cycles
+         && _soul.m_yearsleft == 0)
+    //if(_soul.m_reincarnate && !_soul.m_both)
     {
         // Casting to a EMBO        
         auto convertedSoul = static_cast<EMBO&>(_soul);
@@ -113,6 +113,7 @@ bool ReincarnationManager::EMBOToSoul(EMBO& _embo)
         RemoveEntity(_embo);
         return false;
     }
+    return false;
 }
 
 bool ReincarnationManager::compareEMBOs(const EMBO* a, const EMBO* b)
