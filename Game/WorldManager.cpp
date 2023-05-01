@@ -4,7 +4,7 @@
 
 #define random(min, max) rand() % (max - min + 1) + min;
 
-WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y), m_soul_manager(nullptr)
+WorldManager::WorldManager(int size_x, int size_y) : m_grid_x(size_x), m_grid_y(size_y)
 {
 	m_total_tiles = m_grid_x * m_grid_y;
 	
@@ -18,10 +18,8 @@ WorldManager::~WorldManager()
 
 }
 
-void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory,
-	SoulManager* soul_manager)
+void WorldManager::init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory)
 {
-	m_soul_manager = soul_manager;
 
 	for (auto& plane : m_world)
 	{

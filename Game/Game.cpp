@@ -143,7 +143,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     world_manager = std::make_shared<WorldManager>(10, 10);
     GameManager::get()->addManager(world_manager, ManagerType::WORLD);
-    world_manager->init(m_d3dContext, m_fxFactory, &*soul_manager);
+    world_manager->init(m_d3dContext, m_fxFactory);
     
     // GameState initialisation
     for (auto& state : game_states)
@@ -187,7 +187,6 @@ void Game::Update(DX::StepTimer const& _timer)
     m_GD->m_dt = elapsedTime;
 
     auto pad = m_gamepad->GetState(0);
-    std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
     if (pad.IsConnected())
     {
         std::cout << "test";

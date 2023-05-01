@@ -91,7 +91,7 @@ void SoulManager::onEvent(const Event& event)
 {
 	switch (event.type)
 	{
-	case EventType::ADD_SOUL:
-		AddSoul(Vector2(event.payload.add_soul.x, event.payload.add_soul.y), event.payload.add_soul.plane);
+	case EventType::GATE_POSITION:
+		AddSoul(Vector2(event.payload.gate_position.x, event.payload.gate_position.y), event.payload.gate_position.plane);
 	}
 }

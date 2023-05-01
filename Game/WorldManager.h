@@ -18,8 +18,7 @@ public:
     WorldManager(int size_x, int size_y);
     ~WorldManager();
 
-    void init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory,
-        SoulManager* soul_manager);
+    void init(Microsoft::WRL::ComPtr<ID3D11DeviceContext1> _device, DirectX::IEffectFactory* _fxFactory);
 
     void setConnected(GridLocation& _grid_location);
     void resetConnections();
@@ -55,7 +54,5 @@ private:
     std::map<PlaneType, std::vector<std::unique_ptr<GridLocation>>> m_world;
 
     std::map<int, std::vector<Vector2>> range_map;
-
-    SoulManager* m_soul_manager;
 };
 
