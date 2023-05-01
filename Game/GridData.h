@@ -14,7 +14,6 @@
 
 struct GenericBuilding;
 
-
 using namespace DirectX;
 using namespace SimpleMath;
 

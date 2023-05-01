@@ -90,7 +90,7 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	return 0;
 }
 
-void SoulManager::awake()
+void SoulManager::awake(GameData& _game_data)
 {
 	shared_ptr<Soul> soul_test;
 	soul_test = make_shared<Soul>();

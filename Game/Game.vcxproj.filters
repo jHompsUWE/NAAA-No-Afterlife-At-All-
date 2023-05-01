@@ -94,6 +94,33 @@
     <Filter Include="GameObjects\2D\VariantButtons\Header Files">
       <UniqueIdentifier>{df255d85-9da6-4628-a46a-06c576c0958f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{d7077123-5494-472d-981f-35fdf2ab7749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Events\Header Files">
+      <UniqueIdentifier>{a40028f1-97c1-476e-9b17-445c02d422c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Events\Source Files">
+      <UniqueIdentifier>{fa7169e8-b079-49ba-80ea-aa790371810b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{8b77bd28-d2e0-4c49-b3c7-0765ce9e738e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CursorController">
+      <UniqueIdentifier>{a4ae682b-42c3-4be4-b26a-a6eff9c24aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Header Files">
+      <UniqueIdentifier>{16d2757b-dd96-4788-b63b-3de30a9b35e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager\Source Files">
+      <UniqueIdentifier>{27bd23e7-dc85-415b-86d2-f1b998c81e13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CursorController\Header Files">
+      <UniqueIdentifier>{f2944c86-abe0-4c95-b999-8e1fb81450b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CursorController\Source Files">
+      <UniqueIdentifier>{2ea5abfa-26eb-410b-8ff4-7e17b203b3ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -198,15 +225,6 @@
     <ClInclude Include="GPGO.h">
       <Filter>GameObjects\3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameStateBase.h">
       <Filter>GameStates\Header Files</Filter>
     </ClInclude>
@@ -272,12 +290,6 @@
     </ClInclude>
     <ClInclude Include="BuildingSpecies.h">
       <Filter>Base\Buildings\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Base\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listener.h">
-      <Filter>Base\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SoulManager.h">
       <Filter>Base\Header Files</Filter>
@@ -357,6 +369,36 @@
     <ClInclude Include="ButtonToggleWindow.h">
       <Filter>GameObjects\2D\VariantButtons\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InputAction.hpp">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBindingData.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlTypeHandler.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceHandler.h">
+      <Filter>Input\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Events\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Events\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>Events\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>GameManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>GameManager\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorController.h">
+      <Filter>CursorController\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -427,12 +469,6 @@
     </ClCompile>
     <ClCompile Include="GPGO.cpp">
       <Filter>GameObjects\3D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Base\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameStateBase.cpp">
       <Filter>GameStates\Source Files</Filter>
@@ -535,6 +571,21 @@
     </ClCompile>
     <ClCompile Include="ButtonToggleWindow.cpp">
       <Filter>GameObjects\2D\VariantButtons\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceHandler.cpp">
+      <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlTypeHandler.cpp">
+      <Filter>Input\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Events\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>GameManager\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CursorController.cpp">
+      <Filter>CursorController\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

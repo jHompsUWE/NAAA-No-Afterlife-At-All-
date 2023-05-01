@@ -1,10 +1,19 @@
 #pragma once
 
+#include <queue>
 #include <vector>
 
 #include "Manager.h"
 #include "Event.h"
 #include "Listener.h"
+
+struct EventPriorityComparator
+{
+	bool operator()(const std::shared_ptr<Event>& a, const std::shared_ptr<Event>& b)
+	{
+		return a->priority > b->priority;
+	}
+};
 
 class EventManager : public Manager
 {
@@ -50,10 +59,15 @@ private:
 	void dispatchEvents(GameData& _game_data);
 
 	////////////////////////////////////////////////////////////
-	/// \brief Vector of events to be distributed to listeners.
+	/// \brief Priority queue of events to be distributed to listeners.
 	////////////////////////////////////////////////////////////
-	std::vector<std::shared_ptr<Event>> events;
+	std::priority_queue<std::shared_ptr<Event>, std::vector<std::shared_ptr<Event>>, EventPriorityComparator> events;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Vector of events to be distributed to listeners after their delay is up.
+	////////////////////////////////////////////////////////////
+	std::vector<std::shared_ptr<Event>> delayed_events;
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Vector of listeners to distribute events to. 
 	////////////////////////////////////////////////////////////

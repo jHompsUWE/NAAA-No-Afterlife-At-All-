@@ -1,3 +1,4 @@
+
 #include "pch.h"
 #include "EventManager.h"
 
@@ -13,7 +14,14 @@ void EventManager::removeListener(Listener* _listener)
 
 void EventManager::triggerEvent(std::shared_ptr<Event> _event)
 {
-	events.emplace_back(_event);
+	if (_event->delay <= 0)
+	{
+		events.push(_event);
+	}
+	else
+	{
+		delayed_events.emplace_back(_event);
+	}
 }
 
 void EventManager::lateUpdate(GameData& _game_data)
@@ -23,21 +31,29 @@ void EventManager::lateUpdate(GameData& _game_data)
 
 void EventManager::dispatchEvents(GameData& _game_data)
 {
-	for (int i = events.size()-1; i >= 0; i--)
+	for (auto it = delayed_events.begin(); it != delayed_events.end();)
 	{
-		auto& event = events[i];
+		auto& event = *it;
+		event->delay -= _game_data.m_dt;
 
-		if (event->delay > 0)
-		{
-			event->delay -= _game_data.m_dt;
-			continue;
+		if (event->delay <= 0) {
+			events.push(event);
+			it = delayed_events.erase(it);
 		}
+		else
+		{
+			++it;
+		}
+	}
+
+	while (!events.empty())
+	{
+		auto event = events.top();
+		events.pop();
 
 		for (auto listener : listeners)
 		{
 			listener->onEvent(*event);
 		}
-		
-		events.erase(std::remove(events.begin(), events.end(), event), events.end());
 	}
 }

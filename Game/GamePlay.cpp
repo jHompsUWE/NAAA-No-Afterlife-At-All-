@@ -31,8 +31,6 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     remote->SetButtonToggle(12, fourWide);*/
   
     //GameManager::get()->getEventManager()->addListener(uiManager->remote);
-
-	GameManager::get()->awake();
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 

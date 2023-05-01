@@ -1,162 +1,330 @@
 #include "pch.h"
 #include "InputManager.h"
 
-void InputManager::awake()
+void InputManager::awake(GameData& _game_data)
 {
+	keyboard_handler = std::make_shared<KeyboardDeviceHandler>();
+	mouse_handler = std::make_shared<MouseDeviceHandler>();
+	controller_handler = std::make_shared<ControllerDeviceHandler>();
+
+	button_control_handler = std::make_shared<ButtonControlTypeHandler>();
+	axis_control_handler  = std::make_shared<AxisControlTypeHandler>();
+	vector2_control_handler  = std::make_shared<Vector2ControlTypeHandler>();
+	vector2_4_control_handler = std::make_shared<Vector2_4ControlTypeHandler>();
+	
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
-	current_key_action_map = &game_key_action_map; // in future, will rely on the finite state machine to determine current action map.
+	current_action_map = &game_action_map; // in future, will rely on the finite state machine to determine current action map.
 }
 
 void InputManager::update(GameData& _game_data)
 {
-	for (auto const action : *current_key_action_map)
+	
+	for (auto action : (*current_action_map))
 	{
-		switch (action.type)
-		{
-			case InputType::key_pressed: 
-			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button))
-				{
-					Event event{};
-					event.type = action.command;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-
-			case InputType::key_released: 
-			{
-				if (_game_data.m_KBS_tracker.IsKeyReleased(action.key_button))
-				{
-					Event event{};
-					event.type = action.command;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-
-			case InputType::key_held:
-			{
-				if (_game_data.m_KBS.IsKeyDown(action.key_button))
-				{
-					Event event{};
-					event.type = action.command;
-
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-
-			case InputType::key_pressed_with_mod: 
-			{
-				if (_game_data.m_KBS_tracker.IsKeyPressed(action.key_button) &&
-					_game_data.m_KBS_tracker.IsKeyPressed(action.modifier))
-				{
-					Event event{};
-					event.type = action.command;
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-				}
-				break;
-			}
-
-			case InputType::mouse_clicked: 
-			{
-				break;
-			}
-
-			case InputType::mouse_released:
-			{
-				break;
-			}
-
-			case InputType::mouse_clicked_with_mod: 
-			{
-				break;
-			}
-
-			case InputType::mouse_moved:
-			{
-				break;
-			}
-
-			default:
-			{
-				break;
-			}
-		}		
+		action.check(_game_data);
 	}
 }
 
-void InputManager::onEvent(const Event& event)
-{
-	if (event.type == EventType::STATE_TRANSITION)
-	{
-		switch ((State)event.payload.state_transition.current)
-		{
-		case State::GAME_MENU:
-		{
-			current_key_action_map = &menu_key_action_map;
-			break;
-		}
-
-		case State::GAME_PLAY:
-		{
-			current_key_action_map = &game_key_action_map;
-			break;
-		}
-
-		case State::GAME_PAUSED:
-		{
-			break;
-		}
-
-		case State::GAME_TUTORIAL:
-		{
-			break;
-		}
-
-		case State::GAME_OVER:
-		{
-			break;
-		}
-
-		default:
-		{
-			break;
-		}
-		}
-	}
-}
 
 void InputManager::loadInInputActionsMaps(std::string _filepath)
 {
+	// Should utilize FileManager to pull in the .json, so this is temp. 
+	std::ifstream file(_filepath);
+	Json input_json;
 
-	auto keyboard_inputs = GameManager::get()->getFileManagerV2()->GetJson("keybinds_default");
-
-	if (!keyboard_inputs->empty())
+	if (file.good())
 	{
-		for (auto json_action : (*keyboard_inputs)["game_state"]["keyboard_inputs"])
+		input_json = Json::parse(file);
+	}
+	file.close();
+
+	if (!input_json.empty())
+	{
+		for (JsonElement json_action : input_json["game_state"]["KEYBOARD"])
 		{
-			EventType command = string_to_input_action.at(std::string(json_action["Action"]));
-			InputType type = string_to_input_type.at(std::string(json_action["Type"]));
+			game_action_map.emplace_back(loadKeyboardAction(json_action));
+		}
+		
+		for (auto json_action : input_json["game_state"]["MOUSE"])
+		{
+			game_action_map.emplace_back(loadMouseAction(json_action));
+		}
 
-			unsigned char key = static_cast<unsigned char>(std::stoi(std::string(json_action["Key"]), nullptr, 16));
-			unsigned char modifier = NULL;
-
-			if (!std::string(json_action["Modifier"]).empty())
-			{
-				modifier = static_cast<unsigned char>(std::stoi(std::string(json_action["Modifier"]), nullptr, 16));
-			}
-
-			game_key_action_map.emplace_back(KeyboardAction{ command, type, (Keyboard::Keys)modifier, (Keyboard::Keys)key });
+		for (auto json_action : input_json["game_state"]["CONTROLLER"])
+		{
+			game_action_map.emplace_back(loadControllerAction(json_action));
 		}
 	}
 	else
 	{
-		CONSOLE(ERROR,"FILE IS EMPTY");
+		std::cout << "file is empty";
 	}
 }
+
+InputAction InputManager::loadKeyboardAction(JsonElement& element)
+{
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
+	
+	std::shared_ptr<ControlTypeHandler> control_type_handler = nullptr;
+
+	Control control;
+	switch (control_type)
+	{
+		case ControlType::BUTTON:
+			{
+				control.button.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]), nullptr, 16));
+				control_type_handler = button_control_handler;
+				break;
+			}
+		case ControlType::AXIS:
+			{
+				control.axis.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["X"]), nullptr, 16));
+				control.axis.neg_x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-X"]), nullptr, 16));
+				control_type_handler = axis_control_handler;
+				break;
+			}
+		case ControlType::VECTOR2_4:
+			{
+				control.vector2_4.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["X"]), nullptr, 16));
+				control.vector2_4.neg_x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-X"]), nullptr, 16));
+
+				control.vector2_4.y.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["-Y"]), nullptr, 16));
+				control.vector2_4.neg_y.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Key"]["Y"]), nullptr, 16));
+				control_type_handler = vector2_4_control_handler;
+				break;
+			}
+		default:
+			{
+				std::cerr << "ControlType is invalid for Keybinding - " << std::string(element["Action"]);
+			};
+	}
+	
+	ButtonControl modifier;
+	modifier.x.key = Keyboard::Help;
+	ModifierType mod_type = string_to_mod_type.at(std::string(element["ModType"]));
+	std::shared_ptr<DeviceHandler> mod_device_handler = nullptr;
+	
+	if (mod_type != ModifierType::NONE)
+	{
+		Device mod_device = string_to_device.at(std::string(element["ModDevice"]));
+		switch (mod_device)
+		{
+			case Device::KEYBOARD:
+				{
+					modifier.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+					mod_device_handler = keyboard_handler;
+					break;
+				}
+			case Device::MOUSE: 
+				{
+					modifier.x.mouse_input = string_to_mouse_input.at(std::string(element["Modifier"]));
+					mod_device_handler = mouse_handler;
+					break;
+				}
+			case Device::CONTROLLER: 
+				{
+					modifier.x.controller_input = string_to_controller_input.at(std::string(element["Modifier"]));
+					mod_device_handler = controller_handler;
+					break;
+				}
+			
+			default: ;
+		}
+	}
+
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	
+	input_action.setDeviceHandler(keyboard_handler);
+	input_action.setControlTypeHandler(control_type_handler);
+
+	if (mod_device_handler != nullptr)
+	{
+		input_action.setModDeviceHandler(mod_device_handler);
+	}
+	
+	return input_action;
+}
+
+InputAction InputManager::loadMouseAction(JsonElement& element)
+{
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
+	
+	std::shared_ptr<ControlTypeHandler> control_type_handler = nullptr;
+
+	Control control;
+	switch (control_type)
+	{
+		case ControlType::BUTTON:
+			{
+				control.button.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]));
+				control_type_handler = button_control_handler;
+				break;
+			}
+		case ControlType::AXIS:
+			{
+				control.axis.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.axis.neg_x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+				control_type_handler = axis_control_handler;
+				break;
+			}
+	case ControlType::VECTOR2:
+			{
+				control.vector2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]));
+				control_type_handler = vector2_control_handler;
+				break;
+			}
+		case ControlType::VECTOR2_4:
+			{
+				control.vector2_4.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["X"]));
+				control.vector2_4.neg_x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-X"]));
+			
+				control.vector2_4.y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["Y"]));
+				control.vector2_4.neg_y.mouse_input = string_to_mouse_input.at(std::string(element["Key"]["-Y"]));
+				control_type_handler = vector2_4_control_handler;
+				break;
+			}
+		default:;
+	}
+	
+	ButtonControl modifier;
+	modifier.x.key = Keyboard::Help;
+	ModifierType mod_type = string_to_mod_type.at(std::string(element["ModType"]));
+	std::shared_ptr<DeviceHandler> mod_device_handler = nullptr;
+	
+	if (mod_type != ModifierType::NONE)
+	{
+		Device mod_device = string_to_device.at(std::string(element["ModDevice"]));
+		switch (mod_device)
+		{
+		case Device::KEYBOARD:
+			{
+				modifier.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+				mod_device_handler = keyboard_handler;
+				break;
+			}
+		case Device::MOUSE: 
+			{
+				modifier.x.mouse_input = string_to_mouse_input.at(std::string(element["Modifier"]));
+				mod_device_handler = mouse_handler;
+				break;
+			}
+		case Device::CONTROLLER: 
+			{
+				modifier.x.controller_input = string_to_controller_input.at(std::string(element["Modifier"]));
+				mod_device_handler = controller_handler;
+				break;
+			}
+			
+		default: ;
+		}
+	}
+	
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	
+	input_action.setDeviceHandler(mouse_handler);
+	input_action.setControlTypeHandler(control_type_handler);
+
+	if (mod_device_handler != nullptr)
+	{
+		input_action.setModDeviceHandler(mod_device_handler);
+	}
+	
+	return input_action;
+}
+
+InputAction InputManager::loadControllerAction(JsonElement& element)
+{
+	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
+	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
+	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
+	
+	std::shared_ptr<ControlTypeHandler> control_type_handler = nullptr;
+
+	Control control;
+	switch (control_type)
+	{
+	case ControlType::BUTTON:
+		{
+			control.button.x.controller_input = string_to_controller_input.at(std::string(element["Key"]));
+			control_type_handler = button_control_handler;
+			break;
+		}
+	case ControlType::AXIS:
+		{
+			control.axis.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.axis.neg_x.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			control_type_handler = axis_control_handler;
+			break;
+		}
+	case ControlType::VECTOR2:
+		{
+			control.vector2.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control_type_handler = vector2_control_handler;
+			break;
+		}
+	case ControlType::VECTOR2_4:
+		{
+			control.vector2_4.x.controller_input = string_to_controller_input.at(std::string(element["Key"]["X"]));
+			control.vector2_4.neg_x.controller_input = string_to_controller_input.at(std::string(element["Key"]["-X"]));
+			
+			control.vector2_4.y.controller_input = string_to_controller_input.at(std::string(element["Key"]["Y"]));
+			control.vector2_4.neg_y.controller_input = string_to_controller_input.at(std::string(element["Key"]["-Y"]));
+			control_type_handler = vector2_4_control_handler;
+			break;
+		}
+	default:;
+	}
+	
+	ButtonControl modifier;
+	modifier.x.key = Keyboard::Help;
+	ModifierType mod_type = string_to_mod_type.at(std::string(element["ModType"]));
+	std::shared_ptr<DeviceHandler> mod_device_handler = nullptr;
+	
+	if (mod_type != ModifierType::NONE)
+	{
+		Device mod_device = string_to_device.at(std::string(element["ModDevice"]));
+		switch (mod_device)
+		{
+		case Device::KEYBOARD:
+			{
+				modifier.x.key = (Keyboard::Keys)static_cast<unsigned char>(std::stoi(std::string(element["Modifier"]), nullptr, 16));
+				mod_device_handler = keyboard_handler;
+				break;
+			}
+		case Device::MOUSE: 
+			{
+				modifier.x.mouse_input = string_to_mouse_input.at(std::string(element["Modifier"]));
+				mod_device_handler = mouse_handler;
+				break;
+			}
+		case Device::CONTROLLER: 
+			{
+				modifier.x.controller_input = string_to_controller_input.at(std::string(element["Modifier"]));
+				mod_device_handler = controller_handler;
+				break;
+			}
+			
+		default: ;
+		}
+	}
+	
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	
+	input_action.setDeviceHandler(mouse_handler);
+	input_action.setControlTypeHandler(control_type_handler);
+
+	if (mod_device_handler != nullptr)
+	{
+		input_action.setModDeviceHandler(mod_device_handler);
+	}
+	
+	return input_action;}
+
 
 void InputManager::saveInputActionMapChanges(std::string _filepath)
 {

@@ -6,5 +6,6 @@
     <ImageContentTask Include="white.jpg" />
     <ImageContentTask Include="..\..\..\..\Sprites\Advisors\Scarle\devil-advisor-Sheet.dds" />
     <ImageContentTask Include="..\..\..\..\Sprites\Advisors\Scarle\angel-advisor-Sheet.dds" />
+    <ImageContentTask Include="..\Assets\cursor.dds" />
   </ItemGroup>
 </Project>

@@ -59,13 +59,12 @@ void ReincarnationManager::update(GameData& _game_data)
     }
 }
 
-void ReincarnationManager::awake()
+void ReincarnationManager::awake(GameData& _game_data)
 {
     allContainers.push_back(hellZonedSouls_);
     allContainers.push_back(hellWanderingSouls_);
     allContainers.push_back(heavenWanderingSouls_);
     allContainers.push_back(heavenZonedSouls_);
-    Manager::awake();
 }
 
 
@@ -94,7 +93,6 @@ EMBO ReincarnationManager::TurnIntoEMBO(Soul* _soul)
         // and remove it from the souls list
         // Temporary one below...
         GameManager::get()->getSoulManager()->m_Earth_Souls.push_back(shared_ptr<EMBO>(convertedSoul));
-        std::cout << "one soul was converted to EMBO" << endl;
         RemoveFromList(_soul);
         return *convertedSoul;
    }
@@ -106,7 +104,6 @@ Soul ReincarnationManager::TurnIntoSoul(EMBO* _embo)
     // then add to the EMBO to the list on earth
     if (_embo->m_yearsleft == 0 && _embo->m_reincarnate)
     {
-        std::cout << "one EMBO became a SOUL" << endl;
         Soul* convertedEmbo = new Soul; // Allocate memory for Soul object
         //auto convertedEmbo = (Soul*)_embo;
         convertedEmbo->m_totalyears = rand()%900 + 100;

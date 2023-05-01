@@ -1,35 +1,17 @@
 #pragma once
 
+
 #include <unordered_map>
+#include <memory>
 #include <fstream>
 #include <iostream>
 
 #include "Manager.h"
 #include "json.hpp"
 #include "GameManager.h"
-#include "FileManagerV2.h"
+#include "InputAction.hpp"
 
-enum class InputType
-{
-	key_pressed,
-    key_released,
-    key_held,
-    key_pressed_with_mod,
-    mouse_clicked,
-    mouse_released,
-    mouse_clicked_with_mod,
-    mouse_moved
-};
-
-struct KeyboardAction
-{
-    EventType command;
-    InputType type;
-    Keyboard::Keys modifier;
-    Keyboard::Keys key_button;
-};
-
-static const std::unordered_map<std::string, EventType> string_to_input_action =
+static const std::unordered_map<std::string, EventType> string_to_event_type =
 {
 	{"PAUSE", EventType::PAUSE},
 	{"LOAD_GAME", EventType::LOAD_GAME},
@@ -64,12 +46,8 @@ static const std::unordered_map<std::string, EventType> string_to_input_action =
     {"ZOOM_OUT", EventType::ZOOM_OUT},
     {"SNAP_TO_HEAVEN", EventType::SNAP_TO_HEAVEN},
     {"SNAP_TO_HELL", EventType::SNAP_TO_HELL},
-    {"SCROLL_UP", EventType::SCROLL_UP},
-    {"SCROLL_RIGHT", EventType::SCROLL_RIGHT},
-    {"SCROLL_LEFT", EventType::SCROLL_LEFT},
-    {"SCROLL_DOWN", EventType::SCROLL_DOWN},
-    {"ROTATE_REALMS_RIGHT", EventType::ROTATE_REALMS_RIGHT},
-    {"ROTATE_REALMS_LEFT", EventType::ROTATE_REALMS_LEFT},
+	{"SCROLL_VIEW", EventType::SCROLL_VIEW},
+	{"ROTATE_REALMS", EventType::ROTATE_REALMS},
     {"GREEN_ZONING", EventType::GREEN_ZONING},
     {"YELLOW_ZONING", EventType::YELLOW_ZONING},
     {"ORANGE_ZONING", EventType::ORANGE_ZONING},
@@ -77,32 +55,89 @@ static const std::unordered_map<std::string, EventType> string_to_input_action =
     {"PURPLE_ZONING", EventType::PURPLE_ZONING},
     {"RED_ZONING", EventType::RED_ZONING},
     {"BLUE_ZONING", EventType::BLUE_ZONING},
-    {"GENERIC_ZONING", EventType::GENERIC_ZONING}
+    {"GENERIC_ZONING", EventType::GENERIC_ZONING},
+	{"CENTER_AND_ZOOM_IN", EventType::CENTER_AND_ZOOM_IN},
+	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
+	{"CENTER_VIEW", EventType::CENTER_VIEW},
+	{"SELECT_CURSOR", EventType::SELECT_CURSOR},
+	{"MOVE_CURSOR", EventType::MOVE_CURSOR}
 };
 
-static const std::unordered_map<std::string, InputType> string_to_input_type =
+static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =
 {
-	{"key_pressed", InputType::key_pressed},
-	{"key_released", InputType::key_released},
-    {"key_held", InputType::key_held},
-	{"mouse_button_pressed", InputType::mouse_clicked},
-	{"mouse_button_released", InputType::mouse_released},
-	{"mouse_moved", InputType::mouse_moved}
+	{"BUTTON_PRESSED", InteractionType::BUTTON_PRESSED},
+	{"BUTTON_RELEASED", InteractionType::BUTTON_RELEASED},
+    {"BUTTON_HELD", InteractionType::BUTTON_HELD},
+	{"BUTTON_PRESSED_RELEASED", InteractionType::BUTTON_PRESSED_RELEASED},
+	{"AXIS", InteractionType::AXIS},
+	{"VECTOR2", InteractionType::VECTOR2}
 };
 
+static const std::unordered_map<std::string, Device> string_to_device =
+{
+	{"KEYBOARD", Device::KEYBOARD},
+	{"MOUSE", Device::MOUSE},
+	{"CONTROLLER", Device::CONTROLLER},
+};
 
-using json = nlohmann::json;
+static const std::unordered_map<std::string, ControlType> string_to_control_type =
+{
+	{"BUTTON", ControlType::BUTTON},
+	{"AXIS", ControlType::AXIS},
+	{"VECTOR2_2", ControlType::VECTOR2},
+	{"VECTOR2_4", ControlType::VECTOR2_4},
+};
+
+static const std::unordered_map<std::string, ModifierType> string_to_mod_type =
+{
+	{"NONE", ModifierType::NONE},
+	{"HELD", ModifierType::HELD}
+};
+
+static const std::unordered_map<std::string, MouseInput> string_to_mouse_input =
+{
+	{"LEFT_BUTTON", MouseInput::LEFT_BUTTON},
+	{"MIDDLE_BUTTON", MouseInput::MIDDLE_BUTTON},
+	{"RIGHT_BUTTON", MouseInput::RIGHT_BUTTON},
+	{"MOVE", MouseInput::MOVE},
+	{"SCROLL", MouseInput::SCROLL}	
+};
+
+static const std::unordered_map<std::string, ControllerInput> string_to_controller_input =
+{
+	{"A", ControllerInput::A},
+	{"B", ControllerInput::B},
+	{"X", ControllerInput::X},
+	{"Y", ControllerInput::Y},
+	{"LEFT_STICK", ControllerInput::LEFT_STICK},
+	{"RIGHT_STICK", ControllerInput::RIGHT_STICK},
+	{"LEFT_SHOULDER", ControllerInput::LEFT_SHOULDER},
+	{"RIGHT_SHOULDER", ControllerInput::RIGHT_SHOULDER},
+	{"BACK", ControllerInput::BACK},
+	{"START", ControllerInput::START},
+	{"D_UP", ControllerInput::D_UP},
+	{"D_DOWN", ControllerInput::D_DOWN},
+	{"D_RIGHT", ControllerInput::D_RIGHT},
+	{"D_LEFT", ControllerInput::D_LEFT},
+	{"LEFT_TRIGGER", ControllerInput::LEFT_TRIGGER},
+	{"RIGHT_TRIGGER", ControllerInput::RIGHT_TRIGGER}
+};
+
+using Json = nlohmann::json;
+using JsonElement = nlohmann::json_abi_v3_11_2::basic_json<std::map, std::vector, std::basic_string<char,
+std::char_traits<char>, std::allocator<char> >,bool,__int64,unsigned __int64,double, std::allocator,
+nlohmann::json_abi_v3_11_2::adl_serializer, std::vector<unsigned char, std::allocator<unsigned char>>>;
 
 class InputManager : public Manager, public Listener
 {
 public:
     InputManager() = default;
     ~InputManager() = default;
-
+	
 	////////////////////////////////////////////////////////////
 	/// \brief Is called when the program initializes.
 	////////////////////////////////////////////////////////////
-    void awake() override;
+    void awake(GameData& _game_data) override;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Called every cycle of the game loop.
@@ -114,36 +149,63 @@ public:
 	/// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
 	///	\param event The event to be acted upon.
 	////////////////////////////////////////////////////////////
-    void onEvent(const Event& event) override;
+    void onEvent(const Event& event) override {};
 
 private:
+	////////////////////////////////////////////////////////////
+	/// \brief Loads in the json of action maps at a specified file path.
+	/// \param _filepath The filepath of the json to load in.
+	////////////////////////////////////////////////////////////
     void loadInInputActionsMaps(std::string _filepath);
-
+	
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will save any changes to the action map. 
 	////////////////////////////////////////////////////////////
     void saveInputActionMapChanges(std::string _filepath);
 
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a keyboard ActionBinding.
+	////////////////////////////////////////////////////////////
+	InputAction loadKeyboardAction(JsonElement& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a mouse Actionbinding.
+	////////////////////////////////////////////////////////////
+	InputAction loadMouseAction(JsonElement& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Load and return a controller ActionBinding.
+	////////////////////////////////////////////////////////////
+	InputAction loadControllerAction(JsonElement& element);
+
+	////////////////////////////////////////////////////////////
+	/// \brief Fires off the game events triggered by mouse button events.
+	/// \param _action The MouseAction containing the keybind data.
+	/// \param _game_data Game Data.
+	/// \param _default_mouse_event The event triggered if the mouse is over UI.
+	/// \param _pressed Whether the button has been pressed or released.
+	////////////////////////////////////////////////////////////
+	//void triggerMouseButtonEvent(std::pair<const EventType, MouseAction>& _action, EventType _default_mouse_event, GameData& _game_data, bool _pressed) const;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Incomplete - but will reset the action map back to default. 
 	////////////////////////////////////////////////////////////
     void resetInputActionMaps();
 
-    ////////////////////////////////////////////////////////////
-	/// \brief Key action map for the game state. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction> game_key_action_map;
+	/// \brief Action maps for the game state.
+	////////////////////////////////////////////////////////////
+	std::vector<InputAction> game_action_map;
+	
+    ////////////////////////////////////////////////////////////
+	/// \brief Action maps for the menu state. 
+	////////////////////////////////////////////////////////////
+	std::vector<std::vector<InputAction>> menu_action_maps;
 
-    ////////////////////////////////////////////////////////////
-	/// \brief Key action map for the menu state. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction> menu_key_action_map;
-
-    ////////////////////////////////////////////////////////////
-	/// \brief Pointer to the current keyboard action map. 
+	/// \brief Pointer to the current action maps container. 
 	////////////////////////////////////////////////////////////
-    std::vector<KeyboardAction>* current_key_action_map;
+	std::vector<InputAction>* current_action_map;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 
@@ -159,4 +221,18 @@ private:
 	/// \brief Custom keybinds filename - Load in and use this one.
 	////////////////////////////////////////////////////////////
     std::string custom_bindings_file_name = "keybinds_custom.json";
+	
+	////////////////////////////////////////////////////////////
+	/// \brief Mouse position of the last update cycle. 
+	////////////////////////////////////////////////////////////
+	std::pair<int, int> last_mouse_pos;
+
+	std::shared_ptr<KeyboardDeviceHandler> keyboard_handler;
+	std::shared_ptr<MouseDeviceHandler> mouse_handler;
+	std::shared_ptr<ControllerDeviceHandler> controller_handler;
+
+	std::shared_ptr<ButtonControlTypeHandler> button_control_handler;
+	std::shared_ptr<AxisControlTypeHandler> axis_control_handler;
+	std::shared_ptr<Vector2ControlTypeHandler> vector2_control_handler;
+	std::shared_ptr<Vector2_4ControlTypeHandler> vector2_4_control_handler;
 };

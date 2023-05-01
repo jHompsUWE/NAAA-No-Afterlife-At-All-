@@ -15,10 +15,29 @@ UIManager::UIManager(ID3D11Device* _ID, GameData* _GD)
 
 UIManager::~UIManager()
 {
+    delete(optBar);
+    optBar = nullptr;
 
+    delete(remote);
+    remote = nullptr;
+
+    delete(optBar);
+    optBar = nullptr;
+
+    for (int i = 0; i < 6; i++)
+    {
+        delete(viewWindows[i]);
+        viewWindows[i] = nullptr;
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        delete(buildWindows[i]);
+        buildWindows[i] = nullptr;
+    }
 }
 
-void UIManager::awake()
+void UIManager::awake(GameData& _game_data)
 {
     optBar = new OptionBar(m_ID);
     optBar->SetPos(400, 5);

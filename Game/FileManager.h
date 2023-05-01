@@ -14,7 +14,7 @@ using json = nlohmann::json;
 class FileManager : public Manager
 {
 public:
-    void awake() override;
+    void awake(GameData& _game_data) override;
     void update(GameData& _game_data) override;
 
     ////////////////////////////////////////////////////////////

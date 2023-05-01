@@ -7,6 +7,7 @@
 #include "Listener.h"
 #include "GameManager.h"
 
+
 struct BuildingData
 {
 	BuildingSpecies m_building_species = BuildingSpecies::None;
