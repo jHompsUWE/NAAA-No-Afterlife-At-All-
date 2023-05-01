@@ -174,8 +174,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     pair<string, string> test;
     test = DataGenerator::GenerateData();
-    cout << test.second << endl;
-
+    CONSOLE(Serverity::DEBUG, test.second);
 }
 
 // Executes the basic game loop.
