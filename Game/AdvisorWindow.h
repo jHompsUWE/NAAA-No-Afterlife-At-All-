@@ -1,5 +1,5 @@
 #pragma once
-#include "Window.h"
+#include "BaseAnimateWindow.h"
 #include "ImageGO2D.h"
 #include "GameObject2D.h"
 #include "TextGO2D.h"
@@ -7,7 +7,7 @@
 #include "AnimatedImageGO2D.h"
 
 
-class AdvisorWindow : public Window
+class AdvisorWindow : public BaseAnimateWindow
 {
 public:
 	AdvisorWindow(ID3D11Device* _GD);
