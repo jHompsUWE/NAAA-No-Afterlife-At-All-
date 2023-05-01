@@ -32,13 +32,14 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     AdvisorWindow* advisor_window = new AdvisorWindow(m_d3dDevice.Get());
     advisor_window->SetPos(300, 400);
     m_GameObjects2D.push_back(advisor_window);
-    remote->SetButtonToggle(31, advisor_window);
-    remote->SetButtonToggle(10, threeWide);
-    remote->SetButtonToggle(12, fourWide);*/
+
+    
+    //remote->SetButtonToggle(31, advisor_window);
   
     //GameManager::get()->getEventManager()->addListener(uiManager->remote);
 
 	GameManager::get()->awake();
+    GameManager::get()->getUIManager()->remote->SetButtonToggle(5, advisor_window);
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }
 

@@ -10,7 +10,6 @@ class Window :public GameObject2D
 public:
 	Window();
 
-	Window();
 	Window(string _fileName, ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour);
 	virtual ~Window();
 
