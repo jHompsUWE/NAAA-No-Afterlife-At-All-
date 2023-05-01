@@ -11,7 +11,7 @@ using namespace std;
 class FileManagerV2 : public Manager
 {
 public:
-    void awake() override;
+    void awake(GameData& _game_data) override;
     void update(GameData& _game_data) override;
 
     json *GetJson(const std::string &fileName) const;

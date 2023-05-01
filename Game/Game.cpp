@@ -64,18 +64,16 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //documentation here: https://github.com/microsoft/DirectXTK/wiki/Mouse-and-keyboard-input
     m_keyboard = std::make_unique<Keyboard>();
     m_mouse = std::make_unique<Mouse>();
+    m_gamepad = std::make_unique<GamePad>();
     m_mouse->SetWindow(_window);
     m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
-    ShowCursor(true);
-
-    m_gamepad = std::make_unique<GamePad>();
+    ShowCursor(false);
     
     //create GameData struct and populate its pointers
     m_GD = new GameData;
     m_GD->m_GS = GS_PLAY_MAIN_CAM;
     m_GD->current_state = State::GAME_MENU;
-
 
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
@@ -133,10 +131,12 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //GameManager::get()->addManager(file_manager_, ManagerType::FILE);
     file_managerV2_ = std::make_shared<FileManagerV2>();
     GameManager::get()->addManager(file_managerV2_, ManagerType::FILE);
+    
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
 
-    
+    cursor = std::make_shared<CursorController>("cursor", m_d3dDevice.Get());
+    GameManager::get()->getEventManager()->addListener(&*cursor);
 
     reincarnation_manager = std::make_shared<ReincarnationManager>();
     GameManager::get()->addManager(reincarnation_manager, ManagerType::REINCARNATION);
@@ -162,7 +162,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     world[PlaneType::Heaven][15]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][12]->createBuilding(m_d3dContext);
     world[PlaneType::Heaven][36]->createBuilding(m_d3dContext);
-    world_manager->updateVibes(*world[PlaneType::Heaven][25]);
 
     soul_manager = std::make_shared<SoulManager>(world_manager);
     GameManager::get()->addManager(soul_manager, ManagerType::SOUL);
@@ -170,11 +169,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
     GameManager::get()->getEventManager()->addListener(&*m_selection_handler);
     event_manager->addListener(&*soul_manager);
-    GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
 
+    GameManager::get()->awake(*m_GD);
+
+    GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
+    
     pair<string, string> test;
     test = DataGenerator::GenerateData();
-    CONSOLE(Serverity::DEBUG, test.second);
 }
 
 // Executes the basic game loop.
@@ -192,19 +193,11 @@ void Game::Tick()
 // Updates the world.
 void Game::Update(DX::StepTimer const& _timer)
 {
-    auto mouse = m_mouse->GetState();
-    m_GD->m_mouseButtons.Update(mouse);
+    ReadInput();
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
-    auto pad = m_gamepad->GetState(0);
-    //std::cout << m_gamepad->GetCapabilities(0).gamepadType ; 
-    if (pad.IsConnected())
-    {
-        std::cout << "test";
-        
-    }
-    
+    cursor->Tick(m_GD);    
     
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
     if (!GameManager::get()->isGamePaused())
@@ -260,7 +253,7 @@ void Game::Update(DX::StepTimer const& _timer)
             (*it)->Tick(m_GD);
         }
     }
-    ReadInput();
+    
     //upon space bar switch camera state
     //see docs here for what's going on: https://github.com/Microsoft/DirectXTK/wiki/Keyboard
     if (m_GD->m_KBS_tracker.pressed.Space)
@@ -314,6 +307,7 @@ void Game::Render()
     // Draw sprite batch stuff 
     m_DD2D->m_Sprites->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
     game_states[m_GD->current_state]->render2D();
+    cursor->Draw(m_DD2D);
     m_DD2D->m_Sprites->End();
     //drawing text screws up the Depth Stencil State, this puts it back again!
     m_d3dContext->OMSetDepthStencilState(m_states->DepthDefault(), 0);
@@ -580,8 +574,16 @@ void Game::OnDeviceLost()
 
 void Game::ReadInput()
 {
+    m_GD->m_MS_last = m_GD->m_MS;
+    m_GD->m_MS = m_mouse->GetState();
+    m_GD->m_mouseButtons.Update(m_GD->m_MS);
+    
     m_GD->m_KBS = m_keyboard->GetState();
     m_GD->m_KBS_tracker.Update(m_GD->m_KBS);
+
+    m_GD->m_GP_state = m_gamepad->GetState(0);
+    m_GD->m_GP_buttons.Update(m_GD->m_GP_state);
+    
     //quit game on hiting escape
     if (m_GD->m_KBS.Escape)
     {
@@ -644,7 +646,6 @@ void Game::ReadInput()
         }
         
     }*/
-    m_GD->m_MS = m_mouse->GetState();
 }
 
 Vector3 Game::CorrectPos(Vector3 _inVector)

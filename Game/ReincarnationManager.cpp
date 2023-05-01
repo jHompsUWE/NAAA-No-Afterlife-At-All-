@@ -22,25 +22,19 @@ void ReincarnationManager::update(GameData& _game_data)
     // Check if there are any EMBO and convert it to Soul if it is time
     if (!GameManager::get()->getSoulManager()->m_Earth_Souls.empty())
     {
-        auto& souls = GameManager::get()->getSoulManager()->m_Earth_Souls;
-        auto it = souls.begin();
-        while (it != souls.end()) {
-            if (EMBOToSoul(**it)) {
-                it = souls.erase(it);
-            } else {
-                ++it;
-            }
-        }
+        for (auto & soul : GameManager::get()->getSoulManager()->m_Earth_Souls)
+        {
+            EMBOToSoul(*soul);
+        } 
     }    
 }
 
-void ReincarnationManager::awake()
+void ReincarnationManager::awake(GameData& _game_data)
 {
     allContainers.push_back(hellZonedSouls_);
     allContainers.push_back(hellWanderingSouls_);
     allContainers.push_back(heavenWanderingSouls_);
     allContainers.push_back(heavenZonedSouls_);
-    Manager::awake();
 }
 
 

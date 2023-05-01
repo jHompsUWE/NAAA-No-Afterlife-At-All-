@@ -11,7 +11,7 @@ public:
     }
     
     void update(GameData& _game_data) override;
-    void awake() override;
+    void awake(GameData& _game_data) override;
 
     EMBO TurnIntoEMBO(Soul* _soul); // return the EMBO with all the soul data
     Soul TurnIntoSoul(EMBO* _embo);  // Save the poor soul from the life on Earth

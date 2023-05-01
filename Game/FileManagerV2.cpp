@@ -3,7 +3,7 @@
 
 #include "GameManager.h"
 
-void FileManagerV2::awake()
+void FileManagerV2::awake(GameData& _game_data)
 {
     // Add json files
     AddFile("SaveFile", new ifstream(saveFilePath_));
@@ -31,8 +31,6 @@ void FileManagerV2::awake()
         }
         file.second->close();
     }
-
-    Manager::awake();
 }
 
 void FileManagerV2::update(GameData& _game_data)

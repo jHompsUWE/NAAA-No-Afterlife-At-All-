@@ -90,7 +90,7 @@ public:
 	void ZoneCheck();																				//check if zone is attached
 	int TotalSoulsAmmount(PlaneType _plane) const;													//get souls per plane NONE : get souls total overall
 	
-	virtual void awake() override;
+	virtual void awake(GameData& _game_data) override;
 	virtual void update(GameData& _game_data) override;
 	virtual void lateUpdate(GameData& _game_data) override;
 

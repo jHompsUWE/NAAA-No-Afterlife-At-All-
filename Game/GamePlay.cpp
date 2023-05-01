@@ -37,8 +37,6 @@ bool GamePlay::init(HWND _window, int _width, int _height, GameData* _game_data)
     //remote->SetButtonToggle(31, advisor_window);
   
     //GameManager::get()->getEventManager()->addListener(uiManager->remote);
-
-	GameManager::get()->awake();
     GameManager::get()->getUIManager()->remote->SetButtonToggle(5, advisor_window);
 	return GameStateBase::init(_window, _width, _height, _game_data);
 }

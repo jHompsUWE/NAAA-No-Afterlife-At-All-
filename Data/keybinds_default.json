@@ -1,354 +1,511 @@
 {
   "menu_state": {
-    "keyboard_inputs": [""],
-    "mouse_inputs": [""]
+    "keyboard_inputs": [ "" ],
+    "mouse_inputs": [ "" ]
   },
 
   "game_state": {
-    "keyboard_inputs": [
+    "KEYBOARD": [
       {
         "Action": "PAUSE",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice" :  "",
         "Modifier": "",
         "Key": "0x70"
       },
 
       {
         "Action": "LOAD_GAME",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x71"
       },
 
       {
         "Action": "LOAD_SCENARIO",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x72"
       },
 
       {
         "Action": "SAVE_GAME",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x74"
       },
 
       {
         "Action": "QUIT",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x77"
       },
 
       {
         "Action": "AUDIO_MENU",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x78"
       },
 
       {
         "Action": "NEW_GAME",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x79"
       },
 
       {
         "Action": "CLOSE",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x1b"
       },
 
       {
         "Action": "PORTS",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x42"
       },
 
       {
         "Action": "TOPIAS",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x43"
       },
 
       {
         "Action": "GRAPHVIEW",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x44"
       },
 
       {
         "Action": "ACTIVATE_MISC_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x45"
       },
 
       {
         "Action": "TOGGLE_MAPVIEW",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x46"
       },
 
       {
         "Action": "GATES",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x47"
       },
 
       {
         "Action": "TOGGLE_HELPERS",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x48"
       },
 
       {
         "Action": "SOUL_VIEW",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x49"
       },
 
       {
         "Action": "ACTIVATES_KARMA_STATION_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4b"
       },
 
       {
         "Action": "ACTIVATES_LIMBO_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4c"
       },
 
       {
         "Action": "MICROVIEW",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4d"
       },
 
       {
         "Action": "TRAINING_CENTRE",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4e"
       },
 
       {
         "Action": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x4f"
       },
 
       {
         "Action": "TOGGLE_PLANET_VIEW",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x50"
       },
 
       {
         "Action": "ROADS",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x52"
       },
 
       {
         "Action": "SPECIAL_BUILDINGS",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x53"
       },
 
       {
         "Action": "KARMA_TRACK",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x54"
       },
 
       {
         "Action": "TOGGLE_MACROMANAGER",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x55"
       },
 
       {
         "Action": "NUKE_BUTTON",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x58"
       },
 
       {
         "Action": "TOGGLE_REMOTE_CONTROL",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x5a"
       },
 
       {
         "Action": "TOGGLE_PREVIOUS_TEMPO_AND_DEVINE_INTERVENTION",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x20"
       },
 
       {
         "Action": "ZOOM_IN",
-        "Type": "key_held",
+        "Type": "BUTTON_HELD",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0xbb"
       },
 
       {
         "Action": "ZOOM_OUT",
-        "Type": "key_held",
+        "Type": "BUTTON_HELD",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0xbd"
       },
 
       {
         "Action": "SNAP_TO_HEAVEN",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x21"
       },
 
       {
         "Action": "SNAP_TO_HELL",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x22"
       },
 
       {
-        "Action": "SCROLL_UP",
-        "Type": "key_held",
+        "Action": "SCROLL_VIEW",
+        "Type": "BUTTON_HELD",
+        "Control": "VECTOR2_4",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
-        "Key": "0x26"
+        "Key": {
+          "X": "0x27",
+          "-X": "0x25",
+          "Y": "0x26",
+          "-Y": "0x28"
+        }
       },
 
       {
-        "Action": "SCROLL_RIGHT",
-        "Type": "key_held",
+        "Action": "ROTATE_REALMS",
+        "Type": "BUTTON_PRESSED",
+        "Control": "AXIS",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
-        "Key": "0x27"
-      },
-
-      {
-        "Action": "SCROLL_LEFT",
-        "Type": "key_held",
-        "Modifier": "",
-        "Key": "0x25"
-      },
-
-      {
-        "Action": "SCROLL_DOWN",
-        "Type": "key_held",
-        "Modifier": "",
-        "Key": "0x28"
-      },
-
-      {
-        "Action": "ROTATE_REALMS_RIGHT",
-        "Type": "key_pressed",
-        "Modifier": "",
-        "Key": "0xdd"
-      },
-
-      {
-        "Action": "ROTATE_REALMS_LEFT",
-        "Type": "key_pressed",
-        "Modifier": "",
-        "Key": "0xdb"
+        "Key": {
+          "X": "0xdd",
+          "-X": "0xdb"
+        }
       },
 
       {
         "Action": "GREEN_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x31"
       },
 
       {
         "Action": "YELLOW_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x32"
       },
 
       {
         "Action": "ORANGE_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x33"
       },
 
       {
         "Action": "BROWN_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x34"
       },
 
       {
         "Action": "PURPLE_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x35"
       },
 
       {
         "Action": "RED_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x36"
       },
 
       {
         "Action": "BLUE_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x37"
       },
 
       {
         "Action": "GENERIC_ZONING",
-        "Type": "key_pressed",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
         "Modifier": "",
         "Key": "0x30"
       }
     ],
 
-    "mouse_inputs": [
+    "MOUSE": [
       {
         "Action": "CENTER_AND_ZOOM_IN",
-        "Type": "mouse_clicked_with_mod",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "HELD",
+        "ModDevice": "KEYBOARD",
         "Modifier": "0xa0",
-        "Button": "left"
+        "Key": "LEFT_BUTTON"
       },
 
       {
         "Action": "CENTER_AND_ZOOM_OUT",
-        "Type": "mouse_clicked_with_mod",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "HELD",
+        "ModDevice": "KEYBOARD",
         "Modifier": "0xa0",
-        "Button": "right"
+        "Key": "RIGHT_BUTTON"
+      },
+
+      {
+        "Action": "CENTER_VIEW",
+        "Type": "BUTTON_PRESSED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "RIGHT_BUTTON"
+      },
+
+      {
+        "Action": "SELECT_CURSOR",
+        "Type": "BUTTON_PRESSED_RELEASED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "LEFT_BUTTON"
+      },
+
+      {
+        "Action": "MOVE_CURSOR",
+        "Type": "VECTOR2",
+        "Control": "VECTOR2_2",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "MOVE"
+      }
+    ],
+
+    "CONTROLLER": [
+      {
+        "Action": "SELECT_CURSOR",
+        "Type": "BUTTON_PRESSED_RELEASED",
+        "Control": "BUTTON",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "A"
       }
     ]
   }

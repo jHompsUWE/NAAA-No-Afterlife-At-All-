@@ -16,6 +16,7 @@
 // Needs to be included here or it doesn't work
 // This is due to deconstructor not existing with a forward declaration
 #include "GameStateBase.h"
+#include "CursorController.h"
 
 #include "GameManager.h"
 #include "EventManager.h"
@@ -149,6 +150,7 @@ private:
     std::shared_ptr<SoulManager> soul_manager;
     std::shared_ptr<UIManager> ui_manager;
     std::shared_ptr<ReincarnationManager> reincarnation_manager;
+    std::shared_ptr<CursorController> cursor;
 
     std::shared_ptr<SelectionHandler> m_selection_handler;
 

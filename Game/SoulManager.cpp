@@ -88,7 +88,7 @@ int SoulManager::TotalSoulsAmmount(PlaneType plane) const
 	return 0;
 }
 
-void SoulManager::awake()
+void SoulManager::awake(GameData& _game_data)
 {
 	EMBO* soul_test = new EMBO();
 	soul_test->earth_belief = 2;

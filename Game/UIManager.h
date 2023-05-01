@@ -15,8 +15,8 @@ public:
 	UIManager(ID3D11Device* _ID, GameData* _GD);
 	~UIManager();
 
-	virtual void awake() override;
-	virtual void update(GameData& _game_data) override;
+	void awake(GameData& _game_data) override;
+	void update(GameData& _game_data) override;
 	//virtual void lateUpdate(GameData& _game_data) override;
 
 	void Draw(DrawData2D* _DD);

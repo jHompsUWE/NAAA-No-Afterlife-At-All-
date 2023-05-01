@@ -3,17 +3,17 @@
 
 #include "FileManagerV2.h"
 
-void GameManager::awake()
+void GameManager::awake(GameData& _game_data)
 {
-	for (auto manager : managers)
+	for (auto& manager : managers)
 	{
-		manager->awake();
+		manager->awake(_game_data);
 	}
 }
 
 void GameManager::update(GameData& _game_data)
 {
-	for (auto manager : managers)
+	for (auto& manager : managers)
 	{
 		manager->update(_game_data);
 	}
@@ -21,17 +21,25 @@ void GameManager::update(GameData& _game_data)
 
 void GameManager::lateUpdate(GameData& _game_data)
 {
-	for (auto manager : managers)
+	for (auto& manager : managers)
 	{
 		manager->lateUpdate(_game_data);
 	}
 }
 
-void GameManager::render(DrawData* m_DD)
+void GameManager::render(DrawData* _draw_data)
+{
+	for (auto& manager : managers)
+	{
+		manager->render(_draw_data);
+	}
+}
+
+void GameManager::render2D(DrawData2D* _draw_data)
 {
 	for (auto manager : managers)
 	{
-		manager->render(m_DD);
+		manager->render2D(_draw_data);
 	}
 }
 
