@@ -122,7 +122,7 @@ void SoulManager::update(GameData& _game_data)
 
 
 
-	if (_game_data.Year%10 == 0)
+	//if (_game_data.Year%10 == 0)
 	{
 		if (m_Earth_Souls.size() >= 10)
 		{

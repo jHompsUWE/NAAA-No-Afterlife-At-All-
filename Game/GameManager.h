@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <memory>
-
 #include "DrawData.h"
 #include "Manager.h"
 #include "EventManager.h"
@@ -98,6 +97,10 @@ public:
 	////////////////////////////////////////////////////////////
 	FileManagerV2* getFileManagerV2() { return file_manager; };
 
+	////////////////////////////////////////////////////////////
+	/// \brief Returns pointer to World Manager Event, use this for triggering events. 
+	////////////////////////////////////////////////////////////
+	WorldManager* getWorldManager() { return world_manager; };
 
 	UIManager* getUIManager() { return ui_manager; };
 
@@ -143,6 +146,10 @@ private:
 	////////////////////////////////////////////////////////////
 	FileManagerV2* file_manager;
 
+	////////////////////////////////////////////////////////////
+	/// \brief Pointer to World Manager Event for accessing derived class members.
+	////////////////////////////////////////////////////////////
+	WorldManager* world_manager;
 
 	////////////////////////////////////////////////////////////
 	/// \brief Bool to keep track if the game is paused.

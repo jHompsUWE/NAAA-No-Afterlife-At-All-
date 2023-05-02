@@ -439,9 +439,11 @@ void UIRemote::Tick(GameData* _GD)
 		}
 	}
 
-	//Change year and money strings for demonstrative purposes
-	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
-	text[1]->SetString(to_string(money -= 1) + "$");
+		//Change year and money strings for demonstrative purposes
+		text[0]->SetString("Year: " + to_string(_GD->Year += 1));
+		text[1]->SetString(to_string(money -= 1) + "$");
+		text[6]->SetString("EMBOs: " + to_string(GameManager::get()->getSoulManager()->m_Earth_Souls.size()));
+	
 }
 
 

@@ -180,6 +180,8 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     pair<string, string> test;
     test = DataGenerator::GenerateData();
+    CONSOLE(Serverity::DEBUG, test.second);
+    bad_things_bop_ = std::make_unique<BadThingsBOP>();
 }
 
 // Executes the basic game loop.
@@ -205,6 +207,12 @@ void Game::Tick()
 void Game::Update(DX::StepTimer const& _timer)
 {
     ReadInput();
+    // We can trigger BadThings
+    if (bad_things_bop_ != nullptr)
+    {
+        bad_things_bop_.get()->TriggerBadThing(*m_GD);
+    }
+    
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
