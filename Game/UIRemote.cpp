@@ -232,6 +232,81 @@ void UIRemote::onEvent(const Event& event)
 			renderable = !renderable;
 			break;
 		}
+		case EventType::CURSOR_MOVED:
+		{
+			//If being dragged, move with mouse using the distance value to stay relative
+			if (dragged)
+			{
+				m_pos.x = event.payload.cursor_data.x + differenceX;
+				m_pos.y = event.payload.cursor_data.y + differenceY;
+
+				for (int i = 0; i < buttonsSwitch.size(); i++)
+				{
+					if (buttonsSwitch[i] != nullptr)
+					{
+						buttonsSwitch[i]->SetPos(m_pos.x + buttonsSwitch[i]->differenceX, m_pos.y + buttonsSwitch[i]->differenceY);
+					}
+				}
+
+				for (int i = 0; i < buttonsBuilding.size(); i++)
+				{
+					if (buttonsBuilding[i] != nullptr)
+					{
+						buttonsBuilding[i]->SetPos(m_pos.x + buttonsBuilding[i]->differenceX, m_pos.y + buttonsBuilding[i]->differenceY);
+					}
+				}
+
+				for (int i = 0; i < buttonsWindow.size(); i++)
+				{
+					if (buttonsWindow[i] != nullptr)
+					{
+						buttonsWindow[i]->SetPos(m_pos.x + buttonsWindow[i]->differenceX, m_pos.y + buttonsWindow[i]->differenceY);
+					}
+				}
+
+				for (int i = 0; i < 8; i++)
+				{
+					if (text[i] != nullptr)
+					{
+						text[i]->SetPos(m_pos.x + text[i]->differenceX, m_pos.y + text[i]->differenceY);
+					}
+				}
+			}
+			break;
+		}
+		case EventType::CURSOR_SELECTED:
+		{
+			if (renderable)
+			{
+				if (!buildingWindowOpen)
+				{
+					//Checks the object bounds and the cursor postion
+					bounds.x = m_pos.x - (bounds.width / 2);
+					bounds.y = m_pos.y - (bounds.height / 2);
+
+					int mouseX = event.payload.cursor_data.x;
+					int mouseY = event.payload.cursor_data.y;
+
+					Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+
+					//If mouse clicked while in object bounds - get difference between object and cursor position and start to drag
+					if (event.payload.cursor_data.selected && bounds.Contains(mousepos))
+					{
+						differenceX = m_pos.x - event.payload.cursor_data.x;
+						differenceY = m_pos.y - event.payload.cursor_data.y;
+						dragged = true;
+					}
+				
+					//If being dragged and button is released - stop
+					if (dragged == true && !event.payload.cursor_data.selected)
+					{
+						dragged = false;
+					}
+				}
+			}
+			break;
+		}
 	}
 }
 
@@ -241,180 +316,108 @@ void UIRemote::onEvent(const Event& event)
 /// <param name="_GD"></param>
 void UIRemote::Tick(GameData* _GD)
 {
-	if (renderable)
+	// Check to see if buttons are pressed
+	for (int i = 0; i < buttonsSwitch.size(); i++)
 	{
-		if (!buildingWindowOpen)
+		if (buttonsSwitch[i] != nullptr)
 		{
-		//Checks the object bounds and the cursor postion
-		bounds.x = m_pos.x - (bounds.width / 2);
-		bounds.y = m_pos.y - (bounds.height / 2);
+			buttonsSwitch[i]->Tick(_GD);
 
-		int mouseX = _GD->m_MS.x;
-		int mouseY = _GD->m_MS.y;
-
-		Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-
-		//If mouse clicked while in object bounds - get difference between object and cursor position and start to drag
-		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-		{
-			differenceX = m_pos.x - _GD->m_MS.x;
-			differenceY = m_pos.y - _GD->m_MS.y;
-
-			dragged = true;
-		}
-
-		//If being dragged, move with mouse using the distance value to stay relative
-		if (dragged == true && _GD->m_MS.leftButton == 1)
-		{
-			m_pos.x = _GD->m_MS.x + differenceX;
-			m_pos.y = _GD->m_MS.y + differenceY;
-
-			for (int i = 0; i < buttonsSwitch.size(); i++)
+			if (buttonsSwitch[i]->pressed)
 			{
-				if (buttonsSwitch[i] != nullptr)
-				{
-					buttonsSwitch[i]->SetPos(m_pos.x + buttonsSwitch[i]->differenceX, m_pos.y + buttonsSwitch[i]->differenceY);
-				}
-			}
+				//Fire event of button event type, then set button's pressed value to false
+				Event event{};
+				event.type = buttonsSwitch[i]->event_type;
 
-			for (int i = 0; i < buttonsBuilding.size(); i++)
-			{
-				if (buttonsBuilding[i] != nullptr)
-				{
-					buttonsBuilding[i]->SetPos(m_pos.x + buttonsBuilding[i]->differenceX, m_pos.y + buttonsBuilding[i]->differenceY);
-				}
-			}
+				GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 
-			for (int i = 0; i < buttonsWindow.size(); i++)
-			{
-				if (buttonsWindow[i] != nullptr)
-				{
-					buttonsWindow[i]->SetPos(m_pos.x + buttonsWindow[i]->differenceX, m_pos.y + buttonsWindow[i]->differenceY);
-				}
-			}
-
-			for (int i = 0; i < 8; i++)
-			{
-				if (text[i] != nullptr)
-				{
-					text[i]->SetPos(m_pos.x + text[i]->differenceX, m_pos.y + text[i]->differenceY);
-				}
+				buttonsSwitch[i]->pressed = false;
 			}
 		}
+	}
 
-		//If being dragged and button is released - stop
-		if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
+	for (int i = 0; i < buttonsBuilding.size(); i++)
+	{
+		if (buttonsBuilding[i] != nullptr)
 		{
-			dragged = false;
-		}
+			buttonsBuilding[i]->Tick(_GD);
 
-		// Check to see if buttons are pressed
-
-		for (int i = 0; i < buttonsSwitch.size(); i++)
-		{
-			if (buttonsSwitch[i] != nullptr)
+			if (buttonsBuilding[i]->pressed)
 			{
-				buttonsSwitch[i]->Tick(_GD);
+				//Fire event of button event type, then set button's pressed value to false
 
-				if (buttonsSwitch[i]->pressed)
+				text[2]->SetString(buttonsBuilding[i]->buttonName);
+
+				for (int j = 0; j < buttonsBuilding[i]->GetToggle()->buttons.size(); j++)
 				{
-					//Fire event of button event type, then set button's pressed value to false
-					Event event{};
-					event.type = buttonsSwitch[i]->event_type;
-
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-
-					buttonsSwitch[i]->pressed = false;
+					buttonsBuilding[i]->GetToggle()->SetPosition(buttonsBuilding[i]->GetPos());
+					buttonsBuilding[i]->GetToggle()->buttons[j]->SetText(true, buttonsBuilding[i]->buttonName);
+					buttonsBuilding[i]->GetToggle()->buttons[j]->SetType(buttonsBuilding[i]->event_type);
 				}
+
+				buttonsBuilding[i]->toggle();
+				buttonsBuilding[i]->pressed = false;
 			}
 		}
+	}
 
-		for (int i = 0; i < buttonsBuilding.size(); i++)
+	for (int i = 0; i < buttonsWindow.size(); i++)
+	{
+		if (buttonsWindow[i] != nullptr)
 		{
-			if (buttonsBuilding[i] != nullptr)
+			buttonsWindow[i]->Tick(_GD);
+
+			if (buttonsWindow[i]->pressed)
 			{
-				buttonsBuilding[i]->Tick(_GD);
-
-				if (buttonsBuilding[i]->pressed)
+				//Fire event of button event type, then set button's pressed value to false
+				Event event{};
+				event.type = buttonsWindow[i]->event_type;
+				if (buttonsWindow[i]->event_type == EventType::SCROLL_VIEW)
 				{
-					//Fire event of button event type, then set button's pressed value to false
-
-					text[2]->SetString(buttonsBuilding[i]->buttonName);
-
-					for (int j = 0; j < buttonsBuilding[i]->GetToggle()->buttons.size(); j++)
+					switch (buttonsWindow[i]->direction)
 					{
-						buttonsBuilding[i]->GetToggle()->SetPosition(buttonsBuilding[i]->GetPos());
-						buttonsBuilding[i]->GetToggle()->buttons[j]->SetText(true, buttonsBuilding[i]->buttonName);
-						buttonsBuilding[i]->GetToggle()->buttons[j]->SetType(buttonsBuilding[i]->event_type);
-					}
-
-					buttonsBuilding[i]->toggle();
-					buttonsBuilding[i]->pressed = false;
-				}
-			}
-		}
-
-		for (int i = 0; i < buttonsWindow.size(); i++)
-		{
-			if (buttonsWindow[i] != nullptr)
-			{
-				buttonsWindow[i]->Tick(_GD);
-
-				if (buttonsWindow[i]->pressed)
-				{
-					//Fire event of button event type, then set button's pressed value to false
-					Event event{};
-					event.type = buttonsWindow[i]->event_type;
-					if (buttonsWindow[i]->event_type == EventType::SCROLL_VIEW)
-					{
-						switch (buttonsWindow[i]->direction)
+					case Direction::LEFT:
 						{
-							case Direction::LEFT:
-								{
-									event.payload.input_vector2_data.x = -1;
-									break;
-								}
-							case Direction::RIGHT: 
-								{
-									event.payload.input_vector2_data.x = 1;
-									break;
-								}
-							case Direction::UP: 
-								{
-									event.payload.input_vector2_data.y = -1;
-									break;
-								}
-							case Direction::DOWN: 
-								{
-									event.payload.input_vector2_data.y = 1;
-									break;
-								}
-							default: ;
+							event.payload.input_vector2_data.x = -1;
+							break;
 						}
+					case Direction::RIGHT: 
+						{
+							event.payload.input_vector2_data.x = 1;
+							break;
+						}
+					case Direction::UP: 
+						{
+							event.payload.input_vector2_data.y = -1;
+							break;
+						}
+					case Direction::DOWN: 
+						{
+							event.payload.input_vector2_data.y = 1;
+							break;
+						}
+					default: ;
 					}
-
-					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
-
-					buttonsWindow[i]->pressed = false;
 				}
+
+				GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+
+				buttonsWindow[i]->pressed = false;
 			}
 		}
 	}
 
-
-		for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++)
+	{
+		if (text[i] != nullptr)
 		{
-			if (text[i] != nullptr)
-			{
-				text[i]->Tick(_GD);
-			}
+			text[i]->Tick(_GD);
 		}
-
-		//Change year and money strings for demonstrative purposes
-		text[0]->SetString("Year: " + to_string(_GD->Year += 1));
-		text[1]->SetString(to_string(money -= 1) + "$");
 	}
+
+	//Change year and money strings for demonstrative purposes
+	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
+	text[1]->SetString(to_string(money -= 1) + "$");
 }
 
 
