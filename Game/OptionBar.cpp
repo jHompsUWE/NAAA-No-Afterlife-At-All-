@@ -39,12 +39,17 @@ OptionBar::OptionBar(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 			optionWindows.back()->SetButtonText(k, string(button));
 			k += 1;
 		}
-
-
-		/*for (int k = 0; k < window["NumButtons"]; k++)
+		int m = 0;
+		for (auto button : window["ButtonEvent"])
 		{
-			optionWindows.back()->SetButtonText(k, string(window["ButtonText"][k]));
-		}*/
+			if (string(button) != "null")
+			{
+				EventType eventT = string_to_event.at(string(button));
+				optionWindows.back()->SetButtonEvent(m, eventT);
+			}
+			
+			m += 1;
+		}
 
 		j += 1;
 	}

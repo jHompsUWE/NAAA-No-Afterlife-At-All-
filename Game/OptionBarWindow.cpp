@@ -35,6 +35,7 @@ OptionBarWindow::OptionBarWindow(ID3D11Device* _GD, int buttonNum, Vector2 pos)
 		buttons.back()->buttonText->SetPos(buttons.back()->GetPos().x - bounds.width / 2, buttons.back()->GetPos().y - bounds.height / (20 + i+1));
 		buttons.back()->buttonText->SetColour(Colors::Black);
 		buttons.back()->setToggle(this);
+
 	}
 
 	renderable = false;
@@ -52,6 +53,11 @@ OptionBarWindow::~OptionBarWindow()
 void OptionBarWindow::SetButtonText(int button, string text)
 {
 	buttons[button]->setText(text);
+}
+
+void OptionBarWindow::SetButtonEvent(int button, EventType event)
+{
+	buttons[button]->SetType(event);
 }
 
 /// <summary>
@@ -82,13 +88,13 @@ void OptionBarWindow::Tick(GameData* _GD)
 	{
 		if (hovered != nullptr && hovered->pressed)
 		{
-			/*Event event{};
-			event.type = hovered->event_type;*/
+			Event event{};
+			event.type = hovered->event_type;
 
 			hovered->Toggle(false);
 			hovered->pressed = false;
 
-			//GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+			GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 		}
 
 		for (int i = 0; i < buttons.size(); i++)

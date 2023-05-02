@@ -15,6 +15,7 @@ public:
 	void onEvent(const Event& event);
 	
 	void SetButtonText(int button, string text);
+	void SetButtonEvent(int button, EventType event);
 	void SetButtonBounds();
 
 	std::vector <OptionBarButton*> buttons;
