@@ -71,6 +71,11 @@ bool GameManager::addManager(std::shared_ptr<Manager> _manager, ManagerType _typ
 		return true;
 	}
 
+	case ManagerType::WORLD:
+		{
+			world_manager = reinterpret_cast<WorldManager*>(&*_manager);
+			return true;
+		}
 	}
 	return false;
 }

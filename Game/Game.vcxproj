@@ -245,6 +245,9 @@
     <ClInclude Include="AdvisorWindow.h" />
     <ClInclude Include="AnimatedImageGO2D.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BadThingsManager.h" />
+    <ClInclude Include="BadThings\BadThingsBOP.h" />
+    <ClInclude Include="BadThings\BadThingsParent.h" />
     <ClInclude Include="BaseAnimateWindow.h" />
     <ClInclude Include="BuildingData.h" />
     <ClInclude Include="BuildingSpecies.h" />
@@ -337,6 +340,9 @@
     <ClCompile Include="AdvisorWindow.cpp" />
     <ClCompile Include="AnimatedImageGO2D.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BadThingsManager.cpp" />
+    <ClCompile Include="BadThings\BadThingsBOP.cpp" />
+    <ClCompile Include="BadThings\BadThingsParent.cpp" />
     <ClCompile Include="BaseAnimateWindow.cpp" />
     <ClCompile Include="BuildingWindow.cpp" />
     <ClCompile Include="Button.cpp" />

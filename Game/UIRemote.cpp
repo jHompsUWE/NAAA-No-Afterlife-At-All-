@@ -82,20 +82,20 @@ UIRemote::UIRemote(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 
 	// Setting buttons colours
 	// Zone buttons
-	/*buttons[0]->SetColour(Colors::Green);
-	buttons[1]->SetColour(Colors::Yellow);
-	buttons[2]->SetColour(Colors::Orange);
-	buttons[3]->SetColour(Colors::SaddleBrown);
-	buttons[4]->SetColour(Colors::Magenta);
-	buttons[5]->SetColour(Colors::Red);
-	buttons[6]->SetColour(Colors::MediumPurple);*/
+	buttonsSwitch[0]->SetColour(Colors::Green);
+	buttonsSwitch[1]->SetColour(Colors::Yellow);
+	buttonsSwitch[2]->SetColour(Colors::Orange);
+	buttonsSwitch[3]->SetColour(Colors::SaddleBrown);
+	buttonsSwitch[4]->SetColour(Colors::Magenta);
+	buttonsSwitch[5]->SetColour(Colors::Red);
+	buttonsSwitch[6]->SetColour(Colors::MediumPurple);
 
 	// Camera buttons
-	/*buttons[20]->SetColour(Colors::DarkRed);
-	buttons[21]->SetColour(Colors::DarkRed);
-	buttons[22]->SetColour(Colors::DarkRed);
-	buttons[23]->SetColour(Colors::DarkRed);
-	buttons[26]->SetColour(Colors::Purple);*/
+	buttonsSwitch[11]->SetColour(Colors::DarkRed);
+	buttonsSwitch[12]->SetColour(Colors::DarkRed);
+	buttonsSwitch[13]->SetColour(Colors::DarkRed);
+	buttonsSwitch[14]->SetColour(Colors::DarkRed);
+	buttonsWindow[0]->SetColour(Colors::Purple);
 
 	//InitButtonEvents();
 
@@ -439,9 +439,11 @@ void UIRemote::Tick(GameData* _GD)
 		}
 	}
 
-	//Change year and money strings for demonstrative purposes
-	text[0]->SetString("Year: " + to_string(_GD->Year += 1));
-	text[1]->SetString(to_string(money -= 1) + "$");
+		//Change year and money strings for demonstrative purposes
+		text[0]->SetString("Year: " + to_string(_GD->Year += 1));
+		text[1]->SetString(to_string(money -= 1) + "$");
+		text[6]->SetString("EMBOs: " + to_string(GameManager::get()->getSoulManager()->m_Earth_Souls.size()));
+	
 }
 
 
