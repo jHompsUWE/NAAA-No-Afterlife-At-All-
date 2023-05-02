@@ -64,7 +64,7 @@ string FileManagerV2::GetFile(const std::string& fileName) const
     {
         std::stringstream buffer;
         buffer << (*fileNameIt).second->rdbuf();
-        cout << buffer.str() << endl;
+        //cout << buffer.str() << endl;
         return buffer.str();
     }
     return "";

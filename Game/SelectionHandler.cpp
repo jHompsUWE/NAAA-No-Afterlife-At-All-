@@ -123,7 +123,7 @@ void SelectionHandler::onEvent(const Event& event)
 		}
 		case EventType::BROWN_ZONING:
 		{
-			std::cout << "brown\n";
+			//std::cout << "brown\n";
 			m_zone_type = ZoneType::Brown;
 			m_tile_type = TileType::Zone;
 			m_selection_type = SelectionType::Zone;
@@ -363,7 +363,7 @@ void SelectionHandler::updateBuilding()
 
 					temp_building_stats->housing_points.push_back(&m_world_manager->getWorld()[m_plane][index]->getGridData());
 
-					std::cout << i << " " << j << std::endl;
+					//std::cout << i << " " << j << std::endl;
 				}
 			}
 

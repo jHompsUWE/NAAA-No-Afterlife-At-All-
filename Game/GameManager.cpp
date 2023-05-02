@@ -126,7 +126,7 @@ void GameManager::LoadGame()
 	if (!saveFile->empty())
 	{
 		auto money = (*saveFile)["economy_manager"]["money"];
-		cout << money << endl;
+		//cout << money << endl;
 	}
 }
 

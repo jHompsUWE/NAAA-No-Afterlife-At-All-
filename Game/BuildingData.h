@@ -147,7 +147,7 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 			//std::cout << "Type\n";
 			if (build["Zone"] == splane)
 			{
-				std::cout << "Zone\n";
+				//std::cout << "Zone\n";
 				if (build["Tier"] == tier)
 				{
 					building.m_buildingname = build["Name"];
@@ -160,7 +160,7 @@ static GenericBuilding building(PlaneType _plane,TYPE _type,int tier = 0)
 					building.m_type = _type;
 						
 
-					std::cout << "Desc " << building.m_buildingdesc << " " << build["Desc"] << "\n";
+					//std::cout << "Desc " << building.m_buildingdesc << " " << build["Desc"] << "\n";
 					int size = build["Size"];
 					CONSOLE(DEBUG, "Building size " + std::to_string(size));
 					switch (size)

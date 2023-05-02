@@ -32,7 +32,7 @@ void SoulManager::AddSoul()
 {
 	
 	int earth_belif = std::rand()% 15 + 0;
-	std::cout << "num: " << earth_belif << std::endl;
+	//std::cout << "num: " << earth_belif << std::endl;
 
 	Soul* soul = new Soul;
 	soul->m_position = Vector2{0,0};			// position the soul on the grid
