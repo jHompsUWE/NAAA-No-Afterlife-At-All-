@@ -1,8 +1,9 @@
 #pragma once
+#include "Listener.h"
 #include "Window.h"
 #include "TextGO2D.h"
 
-class WindowDraggable :public Window
+class WindowDraggable : public Window, public Listener
 {
 public:
 	WindowDraggable();
@@ -14,6 +15,8 @@ public:
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
+
+	void onEvent(const Event& event) override;
 
 	TextGO2D* windowname;
 

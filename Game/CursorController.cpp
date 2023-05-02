@@ -42,13 +42,13 @@ void CursorController::Draw(DrawData2D* _draw_data)
 }
 
 
-void CursorController::onEvent(const Event& event)
+void CursorController::onEvent(const Event& _event)
 {
-    switch (event.type)
+    switch (_event.type)
     {
         case EventType::MOVE_CURSOR:
         {                
-            move_direction = Vector2{event.payload.input_vector2_data.x, event.payload.input_vector2_data.y};
+            move_direction = Vector2{_event.payload.input_vector2_data.x, _event.payload.input_vector2_data.y};
 
             Event event{};
             event.type = EventType::CURSOR_MOVED;
@@ -66,7 +66,7 @@ void CursorController::onEvent(const Event& event)
             event.type = EventType::CURSOR_SELECTED;
             event.payload.cursor_data.x = GetPos().x;
             event.payload.cursor_data.y = GetPos().y;
-            event.payload.cursor_data.selected = true;
+            event.payload.cursor_data.selected = _event.payload.input_button_data.down;
             event.priority = 1;
                 
             GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));

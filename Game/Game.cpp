@@ -68,7 +68,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_mouse->SetWindow(_window);
     m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
     //Hide the mouse pointer
-    ShowCursor(false);
+    ShowCursor(true);
     
     //create GameData struct and populate its pointers
     m_GD = new GameData;

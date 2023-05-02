@@ -112,7 +112,6 @@ switch (_binding_type.controller_input)
     {
     case ControllerInput::A:
         {
-            std::cout << "a pressed" << std::endl;
             return _data.m_GP_buttons.a == GamePad::ButtonStateTracker::PRESSED;
         }
     case ControllerInput::B: 

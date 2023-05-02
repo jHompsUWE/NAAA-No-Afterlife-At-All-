@@ -5,11 +5,11 @@
 #include "GameData.h"
 #include "helper.h"
 #include <iostream>
-#include "Mouse.h"
+#include "GameManager.h"
 
 WindowDraggable::WindowDraggable(ID3D11Device* _GD, string _windowName, bool render, XMVECTORF32 _colour)
 {
-
+	GameManager::get()->getEventManager()->addListener(this);
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
 
 
@@ -62,33 +62,7 @@ void WindowDraggable::SetTextPos()
 /// <param name="_GD"></param>
 void WindowDraggable::Tick(GameData* _GD)
 {
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
-
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-	if (renderable && bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }) && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-	{
-		differenceX = m_pos.x - _GD->m_MS.x;
-		differenceY = m_pos.y - _GD->m_MS.y;
-
-		dragged = true;
-	}
-
-	if (dragged == true && _GD->m_MS.leftButton == 1)
-	{
-		m_pos.x = _GD->m_MS.x + differenceX;
-		m_pos.y = _GD->m_MS.y + differenceY;
-
-		windowname->SetPos(m_pos.x + windowname->differenceX, m_pos.y + windowname->differenceY);
-	}
-
-	if (dragged == true && _GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::RELEASED)
-	{
-		dragged = false;
-	}
+	
 }
 
 
@@ -108,4 +82,44 @@ void WindowDraggable::Draw(DrawData2D* _DD)
 		windowname->Draw(_DD);
 	}
 
+}
+
+void WindowDraggable::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+		case EventType::CURSOR_SELECTED:
+			{
+				bounds.x = m_pos.x - (bounds.width / 2);
+				bounds.y = m_pos.y - (bounds.height / 2);
+
+				int mouseX = event.payload.cursor_data.x;
+				int mouseY = event.payload.cursor_data.y;
+				Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+				if (event.payload.cursor_data.selected && bounds.Contains(mousepos) && renderable)
+				{
+					differenceX = m_pos.x - event.payload.cursor_data.x;
+					differenceY = m_pos.y - event.payload.cursor_data.y;
+					dragged = true;
+				}
+				else if (dragged && !event.payload.cursor_data.selected)
+				{
+					dragged = false;
+				}
+				
+				break;
+			}
+		case EventType::CURSOR_MOVED:
+			{
+				if (dragged)
+				{
+					m_pos.x = event.payload.cursor_data.x + differenceX;
+					m_pos.y = event.payload.cursor_data.y + differenceY;
+					windowname->SetPos(m_pos.x + windowname->differenceX, m_pos.y + windowname->differenceY);
+				}
+				break;
+			}
+		default: ;
+	}
 }

@@ -313,7 +313,7 @@ InputAction InputManager::loadControllerAction(JsonElement& element)
 	
 	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
 	
-	input_action.setDeviceHandler(mouse_handler);
+	input_action.setDeviceHandler(controller_handler);
 	input_action.setControlTypeHandler(control_type_handler);
 
 	if (mod_device_handler != nullptr)

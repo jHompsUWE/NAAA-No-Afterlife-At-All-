@@ -23,7 +23,7 @@ public:
     /// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
     ///	\param event The event to be acted upon.
     ////////////////////////////////////////////////////////////
-    void onEvent(const Event& event) override;
+    void onEvent(const Event& _event) override;
 
 private:
     Vector2 move_direction;
