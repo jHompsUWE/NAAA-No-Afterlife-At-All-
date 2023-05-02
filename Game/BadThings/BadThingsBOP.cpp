@@ -30,6 +30,7 @@ void BadThingsBOP::TriggerBadThing(GameData& game_data)
             {
                 year = game_data.Year + duration;
                 doOnce = false;
+                CONSOLE(INFO, "Bad Thing happening!! Type: Birds of Paradise");
             }
             /// While the current year is not the final year it changes the efficiency of the building
             if (game_data.Year < year)
@@ -38,7 +39,8 @@ void BadThingsBOP::TriggerBadThing(GameData& game_data)
             }
             else
             {
-                plane.at(randomPosition)->getGridData().m_efficiency = plane.at(randomPosition)->getGridData().m_efficiency * 2.0f;    
+                plane.at(randomPosition)->getGridData().m_efficiency = plane.at(randomPosition)->getGridData().m_efficiency * 2.0f;
+                CONSOLE(INFO, "Bad Thing happening ended");
                 finished = true;
             }
         }

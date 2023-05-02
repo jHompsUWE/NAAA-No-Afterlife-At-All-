@@ -210,7 +210,10 @@ void Game::Update(DX::StepTimer const& _timer)
     // We can trigger BadThings
     if (bad_things_bop_ != nullptr)
     {
-        bad_things_bop_.get()->TriggerBadThing(*m_GD);
+        if (m_GD->Year > 2000)
+        {
+            bad_things_bop_.get()->TriggerBadThing(*m_GD);            
+        }        
     }
     
     float elapsedTime = float(_timer.GetElapsedSeconds());
