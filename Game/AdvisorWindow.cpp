@@ -49,11 +49,6 @@ AdvisorWindow::AdvisorWindow(ID3D11Device* _GD) //: w_components(w_components_w)
 	w_components.push_back(close_button_sprite);
 
 	close_button_sprite->SetOffset(bounds.width/2, 0 - bounds.height / 2);
-
-
-	
-	
-	
 }
 
 AdvisorWindow::~AdvisorWindow()

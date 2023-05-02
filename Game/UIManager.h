@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "BuildingWindow.h"
 #include "OptionBar.h"
+#include "AdvisorWindow.h"
 
 static const std::unordered_map<std::string, Direction> string_to_direction =
 {
@@ -91,8 +92,8 @@ public:
 
 	//View windows
 	std::array<WindowDraggable*, 6> viewWindows;
-
 	std::array<BuildingWindow*, 3> buildWindows;
+	AdvisorWindow* advisorWindow;
 
 private:
 	ID3D11Device* m_ID;
