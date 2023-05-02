@@ -6,18 +6,18 @@
 #include "GameManager.h"
 #include "Helper.h"
 
-CursorController::CursorController(string _fileName, ID3D11Device* _GD)
+CursorController::CursorController(string _fileName, ID3D11Device* _device)
 {
     string fullfilename = "../Assets/" + _fileName + ".dds";
-    HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
+    HRESULT hr = CreateDDSTextureFromFile(_device, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
     if (hr != S_OK)
     {
-        CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+        CreateDDSTextureFromFile(_device, L"../Assets/white.dds", nullptr, &m_pTextureRV);
         cout << "Missing Texture : " << _fileName << endl;
     }
     
     SetScale(Vector2{0.06,0.06});
-    SetPos(100, 100);
+    SetPos(400, 300);
 }
 
 void CursorController::Tick(GameData* _game_data)

@@ -1,10 +1,53 @@
 {
-  "menu_state": {
-    "keyboard_inputs": [ "" ],
-    "mouse_inputs": [ "" ]
+  "ALL": {
+    "KEYBOARD": [       
+      {
+      "Action": "QUIT",
+      "Type": "BUTTON_PRESSED",
+      "Control": "BUTTON",
+      "ModType": "NONE",
+      "ModDevice": "",
+      "Modifier": "",
+      "Key": "0x77"
+    }
+    ],
+    
+    "MOUSE": [      
+      {
+      "Action": "SELECT_CURSOR",
+      "Type": "BUTTON_PRESSED_RELEASED",
+      "Control": "BUTTON",
+      "ModType": "NONE",
+      "ModDevice": "",
+      "Modifier": "",
+      "Key": "LEFT_BUTTON"
+    },
+
+      {
+        "Action": "MOVE_CURSOR",
+        "Type": "VECTOR2",
+        "Control": "VECTOR2_2",
+        "ModType": "NONE",
+        "ModDevice": "",
+        "Modifier": "",
+        "Key": "MOVE"
+      } 
+    ],
+    
+    "CONTROLLER" : [      
+      {
+      "Action": "SELECT_CURSOR",
+      "Type": "BUTTON_PRESSED_RELEASED",
+      "Control": "BUTTON",
+      "ModType": "NONE",
+      "ModDevice": "",
+      "Modifier": "",
+      "Key": "A"
+    }
+    ]
   },
 
-  "game_state": {
+  "GAME_PLAY": {
     "KEYBOARD": [
       {
         "Action": "PAUSE",
@@ -44,16 +87,6 @@
         "ModDevice": "",
         "Modifier": "",
         "Key": "0x74"
-      },
-
-      {
-        "Action": "QUIT",
-        "Type": "BUTTON_PRESSED",
-        "Control": "BUTTON",
-        "ModType": "NONE",
-        "ModDevice": "",
-        "Modifier": "",
-        "Key": "0x77"
       },
 
       {
@@ -474,39 +507,11 @@
         "ModDevice": "",
         "Modifier": "",
         "Key": "RIGHT_BUTTON"
-      },
-
-      {
-        "Action": "SELECT_CURSOR",
-        "Type": "BUTTON_PRESSED_RELEASED",
-        "Control": "BUTTON",
-        "ModType": "NONE",
-        "ModDevice": "",
-        "Modifier": "",
-        "Key": "LEFT_BUTTON"
-      },
-
-      {
-        "Action": "MOVE_CURSOR",
-        "Type": "VECTOR2",
-        "Control": "VECTOR2_2",
-        "ModType": "NONE",
-        "ModDevice": "",
-        "Modifier": "",
-        "Key": "MOVE"
       }
     ],
 
     "CONTROLLER": [
-      {
-        "Action": "SELECT_CURSOR",
-        "Type": "BUTTON_PRESSED_RELEASED",
-        "Control": "BUTTON",
-        "ModType": "NONE",
-        "ModDevice": "",
-        "Modifier": "",
-        "Key": "A"
-      }
+
     ]
   }
 }

@@ -10,6 +10,17 @@
 #include "json.hpp"
 #include "GameManager.h"
 #include "InputAction.hpp"
+#include "GameStateBase.h"
+
+static const std::unordered_map<std::string, State> string_to_state =
+{
+	{"GAME_EXIT", State::GAME_EXIT},
+	{"GAME_MENU", State::GAME_MENU},
+	{"GAME_PLAY", State::GAME_PLAY},
+	{"GAME_PAUSED", State::GAME_PAUSED},
+	{"GAME_TUTORIAL", State::GAME_TUTORIAL},
+	{"GAME_OVER", State::GAME_OVER}
+};
 
 static const std::unordered_map<std::string, EventType> string_to_event_type =
 {
@@ -153,7 +164,7 @@ public:
 	/// \brief Interface function for concrete listeners to override. \n Allows listener derived classes to receive events from the EventManager.
 	///	\param event The event to be acted upon.
 	////////////////////////////////////////////////////////////
-    void onEvent(const Event& event) override {};
+    void onEvent(const Event& event) override;
 
 private:
 	////////////////////////////////////////////////////////////
@@ -199,17 +210,12 @@ private:
 	////////////////////////////////////////////////////////////
 	/// \brief Action maps for the game state.
 	////////////////////////////////////////////////////////////
-	std::vector<InputAction> game_action_map;
-	
-    ////////////////////////////////////////////////////////////
-	/// \brief Action maps for the menu state. 
-	////////////////////////////////////////////////////////////
-	std::vector<std::vector<InputAction>> menu_action_maps;
+	std::unordered_map<State, std::vector<InputAction>> action_maps;
 
 	////////////////////////////////////////////////////////////
-	/// \brief Pointer to the current action maps container. 
+	/// \brief Index for the current action maps container. 
 	////////////////////////////////////////////////////////////
-	std::vector<InputAction>* current_action_map;
+	State current_action_map;
 
     ////////////////////////////////////////////////////////////
 	/// \brief Filepath - Path to data folder which holds the keybind jsons. 

@@ -48,7 +48,6 @@ void GamePlay::reset()
 
 State GamePlay::update(GameData& _game_data)
 {
-	GameManager::get()->update(_game_data);
 	return GameStateBase::update(_game_data);
 }
 

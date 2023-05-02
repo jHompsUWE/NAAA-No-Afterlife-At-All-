@@ -129,3 +129,11 @@ void OptionBarWindow::Draw(DrawData2D* _DD)
 
 }
 
+void OptionBarWindow::onEvent(const Event& event)
+{
+	for (int i = 0; i < buttons.size(); i++)
+	{
+		buttons[i]->onEvent(event);
+	}
+}
+

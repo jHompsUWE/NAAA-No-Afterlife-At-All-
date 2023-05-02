@@ -24,7 +24,8 @@ enum class State
 	GAME_PLAY,
 	GAME_PAUSED,
 	GAME_TUTORIAL,
-	GAME_OVER
+	GAME_OVER,
+	ALL
 };
 
 class GameStateBase

@@ -303,6 +303,30 @@ void UIRemote::onEvent(const Event& event)
 					{
 						dragged = false;
 					}
+
+					for (int i = 0; i < buttonsSwitch.size(); i++)
+					{
+						if (buttonsSwitch[i] != nullptr)
+						{
+							buttonsSwitch[i]->onEvent(event);
+						}
+					}
+
+					for (int i = 0; i < buttonsBuilding.size(); i++)
+					{
+						if (buttonsBuilding[i] != nullptr)
+						{
+							buttonsBuilding[i]->onEvent(event);
+						}
+					}
+
+					for (int i = 0; i < buttonsWindow.size(); i++)
+					{
+						if (buttonsWindow[i] != nullptr)
+						{
+							buttonsWindow[i]->onEvent(event);
+						}
+					}
 				}
 			}
 			break;

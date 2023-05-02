@@ -13,6 +13,8 @@
 #include "DrawData2D.h"
 #include "ObjectList.h"
 
+#include <Windows.h>
+
 // GameState headers
 #include "FBXImporter.h"
 #include "GameStateBase.h"
@@ -59,7 +61,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     //seed the random number generator
     srand((UINT)time(NULL));
-
+    
     //set up keyboard and mouse system
     //documentation here: https://github.com/microsoft/DirectXTK/wiki/Mouse-and-keyboard-input
     m_keyboard = std::make_unique<Keyboard>();
@@ -67,8 +69,10 @@ void Game::Initialize(HWND _window, int _width, int _height)
     m_gamepad = std::make_unique<GamePad>();
     m_mouse->SetWindow(_window);
     m_mouse->SetMode(Mouse::MODE_ABSOLUTE);
+    
     //Hide the mouse pointer
     ShowCursor(true);
+    centreCursor(_window);
     
     //create GameData struct and populate its pointers
     m_GD = new GameData;
@@ -106,8 +110,6 @@ void Game::Initialize(HWND _window, int _width, int _height)
     game_states.insert(std::make_pair(State::GAME_TUTORIAL, std::make_unique<GameTutorial>  (State::GAME_TUTORIAL, m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     game_states.insert(std::make_pair(State::GAME_PAUSED,   std::make_unique<GamePaused>    (State::GAME_PAUSED,   m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
     game_states.insert(std::make_pair(State::GAME_OVER,     std::make_unique<GameOver>      (State::GAME_OVER,     m_GD, m_DD, m_DD2D, m_fxFactory, m_d3dDevice)));
-    
-    
 
     //example basic 2D stuff
     //ImageGO2D* logo = new ImageGO2D("logo_small", m_d3dDevice.Get());
@@ -134,6 +136,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     
     input_manager = std::make_shared<InputManager>();
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
+    event_manager->addListener(&*input_manager);
 
     cursor = std::make_shared<CursorController>("cursor", m_d3dDevice.Get());
     GameManager::get()->getEventManager()->addListener(&*cursor);
@@ -173,6 +176,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->awake(*m_GD);
 
     GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->remote);
+    GameManager::get()->getEventManager()->addListener(GameManager::get()->getUIManager()->optBar);
     
     pair<string, string> test;
     test = DataGenerator::GenerateData();
@@ -181,6 +185,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
 // Executes the basic game loop.
 void Game::Tick()
 {
+    if (m_timer.GetFrameCount() == 0)
+    {
+          m_GD->m_MS = m_mouse->GetState();
+           m_GD->m_mouseButtons.Update(m_GD->m_MS);
+           m_GD->m_MS_last = m_GD->m_MS;
+    }
+    
     m_timer.Tick([&]()
         {
             Update(m_timer);
@@ -197,7 +208,8 @@ void Game::Update(DX::StepTimer const& _timer)
     float elapsedTime = float(_timer.GetElapsedSeconds());
     m_GD->m_dt = elapsedTime;
 
-    cursor->Tick(m_GD);    
+    cursor->Tick(m_GD);
+    GameManager::get()->update(*m_GD);
     
     m_selection_handler->update(game_states[State::GAME_PLAY]->getCam());
     if (!GameManager::get()->isGamePaused())
@@ -570,6 +582,19 @@ void Game::OnDeviceLost()
     CreateDevice();
 
     CreateResources();
+}
+
+void Game::centreCursor(HWND _hwnd)
+{
+    RECT window_rect;
+    GetWindowRect(_hwnd, &window_rect);
+
+    int centre_x = (window_rect.left + window_rect.right) / 2;
+    int centre_y = (window_rect.top + window_rect.bottom) / 2;
+
+    POINT centre_point = {centre_x, centre_y};
+
+    SetCursorPos(centre_point.x, centre_point.y);
 }
 
 void Game::ReadInput()

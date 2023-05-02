@@ -37,36 +37,61 @@ OptionBarButton::~OptionBarButton()
 
 void OptionBarButton::Tick(GameData* _GD)
 {
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
-
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-	if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
-	{
-		if (!hover)
-		{
-			SetHover(true);
-		}
-
-		if (_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-		{
-			pressed = true;
-		}
-	}
 	
-	if (hover && !(bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y })))
-	{
-		SetHover(false);
-	}
 }
 
 void OptionBarButton::Draw(DrawData2D* _DD)
 {
 	_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
 	buttonText->Draw(_DD);
+}
+
+void OptionBarButton::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+	case EventType::CURSOR_MOVED:
+		{
+			bounds.x = m_pos.x - (bounds.width / 2);
+			bounds.y = m_pos.y - (bounds.height / 2);
+
+			int mouseX = event.payload.cursor_data.x;
+			int mouseY = event.payload.cursor_data.y;
+			Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+			if (bounds.Contains(mousepos))
+			{
+				if (!hover)
+				{
+					SetHover(true);
+				}
+			}
+			if (hover && !(bounds.Contains(mousepos)))
+			{
+				SetHover(false);
+			}
+			break;
+		}
+	case EventType::CURSOR_SELECTED:
+		{
+			bounds.x = m_pos.x - (bounds.width / 2);
+			bounds.y = m_pos.y - (bounds.height / 2);
+
+			int mouseX = event.payload.cursor_data.x;
+			int mouseY = event.payload.cursor_data.y;
+			Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+			if (bounds.Contains(mousepos))
+			{
+				if (event.payload.cursor_data.selected)
+				{
+					pressed = true;
+				}
+			}
+			break;
+		}
+	default: ;
+	}
 }
 
 

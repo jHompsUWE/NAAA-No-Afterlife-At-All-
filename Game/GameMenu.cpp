@@ -3,6 +3,7 @@
 #include "GameData.h"
 #include "GameObject2D.h";
 #include "Button.h"
+#include "GameManager.h"
 //#include <iostream>
 #include "Debug.h"
 
@@ -54,6 +55,8 @@ bool GameMenu::init(HWND _window, int _width, int _height,GameData* gamedata)
 	ButtonsText[3]->SetPos(320, 510);
 
 
+	GameManager::get()->getEventManager()->addListener(newGame);
+	
 	return GameStateBase::init(_window, _width, _height,gamedata);
 }
 
@@ -77,7 +80,6 @@ State GameMenu::update(GameData& _game_data)
 			NFButtons[i]->pressed = false;
 		}
 	}
-
 	return GameStateBase::update(_game_data);
 }
 

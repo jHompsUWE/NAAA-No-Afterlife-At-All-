@@ -100,7 +100,7 @@ std::pair<float, float> MouseDeviceHandler::getVector2(const BindingType& _bindi
     {
         case MouseInput::MOVE: 
         {
-            return std::pair<float, float >{_data.m_MS.x - _data.m_MS_last.x, _data.m_MS.y - _data.m_MS_last.y};
+            return std::pair<float, float>{_data.m_MS.x - _data.m_MS_last.x, _data.m_MS.y - _data.m_MS_last.y};
         }
         default: std::pair<float, float>{0,0};
     }

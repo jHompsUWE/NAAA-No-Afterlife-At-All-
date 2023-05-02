@@ -7,6 +7,8 @@
 #include "Mouse.h"
 #include <iostream>
 
+#include "GameManager.h"
+
 Button::Button()
 {
 
@@ -14,9 +16,7 @@ Button::Button()
 
 Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
 {
-
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
-
 
 	//this nasty thing is required to find out the size of this image!
 	ID3D11Resource* pResource;
@@ -26,14 +26,11 @@ Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
 
 	m_origin = 0.5f * Vector2((float)Desc.Width, (float)Desc.Height);//around which rotation and scaing is done
 
-
-
 	SetScale(6.f);
 	m_colour = Colors::Lavender;
-
-
+	
 	bounds = { (long)m_origin.x,(long)m_origin.y,(long)(Desc.Width * m_scale.x), (long)(Desc.Height * m_scale.y) };
-
+	
 	parentWindow = _parent;
 }
 
@@ -109,21 +106,7 @@ void Button::SetType(EventType _event_type)
 /// <param name="_GD"></param>
 void Button::Tick(GameData* _GD)
 {
-	bounds.x = m_pos.x - (bounds.width / 2);
-	bounds.y = m_pos.y - (bounds.height / 2);
 
-
-	int mouseX = _GD->m_MS.x;
-	int mouseY = _GD->m_MS.y;
-	Vector2 mousepos{ (float)mouseX,(float)mouseY };
-
-	if (_GD->m_mouseButtons.leftButton == Mouse::ButtonStateTracker::PRESSED)
-	{
-		if (bounds.Contains(Vector2{ (float)_GD->m_MS.x,(float)_GD->m_MS.y }))
-		{
-			pressed = true;
-		}
-	}
 }
 
 void Button::Draw(DrawData2D* _DD)
@@ -132,4 +115,29 @@ void Button::Draw(DrawData2D* _DD)
 	//you can also add an extra value at the end to define layer depth
 	//right click and "Go to Defintion/Declaration" to see other version of this in DXTK
 	_DD->m_Sprites->Draw(m_pTextureRV, m_pos, nullptr, m_colour, m_rotation, m_origin, m_scale, SpriteEffects_None);
+}
+
+void Button::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+		case EventType::CURSOR_SELECTED:
+		{
+			bounds.x = m_pos.x - (bounds.width / 2);
+			bounds.y = m_pos.y - (bounds.height / 2);
+
+
+			int mouseX = event.payload.cursor_data.x;
+			int mouseY = event.payload.cursor_data.y;
+			Vector2 mousepos{ (float)mouseX,(float)mouseY };
+
+			if (event.payload.cursor_data.selected)
+			{
+				if (bounds.Contains(mousepos))
+				{
+					pressed = true;
+				}
+			}
+		}
+	}
 }

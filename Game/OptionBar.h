@@ -7,7 +7,7 @@
 #include <vector>
 #include <iostream>
 
-class OptionBar : public GameObject2D
+class OptionBar : public GameObject2D, public Listener
 {
 public:
 	OptionBar(ID3D11Device* _GD);
@@ -15,6 +15,8 @@ public:
 
 	void Tick(GameData* _GD);
 	void Draw(DrawData2D* _DD);
+
+	void onEvent(const Event& event) override;
 
 private:
 	std::array<OptionBarButton*, 4> optionButtons;

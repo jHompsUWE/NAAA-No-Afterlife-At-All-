@@ -93,6 +93,8 @@ private:
 
     void OnDeviceLost();
 
+    void centreCursor(HWND _hwnd);
+
     // Device resources.
     HWND                                            m_window;
     int                                             m_outputWidth;

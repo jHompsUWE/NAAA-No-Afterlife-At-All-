@@ -14,14 +14,30 @@ void InputManager::awake(GameData& _game_data)
 	
 	loadInInputActionsMaps(action_maps_filepath + default_bindings_file_name);
 
-	current_action_map = &game_action_map; // in future, will rely on the finite state machine to determine current action map.
+	current_action_map = _game_data.current_state;
 }
 
 void InputManager::update(GameData& _game_data)
 {
-	for (auto action : (*current_action_map))
+	for (auto& action : action_maps[State::ALL])
 	{
 		action.check(_game_data);
+	}
+	
+	for (auto& action : action_maps[current_action_map])
+	{
+		action.check(_game_data);
+	}
+}
+
+void InputManager::onEvent(const Event& event)
+{
+	switch (event.type)
+	{
+		case EventType::STATE_TRANSITION:
+		{
+			current_action_map = (State)event.payload.state_transition.current;
+		}
 	}
 }
 
@@ -39,19 +55,34 @@ void InputManager::loadInInputActionsMaps(std::string _filepath)
 
 	if (!input_json.empty())
 	{
-		for (JsonElement json_action : input_json["game_state"]["KEYBOARD"])
+		for (JsonElement json_action : input_json["GAME_PLAY"]["KEYBOARD"])
 		{
-			game_action_map.emplace_back(loadKeyboardAction(json_action));
+			action_maps[State::GAME_PLAY].emplace_back(loadKeyboardAction(json_action));
 		}
 		
-		for (auto json_action : input_json["game_state"]["MOUSE"])
+		for (auto& json_action : input_json["GAME_PLAY"]["MOUSE"])
 		{
-			game_action_map.emplace_back(loadMouseAction(json_action));
+			action_maps[State::GAME_PLAY].emplace_back(loadMouseAction(json_action));
 		}
 
-		for (auto json_action : input_json["game_state"]["CONTROLLER"])
+		for (auto& json_action : input_json["GAME_PLAY"]["CONTROLLER"])
 		{
-			game_action_map.emplace_back(loadControllerAction(json_action));
+			action_maps[State::GAME_PLAY].emplace_back(loadControllerAction(json_action));
+		}
+
+		for (JsonElement json_action : input_json["ALL"]["KEYBOARD"])
+		{
+			action_maps[State::ALL].emplace_back(loadKeyboardAction(json_action));
+		}
+		
+		for (auto& json_action : input_json["ALL"]["MOUSE"])
+		{
+			action_maps[State::ALL].emplace_back(loadMouseAction(json_action));
+		}
+
+		for (auto& json_action : input_json["ALL"]["CONTROLLER"])
+		{
+			action_maps[State::ALL].emplace_back(loadControllerAction(json_action));
 		}
 	}
 	else

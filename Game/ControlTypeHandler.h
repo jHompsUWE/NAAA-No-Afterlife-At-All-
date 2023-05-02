@@ -47,7 +47,6 @@ public:
 static void createButtonEvent( ActionBinding& _action_binding, bool _mod_active, bool _down, LastButtonState _state)
 {
     _action_binding.last_state.button_state = _state;
-    
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;
@@ -59,7 +58,7 @@ static void createButtonEvent( ActionBinding& _action_binding, bool _mod_active,
 static void createAxisEvent(ActionBinding& _action_binding, bool _mod_active, float _value)
 {
     _action_binding.last_state.axis_state.value = _value;
-    
+
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;
@@ -72,7 +71,7 @@ static void createVector2Event(ActionBinding& _action_binding, bool _mod_active,
 {
     _action_binding.last_state.vector2_state.x = _x;
     _action_binding.last_state.vector2_state.y = _y;
-    
+
     Event event{};
     event.priority = 1;
     event.type = _action_binding.event_type;

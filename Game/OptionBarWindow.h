@@ -12,6 +12,8 @@ public:
 	virtual void Tick(GameData* _GD) override;
 	virtual void Draw(DrawData2D* _DD) override;
 
+	void onEvent(const Event& event);
+	
 	void SetButtonText(int button, string text);
 	void SetButtonBounds();
 

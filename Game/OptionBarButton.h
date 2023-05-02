@@ -11,6 +11,7 @@ public:
 
 	virtual void Tick(GameData* _GD) override;
 	virtual void Draw(DrawData2D* _DD);
+	void onEvent(const Event& event) override;
 
 	void Toggle(bool toggleOn);
 

@@ -2,6 +2,7 @@
 #include "GameObject2D.h"
 #include "Window.h"
 #include "Event.h"
+#include "Listener.h"
 
 enum class Direction
 {
@@ -12,7 +13,7 @@ enum class Direction
 	DOWN
 };
 
-class Button :public GameObject2D
+class Button :public GameObject2D, public Listener
 {
 public:
 	Button();
@@ -22,6 +23,8 @@ public:
 
 	virtual void Tick(GameData* _GD);
 	virtual void Draw(DrawData2D* _DD);
+
+	virtual void onEvent(const Event& event) override;
 
 	void SetBounds();
 	void SetName(string _name);
