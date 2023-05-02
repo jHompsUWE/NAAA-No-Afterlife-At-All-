@@ -40,10 +40,10 @@ void ReincarnationManager::awake(GameData& _game_data)
 
 EMBO ReincarnationManager::SoulToEMBO(Soul& _soul)
 {
-     if(_soul.m_reincarnate && !_soul.m_both
-         && _soul.m_currentcycle == _soul.m_total_cycles
-         && _soul.m_yearsleft == 0)
-    //if(_soul.m_reincarnate && !_soul.m_both)
+     // if(_soul.m_reincarnate && !_soul.m_both
+     //     && _soul.m_currentcycle == _soul.m_total_cycles
+     //     && _soul.m_yearsleft == 0)
+    if(_soul.m_reincarnate && !_soul.m_both)
     {
         // Casting to a EMBO        
         auto convertedSoul = static_cast<EMBO&>(_soul);
@@ -71,7 +71,8 @@ bool ReincarnationManager::EMBOToSoul(EMBO& _embo)
 {
     // The converted SOUL should be removed from the souls list
     // then add to the EMBO to the list on earth
-    if (_embo.m_yearsleft == 0 && _embo.m_reincarnate)
+    if (_embo.m_reincarnate)
+    //if (_embo.m_yearsleft == 0 && _embo.m_reincarnate)
     {
         CONSOLE(Serverity::DEBUG,  "one EMBO became a SOUL");
         Soul* convertedEmbo = new Soul; // Allocate memory for Soul object

@@ -49,6 +49,9 @@ struct EMBO
 	int m_totalyears;
 	bool m_reincarnate = true;
 	int m_fate;
+	Vector2 m_position;
+	ZoneType m_zonetype;
+	int m_total_cycles = 1;
 };
 
 struct Soul : EMBO
@@ -83,6 +86,7 @@ public:
 
 	explicit SoulManager(shared_ptr<WorldManager> world_manager);
 	void AddSoul();			// add a soul at this location
+	void AddEMBO();			// add a soul at this location
 	void onEvent(const Event& event) override;
 	void zone_checking(Soul* soul, PlaneType plane);
 	void wandering(Soul* _soul,PlaneType _plane);

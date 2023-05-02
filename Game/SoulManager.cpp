@@ -16,6 +16,10 @@ SoulManager::SoulManager(shared_ptr<WorldManager> _world_manager) :world_manager
 	{
 		AddSoul();
 	}
+	for (size_t i = 0; i < 1000; i++)
+	{
+		AddEMBO();
+	}
 }
 
 #include "GameManager.h"
@@ -377,4 +381,20 @@ void SoulManager::Wander()
 	{
 		wandering(m_hell_wandering_soul,PlaneType::Hell);
 	}
+}
+
+void SoulManager::AddEMBO()
+{
+	EMBO* embo = new EMBO;
+	embo->earth_belief = std::rand()% 15 + 0;
+	embo->m_totalyears = rand()%120 + 1;
+
+	// Define if the soul can reincarnate
+	if (embo->earth_belief <= 4 or (embo->earth_belief >= 9 and embo->earth_belief <= 12))
+		embo->m_reincarnate = false;
+
+
+	int random = std::rand() % RAND_MAX;
+	(random % 2 == 0 ? m_Earth_Souls : m_Earth_Souls).emplace_back(embo);
+	//std::cout << "soul made";
 }
