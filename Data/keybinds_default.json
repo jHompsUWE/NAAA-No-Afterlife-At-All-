@@ -207,7 +207,7 @@
       },
 
       {
-        "Action": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG",
+        "Action": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONING",
         "Type": "BUTTON_PRESSED",
         "Control": "BUTTON",
         "ModType": "NONE",

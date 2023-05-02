@@ -3,12 +3,21 @@
 #include "Window.h"
 #include "Event.h"
 
+enum class Direction
+{
+	NONE,
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+};
+
 class Button :public GameObject2D
 {
 public:
 	Button();
 	Button(ID3D11Device* _GD, GameObject2D* _parent);
-	Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _type);
+	Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _type, Direction _diretion);
 	virtual ~Button();
 
 	virtual void Tick(GameData* _GD);
@@ -23,6 +32,7 @@ public:
 	
 	string buttonName = "Button";
 	EventType event_type;
+	Direction direction;
 	
 	bool pressed = false;
 

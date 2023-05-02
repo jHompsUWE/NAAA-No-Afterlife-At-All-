@@ -37,7 +37,7 @@ Button::Button(ID3D11Device* _GD, GameObject2D* _parent) :m_pTextureRV(nullptr)
 	parentWindow = _parent;
 }
 
-Button::Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _event) :m_pTextureRV(nullptr)
+Button::Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _scale, Vector2 _position, EventType _event, Direction _direction) :m_pTextureRV(nullptr)
 {
 
 	CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
@@ -54,6 +54,7 @@ Button::Button(ID3D11Device* _GD, GameObject2D* _parent, string _name, Vector2 _
 	SetScale(_scale);
 	SetPos(_position);
 	SetType(_event);
+	direction = _direction;
 	m_colour = Colors::Lavender;
 
 
@@ -101,7 +102,6 @@ void Button::SetType(EventType _event_type)
 {
 	event_type = _event_type;
 }
-
 
 /// <summary>
 /// Checks to see if button is pressed

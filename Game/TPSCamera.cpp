@@ -60,6 +60,7 @@ void TPSCamera::onEvent(const Event& event)
 			}
 			break;
 		}
+		/*
 		case EventType::SCROLL_UP:
 		{
 			camera_target += movementYAxis *  (10 + cameraZoom) * game_data->m_dt;
@@ -78,6 +79,13 @@ void TPSCamera::onEvent(const Event& event)
 		case EventType::SCROLL_RIGHT:
 		{
 			camera_target -= movementZAxis * (10 + cameraZoom) * game_data->m_dt;
+			break;
+		}
+		*/
+		case EventType::SCROLL_VIEW:
+		{
+			camera_target += movementZAxis * (10 + cameraZoom) * game_data->m_dt * event.payload.input_vector2_data.x;
+			camera_target += movementYAxis * (10 + cameraZoom) * game_data->m_dt * event.payload.input_vector2_data.y;
 			break;
 		}
 		default:;

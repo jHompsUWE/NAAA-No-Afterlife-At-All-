@@ -33,7 +33,7 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
 	{"ACTIVATES_LIMBO_ZONING", EventType::ACTIVATES_LIMBO_ZONING},
 	{"MICROVIEW", EventType::MICROVIEW},
 	{"TRAINING_CENTRE", EventType::TRAINING_CENTRE},
-	{"ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG", EventType::ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG},
+	{"ACTIVATES_OMNIBULGE_LOVEDOME_ZONING", EventType::ACTIVATES_OMNIBULGE_LOVEDOME_ZONING},
 	{"TOGGLE_PLANET_VIEW", EventType::TOGGLE_PLANET_VIEW},
 	{"ROADS", EventType::ROADS},
 	{"SPECIAL_BUILDINGS", EventType::SPECIAL_BUILDINGS},
@@ -60,7 +60,11 @@ static const std::unordered_map<std::string, EventType> string_to_event_type =
 	{"CENTER_AND_ZOOM_OUT", EventType::CENTER_AND_ZOOM_OUT},
 	{"CENTER_VIEW", EventType::CENTER_VIEW},
 	{"SELECT_CURSOR", EventType::SELECT_CURSOR},
-	{"MOVE_CURSOR", EventType::MOVE_CURSOR}
+	{"MOVE_CURSOR", EventType::MOVE_CURSOR},
+	{"FLATTEN_HELL", EventType::FLATTEN_HELL},
+	{"FLATTEN_HEAVEN", EventType::FLATTEN_HEAVEN},
+	{"FLATTEN_KARMA", EventType::FLATTEN_KARMA},
+	{"FLATTEN_GRID", EventType::FLATTEN_GRID}
 };
 
 static const std::unordered_map<std::string, InteractionType> string_to_interaction_type =

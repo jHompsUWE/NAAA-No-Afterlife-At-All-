@@ -39,8 +39,16 @@ UIRemote::UIRemote(ID3D11Device* _GD) :m_pTextureRV(nullptr)
 		Vector2 scale = Vector2((json_buttons["Scale"]["X"]), (json_buttons["Scale"]["Y"]));
 		Vector2 pos = Vector2((json_buttons["Position"]["X"]), (json_buttons["Position"]["Y"] + 40));
 		EventType eventT = string_to_event.at(string(json_buttons["Event"]));
+
+		Direction direction = Direction::NONE;
+		{
+			if (eventT == EventType::SCROLL_VIEW)
+			{
+				string_to_direction.at(string(json_buttons["Direction"]));
+			}
+		}
 		
-		buttonsSwitch[i] = new Button(_GD, this, name, scale, pos, eventT);
+		buttonsSwitch[i] = new Button(_GD, this, name, scale, pos, eventT, direction);
 
 		i += 1;
 	}
@@ -358,6 +366,33 @@ void UIRemote::Tick(GameData* _GD)
 					//Fire event of button event type, then set button's pressed value to false
 					Event event{};
 					event.type = buttonsWindow[i]->event_type;
+					if (buttonsWindow[i]->event_type == EventType::SCROLL_VIEW)
+					{
+						switch (buttonsWindow[i]->direction)
+						{
+							case Direction::LEFT:
+								{
+									event.payload.input_vector2_data.x = -1;
+									break;
+								}
+							case Direction::RIGHT: 
+								{
+									event.payload.input_vector2_data.x = 1;
+									break;
+								}
+							case Direction::UP: 
+								{
+									event.payload.input_vector2_data.y = -1;
+									break;
+								}
+							case Direction::DOWN: 
+								{
+									event.payload.input_vector2_data.y = 1;
+									break;
+								}
+							default: ;
+						}
+					}
 
 					GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 

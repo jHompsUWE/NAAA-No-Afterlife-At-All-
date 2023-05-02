@@ -142,7 +142,8 @@
         "X": 74.5,
         "Y": 223.6
       },
-      "Event": "ROTATE_REALMS_UP"
+      "Event": "SCROLL_VIEW",
+      "Direction" : "up"
     },
     {
       "Name": "View Left",
@@ -154,7 +155,8 @@
         "X": 52.5,
         "Y": 245.2
       },
-      "Event": "ROTATE_REALMS_LEFT"
+      "Event": "SCROLL_VIEW",
+      "Direction" : "left"
     },
     {
       "Name": "View Down",
@@ -166,7 +168,9 @@
         "X": 74.5,
         "Y": 266.3
       },
-      "Event": "ROTATE_REALMS_DOWN"
+      "Event": "SCROLL_VIEW",
+      "Direction" : "down"
+
     },
     {
       "Name": "View Right",
@@ -178,7 +182,8 @@
         "X": 96.5,
         "Y": 245.2
       },
-      "Event": "ROTATE_REALMS_RIGHT"
+      "Event": "SCROLL_VIEW",
+      "Direction" : "right"
     },
     {
       "Name": "Zoom In",
@@ -276,7 +281,7 @@
         "X": 113.5,
         "Y": 148
       },
-      "Event": "ACTIVATES_KARMA_STATION_ZONING"
+      "Event": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONING"
     },
     {
       "Name": "Topias",
@@ -348,7 +353,7 @@
         "X": 85.5,
         "Y": 202
       },
-      "Event": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONNIG"
+      "Event": "ACTIVATES_OMNIBULGE_LOVEDOME_ZONING"
     },
     {
       "Name": "Limbo Buildings",
