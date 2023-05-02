@@ -30,7 +30,8 @@
         "ModType": "NONE",
         "ModDevice": "",
         "Modifier": "",
-        "Key": "MOVE"
+        "Key": "MOVE",
+        "MoveMode" : "SET_POSITION"
       } 
     ],
     

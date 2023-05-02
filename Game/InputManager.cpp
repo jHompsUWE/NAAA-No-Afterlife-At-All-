@@ -164,7 +164,7 @@ InputAction InputManager::loadKeyboardAction(JsonElement& element)
 		}
 	}
 
-	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control, CursorMode::NONE);
 	
 	input_action.setDeviceHandler(keyboard_handler);
 	input_action.setControlTypeHandler(control_type_handler);
@@ -182,6 +182,7 @@ InputAction InputManager::loadMouseAction(JsonElement& element)
 	EventType event_type = string_to_event_type.at(std::string(element["Action"]));
 	InteractionType interaction_type = string_to_interaction_type.at(std::string(element["Type"]));
 	ControlType control_type = string_to_control_type.at(std::string(element["Control"]));
+	CursorMode cursor_mode = CursorMode::NONE;
 	
 	std::shared_ptr<ControlTypeHandler> control_type_handler = nullptr;
 
@@ -205,6 +206,12 @@ InputAction InputManager::loadMouseAction(JsonElement& element)
 			{
 				control.vector2.x.mouse_input = string_to_mouse_input.at(std::string(element["Key"]));
 				control_type_handler = vector2_control_handler;
+
+				if (event_type == EventType::MOVE_CURSOR)
+				{
+					cursor_mode = string_to_cursor_mode.at(std::string(element["MoveMode"]));
+				}
+				
 				break;
 			}
 		case ControlType::VECTOR2_4:
@@ -253,7 +260,7 @@ InputAction InputManager::loadMouseAction(JsonElement& element)
 		}
 	}
 	
-	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control, cursor_mode);
 	
 	input_action.setDeviceHandler(mouse_handler);
 	input_action.setControlTypeHandler(control_type_handler);
@@ -342,7 +349,7 @@ InputAction InputManager::loadControllerAction(JsonElement& element)
 		}
 	}
 	
-	InputAction input_action(event_type, interaction_type, mod_type, modifier, control);
+	InputAction input_action(event_type, interaction_type, mod_type, modifier, control, CursorMode::MOVE_DELTA);
 	
 	input_action.setDeviceHandler(controller_handler);
 	input_action.setControlTypeHandler(control_type_handler);

@@ -106,6 +106,41 @@ std::pair<float, float> MouseDeviceHandler::getVector2(const BindingType& _bindi
     }
 }
 
+CursorVectorData MouseDeviceHandler::getCursorVectorData(const CursorMode _mode, const BindingType& _binding_type,
+    const GameData& _data)
+{
+    switch (_binding_type.mouse_input)
+    {
+        case MouseInput::MOVE: 
+        {
+            switch (_mode)
+            {
+                case CursorMode::NONE:
+                    {
+                        return {0,0, CursorMode::NONE};
+                    }
+                case CursorMode::SET_POSITION:
+                    {
+                        CursorVectorData cursor_data;
+                        cursor_data.x = _data.m_MS.x;
+                        cursor_data.y = _data.m_MS.y;
+                        cursor_data.mode = _mode;
+                        return  cursor_data;
+                    }
+                case CursorMode::MOVE_DELTA:
+                    {
+                        return {(float)_data.m_MS.x - (float)_data.m_MS_last.x, (float)_data.m_MS.y - (float)_data.m_MS_last.y, _mode};
+                    }
+                default: ;
+            }
+
+        }
+        default: ;
+    }
+    
+    return {0,0,CursorMode::NONE};
+}
+
 bool ControllerDeviceHandler::checkPressed(const BindingType& _binding_type, const GameData& _data)
 {
 switch (_binding_type.controller_input)

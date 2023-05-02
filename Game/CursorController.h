@@ -8,7 +8,7 @@
 class CursorController : public GameObject2D, public Listener
 {
 public:
-    CursorController(string _fileName, ID3D11Device* _device);
+    CursorController(string _fileName, ID3D11Device* _device, GameData* _game_data);
     ~CursorController() = default;
 
     ////////////////////////////////////////////////////////////
@@ -26,8 +26,10 @@ public:
     void onEvent(const Event& _event) override;
 
 private:
+    GameData* game_data;
+    CursorMode cursor_mode = CursorMode::SET_POSITION;
     Vector2 move_direction;
-    float speed = 120;
+    float speed = 140;
 
     ID3D11ShaderResourceView* m_pTextureRV;
 };

@@ -13,6 +13,13 @@
 
 using namespace DirectX;
 
+enum class CursorMode
+{
+	NONE,
+	SET_POSITION,
+	MOVE_DELTA
+};
+
 struct GameData
 {
 	float m_dt;  //time step since last frame
@@ -27,7 +34,6 @@ struct GameData
 	Mouse::State m_MS_last;
 	GamePad::ButtonStateTracker m_GP_buttons;
 	GamePad::State m_GP_state;
-	bool mouse_over_UI = false;
 	
 	int Year = 0;
 	bool game_paused = false;

@@ -142,12 +142,29 @@ void Vector2ControlTypeHandler::check(DeviceHandler& _device_handler, DeviceHand
     {
         case InteractionType::VECTOR2:
             {
-                std::pair<float, float> vect = _device_handler.getVector2(_action_binding.control.vector2.x, _data);
-
-                if (vect.first != _action_binding.last_state.vector2_state.x || vect.second != _action_binding.last_state.vector2_state.y)
+                switch (_action_binding.cursor_mode)
                 {
-                    createVector2Event(_action_binding, mod_active, vect.first, vect.second);
+                    case CursorMode::NONE:
+                        {
+                            std::pair<float, float> vect = _device_handler.getVector2(_action_binding.control.vector2.x, _data);
+
+                            if (vect.first != _action_binding.last_state.vector2_state.x || vect.second != _action_binding.last_state.vector2_state.y)
+                            {
+                                createVector2Event(_action_binding, mod_active, vect.first, vect.second);
+                            }
+                            break;
+                        }
+                    case CursorMode::SET_POSITION:
+                    case CursorMode::MOVE_DELTA: 
+                        {
+                            CursorVectorData vect = _device_handler.getCursorVectorData(_action_binding.cursor_mode, _action_binding.control.vector2.x, _data);
+                            createCursorVectorEvent(_action_binding, mod_active, vect.x, vect.y, vect.mode);
+                            break;
+                        }
+                    default: ;
                 }
+                
+
                 break;
             }
         

@@ -6,7 +6,7 @@
 #include "GameManager.h"
 #include "Helper.h"
 
-CursorController::CursorController(string _fileName, ID3D11Device* _device)
+CursorController::CursorController(string _fileName, ID3D11Device* _device, GameData* _game_data)
 {
     string fullfilename = "../Assets/" + _fileName + ".dds";
     HRESULT hr = CreateDDSTextureFromFile(_device, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
@@ -18,21 +18,26 @@ CursorController::CursorController(string _fileName, ID3D11Device* _device)
     
     SetScale(Vector2{0.06,0.06});
     SetPos(400, 300);
+
+    game_data = _game_data;
 }
 
 void CursorController::Tick(GameData* _game_data)
 {
-    if (abs(move_direction.x) + abs(move_direction.y) != 0.0f)
+    if (cursor_mode == CursorMode::MOVE_DELTA)
     {
-        SetPos(GetPos().x + (move_direction.x * speed * _game_data->m_dt), GetPos().y + (move_direction.y * speed * _game_data->m_dt));
+        if (abs(move_direction.x) + abs(move_direction.y) != 0.0f)
+        {
+            SetPos(GetPos().x + (move_direction.x * speed * _game_data->m_dt), GetPos().y + (move_direction.y * speed * _game_data->m_dt));
 
-        Event event{};
-        event.type = EventType::CURSOR_MOVED;
-        event.payload.cursor_data.x = GetPos().x;
-        event.payload.cursor_data.y = GetPos().y;
-        event.priority = 1;
+            Event event{};
+            event.type = EventType::CURSOR_MOVED;
+            event.payload.cursor_data.x = GetPos().x;
+            event.payload.cursor_data.y = GetPos().y;
+            event.priority = 1;
         
-        GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+            GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+        }
     }
 }
 
@@ -47,15 +52,25 @@ void CursorController::onEvent(const Event& _event)
     switch (_event.type)
     {
         case EventType::MOVE_CURSOR:
-        {                
-            move_direction = Vector2{_event.payload.input_vector2_data.x, _event.payload.input_vector2_data.y};
-
+        {
             Event event{};
             event.type = EventType::CURSOR_MOVED;
             event.payload.cursor_data.x = GetPos().x;
             event.payload.cursor_data.y = GetPos().y;
             event.payload.cursor_data.selected = false;
             event.priority = 1;
+                
+            if ((CursorMode)_event.payload.cursor_data.mode == CursorMode::MOVE_DELTA)
+            {
+                move_direction = Vector2{_event.payload.input_vector2_data.x, _event.payload.input_vector2_data.y};
+                cursor_mode = CursorMode::MOVE_DELTA;
+            }
+            else if ((CursorMode)_event.payload.cursor_data.mode == CursorMode::SET_POSITION)
+            {
+                SetPos(_event.payload.cursor_data.x, _event.payload.cursor_data.y);
+                move_direction = Vector2(0,0);
+                cursor_mode = CursorMode::SET_POSITION;
+            }
             
             GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
             break;

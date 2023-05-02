@@ -80,3 +80,18 @@ static void createVector2Event(ActionBinding& _action_binding, bool _mod_active,
     event.payload.input_vector2_data.mod_active = _mod_active;
     GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
 }
+
+static void createCursorVectorEvent(ActionBinding& _action_binding, bool _mod_active,  float _x, float _y, CursorMode _mode)
+{
+    _action_binding.last_state.vector2_state.x = _x;
+    _action_binding.last_state.vector2_state.y = _y;
+
+    Event event{};
+    event.priority = 1;
+    event.type = _action_binding.event_type;
+    event.payload.input_vector2_data.x = _x;
+    event.payload.input_vector2_data.y = _y;
+    event.payload.input_vector2_data.mod_active = _mod_active;
+    event.payload.input_vector2_data.cursor_mode = (int)_mode;
+    GameManager::get()->getEventManager()->triggerEvent(std::make_shared<Event>(event));
+}
