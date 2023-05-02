@@ -10,7 +10,7 @@
         "X": 50,
         "Y": 5
       },
-      "Toggle": "GREEN_ZONING"
+      "Toggle": "null"
     },
     {
       "Text": "Global",
@@ -22,7 +22,7 @@
         "X": 150,
         "Y": 5
       },
-      "Toggle": "YELLOW_ZONING"
+      "Toggle": "null"
     },
     {
       "Text": "Window",
@@ -34,7 +34,7 @@
         "X": 250,
         "Y": 5
       },
-      "Toggle": "ORANGE_ZONING"
+      "Toggle": "null"
     },
     {
       "Text": "Tutorial",
@@ -46,7 +46,7 @@
         "X": 350,
         "Y": 5
       },
-      "Toggle": "BROWN_ZONING"
+      "Toggle": "null"
     }
   ],
   "Windows": [
@@ -68,6 +68,15 @@
         "4": "New Game",
         "5": "Afterlife v1.0",
         "6": "Exit Game"
+      },
+      "ButtonEvent": {
+        "0": "SAVE_GAME",
+        "1": "LOAD_GAME",
+        "2": "LOAD_SCENARIO",
+        "3": "null",
+        "4": "NEW_GAME",
+        "5": "null",
+        "6": "QUIT"
       }
     },
     {
@@ -85,6 +94,12 @@
         "1": "Tempo",
         "2": "Bad Things",
         "3": "Misc Option"
+      },
+      "ButtonEvent": {
+        "0": "AUDIO_MENU",
+        "1": "TOGGLE_PREVIOUS_TEMPO_AND_DEVINE_INTERVENTION",
+        "2": "null",
+        "3": "null"
       }
     },
     {
@@ -104,6 +119,14 @@
         "3": "Mapview",
         "4": "MacroManager",
         "5": "Remote Control"
+      },
+      "ButtonEvent": {
+        "0": "TOGGLE_HELPERS",
+        "1": "TOGGLE_PLANET_VIEW",
+        "2": "GRAPHVIEW",
+        "3": "TOGGLE_MAPVIEW",
+        "4": "TOGGLE_MACROMANAGER",
+        "5": "TOGGLE_REMOTE_CONTROL"
       }
     },
     {
@@ -125,6 +148,16 @@
         "5": "Limbos",
         "6": "Rocks and Siphons",
         "7": "Ports"
+      },
+      "ButtonEvent": {
+        "0": "null",
+        "1": "null",
+        "2": "null",
+        "3": "null",
+        "4": "null",
+        "5": "null",
+        "6": "null",
+        "7": "null"
       }
     }
   ]

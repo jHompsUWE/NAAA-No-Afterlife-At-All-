@@ -77,6 +77,9 @@ void UIManager::awake(GameData& _game_data)
         buildWindows[i]->SetButtonBounds();
     }
 
+    advisorWindow = new AdvisorWindow(m_ID);
+    advisorWindow->SetPos(300, 400);
+
     //WindowToggles
     //View Windows
     remote->SetButtonToggle(0, viewWindows[0]);
@@ -84,6 +87,7 @@ void UIManager::awake(GameData& _game_data)
     remote->SetButtonToggle(2, viewWindows[2]);
     remote->SetButtonToggle(3, viewWindows[3]);
     remote->SetButtonToggle(4, viewWindows[4]);
+    remote->SetButtonToggle(5, advisorWindow);
     remote->SetButtonToggle(6, viewWindows[5]);
 
     //Building Windows
@@ -126,6 +130,8 @@ void UIManager::update(GameData& _game_data)
     remote->Tick(m_GD);
 
     optBar->Tick(m_GD);
+
+    advisorWindow->Tick(m_GD);
     
     for (int j = 0; j < 6; j++)
     {
@@ -148,4 +154,6 @@ void UIManager::Draw(DrawData2D* _DD)
     }
 
    optBar->Draw(_DD);
+
+   advisorWindow->Draw(_DD);
 }

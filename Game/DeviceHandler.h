@@ -12,6 +12,7 @@ public:
     virtual bool checkHeld(const BindingType& _binding_type, const GameData& _data) = 0;
     virtual float getAxis(const BindingType& _binding_type, const GameData& _data) {return 0.0f;};
     virtual std::pair<float, float> getVector2(const BindingType& _binding_type, const GameData& _data) {return {0,0};};
+    virtual CursorVectorData getCursorVectorData(const CursorMode _mode, const BindingType& _binding_type, const GameData& _data) {return {0,0, CursorMode::NONE};};
 };
 
 class KeyboardDeviceHandler : public DeviceHandler
@@ -30,6 +31,8 @@ public:
     bool checkHeld(const BindingType& _binding_type, const GameData& _data) override;
     float getAxis(const BindingType& _binding_type, const GameData& _data) override;
     std::pair<float, float> getVector2(const BindingType& _binding_type, const GameData& _data) override;
+    CursorVectorData getCursorVectorData(const CursorMode _mode, const BindingType& _binding_type,
+        const GameData& _data) override;
 };
 
 class ControllerDeviceHandler : public DeviceHandler
@@ -40,4 +43,5 @@ public:
     bool checkHeld(const BindingType& _binding_type, const GameData& _data) override;
     float getAxis(const BindingType& _binding_type, const GameData& _data) override;
     std::pair<float, float> getVector2(const BindingType& _binding_type, const GameData& _data) override;
+    //CursorVectorData getCursorVectorData(const CursorMode _mode, const BindingType& _binding_type, const GameData& _data) override;
 };

@@ -118,6 +118,12 @@ static const std::unordered_map<std::string, MouseInput> string_to_mouse_input =
 	{"SCROLL", MouseInput::SCROLL}	
 };
 
+static const std::unordered_map<std::string, CursorMode> string_to_cursor_mode =
+{
+	{"SET_POSITION", CursorMode::SET_POSITION},
+	{"MOVE_DELTA", CursorMode::MOVE_DELTA}
+};
+
 static const std::unordered_map<std::string, ControllerInput> string_to_controller_input =
 {
 	{"A", ControllerInput::A},

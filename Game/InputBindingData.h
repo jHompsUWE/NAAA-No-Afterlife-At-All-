@@ -77,6 +77,13 @@ enum class LastButtonState
     UP
 };
 
+struct CursorVectorData
+{
+    float x = 0;
+    float y = 0;
+    CursorMode mode = CursorMode::NONE;
+};
+
 struct LastAxisState
 {
     float value = NULL;
@@ -142,6 +149,7 @@ struct ActionBinding
     
     ButtonControl mod;
     Control control;
+    CursorMode cursor_mode = CursorMode::NONE;
 
     LastState last_state;
 };

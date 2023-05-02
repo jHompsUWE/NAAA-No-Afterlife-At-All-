@@ -138,7 +138,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
     GameManager::get()->addManager(input_manager, ManagerType::INPUT);
     event_manager->addListener(&*input_manager);
 
-    cursor = std::make_shared<CursorController>("cursor", m_d3dDevice.Get());
+    cursor = std::make_shared<CursorController>("cursor", m_d3dDevice.Get(), m_GD);
     GameManager::get()->getEventManager()->addListener(&*cursor);
 
     reincarnation_manager = std::make_shared<ReincarnationManager>();
@@ -186,14 +186,7 @@ void Game::Initialize(HWND _window, int _width, int _height)
 
 // Executes the basic game loop.
 void Game::Tick()
-{
-    if (m_timer.GetFrameCount() == 0)
-    {
-          m_GD->m_MS = m_mouse->GetState();
-           m_GD->m_mouseButtons.Update(m_GD->m_MS);
-           m_GD->m_MS_last = m_GD->m_MS;
-    }
-    
+{    
     m_timer.Tick([&]()
         {
             Update(m_timer);

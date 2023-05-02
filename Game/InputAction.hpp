@@ -9,8 +9,8 @@
 class InputAction
 {
 public:
-    InputAction(EventType _event_type, InteractionType _interaction_type, ModifierType _mod_type, ButtonControl _mod, Control _control) :
-    action_binding{_event_type, _interaction_type, _mod_type, _mod,_control} {};
+    InputAction(EventType _event_type, InteractionType _interaction_type, ModifierType _mod_type, ButtonControl _mod, Control _control, CursorMode _cursor_mode) :
+    action_binding{_event_type, _interaction_type, _mod_type, _mod,_control, _cursor_mode} {};
 
     ~InputAction() = default;
 

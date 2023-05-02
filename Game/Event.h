@@ -69,18 +69,6 @@ enum class EventType
 	STATE_TRANSITION,
 	SOUL_UPDATE,
 	ADD_SOUL,
-
-	// to delete
-	/*
-	SCROLL_LEFT,
-	SCROLL_UP,
-	SCROLL_DOWN,
-	SCROLL_RIGHT,
-	ROTATE_REALMS_UP,
-	ROTATE_REALMS_DOWN,
-	ROTATE_REALMS_RIGHT,
-	ROTATE_REALMS_LEFT
-	*/
 };
 
 class Event
@@ -121,6 +109,7 @@ public:
 		float x = NULL;
 		float y = NULL;
 		bool mod_active = NULL;
+		int cursor_mode = NULL;
 	};
 
 	struct CursorData
@@ -128,6 +117,7 @@ public:
 		float x = NULL;
 		float y = NULL;
 		bool selected = false;
+		int mode = NULL;
 	};
 
 	union EventPayload
