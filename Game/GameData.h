@@ -6,8 +6,8 @@
 //=================================================================
 
 #include "GameState.h"
-#include "Keyboard.h"
-#include "Mouse.h"
+#include "../include/directxtk/Keyboard.h"
+#include "../include/directxtk/Mouse.h"
 
 using namespace DirectX;
 

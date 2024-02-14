@@ -5,8 +5,8 @@
 //Data to be passed by game to all 2D Game Objects via Draw 
 //=================================================================
 
-#include "SpriteBatch.h"
-#include "SpriteFont.h"
+#include "../include/directxtk/SpriteBatch.h"
+#include "../include/directxtk/SpriteFont.h"
 
 using namespace DirectX;
 using namespace std;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Audio.h"
+#include "../include/directxtk/Audio.h"
 #include <string>
 #include <codecvt>
 struct GameData;

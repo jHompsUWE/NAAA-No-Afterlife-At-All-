@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "ImageGO2D.h"
-#include "DDSTextureLoader.h"
+#include "../include/directxtk/DDSTextureLoader.h"
 #include "DrawData2D.h"
 #include "GameData.h"
 #include "helper.h"

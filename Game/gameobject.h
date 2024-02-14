@@ -5,8 +5,8 @@
 //Base Game Object Class
 //=================================================================
 
-#include "CommonStates.h"
-#include "SimpleMath.h"
+#include "../include/directxtk/CommonStates.h"
+#include "../include/directxtk/SimpleMath.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

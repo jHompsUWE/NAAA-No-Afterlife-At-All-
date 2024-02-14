@@ -351,3 +351,9 @@ MigrationBackup/
 
 #Ignore all built assets from Dr Scarle's little pipeline
 #Assets/
+
+cmake-build-debug/
+
+.idea/
+
+cmake-build-debug-visual-studio/

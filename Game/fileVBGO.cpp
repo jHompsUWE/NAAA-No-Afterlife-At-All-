@@ -3,7 +3,7 @@
 #include <fstream>
 #include "fileVBGO.h"
 #include "helper.h"
-#include "DDSTextureLoader.h"
+#include "../include/directxtk/DDSTextureLoader.h"
 #include "vertex.h"
 #include <DirectXColors.h>
 

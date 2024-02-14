@@ -1,7 +1,7 @@
 #include "pch.h"
 #include <Windows.h>
 #include <d3dcompiler.h>
-#include "DDSTextureLoader.h"
+#include "../include/directxtk/DDSTextureLoader.h"
 #include "VBGO.h"
 #include "drawdata.h"
 #include "vertex.h"

@@ -3,7 +3,7 @@
 //
 
 #include "pch.h"
-#include "Game.h"
+#include "../Game/Game.h"
 
 using namespace DirectX;
 
@@ -38,7 +38,7 @@ int WINAPI wWinMain(_In_ HINSTANCE _hInstance, _In_opt_ HINSTANCE _hPrevInstance
     //add a Debug Console to which cout is directed whilst in DEBUG
     if (AllocConsole()) {
         freopen("CONOUT$", "w", stdout);
-        SetConsoleTitle(L"Debug Console");
+        SetConsoleTitle(LPCSTR(L"Debug Console"));
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED); 
         
         HWND consoleWindow = GetConsoleWindow();
@@ -68,7 +68,7 @@ int WINAPI wWinMain(_In_ HINSTANCE _hInstance, _In_opt_ HINSTANCE _hPrevInstance
         wcex.lpfnWndProc = WndProc;
         wcex.hInstance = _hInstance;
         wcex.hIcon = LoadIconW(_hInstance, L"IDI_ICON");
-        wcex.hCursor = LoadCursorW(nullptr, IDC_ARROW);
+        wcex.hCursor = LoadCursorW(nullptr, LPCWSTR(IDC_ARROW));
         wcex.hbrBackground = reinterpret_cast<HBRUSH>(COLOR_WINDOW + 1);
         wcex.lpszClassName = L"Scarle2021WindowClass";
         wcex.hIconSm = LoadIconW(wcex.hInstance, L"IDI_ICON");
