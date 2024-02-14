@@ -34,7 +34,16 @@ if (NOT Bullet_FOUND)
     FetchContent_GetProperties(Bullet)
     if (NOT Bullet_POPULATED)
         FetchContent_Populate(Bullet)
-        set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+        set(BUILD_BULLET_ROBOTICS_EXTRA OFF CACHE BOOL "" FORCE)
+        set(BUILD_EXTRAS OFF CACHE BOOL "" FORCE)
+        set(BUILD_BULLET2_DEMOS OFF CACHE BOOL "" FORCE)
+        set(BUILD_BUILD_OPENGL3_DEMOS OFF CACHE BOOL "" FORCE)
+        set(BUILD_CPU_DEMOS OFF CACHE BOOL "" FORCE)
+        set(BUILD_UNIT_TESTS OFF CACHE BOOL "" FORCE)
+
+
+        #set(USE_GRAPHICAL_BENCHMARK "Use Graphical Benchmark" OFF CACHE BOOL "" FORCE)
+
         add_subdirectory(${bullet_SOURCE_DIR} ${bullet_BINARY_DIR})
     endif()
 endif()
@@ -107,5 +116,5 @@ set_target_properties(demo PROPERTIES
 
 INCLUDE_DIRECTORIES(${BULLET_PHYSICS_SOURCE_DIR}/src)
 # Link DirectXTK with your project
-target_link_libraries(demo PRIVATE DirectXTK d3d11 d3dcompiler Bullet3Dynamics Bullet3Collision LinearMath)
+target_link_libraries(demo PRIVATE DirectXTK d3d11 d3dcompiler BulletDynamics BulletCollision LinearMath)
 
