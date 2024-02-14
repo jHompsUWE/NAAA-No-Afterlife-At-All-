@@ -6,7 +6,7 @@
 //=================================================================
 
 #include "gameobject.h"
-#include "../include/directxtk/Model.h"
+#include "Model.h"
 #include <string>
 
 using namespace std;

@@ -5,7 +5,7 @@
 //Data to be passed by game to all Game Objects via Draw 
 //=================================================================
 
-#include "../include/directxtk/CommonStates.h"
+#include "CommonStates.h"
 
 using namespace DirectX;
 

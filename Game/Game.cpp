@@ -12,6 +12,7 @@
 #include "DrawData.h"
 #include "DrawData2D.h"
 #include "ObjectList.h"
+#include "btBulletDynamicsCommon.h"
 
 extern void ExitGame() noexcept;
 

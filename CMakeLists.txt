@@ -2,32 +2,44 @@ cmake_minimum_required(VERSION 3.10)
 
 project(demo)
 
+set(CMAKE_CXX_STANDARD 17) # Set the C++ standard
 set(CMAKE_SYSTEM_VERSION 10.0)
 add_compile_definitions(_WIN32_WINNT=0x0A00)
 
-
-
-#include(ExternalProject)
-#set(EXTERNAL_INSTALL_LOCATION ${CMAKE_BINARY_DIR}/external)
-#
-#ExternalProject_Add(DirectXTK
-#        URL https://github.com/microsoft/DirectXTK/archive/refs/tags/apr2023.zip
-#        PREFIX ${EXTERNAL_INSTALL_LOCATION}
-#        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
-#        DOWNLOAD_EXTRACT_TIMESTAMP true
-#        BUILD_COMMAND ${CMAKE_COMMAND} --build .
-#)
-
-find_package(directxtk QUIET) # QUIET or REQUIRED
-if (NOT directxtk_FOUND) # If there's none, fetch and build
+# Find DirectXTK or fetch and build it if not found
+find_package(DirectXTK QUIET)
+if (NOT DirectXTK_FOUND)
     include(FetchContent)
     FetchContent_Declare(
-            directxtk
+            DirectXTK
             GIT_REPOSITORY https://github.com/microsoft/DirectXTK.git
             GIT_TAG dec2023
     )
-    fetchcontent_makeavailable(directxtk)
+    FetchContent_GetProperties(DirectXTK)
+    if (NOT DirectXTK_POPULATED)
+        FetchContent_Populate(DirectXTK)
+
+        add_subdirectory(${directxtk_SOURCE_DIR} ${directxtk_BINARY_DIR})
+    endif()
 endif()
+
+find_package(Bullet QUIET)
+if (NOT Bullet_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+            Bullet
+            GIT_REPOSITORY https://github.com/bulletphysics/bullet3.git
+            GIT_TAG 3.25
+    )
+    FetchContent_GetProperties(Bullet)
+    if (NOT Bullet_POPULATED)
+        FetchContent_Populate(Bullet)
+        set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+        add_subdirectory(${bullet_SOURCE_DIR} ${bullet_BINARY_DIR})
+    endif()
+endif()
+
+
 
 set(game
         Game/Game.h
@@ -84,17 +96,16 @@ set(game
         Game/GameObject2D.cpp
         Game/gameobject.cpp
 )
+
+
+# Add executable target
 add_executable(demo Direct3D_Win32/Main.cpp ${game})
 
 set_target_properties(demo PROPERTIES
         LINK_FLAGS "/SUBSYSTEM:WINDOWS"
 )
 
-
-
-#target_include_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/include)
-#target_link_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/lib)
-target_link_libraries(demo PRIVATE Microsoft::DirectXTK)
-target_include_directories(demo PRIVATE ${DirectXTK_SOURCE_DIR}/Inc)
-#add_dependencies(demo DirectXTK)
+INCLUDE_DIRECTORIES(${BULLET_PHYSICS_SOURCE_DIR}/src)
+# Link DirectXTK with your project
+target_link_libraries(demo PRIVATE DirectXTK d3d11 d3dcompiler Bullet3Dynamics Bullet3Collision LinearMath)
 

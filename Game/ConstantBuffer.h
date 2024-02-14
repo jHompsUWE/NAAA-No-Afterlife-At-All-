@@ -7,7 +7,7 @@
 
 #include <windows.h>
 #include <d3d11.h>
-#include <../include/directxtk/SimpleMath.h>
+#include <SimpleMath.h>
 
 using namespace DirectX;
 using namespace SimpleMath;

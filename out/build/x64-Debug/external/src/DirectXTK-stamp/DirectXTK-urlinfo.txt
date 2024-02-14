@@ -1,3 +1,0 @@
-repository='external project URL'
-module='https://github.com/microsoft/DirectXTK/archive/refs/tags/apr2023.zip'
-tag=''

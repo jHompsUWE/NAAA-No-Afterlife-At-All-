@@ -11,36 +11,726 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="demo" targetName="BulletXmlWorldImporter" />
+      <config projectName="demo" targetName="ContinuousMemCheck" />
+      <config projectName="demo" targetName="Bullet2FileLoader" />
+      <config projectName="demo" targetName="BussIK" />
+      <config projectName="demo" targetName="BulletRobotics" />
+      <config projectName="demo" targetName="ContinuousSubmit" />
+      <config projectName="demo" targetName="ExperimentalConfigure" />
+      <config projectName="demo" targetName="Test_Collision" />
+      <config projectName="demo" targetName="ExperimentalStart" />
+      <config projectName="demo" targetName="xwbtool" />
+      <config projectName="demo" targetName="NightlyBuild" />
+      <config projectName="demo" targetName="ConvexDecomposition" />
+      <config projectName="demo" targetName="ContinuousUpdate" />
+      <config projectName="demo" targetName="ExperimentalSubmit" />
+      <config projectName="demo" targetName="App_PhysicsServer_SharedMemory" />
+      <config projectName="demo" targetName="NightlyConfigure" />
+      <config projectName="demo" targetName="App_obj2sdf" />
+      <config projectName="demo" targetName="Test_PhysicsClientServer" />
+      <config projectName="demo" targetName="NightlySubmit" />
+      <config projectName="demo" targetName="NightlyMemCheck" />
+      <config projectName="demo" targetName="NightlyUpdate" />
+      <config projectName="demo" targetName="ContinuousConfigure" />
+      <config projectName="demo" targetName="App_BasicExample" />
+      <config projectName="demo" targetName="ExperimentalUpdate" />
+      <config projectName="demo" targetName="BulletSoftBody" />
+      <config projectName="demo" targetName="ExperimentalCoverage" />
+      <config projectName="demo" targetName="OpenGLWindow" />
+      <config projectName="demo" targetName="App_HelloBulletRobotics" />
+      <config projectName="demo" targetName="GIMPACTUtils" />
+      <config projectName="demo" targetName="Test_btKinematicCharacterController" />
+      <config projectName="demo" targetName="Bullet3Common" />
+      <config projectName="demo" targetName="Continuous" />
+      <config projectName="demo" targetName="ContinuousTest" />
+      <config projectName="demo" targetName="NightlyCoverage" />
+      <config projectName="demo" targetName="NightlyStart" />
+      <config projectName="demo" targetName="App_RobotSimulator" />
+      <config projectName="demo" targetName="Bullet3Geometry" />
       <config projectName="demo" targetName="demo" />
+      <config projectName="demo" targetName="App_TwoJoint" />
+      <config projectName="demo" targetName="ExperimentalTest" />
+      <config projectName="demo" targetName="App_ExampleBrowser" />
+      <config projectName="demo" targetName="NightlyTest" />
+      <config projectName="demo" targetName="HACD" />
+      <config projectName="demo" targetName="BulletExampleBrowserLib" />
+      <config projectName="demo" targetName="BulletRoboticsGUI" />
+      <config projectName="demo" targetName="Test_BulletInverseDynamics" />
+      <config projectName="demo" targetName="Test_BulletInverseForwardDynamics" />
+      <config projectName="demo" targetName="Bullet3OpenCL_clew" />
+      <config projectName="demo" targetName="ContinuousBuild" />
+      <config projectName="demo" targetName="Test_BulletDynamics" />
+      <config projectName="demo" targetName="BulletDynamics" />
+      <config projectName="demo" targetName="ContinuousCoverage" />
+      <config projectName="demo" targetName="Experimental" />
+      <config projectName="demo" targetName="Bullet3Dynamics" />
+      <config projectName="demo" targetName="App_PhysicsServer_SharedMemory_GUI" />
+      <config projectName="demo" targetName="DirectXTK" />
+      <config projectName="demo" targetName="AppBasicExampleGui" />
+      <config projectName="demo" targetName="App_HelloWorld" />
+      <config projectName="demo" targetName="Nightly" />
+      <config projectName="demo" targetName="BulletCollision" />
+      <config projectName="demo" targetName="gtest" />
+      <config projectName="demo" targetName="ContinuousStart" />
+      <config projectName="demo" targetName="Bullet3Collision" />
+      <config projectName="demo" targetName="BulletWorldImporter" />
+      <config projectName="demo" targetName="ExperimentalMemCheck" />
+      <config projectName="demo" targetName="Test_BulletInverseDynamicsJacobian" />
+      <config projectName="demo" targetName="BulletInverseDynamics" />
+      <config projectName="demo" targetName="BulletInverseDynamicsUtils" />
+      <config projectName="demo" targetName="NightlyMemoryCheck" />
+      <config projectName="demo" targetName="clsocket" />
+      <config projectName="demo" targetName="gwen" />
+      <config projectName="demo" targetName="App_RobotSimulator_NoGUI" />
+      <config projectName="demo" targetName="BulletFileLoader" />
+      <config projectName="demo" targetName="ExperimentalBuild" />
+      <config projectName="demo" targetName="LinearMath" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug-MinGW" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW" />
-      <configuration PROFILE_NAME="Debug-Visual Studio" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Visual Studio" />
+      <configuration PROFILE_NAME="Debug-Visual Studio" ENABLED="true" GENERATION_DIR="out" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Visual Studio" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e86ec1f-51fb-44ff-be45-bd6054a47a8f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/pch.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/pch.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/CMOGO.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/CMOGO.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/CMOGO.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/CMOGO.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/ConstantBuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/ConstantBuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/DrawData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/DrawData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/DrawData2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/DrawData2D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GPGO.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GPGO.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameData.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/GameObject2D.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/GameObject2D.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/ImageGO2D.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/ImageGO2D.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Sound.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Sound.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Tree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/VBGO.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/VBGO.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/fileVBGO.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Game/fileVBGO.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/gameobject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/gameobject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game/vertex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game/vertex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/.cmake/api/v1/query/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CompilerIdC/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/3.28.1/CompilerIdCXX/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/clion-Debug-MinGW-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-src" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/3.28.1/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/Makefile2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate-complete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/Labels.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/Labels.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/compiler_depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/compiler_depend.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/dec2023.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-configure" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-done" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-download" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-gitclone-lastrun.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-gitinfo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-install" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-mkdir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-patch-info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-update-info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-urlinfo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/download-directxtk-populate.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/extract-directxtk-populate.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/verify-directxtk-populate.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/tmp/directxtk-populate-cfgcmd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/tmp/directxtk-populate-gitclone.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/tmp/directxtk-populate-gitupdate.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/tmp/directxtk-populate-mkdirs.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-mingw/demo.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/query/client-MicrosoftVS/query.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/cache-v2-522c99afb3445195d04f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/cmakeFiles-v1-f4ff9d84d382bb7ffe0c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/codemodel-v2-46477d186f83646da259.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/index-2024-02-14T02-16-08-0529.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/target-DirectXTK-Debug-0875aed41a4fd96270cf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/target-demo-Debug-4af1d341b19976cf968b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.cmake/api/v1/reply/toolchains-v1-df684e350d08779bb8d5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdC/CMakeCCompilerId.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/DirectXTK-complete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/DirectXTK.dir/Labels.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/DirectXTK.dir/Labels.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/ShowIncludes/foo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/ShowIncludes/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/demo.dir/embed.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/demo.dir/intermediate.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/demo.dir/manifest.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/demo.dir/manifest.res" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/VSInheritEnvironments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/XAudio2_9redist.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/demo.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/demo.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/demo.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/Audio.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/BufferHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/CommonStates.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/DDSTextureLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/DirectXHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/Effects.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/GamePad.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/GeometricPrimitive.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/GraphicsMemory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/Keyboard.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/Model.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/Mouse.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/PostProcess.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/PrimitiveBatch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/ScreenGrab.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/SimpleMath.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/SimpleMath.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/SpriteBatch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/SpriteFont.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/VertexTypes.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/include/directxtk/WICTextureLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/lib/DirectXTK.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/share/directxtk/DirectXTK-targets-debug.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/share/directxtk/DirectXTK-targets.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/share/directxtk/directxtk-config-version.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/share/directxtk/directxtk-config.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/DirectXTK.dir/cmake_pch.cxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/DirectXTK.dir/cmake_pch.hxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/Export/share/directxtk/DirectXTK-targets-debug.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/Export/share/directxtk/DirectXTK-targets.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/ShowIncludes/foo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/ShowIncludes/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/rules.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/XWBTool/xwbtool.i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/XWBTool/xwbtool.rc.res" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/embed.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/intermediate.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/manifest.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CMakeFiles/xwbtool.dir/manifest.res" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/CTestTestfile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/DartConfiguration.tcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_PSAlphaTestEqNe.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_PSAlphaTestEqNeNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_PSAlphaTestLtGt.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_PSAlphaTestLtGtNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_VSAlphaTest.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_VSAlphaTestNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_VSAlphaTestVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/AlphaTestEffect_VSAlphaTestVcNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasic.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicPixelLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicTxNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicVertexLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicVertexLightingNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicVertexLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_PSBasicVertexLightingTxNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasic.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLight.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightTxBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightTxVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightTxVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicOneLightVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingTxBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingTxVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingTxVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicPixelLightingVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicTxNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicTxVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicTxVcNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVcNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingTxBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingTxVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingTxVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/BasicEffect_VSBasicVertexLightingVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main1Bones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main1BonesVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main2Bones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main2BonesVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main4Bones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_main4BonesVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLEffect_mainVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLLambert_main.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLLambert_mainTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLLambert_mainTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLLambert_mainTxTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLPhong_main.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLPhong_mainTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLPhong_mainTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLPhong_mainTxTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLUnlit_main.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLUnlit_mainTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLUnlit_mainTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DGSLUnlit_mainTxTk.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_PSHemiAmbient.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_PSRGBBiTangents.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_PSRGBNormals.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_PSRGBTangents.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebug.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugBnInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugVcBnInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DebugEffect_VSDebugVcInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_PSDualTexture.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_PSDualTextureNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_VSDualTexture.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_VSDualTextureNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_VSDualTextureVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/DualTextureEffect_VSDualTextureVcNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMap.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapDualParabolaPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapDualParabolaPixelLightingFresnel.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapDualParabolaPixelLightingFresnelNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapDualParabolaPixelLightingNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapPixelLightingFresnel.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapPixelLightingFresnelNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapPixelLightingNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpecular.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpecularNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpherePixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpherePixelLightingFresnel.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpherePixelLightingFresnelNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_PSEnvMapSpherePixelLightingNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMap.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapFresnel.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapFresnelBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapOneLight.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapOneLightBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapOneLightFresnel.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapOneLightFresnelBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapPixelLightingBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapPixelLightingBnSM4.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/EnvironmentMapEffect_VSEnvMapPixelLightingSM4.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_PSNormalPixelLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_PSNormalPixelLightingTxNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_PSNormalPixelLightingTxNoFogSpec.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_PSNormalPixelLightingTxNoSpec.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxBnInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxVc.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxVcBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxVcBnInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSNormalPixelLightingTxVcInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSSkinnedPixelLightingTx.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/NormalMapEffect_VSSkinnedPixelLightingTxBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_PSConstant.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_PSTextured.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_PSTexturedEmissive.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_PSTexturedEmissiveVelocity.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_PSTexturedVelocity.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstant.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstantBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstantBnInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstantInst.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstantVelocity.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSConstantVelocityBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSSkinned.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PBREffect_VSSkinnedBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSBloomBlur.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSBloomCombine.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSBloomExtract.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSCopy.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSDownScale2x2.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSDownScale4x4.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSGaussianBlur5x5.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSMerge.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSMonochrome.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_PSSepia.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/PostProcess_VSQuad.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_PSSkinnedPixelLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_PSSkinnedVertexLighting.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_PSSkinnedVertexLightingNoFog.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightFourBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightFourBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightOneBone.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightOneBoneBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightTwoBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedOneLightTwoBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingFourBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingFourBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingOneBone.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingOneBoneBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingTwoBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedPixelLightingTwoBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingFourBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingFourBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingOneBone.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingOneBoneBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingTwoBones.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SkinnedEffect_VSSkinnedVertexLightingTwoBonesBn.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SpriteEffect_SpritePixelShader.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/SpriteEffect_SpriteVertexShader.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSACESFilmic.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSACESFilmic_SRGB.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSCopy.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSHDR10.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSReinhard.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSReinhard_SRGB.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSSaturate.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PSSaturate_SRGB.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_PS_SRGB.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/Shaders/Compiled/ToneMap_VSQuad.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/directxtk-config-version.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/directxtk-config.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-build/install_manifest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-configure" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-done" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-download" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-install" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-mkdir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-update" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-urlinfo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/download-DirectXTK.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/extract-DirectXTK.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK-stamp/verify-DirectXTK.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_desktop_2019.nuspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_desktop_2019.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_desktop_win10.nuspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_desktop_win10.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_uwp.nuspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/directxtk_uwp.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/.nuget/icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/AudioEngine.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2019_Win7.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2019_Win7.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2019_Win8.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2019_Win8.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2022_Win7.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2022_Win7.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2022_Win8.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DirectXTKAudio_Desktop_2022_Win8.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/DynamicSoundEffectInstance.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/SoundCommon.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/SoundCommon.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/SoundEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/SoundEffectInstance.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/SoundStreamInstance.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/WAVFileReader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/WAVFileReader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/WaveBank.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/WaveBankReader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/WaveBankReader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Audio/packages.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/CMakePresets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019_Win10.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019_Win10.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019_Win10.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2019_Win7.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022_Win10.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022_Win10.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022_Win10.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Desktop_2022_Win7.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2019.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2019.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2019.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2022.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2022.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_GDK_2022.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2019.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2019.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2019.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2022.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2022.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/DirectXTK_Windows10_2022.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/Audio.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/BufferHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/CommonStates.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/DDSTextureLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/DirectXHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/Effects.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/GamePad.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/GeometricPrimitive.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/GraphicsMemory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/Keyboard.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/Model.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/Mouse.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/PostProcess.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/PrimitiveBatch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/ScreenGrab.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/SimpleMath.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/SimpleMath.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/SpriteBatch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/SpriteFont.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/VertexTypes.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/WICTextureLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Inc/XboxDDSTextureLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/BitmapImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/BitmapUtils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/CharacterRegion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/CommandLineOptions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/CommandLineParser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/Glyph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/GlyphCropper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/GlyphPacker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/IFontImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/MakeSpriteFont.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/SpriteFontWriter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/MakeSpriteFont/TrueTypeImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/NuGet.Config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/SECURITY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/AlignedNew.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/AlphaTestEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/BasicEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/BasicPostProcess.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Bezier.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/BinaryReader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/BinaryReader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/BufferHelpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/CommonStates.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DDS.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DDSTextureLoader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DGSLEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DGSLEffectFactory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DebugEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DemandCreate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DirectXHelpers.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DualPostProcess.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/DualTextureEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/EffectCommon.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/EffectCommon.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/EffectFactory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/EnvironmentMapEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/GamePad.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/GeometricPrimitive.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Geometry.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Geometry.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/GraphicsMemory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Keyboard.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/LoaderHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Model.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/ModelLoadCMO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/ModelLoadSDKMESH.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/ModelLoadVBO.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Mouse.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/NormalMapEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/PBREffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/PBREffectFactory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/PlatformHelpers.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/PrimitiveBatch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SDKMesh.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/ScreenGrab.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/AlphaTestEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/BasicEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/Common.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/CompileShaders.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DGSLEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DGSLLambert.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DGSLPhong.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DGSLUnlit.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DebugEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/DualTextureEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/EnvironmentMapEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/Lighting.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/NormalMapEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/PBRCommon.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/PBREffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/PixelPacking_Velocity.hlsli" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/PostProcess.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/SkinnedEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/Skinning.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/SpriteEffect.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/Structures.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/ToneMap.fx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/Shaders/Utilities.fxh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SharedResourcePool.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SimpleMath.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SkinnedEffect.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SpriteBatch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/SpriteFont.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/TeapotData.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/ToneMapPostProcess.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/VertexTypes.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/WICTextureLoader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/XboxDDSTextureLoader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/pch.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/pch.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/Src/vbo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/directx.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool_Desktop_2019.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool_Desktop_2019.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool_Desktop_2022.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/XWBTool/xwbtool_Desktop_2022.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-CMake-Dev17.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-CMake.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-Dev17.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-GDK-Dev17.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-GDK.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-MinGW.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-SDK-prerelease.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-SDK-release.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-Test-Dev17.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-Test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-WSL-11.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub-WSL.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-GitHub.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/DirectXTK-config.cmake.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/Directory.Build.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/SetupBWOI.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/DirectXTK/build/versioninfo.ps1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/src/apr2023.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/tmp/DirectXTK-cfgcmd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/tmp/DirectXTK-cfgcmd.txt.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/.signature.p7s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/Microsoft.XAudio2.Redist.nuspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/[Content_Types].xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/_rels/.rels" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/Microsoft.XAudio2.Redist.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/x3daudio.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/x3daudioRedist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapo.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapoRedist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapobase.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapobaseRedist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapofx.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xapofxRedist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xaudio2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xaudio2Redist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xaudio2fx.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xaudio2fxRedist.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/build/native/include/xdsp.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/package/services/metadata/core-properties/1cd746d4a3db4c93906c0dd06b6da466.psmdcp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/build/x64-Debug/external/xaudio2redist/readme.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-Visual Studio" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Game/GPGO.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Game.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Game.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/GameObject2D.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/Sound.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Game/gameobject.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="1" />
+    <option name="productBranch" value="Nova" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2MmTM8H93uKpaTS9dVx3rqID7nq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,6 +738,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "CMake Application.App_HelloWorld.executor": "Run",
     "CMake Application.demo.executor": "Run",
     "CMake Debug.demo.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -68,17 +759,464 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake Application.demo">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppBasicExampleGui" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="AppBasicExampleGui" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="AppBasicExampleGui">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="demo" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="demo">
+    <configuration name="App_BasicExample" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_BasicExample" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_BasicExample">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App_ExampleBrowser" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_ExampleBrowser" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_ExampleBrowser">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_HelloBulletRobotics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_HelloBulletRobotics" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_HelloBulletRobotics">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_HelloWorld" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_HelloWorld" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_HelloWorld">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_PhysicsServer_SharedMemory" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_PhysicsServer_SharedMemory" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_PhysicsServer_SharedMemory">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_PhysicsServer_SharedMemory_GUI" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_PhysicsServer_SharedMemory_GUI" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_PhysicsServer_SharedMemory_GUI">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_RobotSimulator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_RobotSimulator" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_RobotSimulator">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_RobotSimulator_NoGUI" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_RobotSimulator_NoGUI" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_RobotSimulator_NoGUI">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_TwoJoint" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_TwoJoint" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_TwoJoint">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App_obj2sdf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="App_obj2sdf" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="App_obj2sdf">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet2FileLoader" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet2FileLoader" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet3Collision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet3Collision" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet3Common" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet3Common" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet3Dynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet3Dynamics" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet3Geometry" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet3Geometry" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Bullet3OpenCL_clew" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Bullet3OpenCL_clew" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletCollision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletCollision" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletDynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletDynamics" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletExampleBrowserLib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletExampleBrowserLib" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletFileLoader" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletFileLoader" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletInverseDynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletInverseDynamics" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletInverseDynamicsUtils" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletInverseDynamicsUtils" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletRobotics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletRobotics" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletRoboticsGUI" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletRoboticsGUI" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletSoftBody" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletSoftBody" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletWorldImporter" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletWorldImporter" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BulletXmlWorldImporter" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BulletXmlWorldImporter" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BussIK" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="BussIK" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Continuous" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousBuild" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousBuild" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousConfigure" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousConfigure" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousCoverage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousCoverage" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousMemCheck" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousMemCheck" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousStart" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousStart" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousSubmit" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousSubmit" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousTest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousTest" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContinuousUpdate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ContinuousUpdate" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConvexDecomposition" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ConvexDecomposition" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DirectXTK" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="DirectXTK" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Experimental" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Experimental" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalBuild" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalBuild" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalConfigure" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalConfigure" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalCoverage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalCoverage" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalMemCheck" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalMemCheck" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalStart" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalStart" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalSubmit" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalSubmit" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalTest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalTest" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExperimentalUpdate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="ExperimentalUpdate" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GIMPACTUtils" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="GIMPACTUtils" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HACD" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="HACD" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinearMath" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="LinearMath" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Nightly" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Nightly" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyBuild" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyBuild" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyConfigure" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyConfigure" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyCoverage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyCoverage" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyMemCheck" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyMemCheck" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyMemoryCheck" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyMemoryCheck" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyStart" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyStart" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlySubmit" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlySubmit" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyTest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyTest" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OpenGLWindow" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="OpenGLWindow" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_BulletDynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_BulletDynamics" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_BulletDynamics">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_BulletInverseDynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_BulletInverseDynamics" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_BulletInverseDynamics">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_BulletInverseDynamicsJacobian" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_BulletInverseDynamicsJacobian" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_BulletInverseDynamicsJacobian">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_BulletInverseForwardDynamics" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_BulletInverseForwardDynamics" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_BulletInverseForwardDynamics">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_Collision" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_Collision" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_Collision">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_PhysicsClientServer" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_PhysicsClientServer" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_PhysicsClientServer">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_btKinematicCharacterController" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="Test_btKinematicCharacterController" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="Test_btKinematicCharacterController">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clsocket" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="clsocket" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="demo" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="demo">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="gtest" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gwen" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="gwen" CONFIG_NAME="Debug-Visual Studio">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="xwbtool" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="demo" TARGET_NAME="xwbtool" CONFIG_NAME="Debug-Visual Studio" RUN_TARGET_PROJECT_NAME="demo" RUN_TARGET_NAME="xwbtool">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.demo" />
+      <item itemvalue="CMake Application.App_BasicExample" />
+      <item itemvalue="CMake Application.AppBasicExampleGui" />
+      <item itemvalue="CMake Application.App_ExampleBrowser" />
+      <item itemvalue="CMake Application.BulletExampleBrowserLib" />
+      <item itemvalue="CMake Application.App_HelloWorld" />
+      <item itemvalue="CMake Application.OpenGLWindow" />
+      <item itemvalue="CMake Application.App_HelloBulletRobotics" />
+      <item itemvalue="CMake Application.App_RobotSimulator" />
+      <item itemvalue="CMake Application.App_RobotSimulator_NoGUI" />
+      <item itemvalue="CMake Application.App_PhysicsServer_SharedMemory" />
+      <item itemvalue="CMake Application.App_PhysicsServer_SharedMemory_GUI" />
+      <item itemvalue="CMake Application.BussIK" />
+      <item itemvalue="CMake Application.clsocket" />
+      <item itemvalue="CMake Application.gwen" />
+      <item itemvalue="CMake Application.App_TwoJoint" />
+      <item itemvalue="CMake Application.BulletRobotics" />
+      <item itemvalue="CMake Application.BulletRoboticsGUI" />
+      <item itemvalue="CMake Application.ConvexDecomposition" />
+      <item itemvalue="CMake Application.GIMPACTUtils" />
+      <item itemvalue="CMake Application.HACD" />
+      <item itemvalue="CMake Application.BulletInverseDynamicsUtils" />
+      <item itemvalue="CMake Application.App_obj2sdf" />
+      <item itemvalue="CMake Application.BulletFileLoader" />
+      <item itemvalue="CMake Application.BulletWorldImporter" />
+      <item itemvalue="CMake Application.BulletXmlWorldImporter" />
+      <item itemvalue="CMake Application.Bullet3Collision" />
+      <item itemvalue="CMake Application.Bullet3Common" />
+      <item itemvalue="CMake Application.Bullet3Dynamics" />
+      <item itemvalue="CMake Application.Bullet3Geometry" />
+      <item itemvalue="CMake Application.Bullet3OpenCL_clew" />
+      <item itemvalue="CMake Application.Bullet2FileLoader" />
+      <item itemvalue="CMake Application.BulletCollision" />
+      <item itemvalue="CMake Application.BulletDynamics" />
+      <item itemvalue="CMake Application.BulletInverseDynamics" />
+      <item itemvalue="CMake Application.BulletSoftBody" />
+      <item itemvalue="CMake Application.LinearMath" />
+      <item itemvalue="CMake Application.Test_btKinematicCharacterController" />
+      <item itemvalue="CMake Application.Test_BulletDynamics" />
+      <item itemvalue="CMake Application.Test_Collision" />
+      <item itemvalue="CMake Application.gtest" />
+      <item itemvalue="CMake Application.Test_BulletInverseDynamics" />
+      <item itemvalue="CMake Application.Test_BulletInverseDynamicsJacobian" />
+      <item itemvalue="CMake Application.Test_BulletInverseForwardDynamics" />
+      <item itemvalue="CMake Application.Test_PhysicsClientServer" />
+      <item itemvalue="CMake Application.Continuous" />
+      <item itemvalue="CMake Application.ContinuousBuild" />
+      <item itemvalue="CMake Application.ContinuousConfigure" />
+      <item itemvalue="CMake Application.ContinuousCoverage" />
+      <item itemvalue="CMake Application.ContinuousMemCheck" />
+      <item itemvalue="CMake Application.ContinuousStart" />
+      <item itemvalue="CMake Application.ContinuousSubmit" />
+      <item itemvalue="CMake Application.ContinuousTest" />
+      <item itemvalue="CMake Application.ContinuousUpdate" />
+      <item itemvalue="CMake Application.DirectXTK" />
+      <item itemvalue="CMake Application.Experimental" />
+      <item itemvalue="CMake Application.ExperimentalBuild" />
+      <item itemvalue="CMake Application.ExperimentalConfigure" />
+      <item itemvalue="CMake Application.ExperimentalCoverage" />
+      <item itemvalue="CMake Application.ExperimentalMemCheck" />
+      <item itemvalue="CMake Application.ExperimentalStart" />
+      <item itemvalue="CMake Application.ExperimentalSubmit" />
+      <item itemvalue="CMake Application.ExperimentalTest" />
+      <item itemvalue="CMake Application.ExperimentalUpdate" />
+      <item itemvalue="CMake Application.Nightly" />
+      <item itemvalue="CMake Application.NightlyBuild" />
+      <item itemvalue="CMake Application.NightlyConfigure" />
+      <item itemvalue="CMake Application.NightlyCoverage" />
+      <item itemvalue="CMake Application.NightlyMemCheck" />
+      <item itemvalue="CMake Application.NightlyMemoryCheck" />
+      <item itemvalue="CMake Application.NightlyStart" />
+      <item itemvalue="CMake Application.NightlySubmit" />
+      <item itemvalue="CMake Application.NightlyTest" />
+      <item itemvalue="CMake Application.NightlyUpdate" />
+      <item itemvalue="CMake Application.xwbtool" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -91,6 +1229,7 @@
       <workItem from="1678371710593" duration="19000" />
       <workItem from="1678398470659" duration="32000" />
       <workItem from="1707877112842" duration="2553000" />
+      <workItem from="1707880027372" duration="4288000" />
     </task>
     <servers />
   </component>

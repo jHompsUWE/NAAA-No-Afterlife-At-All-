@@ -1,6 +1,6 @@
 #pragma once
 #include "gameobject.h"
-#include <../include/directxtk/GeometricPrimitive.h>
+#include <GeometricPrimitive.h>
 
 //uses systems described here: https://github.com/microsoft/DirectXTK/wiki/GeometricPrimitive
 //to create a range of basic geometric shapes.

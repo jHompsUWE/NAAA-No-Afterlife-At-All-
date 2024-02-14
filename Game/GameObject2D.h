@@ -6,7 +6,7 @@
 //=================================================================
 
 #include <d3d11_1.h>
-#include "../include/directxtk/SimpleMath.h"
+#include "SimpleMath.h"
 #include <string>
 
 using namespace DirectX;

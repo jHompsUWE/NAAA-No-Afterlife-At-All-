@@ -6,12 +6,12 @@
 
 #include "StepTimer.h"
 #include <list>
-#include "../include/directxtk/CommonStates.h"
-#include "../include/directxtk/Effects.h" //this clashes with a SDK file so must explitily state it
-#include "../include/directxtk/Keyboard.h"
-#include "../include/directxtk/Mouse.h"
-#include "../include/directxtk/Audio.h"
-
+#include "CommonStates.h"
+#include "Effects.h" //this clashes with a SDK file so must explitily state it
+#include "Keyboard.h"
+#include "Mouse.h"
+#include "Audio.h"
+#include "btBulletDynamicsCommon.h"
 using std::list;
 
 // Forward declarations

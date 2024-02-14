@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "CMOGO.h"
-#include "../include/directxtk/model.h"
+#include "model.h"
 #include <windows.h>
 #include "Effects.h"
 #include "camera.h"
-#include "../include/directxtk/CommonStates.h"
+#include "CommonStates.h"
 #include "DrawData.h"
 #include "Helper.h"
 
