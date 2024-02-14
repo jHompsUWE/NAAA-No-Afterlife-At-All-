@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+4cd4696aa5be7a0e781291943046eee1 CMakeFiles/directxtk-populate
+5a8ce5c562678aa21440e4f0d256da08 CMakeFiles/directxtk-populate-complete
+82b75b9d2c5f7c65279faabc0449e3ce directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-build
+a896f9179709749913caf2aa12bd7a8b directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-configure
+efa3185908231650670945e3290876aa directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-download
+b62941d6a771915627d02977f0ce4693 directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-install
+d375a459e7fcd5051f532e7f51fc9a97 directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-mkdir
+e7adf80ecbeeb33ca26e830622b2fe2c directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-patch
+96bb9a3561f818b0a9c81d8f0a7cdfa1 directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-test
+16fb671a309c0c1f404a2f2da105a4a4 directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-update

@@ -1,0 +1,25 @@
+"C:\Users\mrmrcory\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\mrmrcory\Documents\uni\c++\NAAA-No-Afterlife-At-All- -B C:\Users\mrmrcory\Documents\uni\c++\NAAA-No-Afterlife-At-All-\cmake-build-debug-mingw
+CMake Deprecation Warning:
+  Support for "Extra Generators" like
+
+    CodeBlocks
+
+  is deprecated and will be removed from a future version of CMake.  IDEs may
+  use the cmake-file-api(7) to view CMake-generated project build trees.
+
+
+-- Using Shader Model 4.0/9.1 for shaders.
+CMake Error at cmake-build-debug-mingw/_deps/directxtk-src/CMakeLists.txt:264 (find_package):
+  Could not find a package configuration file provided by "directxmath" with
+  any of the following names:
+
+    directxmathConfig.cmake
+    directxmath-config.cmake
+
+  Add the installation prefix of "directxmath" to CMAKE_PREFIX_PATH or set
+  "directxmath_DIR" to a directory containing one of the above files.  If
+  "directxmath" provides a separate development package or SDK, be sure it
+  has been installed.
+
+
+-- Configuring incomplete, errors occurred!

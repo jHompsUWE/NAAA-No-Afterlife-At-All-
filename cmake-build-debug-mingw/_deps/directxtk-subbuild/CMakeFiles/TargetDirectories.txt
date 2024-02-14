@@ -1,0 +1,3 @@
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.dir
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/edit_cache.dir
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/rebuild_cache.dir

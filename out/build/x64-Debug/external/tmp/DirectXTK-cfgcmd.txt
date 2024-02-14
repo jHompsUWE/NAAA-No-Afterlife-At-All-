@@ -1,0 +1,1 @@
+cmd='C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe;-DCMAKE_INSTALL_PREFIX=C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external;DOWNLOAD_EXTRACT_TIMESTAMP;true;-GNinja;<SOURCE_DIR><SOURCE_SUBDIR>'

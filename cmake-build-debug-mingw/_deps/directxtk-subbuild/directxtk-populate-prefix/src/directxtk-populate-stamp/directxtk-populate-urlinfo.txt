@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/bin/cmake.exe;-P;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/download-directxtk-populate.cmake;COMMAND;C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/bin/cmake.exe;-P;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/verify-directxtk-populate.cmake;COMMAND;C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/bin/cmake.exe;-P;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/extract-directxtk-populate.cmake
+source_dir=C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-src
+work_dir=C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps
+url(s)=https://github.com/microsoft/DirectXTK/archive/refs/tags/dec2023.tar.gz
+hash=
+no_extract=
+

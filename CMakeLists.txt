@@ -2,25 +2,32 @@ cmake_minimum_required(VERSION 3.10)
 
 project(demo)
 
-include(ExternalProject)
-set(EXTERNAL_INSTALL_LOCATION ${CMAKE_BINARY_DIR}/external)
+set(CMAKE_SYSTEM_VERSION 10.0)
+add_compile_definitions(_WIN32_WINNT=0x0A00)
 
-ExternalProject_Add(DirectXTK
-        URL https://github.com/microsoft/DirectXTK/archive/refs/tags/apr2023.zip
-        PREFIX ${EXTERNAL_INSTALL_LOCATION}
-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
-        DOWNLOAD_EXTRACT_TIMESTAMP true
-        BUILD_COMMAND ${CMAKE_COMMAND} --build .
-)
 
-set(xaudio_nupkg "${CMAKE_BINARY_DIR}/xaudio2redist.nupkg")
-if (NOT EXISTS "${CMAKE_BINARY_DIR}/xaudio2redist.nupkg")
-    file(DOWNLOAD https://www.nuget.org/api/v2/package/Microsoft.XAudio2.Redist "${CMAKE_BINARY_DIR}/xaudio2redist.nupkg")
-endif ()
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/external/xaudio2redist")
-    file(ARCHIVE_EXTRACT INPUT "${CMAKE_BINARY_DIR}/xaudio2redist.nupkg" DESTINATION "${CMAKE_BINARY_DIR}/external/xaudio2redist")
+
+#include(ExternalProject)
+#set(EXTERNAL_INSTALL_LOCATION ${CMAKE_BINARY_DIR}/external)
+#
+#ExternalProject_Add(DirectXTK
+#        URL https://github.com/microsoft/DirectXTK/archive/refs/tags/apr2023.zip
+#        PREFIX ${EXTERNAL_INSTALL_LOCATION}
+#        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
+#        DOWNLOAD_EXTRACT_TIMESTAMP true
+#        BUILD_COMMAND ${CMAKE_COMMAND} --build .
+#)
+
+find_package(directxtk QUIET) # QUIET or REQUIRED
+if (NOT directxtk_FOUND) # If there's none, fetch and build
+    include(FetchContent)
+    FetchContent_Declare(
+            directxtk
+            GIT_REPOSITORY https://github.com/microsoft/DirectXTK.git
+            GIT_TAG dec2023
+    )
+    fetchcontent_makeavailable(directxtk)
 endif()
-
 
 set(game
         Game/Game.h
@@ -39,7 +46,7 @@ set(game
         Game/MarchCubes.h
         Game/Loop.h
         Game/light.h
-        #Game/InputManager.h
+
         Game/ImageGO2D.h
         Game/GPGO.h
         Game/GameObject2D.h
@@ -55,11 +62,10 @@ set(game
 
         Game/VBSnail.cpp
         Game/VBCube.cpp
-        #Game/UIRemote.cpp
+
         Game/treebit.cpp
         Game/Tree.cpp
-        #Game/TileGO.cpp
-        #Game/TextureToTxT.cpp
+
         Game/TextGO2D.cpp
         Game/TestSound.cpp
         Game/Terrain.cpp
@@ -80,49 +86,15 @@ set(game
 )
 add_executable(demo Direct3D_Win32/Main.cpp ${game})
 
-
-
-
-target_include_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/include)
-target_link_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/lib)
-target_link_libraries(demo PRIVATE d3d11.lib d3dcompiler.lib dxgi.lib DirectXTK.lib)
-add_dependencies(demo DirectXTK)
-
-include_directories(${EXTERNAL_INSTALL_LOCATION}/xaudio2redist/build/native/include)
-set(XAUDIO2REDIST_LIB_PATH "${EXTERNAL_INSTALL_LOCATION}/xaudio2redist/build/native")
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-    set(XAUDIO2REDIST_LIB_PATH "${XAUDIO2REDIST_LIB_PATH}/debug/lib")
-else()
-    set(XAUDIO2REDIST_LIB_PATH "${XAUDIO2REDIST_LIB_PATH}/release/lib")
-endif()
-
-if(CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit
-    set(XAUDIO2REDIST_LIB_PATH "${XAUDIO2REDIST_LIB_PATH}/x64")
-else() # 32-bit
-    set(XAUDIO2REDIST_LIB_PATH "${XAUDIO2REDIST_LIB_PATH}/x86")
-endif()
-link_directories(${XAUDIO2REDIST_LIB_PATH})
-target_link_libraries(demo PRIVATE ${XAUDIO2REDIST_LIB_PATH}/xaudio2_9redist.lib)
-
 set_target_properties(demo PROPERTIES
         LINK_FLAGS "/SUBSYSTEM:WINDOWS"
 )
 
-set(XAUDIO2REDIST_DLL_PATH "${CMAKE_BINARY_DIR}/external/xaudio2redist/build/native")
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-    set(XAUDIO2REDIST_DLL_PATH "${XAUDIO2REDIST_DLL_PATH}/debug/bin")
-else()
-    set(XAUDIO2REDIST_DLL_PATH "${XAUDIO2REDIST_DLL_PATH}/release/bin")
-endif()
 
-if(CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit
-    set(XAUDIO2REDIST_DLL_PATH "${XAUDIO2REDIST_DLL_PATH}/x64")
-else() # 32-bit
-    set(XAUDIO2REDIST_DLL_PATH "${XAUDIO2REDIST_DLL_PATH}/x86")
-endif()
 
-# Add a custom command to copy the XAudio2 DLL to the output directory
-add_custom_command(TARGET demo POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${XAUDIO2REDIST_DLL_PATH}/XAudio2_9redist.dll"
-        $<TARGET_FILE_DIR:demo>)
+#target_include_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/include)
+#target_link_directories(demo PRIVATE ${EXTERNAL_INSTALL_LOCATION}/lib)
+target_link_libraries(demo PRIVATE Microsoft::DirectXTK)
+target_include_directories(demo PRIVATE ${DirectXTK_SOURCE_DIR}/Inc)
+#add_dependencies(demo DirectXTK)
+

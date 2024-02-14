@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="demo"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="demo">
+				<Option output="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/demo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_WIN32_WINNT=0x0A00"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 demo"/>
+					<CompileFile command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="demo/fast">
+				<Option output="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/demo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_WIN32_WINNT=0x0A00"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"/>
+					<Add directory="C:/Users/mrmrcory/AppData/Local/Programs/CLion Nova/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 demo/fast"/>
+					<CompileFile command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/mrmrcory/AppData/Local/Programs/CLIONN~1/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Direct3D_Win32/Main.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/CMOGO.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/CMOGO.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/GPGO.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/GPGO.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Game.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Game.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/GameObject2D.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/GameObject2D.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/ImageGO2D.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/ImageGO2D.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Light.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Loop.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Loop.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/MarchCubes.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/MarchCubes.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Player.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Player.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Sound.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Sound.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TPSCamera.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TPSCamera.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Terrain.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Terrain.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TestSound.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TestSound.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TextGO2D.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TextGO2D.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Tree.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/Tree.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/TreeBit.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBCube.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBCube.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBGO.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBGO.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBSnail.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/VBSnail.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/camera.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/camera.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/fileVBGO.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/fileVBGO.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/gameobject.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/gameobject.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/light.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/light.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/pch.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/pch.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/treebit.cpp">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/Game/treebit.h">
+			<Option target="demo"/>
+		</Unit>
+		<Unit filename="C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

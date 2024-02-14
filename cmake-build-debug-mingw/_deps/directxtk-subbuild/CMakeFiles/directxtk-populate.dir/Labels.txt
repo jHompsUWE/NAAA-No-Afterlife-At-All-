@@ -1,0 +1,14 @@
+# Target labels
+ directxtk-populate
+# Source files and their labels
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/CMakeFiles/directxtk-populate-complete.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-build.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-configure.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-download.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-install.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-mkdir.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-patch.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-test.rule
+C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/cmake-build-debug-mingw/_deps/directxtk-subbuild/directxtk-populate-prefix/src/directxtk-populate-stamp/directxtk-populate-update.rule

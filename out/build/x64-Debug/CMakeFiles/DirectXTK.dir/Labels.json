@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/CMakeFiles/DirectXTK"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/CMakeFiles/DirectXTK.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/CMakeFiles/DirectXTK-complete.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-build.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-configure.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-download.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-install.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-patch.rule"
+		},
+		{
+			"file" : "C:/Users/mrmrcory/Documents/uni/c++/NAAA-No-Afterlife-At-All-/out/build/x64-Debug/external/src/DirectXTK-stamp/DirectXTK-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"DirectXTK"
+		],
+		"name" : "DirectXTK"
+	}
+}

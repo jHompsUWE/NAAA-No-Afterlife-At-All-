@@ -42,8 +42,7 @@
 #include <d3d11_1.h>
 #include <dxgi1_2.h>
 #include <DirectXMath.h>
-#include <DirectXColors.h>
-
+#include "DirectXColors.h"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
