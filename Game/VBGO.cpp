@@ -168,12 +168,12 @@ void VBGO::Init(ID3D11Device* _GD)
 
 	//default vertex shader
 	ID3DBlob* pVertexShaderBuffer = NULL;
-	HRESULT hr = CompileShaderFromFile(Helper::charToWChar("../Assets/shader.fx"), "VS", "vs_4_0_level_9_1", &pVertexShaderBuffer);
+	HRESULT hr = CompileShaderFromFile(Helper::charToWChar("Assets/shader.fx"), "VS", "vs_4_0_level_9_1", &pVertexShaderBuffer);
 	_GD->CreateVertexShader(pVertexShaderBuffer->GetBufferPointer(), pVertexShaderBuffer->GetBufferSize(), NULL, &s_pVertexShader);
 
 	//default pixelshader
 	ID3DBlob* pPixelShaderBuffer = NULL;
-	hr = CompileShaderFromFile(Helper::charToWChar("../Assets/shader.fx"), "PS", "ps_4_0_level_9_1", &pPixelShaderBuffer);
+	hr = CompileShaderFromFile(Helper::charToWChar("Assets/shader.fx"), "PS", "ps_4_0_level_9_1", &pPixelShaderBuffer);
 	_GD->CreatePixelShader(pPixelShaderBuffer->GetBufferPointer(), pPixelShaderBuffer->GetBufferSize(), NULL, &s_pPixelShader);
 
 	//default vertex layout
@@ -181,7 +181,7 @@ void VBGO::Init(ID3D11Device* _GD)
 		pVertexShaderBuffer->GetBufferSize(), &s_pVertexLayout);
 
 	//default texture (white square)
-	hr = CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &s_pTextureRV);
+	hr = CreateDDSTextureFromFile(_GD, L"Assets/white.dds", nullptr, &s_pTextureRV);
 
 	//deafult const buffer
 	//GPU side

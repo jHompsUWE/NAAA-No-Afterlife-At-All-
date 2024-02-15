@@ -65,13 +65,13 @@ void Game::Initialize(HWND _window, int _width, int _height)
     //set up systems for 2D rendering
     m_DD2D = new DrawData2D();
     m_DD2D->m_Sprites.reset(new SpriteBatch(m_d3dContext.Get()));
-    m_DD2D->m_Font.reset(new SpriteFont(m_d3dDevice.Get(), L"..\\Assets\\italic.spritefont"));
+    m_DD2D->m_Font.reset(new SpriteFont(m_d3dDevice.Get(), L"Assets\\italic.spritefont"));
     m_states = new CommonStates(m_d3dDevice.Get());
 
     //set up DirectXTK Effects system
     m_fxFactory = new EffectFactory(m_d3dDevice.Get());
     //Tell the fxFactory to look to the correct build directory to pull stuff in from
-    ((EffectFactory*)m_fxFactory)->SetDirectory(L"..\\Assets");
+    ((EffectFactory*)m_fxFactory)->SetDirectory(L"Assets\\");
     //init render system for VBGOs
     VBGO::Init(m_d3dDevice.Get());
 

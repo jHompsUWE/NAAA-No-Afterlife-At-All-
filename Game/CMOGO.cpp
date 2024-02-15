@@ -37,7 +37,7 @@ CMOGO::CMOGO(string _fileName, ID3D11Device* _pd3dDevice, IEffectFactory* _EF) :
 		assert(hr == S_OK);
 	}
 
-	string filePath = "../Assets/" + _fileName + ".cmo";
+	string filePath = "Assets/" + _fileName + ".cmo";
 
 	wchar_t* file = Helper::charToWChar(filePath.c_str());
 

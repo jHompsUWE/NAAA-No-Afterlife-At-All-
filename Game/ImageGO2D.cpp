@@ -8,11 +8,11 @@
 
 ImageGO2D::ImageGO2D(string _fileName, ID3D11Device* _GD) :m_pTextureRV(nullptr)
 {
-	string fullfilename = "../Assets/" + _fileName + ".dds";
+	string fullfilename = "Assets/" + _fileName + ".dds";
 	HRESULT hr = CreateDDSTextureFromFile(_GD, Helper::charToWChar(fullfilename.c_str()), nullptr, &m_pTextureRV);
 	if (hr != S_OK)
 	{
-		CreateDDSTextureFromFile(_GD, L"../Assets/white.dds", nullptr, &m_pTextureRV);
+		CreateDDSTextureFromFile(_GD, L"Assets/white.dds", nullptr, &m_pTextureRV);
 		cout << "Missing Texture : " << _fileName << endl;
 	}
 

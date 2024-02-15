@@ -551,7 +551,7 @@ void VBMarchCubes::init(Vector3 _size, float _isolevel, Vector3 _scale, Vector3 
 
 	//use the 2 sided version
 	ID3DBlob* pPixelShaderBuffer = NULL;
-	hr = CompileShaderFromFile(Helper::charToWChar("../Assets/shader.fx"), "PS2", "ps_4_0_level_9_1", &pPixelShaderBuffer);
+	hr = CompileShaderFromFile(Helper::charToWChar("Assets/shader.fx"), "PS2", "ps_4_0_level_9_1", &pPixelShaderBuffer);
 	_GD->CreatePixelShader(pPixelShaderBuffer->GetBufferPointer(), pPixelShaderBuffer->GetBufferSize(), NULL, &m_pPixelShader);
 
 }

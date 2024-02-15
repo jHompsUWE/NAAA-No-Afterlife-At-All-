@@ -13,7 +13,7 @@ VBSnail::VBSnail(ID3D11Device* _GD, std::string _filename, int _sections, float 
 	m_fudge = Matrix::CreateTranslation(-3.0f,-3.0f, 0.0f);
 	int width = 0;
 
-	string useFilename = "../Models/" + _filename + ".txt";
+	string useFilename = "Models/" + _filename + ".txt";
 
 	//load line
 	ifstream lineFile;
@@ -143,7 +143,7 @@ VBSnail::VBSnail(ID3D11Device* _GD, std::string _filename, int _sections, float 
 
 	//use the 2 sided version
 	ID3DBlob* pPixelShaderBuffer = NULL;
-	hr = CompileShaderFromFile(Helper::charToWChar("../Assets/shader.fx"), "PS2", "ps_4_0_level_9_1", &pPixelShaderBuffer);
+	hr = CompileShaderFromFile(Helper::charToWChar("Assets/shader.fx"), "PS2", "ps_4_0_level_9_1", &pPixelShaderBuffer);
 	_GD->CreatePixelShader(pPixelShaderBuffer->GetBufferPointer(), pPixelShaderBuffer->GetBufferSize(), NULL, &m_pPixelShader);
 }
 
